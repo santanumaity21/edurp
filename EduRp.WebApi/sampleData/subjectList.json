@@ -1,0 +1,20 @@
+﻿{
+  "results": [
+    {
+      "SubjectId": 1,
+      "SubjectCode": "SUB1",
+      "SubjectName": "English",
+      "SKS": 10,
+      "NewCourseSubjectAssociations": [],
+      "NewSubjectChapterAssociations": []
+    },
+    {
+      "SubjectId": 2,
+      "SubjectCode": "SUB2",
+      "SubjectName": "Science",
+      "SKS": 15,
+      "NewCourseSubjectAssociations": [],
+      "NewSubjectChapterAssociations": []
+    }
+  ]
+}

@@ -1,0 +1,671 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="edurp_devModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChapterMaster">
+          <Key>
+            <PropertyRef Name="ChapterId" />
+          </Key>
+          <Property Name="ChapterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChapterNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ChapterTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModeOfTeaching" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChapterDetails" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SKS" Type="int" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="CourseMaster">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SKS" Type="int" Nullable="false" />
+          <Property Name="CourseType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CourseGroup" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="CourseSubjectAssociation">
+          <Key>
+            <PropertyRef Name="CourseSubjectId" />
+          </Key>
+          <Property Name="CourseSubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="SubjectId" Type="int" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+        </EntityType>
+        <EntityType Name="Fee">
+          <Key>
+            <PropertyRef Name="FeeId" />
+          </Key>
+          <Property Name="FeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FeeLabel" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FeeType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="ProgramStudy">
+          <Key>
+            <PropertyRef Name="ProgramStudyId" />
+          </Key>
+          <Property Name="ProgramStudyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramStudyCode" Type="varchar" MaxLength="10" />
+          <Property Name="ProgramStudyName" Type="varchar" MaxLength="100" />
+          <Property Name="AcademicTerm" Type="varchar" MaxLength="100" />
+          <Property Name="SKS" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="ProgramStudyCourseAssociation">
+          <Key>
+            <PropertyRef Name="ProgramStudyCourseId" />
+          </Key>
+          <Property Name="ProgramStudyCourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramStudyId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+        </EntityType>
+        <EntityType Name="ProgramStudyFeeAssociation">
+          <Key>
+            <PropertyRef Name="ProgramStudyFeeId" />
+          </Key>
+          <Property Name="ProgramStudyFeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramStudyId" Type="int" Nullable="false" />
+          <Property Name="FeeId" Type="int" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+        </EntityType>
+        <EntityType Name="SubjectChapterAssociation">
+          <Key>
+            <PropertyRef Name="SubjectChapterid" />
+          </Key>
+          <Property Name="SubjectChapterid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectId" Type="int" Nullable="false" />
+          <Property Name="ChapterId" Type="int" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+        </EntityType>
+        <EntityType Name="SubjectMaster">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SubjectName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SKS" Type="int" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <Function Name="GetProgramStudyCourseList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="programstudyid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProgramStudyCourseNotLinkedList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="programstudyid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProgramStudyDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="programstudyid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProgramStudyFeesList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="programstudyid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProgramStudyFeesNotLinkedList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="programstudyid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetProgramStudyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetSubjectDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="subjectid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetSubjectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LinkProgramStudyCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="programstudyid" Type="int" Mode="In" />
+          <Parameter Name="courseid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LinkProgramStudyFees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="programstudyid" Type="int" Mode="In" />
+          <Parameter Name="feeid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RemoveSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="subjectid" Type="int" Mode="In" />
+          <Parameter Name="updatedby" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UnLinkProgramStudyCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="programstudyid" Type="int" Mode="In" />
+          <Parameter Name="courseid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UnLinkProgramStudyFees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="programstudyid" Type="int" Mode="In" />
+          <Parameter Name="feeid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="subjectid" Type="int" Mode="In" />
+          <Parameter Name="subjectcode" Type="varchar" Mode="In" />
+          <Parameter Name="subjectname" Type="varchar" Mode="In" />
+          <Parameter Name="sks" Type="int" Mode="In" />
+          <Parameter Name="updatedby" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="edurp_devModelStoreContainer">
+          <EntitySet Name="ChapterMaster" EntityType="Self.ChapterMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseMaster" EntityType="Self.CourseMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseSubjectAssociation" EntityType="Self.CourseSubjectAssociation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fee" EntityType="Self.Fee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramStudy" EntityType="Self.ProgramStudy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramStudyCourseAssociation" EntityType="Self.ProgramStudyCourseAssociation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramStudyFeeAssociation" EntityType="Self.ProgramStudyFeeAssociation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectChapterAssociation" EntityType="Self.SubjectChapterAssociation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectMaster" EntityType="Self.SubjectMaster" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="edurp_devModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ChapterMaster">
+          <Key>
+            <PropertyRef Name="ChapterId" />
+          </Key>
+          <Property Name="ChapterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChapterNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ChapterTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModeOfTeaching" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ChapterDetails" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SKS" Type="Int32" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CourseMaster">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SKS" Type="Int32" Nullable="false" />
+          <Property Name="CourseType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CourseGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CourseSubjectAssociation">
+          <Key>
+            <PropertyRef Name="CourseSubjectId" />
+          </Key>
+          <Property Name="CourseSubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Fee">
+          <Key>
+            <PropertyRef Name="FeeId" />
+          </Key>
+          <Property Name="FeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FeeLabel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FeeType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProgramStudy">
+          <Key>
+            <PropertyRef Name="ProgramStudyId" />
+          </Key>
+          <Property Name="ProgramStudyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramStudyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProgramStudyName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AcademicTerm" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SKS" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProgramStudyCourseAssociation">
+          <Key>
+            <PropertyRef Name="ProgramStudyCourseId" />
+          </Key>
+          <Property Name="ProgramStudyCourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramStudyId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProgramStudyFeeAssociation">
+          <Key>
+            <PropertyRef Name="ProgramStudyFeeId" />
+          </Key>
+          <Property Name="ProgramStudyFeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramStudyId" Type="Int32" Nullable="false" />
+          <Property Name="FeeId" Type="Int32" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SubjectChapterAssociation">
+          <Key>
+            <PropertyRef Name="SubjectChapterid" />
+          </Key>
+          <Property Name="SubjectChapterid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <Property Name="ChapterId" Type="Int32" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SubjectMaster">
+          <Key>
+            <PropertyRef Name="SubjectId" />
+          </Key>
+          <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SubjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SKS" Type="Int32" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="edurp_devEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChapterMasters" EntityType="Self.ChapterMaster" />
+          <EntitySet Name="CourseMasters" EntityType="Self.CourseMaster" />
+          <EntitySet Name="CourseSubjectAssociations" EntityType="Self.CourseSubjectAssociation" />
+          <EntitySet Name="Fees" EntityType="Self.Fee" />
+          <EntitySet Name="ProgramStudies" EntityType="Self.ProgramStudy" />
+          <EntitySet Name="ProgramStudyCourseAssociations" EntityType="Self.ProgramStudyCourseAssociation" />
+          <EntitySet Name="ProgramStudyFeeAssociations" EntityType="Self.ProgramStudyFeeAssociation" />
+          <EntitySet Name="SubjectChapterAssociations" EntityType="Self.SubjectChapterAssociation" />
+          <EntitySet Name="SubjectMasters" EntityType="Self.SubjectMaster" />
+          <FunctionImport Name="GetProgramStudyCourseList" ReturnType="Collection(edurp_devModel.GetProgramStudyCourseList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="programstudyid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProgramStudyCourseNotLinkedList" ReturnType="Collection(edurp_devModel.GetProgramStudyCourseNotLinkedList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="programstudyid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProgramStudyDetail" ReturnType="Collection(edurp_devModel.GetProgramStudyDetail_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="programstudyid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProgramStudyFeesList" ReturnType="Collection(edurp_devModel.GetProgramStudyFeesList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="programstudyid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProgramStudyFeesNotLinkedList" ReturnType="Collection(edurp_devModel.GetProgramStudyFeesNotLinkedList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="programstudyid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetProgramStudyID" ReturnType="Collection(edurp_devModel.GetProgramStudyID_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetSubjectDetail" ReturnType="Collection(edurp_devModel.GetSubjectDetail_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="subjectid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetSubjectList" ReturnType="Collection(edurp_devModel.GetSubjectList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LinkProgramStudyCourse">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="programstudyid" Mode="In" Type="Int32" />
+            <Parameter Name="courseid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LinkProgramStudyFees">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="programstudyid" Mode="In" Type="Int32" />
+            <Parameter Name="feeid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveSubject">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="subjectid" Mode="In" Type="Int32" />
+            <Parameter Name="updatedby" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UnLinkProgramStudyCourse">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="programstudyid" Mode="In" Type="Int32" />
+            <Parameter Name="courseid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UnLinkProgramStudyFees">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="programstudyid" Mode="In" Type="Int32" />
+            <Parameter Name="feeid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateSubject">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="subjectid" Mode="In" Type="Int32" />
+            <Parameter Name="subjectcode" Mode="In" Type="String" />
+            <Parameter Name="subjectname" Mode="In" Type="String" />
+            <Parameter Name="sks" Mode="In" Type="Int32" />
+            <Parameter Name="updatedby" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetProgramStudyCourseList_Result">
+          <Property Type="Int32" Name="ProgramStudyId" Nullable="false" />
+          <Property Type="Int32" Name="CourseId" Nullable="false" />
+          <Property Type="String" Name="CourseCode" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="CourseName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CourseType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="CourseGroup" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetProgramStudyCourseNotLinkedList_Result">
+          <Property Type="Int32" Name="CourseId" Nullable="false" />
+          <Property Type="String" Name="CourseCode" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="CourseName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CourseType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="CourseGroup" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetProgramStudyDetail_Result">
+          <Property Type="Int32" Name="ProgramStudyId" Nullable="false" />
+          <Property Type="String" Name="ProgramStudyCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ProgramStudyName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="AcademicTerm" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SKS" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetProgramStudyFeesList_Result">
+          <Property Type="Int32" Name="ProgramStudyId" Nullable="false" />
+          <Property Type="Int32" Name="FeeId" Nullable="false" />
+          <Property Type="String" Name="FeeLabel" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetProgramStudyFeesNotLinkedList_Result">
+          <Property Type="Int32" Name="FeeId" Nullable="false" />
+          <Property Type="String" Name="FeeLabel" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetProgramStudyID_Result">
+          <Property Type="Int32" Name="ProgramStudyId" Nullable="false" />
+          <Property Type="String" Name="ProgramStudyCode" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="GetSubjectDetail_Result">
+          <Property Type="Int32" Name="SubjectId" Nullable="false" />
+          <Property Type="String" Name="SubjectCode" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="SKS" Nullable="false" />
+          <Property Type="Byte" Name="Active" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetSubjectList_Result">
+          <Property Type="Int32" Name="SubjectId" Nullable="false" />
+          <Property Type="String" Name="SubjectCode" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="SubjectName" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="SKS" Nullable="false" />
+          <Property Type="Byte" Name="Active" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="edurp_devModelStoreContainer" CdmEntityContainer="edurp_devEntities">
+          <EntitySetMapping Name="ChapterMasters">
+            <EntityTypeMapping TypeName="edurp_devModel.ChapterMaster">
+              <MappingFragment StoreEntitySet="ChapterMaster">
+                <ScalarProperty Name="ChapterId" ColumnName="ChapterId" />
+                <ScalarProperty Name="ChapterNumber" ColumnName="ChapterNumber" />
+                <ScalarProperty Name="ChapterTitle" ColumnName="ChapterTitle" />
+                <ScalarProperty Name="ModeOfTeaching" ColumnName="ModeOfTeaching" />
+                <ScalarProperty Name="ChapterDetails" ColumnName="ChapterDetails" />
+                <ScalarProperty Name="SKS" ColumnName="SKS" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseMasters">
+            <EntityTypeMapping TypeName="edurp_devModel.CourseMaster">
+              <MappingFragment StoreEntitySet="CourseMaster">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="SKS" ColumnName="SKS" />
+                <ScalarProperty Name="CourseType" ColumnName="CourseType" />
+                <ScalarProperty Name="CourseGroup" ColumnName="CourseGroup" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseSubjectAssociations">
+            <EntityTypeMapping TypeName="edurp_devModel.CourseSubjectAssociation">
+              <MappingFragment StoreEntitySet="CourseSubjectAssociation">
+                <ScalarProperty Name="CourseSubjectId" ColumnName="CourseSubjectId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fees">
+            <EntityTypeMapping TypeName="edurp_devModel.Fee">
+              <MappingFragment StoreEntitySet="Fee">
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="FeeLabel" ColumnName="FeeLabel" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="FeeType" ColumnName="FeeType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramStudies">
+            <EntityTypeMapping TypeName="edurp_devModel.ProgramStudy">
+              <MappingFragment StoreEntitySet="ProgramStudy">
+                <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
+                <ScalarProperty Name="ProgramStudyCode" ColumnName="ProgramStudyCode" />
+                <ScalarProperty Name="ProgramStudyName" ColumnName="ProgramStudyName" />
+                <ScalarProperty Name="AcademicTerm" ColumnName="AcademicTerm" />
+                <ScalarProperty Name="SKS" ColumnName="SKS" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramStudyCourseAssociations">
+            <EntityTypeMapping TypeName="edurp_devModel.ProgramStudyCourseAssociation">
+              <MappingFragment StoreEntitySet="ProgramStudyCourseAssociation">
+                <ScalarProperty Name="ProgramStudyCourseId" ColumnName="ProgramStudyCourseId" />
+                <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramStudyFeeAssociations">
+            <EntityTypeMapping TypeName="edurp_devModel.ProgramStudyFeeAssociation">
+              <MappingFragment StoreEntitySet="ProgramStudyFeeAssociation">
+                <ScalarProperty Name="ProgramStudyFeeId" ColumnName="ProgramStudyFeeId" />
+                <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectChapterAssociations">
+            <EntityTypeMapping TypeName="edurp_devModel.SubjectChapterAssociation">
+              <MappingFragment StoreEntitySet="SubjectChapterAssociation">
+                <ScalarProperty Name="SubjectChapterid" ColumnName="SubjectChapterid" />
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="ChapterId" ColumnName="ChapterId" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectMasters">
+            <EntityTypeMapping TypeName="edurp_devModel.SubjectMaster">
+              <MappingFragment StoreEntitySet="SubjectMaster">
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="SKS" ColumnName="SKS" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetProgramStudyCourseList" FunctionName="edurp_devModel.Store.GetProgramStudyCourseList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetProgramStudyCourseList_Result">
+                <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseType" ColumnName="CourseType" />
+                <ScalarProperty Name="CourseGroup" ColumnName="CourseGroup" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProgramStudyCourseNotLinkedList" FunctionName="edurp_devModel.Store.GetProgramStudyCourseNotLinkedList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetProgramStudyCourseNotLinkedList_Result">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseCode" ColumnName="CourseCode" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseType" ColumnName="CourseType" />
+                <ScalarProperty Name="CourseGroup" ColumnName="CourseGroup" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProgramStudyDetail" FunctionName="edurp_devModel.Store.GetProgramStudyDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetProgramStudyDetail_Result">
+                <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
+                <ScalarProperty Name="ProgramStudyCode" ColumnName="ProgramStudyCode" />
+                <ScalarProperty Name="ProgramStudyName" ColumnName="ProgramStudyName" />
+                <ScalarProperty Name="AcademicTerm" ColumnName="AcademicTerm" />
+                <ScalarProperty Name="SKS" ColumnName="SKS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProgramStudyFeesList" FunctionName="edurp_devModel.Store.GetProgramStudyFeesList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetProgramStudyFeesList_Result">
+                <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="FeeLabel" ColumnName="FeeLabel" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="FeeType" ColumnName="FeeType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProgramStudyFeesNotLinkedList" FunctionName="edurp_devModel.Store.GetProgramStudyFeesNotLinkedList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetProgramStudyFeesNotLinkedList_Result">
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="FeeLabel" ColumnName="FeeLabel" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="FeeType" ColumnName="FeeType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetProgramStudyID" FunctionName="edurp_devModel.Store.GetProgramStudyID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetProgramStudyID_Result">
+                <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
+                <ScalarProperty Name="ProgramStudyCode" ColumnName="ProgramStudyCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSubjectDetail" FunctionName="edurp_devModel.Store.GetSubjectDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetSubjectDetail_Result">
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="SKS" ColumnName="SKS" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSubjectList" FunctionName="edurp_devModel.Store.GetSubjectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetSubjectList_Result">
+                <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+                <ScalarProperty Name="SubjectCode" ColumnName="SubjectCode" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+                <ScalarProperty Name="SKS" ColumnName="SKS" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LinkProgramStudyCourse" FunctionName="edurp_devModel.Store.LinkProgramStudyCourse" />
+          <FunctionImportMapping FunctionImportName="LinkProgramStudyFees" FunctionName="edurp_devModel.Store.LinkProgramStudyFees" />
+          <FunctionImportMapping FunctionImportName="RemoveSubject" FunctionName="edurp_devModel.Store.RemoveSubject" />
+          <FunctionImportMapping FunctionImportName="UnLinkProgramStudyCourse" FunctionName="edurp_devModel.Store.UnLinkProgramStudyCourse" />
+          <FunctionImportMapping FunctionImportName="UnLinkProgramStudyFees" FunctionName="edurp_devModel.Store.UnLinkProgramStudyFees" />
+          <FunctionImportMapping FunctionImportName="UpdateSubject" FunctionName="edurp_devModel.Store.UpdateSubject" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
