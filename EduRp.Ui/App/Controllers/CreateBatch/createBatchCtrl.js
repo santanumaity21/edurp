@@ -3,18 +3,18 @@
 
     angular
         .module('EduRpApp')
-        .controller('programStudyController', programStudyController);
+        .controller('createBatchController', createBatchController);
 
-    programStudyController.$inject = ['$scope', '$q', 'programStudyService', 'errorHandler', '$modal'];
+    createBatchController.$inject = ['$scope', '$q', 'createBatchService', 'errorHandler', '$modal'];
 
-    function programStudyController($scope, $q, programStudyService, errorHandler, $modal) {
+    function createBatchController($scope, $q, createBatchService, errorHandler, $modal) {
 
         $scope.courseData = [];
         $scope.filteredCourseData = [];
         $scope.courseCurrentPage = 1, $scope.courseNumPerPage = 10, $scope.courseMaxSize = 5;
         $scope.courseOrderByField = 'CourseName';
         $scope.courseReverseSort = false;
-        $scope.selectedProgramStudy = null;
+        $scope.selectedBatch = null;
 
         $scope.adjustCourseList = function () {
             var begin = (($scope.courseCurrentPage - 1) * $scope.courseNumPerPage)
@@ -45,64 +45,63 @@
 
         $scope.showPerPageDataOptions = [10, 25, 50, 100];
 
-        $scope.addPSFormObj = { status: "Active" };
+        $scope.addBatchFormObj = {status: "Active"};
 
         $scope.modCourseObj = {};
         $scope.modalType = '';
         $scope.filterPanel = false;
 
-        $scope.unlinkedCoursesOfPSList = null;
-        $scope.unlinkedFeesOfPSList = null;
+        $scope.unlinkedCoursesOfBatchList = null;
+        $scope.unlinkedFeesOfBatchList = null;
 
         $scope.toggleFilterPanel = function () {
             $scope.filterPanel = !$scope.filterPanel;
         };
 
-        $scope.addProgramStudyContainer = function () {
-            $scope.Modals.open('App/Templates/ProgramStudy/addProgramStudy.html');
+        $scope.addBatchContainer = function () {
+            $scope.Modals.open('App/Templates/CreateBatch/addBatch.html');
         };
         $scope.assignCoursesContainer = function () {
-            $q.all([programStudyService.getUnlinkedCoursesOfProgramStudy()]).then(function (data) {
-                $scope.unlinkedCoursesOfPSList = data[0].results;
-                console.log($scope.unlinkedCoursesOfPSList);
+            $q.all([createBatchService.getUnlinkedCoursesOfBatch()]).then(function (data) {
+                $scope.unlinkedCoursesOfBatchList = data[0].results;
             }, function () {
 
-            });
+                });
 
-            $scope.Modals.open('App/Templates/ProgramStudy/assignCourses.html');
+            $scope.Modals.open('App/Templates/CreateBatch/assignCourses.html');
         };
         $scope.assignFeesContainer = function () {
-            $q.all([programStudyService.getUnlinkedFeesOfProgramStudy()]).then(function (data) {
-                $scope.unlinkedFeesOfPSList = data[0].results;
+            $q.all([createBatchService.getUnlinkedFeesOfBatch()]).then(function (data) {
+                $scope.unlinkedFeesOfBatchList = data[0].results;
             }, function () {
 
             });
-            $scope.Modals.open('App/Templates/ProgramStudy/assignFees.html');
+            $scope.Modals.open('App/Templates/CreateBatch/assignFees.html');
         };
 
-        $scope.addProgramStudy = function (form) {
+        $scope.addBatch = function (form) {
             if (form.$valid) {
-                $q.when(programStudyService.addProgramStudy($scope.addPSFormObj)).then(function (success) {
+                $q.when(createBatchService.addBatch($scope.addBatchFormObj)).then(function (success) {
                     $scope.Modals.close();
-                    $scope.programStudyData.push($scope.addPSFormObj);
-                    $scope.filteredProgramStudyData.push($scope.addPSFormObj);
+                    $scope.batchData.push($scope.addBatchFormObj);
+                    $scope.filteredBatchData.push($scope.addBatchFormObj);
                 }, function (error) {
 
                 });
             }
         };
-
+       
         $scope.getCourseDetailsSuccess = function (data) {
             console.log("course data => " + data);
             $scope.courseData = data.results;
 
-
+            
             $scope.adjustCourseList();
         };
         $scope.getCourseDetailsError = function (data) {
             console.log(data);
         };
-
+        
 
         $scope.editCourseContainer = function (data) {
             $scope.modalType = 'update';
@@ -146,7 +145,7 @@
                     "TOTAL": $scope.modCourseObj
                 }]
             };
-
+           
         };
         $scope.addCourseDetailsSuccess = function (data) {
             $('#course-modal-popup').modal({
@@ -173,27 +172,27 @@
                     "TOTAL": $scope.modCourseObj
                 }]
             };
-
+            
         };
 
 
-        (function startup() {
-
-            $q.all([
-                programStudyService.getProgramStudyList(),
-                programStudyService.getLinkedCoursesOfProgramStudy(),
-                programStudyService.getLinkedFeesOfProgramStudy()
-            ]).then(function (data) {
-
+         (function startup() {
+			 
+              $q.all([
+                  createBatchService.getBatchList(),
+                  createBatchService.getLinkedCoursesOfBatch(),
+                  createBatchService.getLinkedFeesOfBatch()
+              ]).then(function (data) {
+                 
                 if (data != null) {
-                    $scope.programStudyData = data[0].results;
+                    $scope.batchData = data[0].results;
                     if (data[0].results.length < 5 && data[0].results.length > 0) {
-                        $scope.filteredProgramStudyData = data[0].results;
-                        $scope.selectedProgramStudy = data[0].results[0];
+                        $scope.filteredBatchData = data[0].results;
+                        $scope.selectedBatch = data[0].results[0];
                     } else if (data[0].results.length > 5) {
-                        $scope.selectedProgramStudy = data[0].results[0];
-                        $scope.filteredProgramStudyData = angular.copy(data[0].results.slice(0, 5));
-                        $scope.filteredProgramStudyData.push({
+                        $scope.selectedBatch = data[0].results[0];
+                        $scope.filteredBatchData = angular.copy(data[0].results.slice(0, 5));
+                        $scope.filteredBatchData.push({
                             "id": null,
                             "degreeCode": "Other",
                             "degreeName": "Other",
@@ -201,8 +200,8 @@
                             "sks": null,
                             "active": null
                         });
-                    }
-
+                    } 
+                   
 
                     $scope.courseData = data[1].results;
                     $scope.adjustCourseList();
@@ -210,12 +209,12 @@
                     $scope.feesData = data[2].results;
                     $scope.adjustFeesList();
                 }
-            }, function (reason) {
-                console.log("reason" + reason);
-                errorHandler.logServiceError('programStudyController', reason);
-            }, function (update) {
-                console.log("update" + update);
-                errorHandler.logServiceNotify('programStudyController', update);
+                  }, function (reason) {
+                      console.log("reason" + reason);
+                      errorHandler.logServiceError('createBatchController', reason);
+                  }, function (update) {
+                      console.log("update" + update);
+                      errorHandler.logServiceNotify('createBatchController', update);
             });
         })();
 
@@ -289,8 +288,8 @@
         };
 
 
-
+        
 
     };
 })
-    ();
+();

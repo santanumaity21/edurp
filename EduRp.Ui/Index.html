@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Kiks App</title>
+    <title>EduRp</title>
 
     <link href="Assets/Styles/styles.css" rel="stylesheet" />
     <link href="Assets/Styles/roboto.css" rel="stylesheet" />
@@ -52,7 +52,7 @@
 <body ng-controller="GlobalController">
     <div class="container body-content">
         <div class="container">
-            <nav class="navbar navbar-dark bg-dark">
+            <nav class="navbar">
                 <!-- Navbar content -->
                 <ul>
                     
@@ -62,6 +62,7 @@
 <a class="btn" ng-click="goToPage('/Admin/Subject')">Subjects</a>
 <a class="btn" ng-click="goToPage('/Admin/AcademicBatch')">Academic Batch</a>
 <a class="btn" ng-click="goToPage('/Admin/ProgramStudy')">Program Study</a>
+<a class="btn" ng-click="goToPage('/Admin/CreateBatch')">Create Batch</a>
 <a class="btn" ng-click="goToPage('/Admin/ClassRoom')">Class Room</a>
 <a class="btn" ng-click="goToPage('/Admin/Employees')">Employees</a>
 <a class="btn" ng-click="goToPage('/Admin/ExaminationType')">Examination Type</a>
@@ -130,6 +131,7 @@
     <script src="App/Services/Course/courseListService.js"></script>
     <script src="App/Services/Subject/subjectListService.js"></script>
     <script src="App/Services/ProgramStudy/programStudyService.js"></script>
+	<script src="App/Services/CreateBatch/createBatchService.js"></script>
 
     <script src="App/Services/AcademicBatch/academicBatchService.js"></script>
     <script src="App/Services/ClassRoom/classRoomListService.js"></script>
@@ -153,6 +155,7 @@
     <script src="App/Controllers/Course/courseListController.js"></script>
     <script src="App/Controllers/Subject/subjectListContoller.js"></script>
     <script src="App/Controllers/ProgramStudy/programStudyController.js"></script>
+	<script src="App/Controllers/CreateBatch/createBatchCtrl.js"></script>
     <script src="App/Controllers/Task/taskListController.js"></script>
 
     <script src="App/Controllers/Fees/feesListController.js"></script>

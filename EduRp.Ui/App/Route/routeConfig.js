@@ -27,10 +27,14 @@
                     controller: 'subjectListController'
            })
           .when('/Admin/ProgramStudy', {
-                    templateUrl: '/App/Templates/ProgramStudy/programStudy.html',
+                    templateUrl: '/App/Templates/ProgramStudy/home.html',
                     requiresLogin: true,
                     controller: 'programStudyController'
-           })
+                }).when('/Admin/CreateBatch', {
+                    templateUrl: '/App/Templates/CreateBatch/home.html',
+                    requiresLogin: true,
+                    controller: 'createBatchController'
+                })
           .when('/Admin/AcademicBatch', {
                     templateUrl: '/App/Templates/AcademicBatch/academicbatch.html',
                     requiresLogin: true,

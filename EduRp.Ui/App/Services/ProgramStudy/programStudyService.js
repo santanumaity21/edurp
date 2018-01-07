@@ -16,7 +16,7 @@
 
                 url: urlService[url],
                 method: method,
-                dataType: 'json',
+                dataType : 'json',
                 headers: {
                     "Content-Type": "application/json"
                 },

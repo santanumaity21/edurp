@@ -45,7 +45,7 @@
 
         $scope.showPerPageDataOptions = [10, 25, 50, 100];
 
-        $scope.addPSFormObj = { status: "Active" };
+        $scope.addPSFormObj = {status: "Active"};
 
         $scope.modCourseObj = {};
         $scope.modalType = '';
@@ -67,7 +67,7 @@
                 console.log($scope.unlinkedCoursesOfPSList);
             }, function () {
 
-            });
+                });
 
             $scope.Modals.open('App/Templates/ProgramStudy/assignCourses.html');
         };
@@ -91,18 +91,18 @@
                 });
             }
         };
-
+       
         $scope.getCourseDetailsSuccess = function (data) {
             console.log("course data => " + data);
             $scope.courseData = data.results;
 
-
+            
             $scope.adjustCourseList();
         };
         $scope.getCourseDetailsError = function (data) {
             console.log(data);
         };
-
+        
 
         $scope.editCourseContainer = function (data) {
             $scope.modalType = 'update';
@@ -146,7 +146,7 @@
                     "TOTAL": $scope.modCourseObj
                 }]
             };
-
+           
         };
         $scope.addCourseDetailsSuccess = function (data) {
             $('#course-modal-popup').modal({
@@ -173,18 +173,18 @@
                     "TOTAL": $scope.modCourseObj
                 }]
             };
-
+            
         };
 
 
-        (function startup() {
-
-            $q.all([
-                programStudyService.getProgramStudyList(),
-                programStudyService.getLinkedCoursesOfProgramStudy(),
-                programStudyService.getLinkedFeesOfProgramStudy()
-            ]).then(function (data) {
-
+         (function startup() {
+			 
+              $q.all([
+                  programStudyService.getProgramStudyList(),
+                  programStudyService.getCourseList(),
+                  programStudyService.getFeesList()
+              ]).then(function (data) {
+                 
                 if (data != null) {
                     $scope.programStudyData = data[0].results;
                     if (data[0].results.length < 5 && data[0].results.length > 0) {
@@ -201,8 +201,8 @@
                             "sks": null,
                             "active": null
                         });
-                    }
-
+                    } 
+                   
 
                     $scope.courseData = data[1].results;
                     $scope.adjustCourseList();
@@ -210,12 +210,12 @@
                     $scope.feesData = data[2].results;
                     $scope.adjustFeesList();
                 }
-            }, function (reason) {
-                console.log("reason" + reason);
-                errorHandler.logServiceError('programStudyController', reason);
-            }, function (update) {
-                console.log("update" + update);
-                errorHandler.logServiceNotify('programStudyController', update);
+                  }, function (reason) {
+                      console.log("reason" + reason);
+                      errorHandler.logServiceError('programStudyController', reason);
+                  }, function (update) {
+                      console.log("update" + update);
+                      errorHandler.logServiceNotify('programStudyController', update);
             });
         })();
 
@@ -289,8 +289,8 @@
         };
 
 
-
+        
 
     };
 })
-    ();
+();

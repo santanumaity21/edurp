@@ -36,10 +36,13 @@
             $scope.filterPanel = !$scope.filterPanel;
         };
        
+       
+
+
         $scope.editCourseContainer = function (data) {
             $scope.modalType = 'update';
             $scope.modCourseObj = data;
-            $scope.Modals.openCourseContainer();
+            $scope.Modals.openSubjectContainer();
         };
 
         $scope.addCourseContainer = function (data) {
@@ -47,6 +50,8 @@
             $scope.modCourseObj = data;
             $scope.Modals.openCourseContainer();
         };
+
+       
 
 
         $scope.updateCourseDetails = function () {
@@ -100,7 +105,7 @@
             $q.all([
                 courseListService.getCourseList()
             ]).then(function (data) {
-                if (data !== null) {
+                if (data != null) {
                     console.log(data[0].results);
                     $scope.courseData = data[0].results;
                     $scope.adjustCourseList();
@@ -114,7 +119,7 @@
 
         function removeContact(contactId) {
             for (var i = 0; i < $scope.contacts.length; i++) {
-                if ($scope.contacts[i].id === contactId) {
+                if ($scope.contacts[i].id == contactId) {
                     $scope.contacts.splice(i, 1);
                     break;
                 }
@@ -133,7 +138,7 @@
 
                 $scope.modalInstance.result.then(
                     function (contact) {
-                        if (contact.id !== null) {
+                        if (contact.id != null) {
                             $scope.Commands.updateContact(contact);
                         }
                         else {
@@ -144,7 +149,7 @@
 
                     });
             },
-            openCourseManagePopUp: function () {
+            openSubjectContainer: function () {
                 $scope.modalInstance = $modal.open({
                     animation: true,
                     templateUrl: '/App/Templates/Course/managePopup.html',
@@ -155,7 +160,7 @@
 
                 $scope.modalInstance.result.then(
                     function (contact) {
-                        if (contact.id !== null) {
+                        if (contact.id != null) {
                             $scope.Commands.updateContact(contact);
                         }
                         else {
@@ -169,9 +174,14 @@
             closeCourseContainer: function () {
                 $scope.modalInstance.dismiss();
             },
-           
+            closeSubjectContainer: function () {
+                $scope.modalInstance.dismiss();
+            }
         };
 
-    }
+
+
+
+    };
 })
     ();
