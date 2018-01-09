@@ -4,10 +4,10 @@
     angular
         .module('EduRpApp')
         .controller('programStudyController', programStudyController);
+''
+    programStudyController.$inject = ['$scope', '$q', 'programStudyService', 'errorHandler', '$modal', '$translate'];
 
-    programStudyController.$inject = ['$scope', '$q', 'programStudyService', 'errorHandler', '$modal'];
-
-    function programStudyController($scope, $q, programStudyService, errorHandler, $modal) {
+    function programStudyController($scope, $q, programStudyService, errorHandler, $modal, $translate) {
 
         $scope.courseData = [];
         $scope.filteredCourseData = [];
@@ -25,7 +25,9 @@
         $scope.$watch('courseCurrentPage + courseNumPerPage', function () {
             $scope.adjustCourseList();
         });
-
+        $scope.changeLanguage = function (langKey) {
+            $translate.use(langKey);
+        };
 
         $scope.feesData = [];
         $scope.filteredFeesData = [];

@@ -1,0 +1,24 @@
+{
+  "lbltitle": "EduRP",
+  "lblmenu2": "Dashboard",
+  "lblmenu3": "Program Study",
+
+
+  "lblmanageprogramstudy": "Manage Program Study",
+  "lblgoBtn": "Go",
+  "lbladdNewProgramstudyBtn": "Add New Program Study",
+  "lblassignedcourses": "Assigned Courses",
+  "lblassignCoursesBtn": "Assign Courses",
+  "lblremoveCoursesBtn": "Remove Courses",
+  "lblfilter": "Filter",
+  "lblshow": "show",
+  "lblentries": "entries",
+  "lblshowing": "showing",
+  "lblto": "to",
+  "lblof": "of",
+  "entry": "entry",
+  "lblassignedfees": "Assigned Fees",
+  "lblassignFeesBtn": "Assign Fees",
+  "lblremoveFeesBtn": "Remove Fees",
+  "lblheadLine": "Developed and Designed by Computude Technolo"
+}

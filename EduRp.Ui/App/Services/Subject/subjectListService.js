@@ -38,10 +38,15 @@
 
 
         };
+        var _addSubjectList = function (data) {
+            return execute('addSubjectList', 'post', data);
 
+
+        };
 
         return {
-            getSubjectList: _getSubjectList
+            getSubjectList: _getSubjectList,
+            addSubjectList: _addSubjectList
 
         };
 
