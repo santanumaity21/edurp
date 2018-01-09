@@ -37,8 +37,6 @@
         };
 
 
-
-
         $scope.editSubjectContainer = function (data) {
             $scope.modalType = 'update';
             $scope.modSubjectObj = data;

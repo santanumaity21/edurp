@@ -1,8 +1,12 @@
 ﻿
 using EduRp.Data;
 using EduRp.Service.Service;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
 
@@ -12,10 +16,11 @@ namespace EduRp.WebApi.Controllers
     {
         private ISubjectMasterService subjectMasterService = new SubjectMasterService();
         [HttpGet]
-        public List<GetSubjectList_Result> Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return subjectMasterService.GetList(id);
+            return Ok(new { results = subjectMasterService.GetList(id)});
         }
+        
         [HttpPost]
         public IHttpActionResult Create(SubjectMaster subjectMaster)
         {

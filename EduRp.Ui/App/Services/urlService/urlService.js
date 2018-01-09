@@ -1,11 +1,13 @@
-﻿var localhost = true;
+﻿var localhost = false;
+var apiUrl = 'http://localhost:50381/';
 var urlService =
     {
         getCourseList: localhost ? '/sampleData/courseList.json' : '/api/NewCourseMasters/GetAll',
         getProgramStudyList: localhost ? '/sampleData/programStudyList.json' :  '/api/ProgramStudy/GetAll',
         getFeesList: localhost ? '/sampleData/feesList.json' : '/api/Fees/GetAll',
         addProgramStudy: localhost ? '/sampleData/addProgramStudy.json' : '/api/ProgramStudy/Add',
-        getSubjectList: localhost ? '/sampleData/subjectList.json' : '/api/Subject/GetAll',
+        getSubjectList: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Get/1',
+        addSubject: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Create/',
         getClassRoomList: localhost ? '/sampleData/classRoomList.json' : 'api/ClassRoom/GetAll',
         getChaptersList: localhost ? '/sampleData/chapterList.json' : 'api/Chapters/GetAll',
         getExaminationTypeList: localhost ? '/sampleData/examinationtypeList.json' : 'api/ExaminationType/GetAll',

@@ -13,9 +13,9 @@ namespace EduRp.WebApi.Controllers
     {
         private IProgramStudyService programStudyService = new ProgramStudyService();
         // GET api/<controller>
-        public List<GetProgramStudyID_Result> Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return programStudyService.GetList(id);
+            return Ok(new { results = programStudyService.GetList(id) });
         }
 
         public List<GetProgramStudyCourseList_Result>GetByPid(int uid,int pid)
