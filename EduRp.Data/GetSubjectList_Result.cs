@@ -17,6 +17,5 @@ namespace EduRp.Data
         public string SubjectCode { get; set; }
         public string SubjectName { get; set; }
         public int SKS { get; set; }
-        public Nullable<byte> Active { get; set; }
     }
 }

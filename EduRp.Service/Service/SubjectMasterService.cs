@@ -44,5 +44,21 @@ namespace EduRp.Service.Service
             }
             throw new NotImplementedException();
         }
+        public bool DeleteSubjectMaster(int id)
+        {
+            try
+            {
+                var subject = db.SubjectMasters.Where(x => x.SubjectId == id);
+                if (subject == null) return false;
+                db.Entry(subject).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+            throw new NotImplementedException();
+        }
     }
 }

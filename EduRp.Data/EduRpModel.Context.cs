@@ -36,70 +36,153 @@ namespace EduRp.Data
         public virtual DbSet<ProgramStudyFeeAssociation> ProgramStudyFeeAssociations { get; set; }
         public virtual DbSet<SubjectChapterAssociation> SubjectChapterAssociations { get; set; }
         public virtual DbSet<SubjectMaster> SubjectMasters { get; set; }
+        public virtual DbSet<Token> Tokens { get; set; }
+        public virtual DbSet<UniversityMaster> UniversityMasters { get; set; }
+        public virtual DbSet<UserMaster> UserMasters { get; set; }
+        public virtual DbSet<UserUniversityAssociation> UserUniversityAssociations { get; set; }
     
-        public virtual ObjectResult<GetProgramStudyCourseList_Result> GetProgramStudyCourseList(Nullable<int> universityid, Nullable<int> programstudyid)
+        public virtual ObjectResult<GetChapterDetail_Result> GetChapterDetail(Nullable<int> universityid, Nullable<int> chapterid)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var programstudyidParameter = programstudyid.HasValue ?
-                new ObjectParameter("programstudyid", programstudyid) :
-                new ObjectParameter("programstudyid", typeof(int));
+            var chapteridParameter = chapterid.HasValue ?
+                new ObjectParameter("chapterid", chapterid) :
+                new ObjectParameter("chapterid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyCourseList_Result>("GetProgramStudyCourseList", universityidParameter, programstudyidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetChapterDetail_Result>("GetChapterDetail", universityidParameter, chapteridParameter);
         }
     
-        public virtual ObjectResult<GetProgramStudyCourseNotLinkedList_Result> GetProgramStudyCourseNotLinkedList(Nullable<int> universityid, Nullable<int> programstudyid)
+        public virtual ObjectResult<GetChapterList_Result> GetChapterList(Nullable<int> universityid)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var programstudyidParameter = programstudyid.HasValue ?
-                new ObjectParameter("programstudyid", programstudyid) :
-                new ObjectParameter("programstudyid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyCourseNotLinkedList_Result>("GetProgramStudyCourseNotLinkedList", universityidParameter, programstudyidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetChapterList_Result>("GetChapterList", universityidParameter);
         }
     
-        public virtual ObjectResult<GetProgramStudyDetail_Result> GetProgramStudyDetail(Nullable<int> universityid, Nullable<int> programstudyid)
+        public virtual ObjectResult<GetCourseDetail_Result> GetCourseDetail(Nullable<int> universityid, string jsontext)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var programstudyidParameter = programstudyid.HasValue ?
-                new ObjectParameter("programstudyid", programstudyid) :
-                new ObjectParameter("programstudyid", typeof(int));
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyDetail_Result>("GetProgramStudyDetail", universityidParameter, programstudyidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCourseDetail_Result>("GetCourseDetail", universityidParameter, jsontextParameter);
         }
     
-        public virtual ObjectResult<GetProgramStudyFeesList_Result> GetProgramStudyFeesList(Nullable<int> universityid, Nullable<int> programstudyid)
+        public virtual ObjectResult<GetCourseID_Result> GetCourseID(Nullable<int> universityid)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var programstudyidParameter = programstudyid.HasValue ?
-                new ObjectParameter("programstudyid", programstudyid) :
-                new ObjectParameter("programstudyid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyFeesList_Result>("GetProgramStudyFeesList", universityidParameter, programstudyidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCourseID_Result>("GetCourseID", universityidParameter);
         }
     
-        public virtual ObjectResult<GetProgramStudyFeesNotLinkedList_Result> GetProgramStudyFeesNotLinkedList(Nullable<int> universityid, Nullable<int> programstudyid)
+        public virtual ObjectResult<GetCourseList_Result> GetCourseList(Nullable<int> universityid)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var programstudyidParameter = programstudyid.HasValue ?
-                new ObjectParameter("programstudyid", programstudyid) :
-                new ObjectParameter("programstudyid", typeof(int));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCourseList_Result>("GetCourseList", universityidParameter);
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyFeesNotLinkedList_Result>("GetProgramStudyFeesNotLinkedList", universityidParameter, programstudyidParameter);
+        public virtual ObjectResult<GetCourseSubjectList_Result> GetCourseSubjectList(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCourseSubjectList_Result>("GetCourseSubjectList", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual ObjectResult<GetCourseSubjectNotLinkedList_Result> GetCourseSubjectNotLinkedList(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCourseSubjectNotLinkedList_Result>("GetCourseSubjectNotLinkedList", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual ObjectResult<GetProgramStudyCourseList_Result> GetProgramStudyCourseList(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyCourseList_Result>("GetProgramStudyCourseList", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual ObjectResult<GetProgramStudyCourseNotLinkedList_Result> GetProgramStudyCourseNotLinkedList(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyCourseNotLinkedList_Result>("GetProgramStudyCourseNotLinkedList", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual ObjectResult<GetProgramStudyDetail_Result> GetProgramStudyDetail(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyDetail_Result>("GetProgramStudyDetail", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual ObjectResult<GetProgramStudyFeesList_Result> GetProgramStudyFeesList(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyFeesList_Result>("GetProgramStudyFeesList", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual ObjectResult<GetProgramStudyFeesNotLinkedList_Result> GetProgramStudyFeesNotLinkedList(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyFeesNotLinkedList_Result>("GetProgramStudyFeesNotLinkedList", universityidParameter, jsontextParameter);
         }
     
         public virtual ObjectResult<GetProgramStudyID_Result> GetProgramStudyID(Nullable<int> universityid)
@@ -111,17 +194,61 @@ namespace EduRp.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyID_Result>("GetProgramStudyID", universityidParameter);
         }
     
-        public virtual ObjectResult<GetSubjectDetail_Result> GetSubjectDetail(Nullable<int> universityid, Nullable<int> subjectid)
+        public virtual ObjectResult<GetProgramStudyList_Result> GetProgramStudyList(Nullable<int> universityid)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var subjectidParameter = subjectid.HasValue ?
-                new ObjectParameter("subjectid", subjectid) :
-                new ObjectParameter("subjectid", typeof(int));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetProgramStudyList_Result>("GetProgramStudyList", universityidParameter);
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSubjectDetail_Result>("GetSubjectDetail", universityidParameter, subjectidParameter);
+        public virtual ObjectResult<GetSubjectChapterList_Result> GetSubjectChapterList(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSubjectChapterList_Result>("GetSubjectChapterList", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual ObjectResult<GetSubjectChapterNotLinkedList_Result> GetSubjectChapterNotLinkedList(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSubjectChapterNotLinkedList_Result>("GetSubjectChapterNotLinkedList", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual ObjectResult<GetSubjectDetail_Result> GetSubjectDetail(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSubjectDetail_Result>("GetSubjectDetail", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual ObjectResult<GetSubjectID_Result> GetSubjectID(Nullable<int> universityid)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSubjectID_Result>("GetSubjectID", universityidParameter);
         }
     
         public virtual ObjectResult<GetSubjectList_Result> GetSubjectList(Nullable<int> universityid)
@@ -133,108 +260,195 @@ namespace EduRp.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSubjectList_Result>("GetSubjectList", universityidParameter);
         }
     
-        public virtual int LinkProgramStudyCourse(Nullable<int> universityid, Nullable<int> programstudyid, Nullable<int> courseid)
+        public virtual int LinkCourseSubject(Nullable<int> universityid, string jsontext)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var programstudyidParameter = programstudyid.HasValue ?
-                new ObjectParameter("programstudyid", programstudyid) :
-                new ObjectParameter("programstudyid", typeof(int));
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
     
-            var courseidParameter = courseid.HasValue ?
-                new ObjectParameter("courseid", courseid) :
-                new ObjectParameter("courseid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LinkProgramStudyCourse", universityidParameter, programstudyidParameter, courseidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LinkCourseSubject", universityidParameter, jsontextParameter);
         }
     
-        public virtual int LinkProgramStudyFees(Nullable<int> universityid, Nullable<int> programstudyid, Nullable<int> feeid)
+        public virtual int LinkProgramStudyCourse(Nullable<int> universityid, string jsontext)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var programstudyidParameter = programstudyid.HasValue ?
-                new ObjectParameter("programstudyid", programstudyid) :
-                new ObjectParameter("programstudyid", typeof(int));
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
     
-            var feeidParameter = feeid.HasValue ?
-                new ObjectParameter("feeid", feeid) :
-                new ObjectParameter("feeid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LinkProgramStudyFees", universityidParameter, programstudyidParameter, feeidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LinkProgramStudyCourse", universityidParameter, jsontextParameter);
         }
     
-        public virtual int RemoveSubject(Nullable<int> universityid, Nullable<int> subjectid, Nullable<int> updatedby)
+        public virtual int LinkProgramStudyFees(Nullable<int> universityid, string jsontext)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var subjectidParameter = subjectid.HasValue ?
-                new ObjectParameter("subjectid", subjectid) :
-                new ObjectParameter("subjectid", typeof(int));
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LinkProgramStudyFees", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual int LinkSubjectChapter(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("LinkSubjectChapter", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual int RemoveChapter(Nullable<int> universityid, Nullable<int> chapterid, Nullable<int> updatedby)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var chapteridParameter = chapterid.HasValue ?
+                new ObjectParameter("chapterid", chapterid) :
+                new ObjectParameter("chapterid", typeof(int));
     
             var updatedbyParameter = updatedby.HasValue ?
                 new ObjectParameter("updatedby", updatedby) :
                 new ObjectParameter("updatedby", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RemoveSubject", universityidParameter, subjectidParameter, updatedbyParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RemoveChapter", universityidParameter, chapteridParameter, updatedbyParameter);
         }
     
-        public virtual int UnLinkProgramStudyCourse(Nullable<int> universityid, Nullable<int> programstudyid, Nullable<int> courseid)
+        public virtual int RemoveCourse(Nullable<int> universityid, Nullable<int> courseid, Nullable<int> updatedby)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
-    
-            var programstudyidParameter = programstudyid.HasValue ?
-                new ObjectParameter("programstudyid", programstudyid) :
-                new ObjectParameter("programstudyid", typeof(int));
     
             var courseidParameter = courseid.HasValue ?
                 new ObjectParameter("courseid", courseid) :
                 new ObjectParameter("courseid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UnLinkProgramStudyCourse", universityidParameter, programstudyidParameter, courseidParameter);
+            var updatedbyParameter = updatedby.HasValue ?
+                new ObjectParameter("updatedby", updatedby) :
+                new ObjectParameter("updatedby", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RemoveCourse", universityidParameter, courseidParameter, updatedbyParameter);
         }
     
-        public virtual int UnLinkProgramStudyFees(Nullable<int> universityid, Nullable<int> programstudyid, Nullable<int> feeid)
+        public virtual int RemoveProgramStudy(Nullable<int> universityid, string jsontext)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var programstudyidParameter = programstudyid.HasValue ?
-                new ObjectParameter("programstudyid", programstudyid) :
-                new ObjectParameter("programstudyid", typeof(int));
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
     
-            var feeidParameter = feeid.HasValue ?
-                new ObjectParameter("feeid", feeid) :
-                new ObjectParameter("feeid", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UnLinkProgramStudyFees", universityidParameter, programstudyidParameter, feeidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RemoveProgramStudy", universityidParameter, jsontextParameter);
         }
     
-        public virtual int UpdateSubject(Nullable<int> universityid, Nullable<int> subjectid, string subjectcode, string subjectname, Nullable<int> sks, Nullable<int> updatedby)
+        public virtual int RemoveSubject(Nullable<int> universityid, string jsontext)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var subjectidParameter = subjectid.HasValue ?
-                new ObjectParameter("subjectid", subjectid) :
-                new ObjectParameter("subjectid", typeof(int));
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
     
-            var subjectcodeParameter = subjectcode != null ?
-                new ObjectParameter("subjectcode", subjectcode) :
-                new ObjectParameter("subjectcode", typeof(string));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RemoveSubject", universityidParameter, jsontextParameter);
+        }
     
-            var subjectnameParameter = subjectname != null ?
-                new ObjectParameter("subjectname", subjectname) :
-                new ObjectParameter("subjectname", typeof(string));
+        public virtual int UnLinkCourseSubject(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UnLinkCourseSubject", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual int UnLinkProgramStudyCourse(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UnLinkProgramStudyCourse", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual int UnLinkProgramStudyFees(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UnLinkProgramStudyFees", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual int UnLinkSubjectChapter(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UnLinkSubjectChapter", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual int UpdateChapter(Nullable<int> universityid, Nullable<int> chapterid, string chapternumber, string chaptertitle, string modeofteaching, string chapterdetails, Nullable<int> sks, Nullable<int> updatedby)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var chapteridParameter = chapterid.HasValue ?
+                new ObjectParameter("chapterid", chapterid) :
+                new ObjectParameter("chapterid", typeof(int));
+    
+            var chapternumberParameter = chapternumber != null ?
+                new ObjectParameter("chapternumber", chapternumber) :
+                new ObjectParameter("chapternumber", typeof(string));
+    
+            var chaptertitleParameter = chaptertitle != null ?
+                new ObjectParameter("chaptertitle", chaptertitle) :
+                new ObjectParameter("chaptertitle", typeof(string));
+    
+            var modeofteachingParameter = modeofteaching != null ?
+                new ObjectParameter("modeofteaching", modeofteaching) :
+                new ObjectParameter("modeofteaching", typeof(string));
+    
+            var chapterdetailsParameter = chapterdetails != null ?
+                new ObjectParameter("chapterdetails", chapterdetails) :
+                new ObjectParameter("chapterdetails", typeof(string));
     
             var sksParameter = sks.HasValue ?
                 new ObjectParameter("sks", sks) :
@@ -244,7 +458,70 @@ namespace EduRp.Data
                 new ObjectParameter("updatedby", updatedby) :
                 new ObjectParameter("updatedby", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateSubject", universityidParameter, subjectidParameter, subjectcodeParameter, subjectnameParameter, sksParameter, updatedbyParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateChapter", universityidParameter, chapteridParameter, chapternumberParameter, chaptertitleParameter, modeofteachingParameter, chapterdetailsParameter, sksParameter, updatedbyParameter);
+        }
+    
+        public virtual int UpdateCourse(Nullable<int> universityid, Nullable<int> courseid, string coursecode, string coursename, Nullable<int> sks, string coursetype, string coursegroup, Nullable<int> updatedby)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var courseidParameter = courseid.HasValue ?
+                new ObjectParameter("courseid", courseid) :
+                new ObjectParameter("courseid", typeof(int));
+    
+            var coursecodeParameter = coursecode != null ?
+                new ObjectParameter("coursecode", coursecode) :
+                new ObjectParameter("coursecode", typeof(string));
+    
+            var coursenameParameter = coursename != null ?
+                new ObjectParameter("coursename", coursename) :
+                new ObjectParameter("coursename", typeof(string));
+    
+            var sksParameter = sks.HasValue ?
+                new ObjectParameter("sks", sks) :
+                new ObjectParameter("sks", typeof(int));
+    
+            var coursetypeParameter = coursetype != null ?
+                new ObjectParameter("coursetype", coursetype) :
+                new ObjectParameter("coursetype", typeof(string));
+    
+            var coursegroupParameter = coursegroup != null ?
+                new ObjectParameter("coursegroup", coursegroup) :
+                new ObjectParameter("coursegroup", typeof(string));
+    
+            var updatedbyParameter = updatedby.HasValue ?
+                new ObjectParameter("updatedby", updatedby) :
+                new ObjectParameter("updatedby", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateCourse", universityidParameter, courseidParameter, coursecodeParameter, coursenameParameter, sksParameter, coursetypeParameter, coursegroupParameter, updatedbyParameter);
+        }
+    
+        public virtual int UpdateProgramStudy(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateProgramStudy", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual int UpdateSubject(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateSubject", universityidParameter, jsontextParameter);
         }
     }
 }

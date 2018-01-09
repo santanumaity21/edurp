@@ -38,10 +38,17 @@
 
 
         };
+        var _addSubjects = function (form) {
+            debugger
+            return execute('addSubjects', 'post', form);
+
+
+        };
 
 
         return {
-            getSubjectList: _getSubjectList
+            getSubjectList : _getSubjectList,
+            addSubjects: _addSubjects
 
         };
 

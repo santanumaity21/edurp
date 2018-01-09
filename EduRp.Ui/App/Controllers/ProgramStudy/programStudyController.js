@@ -92,6 +92,7 @@
             }
         };
 
+
         $scope.getCourseDetailsSuccess = function (data) {
             console.log("course data => " + data);
             $scope.courseData = data.results;

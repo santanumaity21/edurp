@@ -10,7 +10,7 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
-        public List<GetProgramStudyCourseList_Result> GetByUid(int uid, int pid)
+        public List<GetProgramStudyCourseList_Result> GetByUid(int uid, string pid)
         {
             return db.GetProgramStudyCourseList(uid, pid).ToList();
         }

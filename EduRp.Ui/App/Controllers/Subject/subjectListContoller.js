@@ -45,9 +45,7 @@
             $scope.Modals.openSubjectContainer();
         };
 
-        $scope.addSubjectContainer = function (data) {
-            $scope.modalType = 'add';
-            $scope.modSubjectObj = data;
+        $scope.addSubjectContainer = function () {
             $scope.Modals.openSubjectContainer();
         };
 
@@ -59,7 +57,7 @@
             var postData = {
                 "batchUpdateData":
                 [{
-           
+
                     "SubjectCode": $scope.modSubjectObj.SubjectCode,
                     "SubjectName": $scope.modSubjectObj.SubjectName,
                     "SKS": $scope.modSubjectObj.SKS
@@ -80,20 +78,15 @@
             });
         };
         $scope.addSubjectDetails = function (form) {
-            debugger;
+            debugger
             if (form.$valid) {
-                
-                var postData = {
-                    "batchInsertData":
-                    [{
-                        "SubjectCode": $scope.modSubjectObj.SubjectCode,
-                        "SubjectName": $scope.modSubjectObj.SubjectName,
-                        "SKS": $scope.modSubjectObj.SKS
-                    }]
-                };
-                console.log(postData);
-                $scope.filteredSubjectData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeSubjectContainer();
+                $q.when([subjectListService.addSubjects($scope.modSubjectObj)]).then(function (data) {
+                    $scope.filteredSubjectData.push($scope.modSubjectObj);
+                    $scope.Modals.closeSubjectContainer();
+                }, function () {
+
+                });
+
             }
 
         };
@@ -177,4 +170,4 @@
 
     };
 })
-();
+    ();

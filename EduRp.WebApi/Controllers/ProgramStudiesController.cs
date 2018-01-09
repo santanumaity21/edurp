@@ -18,7 +18,7 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = programStudyService.GetList(id) });
         }
 
-        public List<GetProgramStudyCourseList_Result>GetByPid(int uid,int pid)
+        public List<GetProgramStudyCourseList_Result>GetByPid(int uid,string pid)
         {
             return programStudyService.GetByUid(uid,pid);
         }

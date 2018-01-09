@@ -265,6 +265,7 @@
     <Content Include="App\Controllers\Contact\contactFormModalController.js" />
     <Content Include="App\Controllers\Course\contactController.js" />
     <Content Include="App\Controllers\Course\courseListController.js" />
+    <Content Include="App\Controllers\CreateBatch\createBatchCtrl.js" />
     <Content Include="App\Controllers\Employees\employeesListContoller.js" />
     <Content Include="App\Controllers\ExaminationType\examinationTypeController.js" />
     <Content Include="App\Controllers\Fees\feesListController.js" />
@@ -2109,6 +2110,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Index.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />

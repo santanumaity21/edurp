@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="20a7bf376a014ad498fba2b5dc7478c5" Name="Diagram1">
+      <Diagram DiagramId="a62b33d923044376bf19cf7e81653b3f" Name="Diagram1">
         <EntityTypeShape EntityType="edurp_devModel.ChapterMaster" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="edurp_devModel.CourseMaster" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="edurp_devModel.CourseSubjectAssociation" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
@@ -14,6 +14,10 @@
         <EntityTypeShape EntityType="edurp_devModel.ProgramStudyFeeAssociation" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="edurp_devModel.SubjectChapterAssociation" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="edurp_devModel.SubjectMaster" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="edurp_devModel.Token" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="edurp_devModel.UniversityMaster" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="edurp_devModel.UserMaster" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="edurp_devModel.UserUniversityAssociation" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
