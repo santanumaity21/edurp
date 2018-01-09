@@ -37,6 +37,13 @@ namespace EduRp.WebApi.Controllers
                 return Ok();
             return BadRequest();
         }
-
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            var isDelete = subjectMasterService.DeleteSubjectMaster(id);
+            if (isDelete== true)
+                return Ok();
+            return BadRequest();
+        }
     }
 }

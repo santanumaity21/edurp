@@ -6,8 +6,12 @@ var urlService =
         getProgramStudyList: localhost ? '/sampleData/programStudyList.json' :  '/api/ProgramStudy/GetAll',
         getFeesList: localhost ? '/sampleData/feesList.json' : '/api/Fees/GetAll',
         addProgramStudy: localhost ? '/sampleData/addProgramStudy.json' : '/api/ProgramStudy/Add',
+       
         getSubjectList: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Get/1',
         addSubjects: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Create/',
+        updateSubject: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Put/',
+        deleteSubject: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Delete/',
+
         getClassRoomList: localhost ? '/sampleData/classRoomList.json' : 'api/ClassRoom/GetAll',
         getChaptersList: localhost ? '/sampleData/chapterList.json' : 'api/Chapters/GetAll',
         getExaminationTypeList: localhost ? '/sampleData/examinationtypeList.json' : 'api/ExaminationType/GetAll',

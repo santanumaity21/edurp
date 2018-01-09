@@ -308,6 +308,10 @@
     <Content Include="App\Templates\Course\addEditModalPopup.html" />
     <Content Include="App\Templates\Course\course_grade.html" />
     <Content Include="App\Templates\Course\managePopup.html" />
+    <Content Include="App\Templates\CreateBatch\addBatch.html" />
+    <Content Include="App\Templates\CreateBatch\assignCourses.html" />
+    <Content Include="App\Templates\CreateBatch\assignFees.html" />
+    <Content Include="App\Templates\CreateBatch\home.html" />
     <Content Include="App\Templates\Employees\employees.html" />
     <Content Include="App\Templates\ExaminationType\examinationtype.html" />
     <Content Include="App\Templates\ExaminationType\managePopup.html" />

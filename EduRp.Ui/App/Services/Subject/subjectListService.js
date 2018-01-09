@@ -36,19 +36,31 @@
         var _getSubjectList = function () {
             return execute('getSubjectList', 'get', null);
 
-
         };
-        var _addSubjects = function (form) {
+        var _addSubject = function (form) {
             debugger
             return execute('addSubjects', 'post', form);
 
+        };
+        var _updateSubject = function (form) {
+            debugger
+            return execute('updateSubject', 'put', form);
+
+        };
+
+        var _deleteSubject = function (form) {
+            debugger
+            return execute('deleteSubject', 'delete', form);
 
         };
 
 
         return {
+
             getSubjectList : _getSubjectList,
-            addSubjects: _addSubjects
+            addSubjects : _addSubject,
+            updateSubject : _updateSubject,
+            deleteSubject : _deleteSubject
 
         };
 
