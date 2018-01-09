@@ -35,14 +35,15 @@
 
         var _getSubjectList = function () {
             return execute('getSubjectList', 'get', null);
-
-
+        };
+        var _addSubject = function (postData) {
+            return execute('addSubject', 'post', postData);
         };
 
 
         return {
-            getSubjectList: _getSubjectList
-
+            getSubjectList: _getSubjectList,
+            addSubject: _addSubject
         };
 
     }

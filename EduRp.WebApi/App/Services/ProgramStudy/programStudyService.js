@@ -39,7 +39,6 @@
             return execute('addProgramStudy', 'post', postData);
         };
 
-
         return {
             getProgramStudyList: _getProgramStudyList,
             addProgramStudy: _addProgramStudy
