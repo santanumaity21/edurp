@@ -40,8 +40,8 @@ namespace EduRp.WebApi.Controllers
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
-            var isDelete = subjectMasterService.DeleteSubjectMaster(id);
-            if (isDelete== true)
+            var isDeleted = subjectMasterService.DeleteSubjectMaster(id);
+            if (isDeleted == true)
                 return Ok();
             return BadRequest();
         }

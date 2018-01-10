@@ -48,7 +48,7 @@ namespace EduRp.Service.Service
         {
             try
             {
-                var subject = db.SubjectMasters.Where(x => x.SubjectId == id);
+                var subject = db.SubjectMasters.Where(x => x.SubjectId == id).FirstOrDefault();
                 if (subject == null) return false;
                 db.Entry(subject).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
