@@ -48,22 +48,31 @@
 
         };
 
-        var _deleteSubject = function (form) {
-            debugger
-            return execute('deleteSubject', 'delete', form);
+        //var _deleteSubject = function (id) {
+        //   debugger
+        //    return execute('deleteSubject', 'delete', id);
 
-        };
-
+        //};
 
         return {
 
             getSubjectList : _getSubjectList,
             addSubjects : _addSubject,
             updateSubject : _updateSubject,
-            deleteSubject : _deleteSubject
+            //deleteSubject : _deleteSubject
 
         };
 
     }
 
+    //var deleteSubject = function (id) {
+    //    var url = 'http://localhost:50381/api/Subjectmasters/Delete/' + id;
+    //    return $http(
+    //        {
+    //            method: 'delete',
+    //            data: id,
+    //            url: url
+    //        });
+
+    //}
 })();

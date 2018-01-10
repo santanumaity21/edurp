@@ -8,9 +8,9 @@ var urlService =
         addProgramStudy: localhost ? '/sampleData/addProgramStudy.json' : '/api/ProgramStudy/Add',
        
         getSubjectList: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Get/1',
-        addSubjects: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Create/',
+        addSubjects: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Post/',
         updateSubject: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Put/',
-        deleteSubject: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Delete/',
+        //deletesubject: localhost ? '/sampledata/subjectlist.json' : apiurl + 'api/subjectmasters/delete/',
 
         getClassRoomList: localhost ? '/sampleData/classRoomList.json' : 'api/ClassRoom/GetAll',
         getChaptersList: localhost ? '/sampleData/chapterList.json' : 'api/Chapters/GetAll',

@@ -234,6 +234,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChapterMastersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProgramStudiesController.cs" />
     <Compile Include="Controllers\SubjectMasterController.cs" />
@@ -250,67 +251,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\app.js" />
-    <Content Include="App\Controllers\AcademicBatch\academicBatchController.js" />
-    <Content Include="App\Controllers\Chapters\chaptersListContoller.js" />
-    <Content Include="App\Controllers\ClassRoom\classRoomListContoller.js" />
-    <Content Include="App\Controllers\Contact\contactController.js" />
-    <Content Include="App\Controllers\Contact\contactFormModalController.js" />
-    <Content Include="App\Controllers\Course\contactController.js" />
-    <Content Include="App\Controllers\Course\courseListController.js" />
-    <Content Include="App\Controllers\Employees\employeesListContoller.js" />
-    <Content Include="App\Controllers\ExaminationType\examinationTypeController.js" />
-    <Content Include="App\Controllers\Fees\feesListController.js" />
-    <Content Include="App\Controllers\Global\globalController.js" />
-    <Content Include="App\Controllers\Master\masterController.js" />
-    <Content Include="App\Controllers\NotificationType\notificationTypeController.js" />
-    <Content Include="App\Controllers\ProgramStudy\programStudyController.js" />
-    <Content Include="App\Controllers\Subject\subjectListContoller.js" />
-    <Content Include="App\Controllers\Task\taskListController.js" />
-    <Content Include="App\Route\routeConfig.js" />
-    <Content Include="App\Services\AcademicBatch\academicBatchService.js" />
-    <Content Include="App\Services\Account\authService.js" />
-    <Content Include="App\Services\Account\storageHandler.js" />
-    <Content Include="App\Services\Account\tokenHandler.js" />
-    <Content Include="App\Services\Chapters\chaptersListService.js" />
-    <Content Include="App\Services\ClassRoom\classRoomListService.js" />
-    <Content Include="App\Services\Common\services.js" />
-    <Content Include="App\Services\Contact\AcademicBatch\AcademicBatchListService.js" />
-    <Content Include="App\Services\Contact\contactService.js" />
-    <Content Include="App\Services\Course\courseListService.js" />
-    <Content Include="App\Services\Employees\employeesListService.js" />
-    <Content Include="App\Services\ExaminationType\examinationTypeService.js" />
-    <Content Include="App\Services\Fees\feesListService.js" />
-    <Content Include="App\Services\Interceptors\errorHandler.js" />
-    <Content Include="App\Services\Interceptors\xmlHttpInterceptor.js" />
-    <Content Include="App\Services\NotificationType\notificationTypeService.js" />
-    <Content Include="App\Services\ProgramStudy\programStudyService.js" />
-    <Content Include="App\Services\Subject\subjectListService.js" />
-    <Content Include="App\Services\Task\taskListService.js" />
-    <Content Include="App\Services\urlService\urlService.js" />
-    <Content Include="App\Templates\AcademicBatch\academicbatch.html" />
-    <Content Include="App\Templates\AcademicBatch\managePopup.html" />
-    <Content Include="App\Templates\Account\Login.html" />
-    <Content Include="App\Templates\Account\Register.html" />
-    <Content Include="App\Templates\Chapters\Chapters.html" />
-    <Content Include="App\Templates\ClassRoom\classroom.html" />
-    <Content Include="App\Templates\Contact\AddContact.html" />
-    <Content Include="App\Templates\Contact\ContactFormModal.html" />
-    <Content Include="App\Templates\Contact\Index.html" />
-    <Content Include="App\Templates\Course\addEditModalPopup.html" />
-    <Content Include="App\Templates\Course\course_grade.html" />
-    <Content Include="App\Templates\Course\managePopup.html" />
-    <Content Include="App\Templates\Employees\employees.html" />
-    <Content Include="App\Templates\ExaminationType\examinationtype.html" />
-    <Content Include="App\Templates\ExaminationType\managePopup.html" />
-    <Content Include="App\Templates\Fees\fees.html" />
-    <Content Include="App\Templates\Master\master.html" />
-    <Content Include="App\Templates\NotificationType\notificationtype.html" />
-    <Content Include="App\Templates\ProgramStudy\programStudy.html" />
-    <Content Include="App\Templates\Shared\_404.html" />
-    <Content Include="App\Templates\Subject\managePopup.html" />
-    <Content Include="App\Templates\Subject\subject.html" />
-    <Content Include="App\Templates\Task\tasks.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -378,9 +318,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App\Services\Master\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>

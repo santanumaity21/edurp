@@ -83,7 +83,6 @@
             console.log($scope.modSubjectObj);
             if (form.$valid) {
                 $q.when([subjectListService.updateSubject($scope.modSubjectObj)]).then(function (data) {
-                    //$scope.filteredSubjectData.push($scope.modSubjectObj);
                     $scope.Modals.closeSubjectContainer();
                 }, function (error) {
 
@@ -113,27 +112,7 @@
                     break;
                 }
             }
-        }
-
-
-       
-        //$scope.addSubjectDetailsSuccess = function (data) {
-        //    $('#subject-modal-popup').modal({
-        //        show: 'false'
-        //    });
-        //};
-
-        //$scope.addSubjectDetailsError = function (data) {
-        //    $('#subject-modal-popup').modal({
-        //        show: 'false'
-        //    });
-        //};
-
-
-       
-
-   
-       
+        }   
 
         $scope.Modals = {
             openSubjectContainer: function () {
@@ -187,4 +166,4 @@
 
     };
 })
-    ();
+();

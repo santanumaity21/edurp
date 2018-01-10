@@ -85,6 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\ChapterMasterService.cs" />
+    <Compile Include="Service\IChapterMasterService.cs" />
     <Compile Include="Service\IProgramStudyService .cs" />
     <Compile Include="Service\ISubjectMasterService.cs" />
     <Compile Include="Service\ProgramStudyService.cs" />

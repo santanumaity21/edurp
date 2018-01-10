@@ -22,7 +22,7 @@ namespace EduRp.WebApi.Controllers
         }
         
         [HttpPost]
-        public IHttpActionResult Create(SubjectMaster subjectMaster)
+        public IHttpActionResult Post(SubjectMaster subjectMaster)
         {
             var isSave = subjectMasterService.SaveSubjectMaster(subjectMaster);
             if (isSave == true)

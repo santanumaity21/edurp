@@ -28,6 +28,7 @@ namespace EduRp.Service.Service
             {
                 return false;
             }
+            throw new NotImplementedException();
         }
         public bool UpdateSubjectMaster(int id, SubjectMaster subjectMaster)
         {
