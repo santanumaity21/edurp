@@ -4,7 +4,7 @@
     angular
         .module('EduRpApp')
         .controller('programStudyController', programStudyController);
-''
+
     programStudyController.$inject = ['$scope', '$q', 'programStudyService', 'errorHandler', '$modal', '$translate'];
 
     function programStudyController($scope, $q, programStudyService, errorHandler, $modal, $translate) {
@@ -66,7 +66,6 @@
         $scope.assignCoursesContainer = function () {
             $q.all([programStudyService.getUnlinkedCoursesOfProgramStudy()]).then(function (data) {
                 $scope.unlinkedCoursesOfPSList = data[0].results;
-                console.log($scope.unlinkedCoursesOfPSList);
             }, function () {
 
             });
@@ -93,24 +92,20 @@
                 });
             }
         };
+        
 
-        $scope.getCourseDetailsSuccess = function (data) {
-            console.log("course data => " + data);
-            $scope.courseData = data.results;
+        $scope.removeSelectedCourses = function () {
+            var coursesSelected = [];
+            angular.forEach($scope.filteredCourseData, function (v, key) {
+                if ($scope.filteredCourseData[key].Selected == $scope.filteredCourseData[key].id) {
+                    coursesSelected.push($scope.filteredCourseData[key].Selected);
+                }
+            });
+            $q.when(programStudyService.removeSelectedCourses(coursesSelected)).then(function (success) {
+                $scope.Modals.close();
+                $scope.filteredProgramStudyData.push($scope.addPSFormObj);
+            }, function (error) {
 
-
-            $scope.adjustCourseList();
-        };
-        $scope.getCourseDetailsError = function (data) {
-            console.log(data);
-        };
-
-
-        $scope.editCourseContainer = function (data) {
-            $scope.modalType = 'update';
-            $scope.modCourseObj = data;
-            $('#course-modal-popup').modal({
-                show: 'true'
             });
         };
 
@@ -120,64 +115,7 @@
             $scope.Modals.open();
         };
 
-        $scope.updateCourseDetailsSuccess = function (data) {
-            $('#course-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.updateCourseDetailsError = function (data) {
-            $('#course-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-
-        $scope.updateCourseDetails = function () {
-            console.log($scope.modCourseObj);
-            var postData = {
-                "batchUpdateData":
-                [{
-                    "DegreeId": $scope.modCourseObj,
-                    "DegreeName": $scope.modCourseObj,
-                    "UniversityId": $scope.modCourseObj,
-                    "CourseId": $scope.modCourseObj,
-                    "CourseCode": $scope.modCourseObj,
-                    "CourseName": $scope.modCourseObj,
-                    "IsActive": $scope.modCourseObj,
-                    "TOTAL": $scope.modCourseObj
-                }]
-            };
-
-        };
-        $scope.addCourseDetailsSuccess = function (data) {
-            $('#course-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addCourseDetailsError = function (data) {
-            $('#course-modal-popup').modal({
-                show: 'false'
-            });
-        };
-        $scope.addCourseDetails = function () {
-            var postData = {
-                "batchInsertData":
-                [{
-                    "DegreeId": $scope.modCourseObj,
-                    "DegreeName": $scope.modCourseObj,
-                    "UniversityId": $scope.modCourseObj,
-                    "CourseId": $scope.modCourseObj,
-                    "CourseCode": $scope.modCourseObj,
-                    "CourseName": $scope.modCourseObj,
-                    "IsActive": $scope.modCourseObj,
-                    "TOTAL": $scope.modCourseObj
-                }]
-            };
-
-        };
-
+        
 
         (function startup() {
 

@@ -45,6 +45,10 @@
             return execute('addProgramStudy', 'post', postData);
         };
 
+        var _removeSelectedCourses = function (postData) {
+            return execute('removeSelectedCourses', 'post', postData);
+        };
+
         var _getUnlinkedCoursesOfProgramStudy = function () {
             return execute('getUnlinkedCoursesOfProgramStudy', 'get', null);
         };
@@ -59,7 +63,8 @@
             getLinkedFeesOfProgramStudy: _getLinkedFeesOfProgramStudy,
             addProgramStudy: _addProgramStudy,
             getUnlinkedCoursesOfProgramStudy: _getUnlinkedCoursesOfProgramStudy,
-            getUnlinkedFeesOfProgramStudy: _getUnlinkedFeesOfProgramStudy
+            getUnlinkedFeesOfProgramStudy: _getUnlinkedFeesOfProgramStudy,
+            removeSelectedCourses: _removeSelectedCourses
 
         };
 
