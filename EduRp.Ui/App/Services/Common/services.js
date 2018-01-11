@@ -19,8 +19,15 @@
             return deferred.promise;
         };
 
+        var _removeItemFromArray = function (arr, _name) {
+            var index = arr.indexOf(_name);
+            arr.splice(index, 1);
+            return arr;
+        };
+
         return {
-            getFilteredOptions: _getFilteredOptions
+            getFilteredOptions: _getFilteredOptions,
+            removeItemFromArray: _removeItemFromArray
         };
 
     }
