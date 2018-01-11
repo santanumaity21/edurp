@@ -69,6 +69,10 @@
                 templateUrl: '/App/Templates/Chapters/chapters.html',
                 controller: 'chaptersListController'
            })
+          .when('/StudentAdmissionForm', {
+              templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
+                controller: 'studentadmissionformController'
+           })
           .otherwise({
               templateUrl: '/App/Templates/Shared/_404.html'
           })

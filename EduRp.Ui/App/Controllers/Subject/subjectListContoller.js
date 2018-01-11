@@ -55,6 +55,7 @@
 
 
         $scope.addSubjectContainer = function () {
+            $scope.modalType = 'add';
             $scope.Modals.openSubjectContainer();
         };
 //Add
@@ -91,28 +92,46 @@
             }
         };
 //delete 
-        $scope.deleteSubject = function (subjectId) {
-            if (confirm('Are you sure you want to delete this subject?')) {
-                subjectListService.deleteSubject(subjectId).then(
-                    function (data) {
-                        removeSubject(subjectId);
-                    },
-                    function (response) {
-                        console.log(response);
-                    });
-            }
-            else {
-                console.log('delete cancelled');
-            }
-        }
-        function removesubject(subjectId) {
-            for (var i = 0; i < $scope.subjectData.length; i++) {
-                if ($scope.subjectData[i].id === subjectId) {
-                    $scope.subjectData.splice(i, 1);
-                    break;
-                }
-            }
-        }   
+
+        //$scope.deleteSubject = function () {
+        //    if (confirm('Are you sure you want to delete this subject?')) {
+        //        angular.forEach($scope.filteredCourseData, function (v, key) {
+        //            if ($scope.filteredCourseData[key].Selected == $scope.filteredCourseData[key].id) {
+        //                coursesSelected.push($scope.filteredCourseData[key].Selected);
+        //            }
+        //        });
+        //    }
+        //    $q.when(programStudyService.removeSelectedCourses(coursesSelected)).then(function (success) {
+        //        $scope.Modals.close();
+        //        $scope.filteredProgramStudyData.push($scope.addPSFormObj);
+        //    }, function (error) {
+
+        //    });
+        //};
+        //$scope.deleteSubject = function (id) {
+        //    if (confirm('Are you sure you want to delete this subject?')) {
+        //        $q.when(subjectListService.deleteSubject(id)).then(
+        //            function (success) {
+        //                removeSubject(data);
+        //            },
+        //            function (response) {
+        //                console.log(response);
+        //            });
+        //    }
+        //    else {
+        //        console.log('delete cancelled');
+        //    }
+        //}
+
+        //function removesubject(data) {
+        //    for (var i = 0; i < $scope.subjectData.length; i++) {
+        //        if ($scope.subjectData[i].id === data) {
+        //            $scope.subjectData.splice(i, 1);
+        //            break;
+        //        }
+        //    }
+        //}   
+
 
         $scope.Modals = {
             openSubjectContainer: function () {

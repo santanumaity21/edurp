@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width" />
     <title>EduRp</title>
 
+
+    <script src="../../Assets/Scripts/modernizr-2.8.3.js"></script>
+    <!--Morris Chart CSS -->
+    <link href="../../Assets/plugins/morris/morris.css" rel="stylesheet" />
+    <!-- Plugins Css -->
+    <link href="../../Assets/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet" />
+    <link href="../../Assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" />
+    <link href="../../Assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="../../Assets/plugins/clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet" />
+    <link href="../../Assets/plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+
+
+    <!-- App css -->
+    <link href="../../Assets/Styles/edurp/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../Assets/Styles/edurp/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../Assets/Styles/edurp/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="../../Assets/Styles/edurp/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="../../Assets/Styles/edurp/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="../../Assets/Styles/edurp/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="../../Assets/Styles/edurp/css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="../../Assets/Styles/edurp/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="../../Assets/plugins/switchery/switchery.min.css" rel="stylesheet" />
+
+
     <link href="Assets/Styles/styles.css" rel="stylesheet" />
     <link href="Assets/Styles/roboto.css" rel="stylesheet" />
     <link href="Assets/Styles/ripples.css" rel="stylesheet" />
@@ -14,6 +38,9 @@
     <link href="Assets/Styles/bootstrap-theme.css" rel="stylesheet" />
 
     <!-- DataTables -->
+
+
+
     <link href="Assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link href="Assets/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="Assets/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -29,6 +56,7 @@
     <link href="Assets/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
     <link href="Assets/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
     <link href="Assets/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <link href="Assets/plugins/bootstrap-sweetalert/sweet-alert.css" rel="stylesheet" type="text/css">
 
     <!-- App css -->
 
@@ -58,17 +86,18 @@
                     
                     <li class="nav-item">
                         <a class="btn" ng-click="goToPage('/Admin/CourseList/')">Show Course</a>
-<a class="btn" ng-click="goToPage('/Admin/Task')">Task</a>
-<a class="btn" ng-click="goToPage('/Admin/Subject')">Subjects</a>
-<a class="btn" ng-click="goToPage('/Admin/AcademicBatch')">Academic Batch</a>
-<a class="btn" ng-click="goToPage('/Admin/ProgramStudy')">Program Study</a>
-<a class="btn" ng-click="goToPage('/Admin/CreateBatch')">Create Batch</a>
-<a class="btn" ng-click="goToPage('/Admin/ClassRoom')">Class Room</a>
-<a class="btn" ng-click="goToPage('/Admin/Employees')">Employees</a>
-<a class="btn" ng-click="goToPage('/Admin/ExaminationType')">Examination Type</a>
-<a class="btn" ng-click="goToPage('/Admin/Fees')">Fees</a>
-<a class="btn" ng-click="goToPage('/Admin/NotificationType')">Notification Type</a>
-<a class="btn" ng-click="goToPage('/Admin/Chapters')">Chapters</a>
+                        <a class="btn" ng-click="goToPage('/Admin/Task')">Task</a>
+                        <a class="btn" ng-click="goToPage('/Admin/Subject')">Subjects</a>
+                        <a class="btn" ng-click="goToPage('/Admin/AcademicBatch')">Academic Batch</a>
+                        <a class="btn" ng-click="goToPage('/Admin/ProgramStudy')">Program Study</a>
+                        <a class="btn" ng-click="goToPage('/Admin/CreateBatch')">Create Batch</a>
+                        <a class="btn" ng-click="goToPage('/Admin/ClassRoom')">Class Room</a>
+                        <a class="btn" ng-click="goToPage('/Admin/Employees')">Employees</a>
+                        <a class="btn" ng-click="goToPage('/Admin/ExaminationType')">Examination Type</a>
+                        <a class="btn" ng-click="goToPage('/Admin/Fees')">Fees</a>
+                        <a class="btn" ng-click="goToPage('/Admin/NotificationType')">Notification Type</a>
+                        <a class="btn" ng-click="goToPage('/Admin/Chapters')">Chapters</a>
+                        <a class="btn" ng-click="goToPage('/StudentAdmissionForm')">Student Admission Page</a>
                     </li>
                    
                 </ul>
@@ -163,7 +192,7 @@
     <script src="App/Controllers/ExaminationType/examinationTypeController.js"></script>
     <script src="App/Controllers/NotificationType/notificationTypeController.js"></script>
     <script src="App/Controllers/AcademicBatch/academicBatchController.js"></script>
-
+    <script src="App/Controllers/StudentAdmissionForm/studentadmissionformController.js"></script>
     <script src="App/Controllers/Chapters/chaptersListContoller.js"></script>
 
 
