@@ -22,6 +22,6 @@ namespace EduRp.WebApi.Controllers
         {
             return programStudyService.GetByUid(uid,pid);
         }
-       
+ 
     }
 }

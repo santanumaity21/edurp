@@ -3,9 +3,9 @@ var apiUrl = 'http://localhost:50381/';
 var urlService =
     {
         getCourseList: localhost ? '/sampleData/courseList.json' : '/api/NewCourseMasters/GetAll',
-        getProgramStudyList: localhost ? '/sampleData/programStudyList.json' :  '/api/ProgramStudy/GetAll',
+        getProgramStudy: localhost ? '/sampleData/programStudyList.json' :  '/api/ProgramStudy/Get/1',
         getFeesList: localhost ? '/sampleData/feesList.json' : '/api/Fees/GetAll',
-        addProgramStudy: localhost ? '/sampleData/addProgramStudy.json' : '/api/ProgramStudy/Add',
+        addProgramStudyList: localhost ? '/sampleData/addProgramStudy.json' : '/api/ProgramStudy/Add',
        
         getSubjectList: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Get/1',
         addSubjects: localhost ? '/sampleData/subjectList.json' : apiUrl + 'api/SubjectMasters/Post/',
@@ -14,7 +14,7 @@ var urlService =
 
         getClassRoomList: localhost ? '/sampleData/classRoomList.json' : 'api/ClassRoom/GetAll',
         getChaptersList: localhost ? '/sampleData/chapterList.json' : 'api/Chapters/GetAll',
-        getExaminationTypeList: localhost ? '/sampleData/examinationtypeList.json' : 'api/ExaminationType/GetAll',
+        getExaminationTypeList: localhost ? '/sampleData/examinationtypeList.json' : 'api/ExaminationType/Get',
         getTaskList: localhost ? '/sampleData/tasksList.json' : 'api/TaskList/GetAll',
         getLinkedCoursesOfProgramStudy: localhost ? '/sampleData/programStudy/courseList.json' : '/api/NewCourseMasters/GetAll',
         getLinkedCoursesOfBatch: localhost ? '/sampleData/createBatch/courseList.json' : '/api/NewCourseMasters/GetAll',

@@ -5,7 +5,7 @@
         .module('app')
         .controller('studentadmissionformController', studentadmissionformController);
 
-    studentadmissionformController.$inject = ['$location'];
+    studentadmissionformController.$inject = ['$scope','$q','ngAnimate', 'ui.bootstrap', '$modal'];
 
     function studentadmissionformController($location) {
         /* jshint validthis:true */

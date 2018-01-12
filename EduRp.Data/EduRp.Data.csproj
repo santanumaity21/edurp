@@ -103,7 +103,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationFormMaster.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BatchMaster.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ChapterMaster.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClassRoomMaster.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CourseMaster.cs">
@@ -127,6 +136,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EduRpModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeMaster.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExaminationType.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Fee.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
@@ -134,6 +149,12 @@
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetChapterList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetClassRoomDetail_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetClassRoomList_Result.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCourseDetail_Result.cs">
@@ -149,6 +170,18 @@
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCourseSubjectNotLinkedList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetExaminationDetail_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetExaminationList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetFeeDetail_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetFeeList_Result.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetProgramStudyCourseList_Result.cs">
@@ -187,6 +220,21 @@
     <Compile Include="GetSubjectList_Result.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetTaskDetail_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTaskID_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTaskList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTaskStaffList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetTaskStaffNotLinkedList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProgramStudy.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
@@ -197,10 +245,22 @@
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleMaster.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScreenMaster.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SubjectChapterAssociation.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SubjectMaster.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Task.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskEmployeeAssociation.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Token.cs">

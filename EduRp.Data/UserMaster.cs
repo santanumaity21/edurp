@@ -18,25 +18,23 @@ namespace EduRp.Data
         public string UserName { get; set; }
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        public string Gender { get; set; }
         public Nullable<System.DateTime> LastLogin { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsLocked { get; set; }
-        public string Status { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<int> PassAttemptCount { get; set; }
         public Nullable<System.Guid> AuthenticationToken { get; set; }
         public string LastLoginIPAddress { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
-        public string Address { get; set; }
-        public Nullable<int> CityId { get; set; }
         public string DefaultLanguage { get; set; }
-        public string Password { get; set; }
+        public string loginid { get; set; }
+        public string PlaintextPWD { get; set; }
         public string DeviceType { get; set; }
         public string DeviceToken { get; set; }
         public string DeviceIdentifier { get; set; }
-        public Nullable<int> UserTypeId { get; set; }
-        public Nullable<int> AssociationId { get; set; }
+        public Nullable<int> UserRoleId { get; set; }
         public string ImageURL { get; set; }
+        public Nullable<int> UniversityId { get; set; }
+        public Nullable<byte> active { get; set; }
         public Nullable<System.DateTime> lastupdateddt { get; set; }
         public Nullable<int> lastupdatedby { get; set; }
     }
