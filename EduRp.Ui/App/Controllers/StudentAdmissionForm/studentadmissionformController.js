@@ -2,16 +2,21 @@
     'use strict';
 
     angular
-        .module('app')
+        .module('EduRpApp')
         .controller('studentadmissionformController', studentadmissionformController);
 
-    studentadmissionformController.$inject = ['$scope','$q','ngAnimate', 'ui.bootstrap', '$modal'];
+    studentadmissionformController.$inject = ['$scope','$q','$modal'];
 
-    function studentadmissionformController($location) {
+    function studentadmissionformController($scope) {
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'studentadmissionformController';
+        $scope.oneAtATime = true;
 
+        $scope.status = {
+            isFirstOpen: true,
+            isFirstDisabled: false
+        };
         activate();
 
         $scope.addAdmissionForm = function (form) {
@@ -29,5 +34,7 @@
         };
 
         function activate() { }
+
+       
     }
 })();

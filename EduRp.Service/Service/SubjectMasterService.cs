@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using EduRp.Data;
+using EduRp.Service.IService;
 
 namespace EduRp.Service.Service
 {

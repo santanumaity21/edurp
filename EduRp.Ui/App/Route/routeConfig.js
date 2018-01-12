@@ -71,7 +71,7 @@
            })
           .when('/StudentAdmissionForm', {
               templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
-                controller: 'studentadmissionformController'
+              controller: 'studentadmissionformController'
            })
           .otherwise({
               templateUrl: '/App/Templates/Shared/_404.html'

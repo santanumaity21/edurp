@@ -84,15 +84,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IService\IClassRoomMasterService.cs" />
+    <Compile Include="IService\ICourseMasterService.cs" />
+    <Compile Include="IService\IBatchMaster.cs" />
+    <Compile Include="IService\IEmployeeService.cs" />
+    <Compile Include="IService\IFeeService.cs" />
+    <Compile Include="IService\ITaskService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BatchMasterService.cs" />
     <Compile Include="Service\ChapterMasterService.cs" />
+    <Compile Include="Service\ClassRoomMasterService.cs" />
+    <Compile Include="Service\CourseMasterService.cs" />
+    <Compile Include="Service\EmployeeService.cs" />
     <Compile Include="Service\ExaminationTypeService.cs" />
-    <Compile Include="Service\IChapterMasterService.cs" />
-    <Compile Include="Service\IExaminationTypeService.cs" />
-    <Compile Include="Service\IProgramStudyService .cs" />
-    <Compile Include="Service\ISubjectMasterService.cs" />
+    <Compile Include="IService\IChapterMasterService.cs" />
+    <Compile Include="IService\IExaminationTypeService.cs" />
+    <Compile Include="IService\IProgramStudyService .cs" />
+    <Compile Include="IService\ISubjectMasterService.cs" />
+    <Compile Include="Service\FeeService.cs" />
     <Compile Include="Service\ProgramStudyService.cs" />
     <Compile Include="Service\SubjectMasterService.cs" />
+    <Compile Include="Service\TaskService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EduRp.Data\EduRp.Data.csproj">
