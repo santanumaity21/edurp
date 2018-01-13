@@ -68,7 +68,10 @@
           .when('/Admin/Chapters', {
                 templateUrl: '/App/Templates/Chapters/chapters.html',
                 controller: 'chaptersListController'
-           })
+                }).when('/Admin/BulkUpload', {
+                    templateUrl: '/App/Templates/BulkUpload/Bulkupload.html',
+                    controller: 'bulkUploadCntrl'
+                })
           .otherwise({
               templateUrl: '/App/Templates/Shared/_404.html'
           })
