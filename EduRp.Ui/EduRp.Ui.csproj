@@ -272,6 +272,7 @@
     <Content Include="App\Controllers\Master\masterController.js" />
     <Content Include="App\Controllers\NotificationType\notificationTypeController.js" />
     <Content Include="App\Controllers\ProgramStudy\programStudyController.js" />
+    <Content Include="App\Controllers\StudentAdmissionForm\studentadmissionformController.js" />
     <Content Include="App\Controllers\Subject\subjectListContoller.js" />
     <Content Include="App\Controllers\Task\taskListController.js" />
     <Content Include="App\Route\routeConfig.js" />
@@ -315,6 +316,7 @@
     <Content Include="App\Templates\NotificationType\notificationtype.html" />
     <Content Include="App\Templates\ProgramStudy\programStudy.html" />
     <Content Include="App\Templates\Shared\_404.html" />
+    <Content Include="App\Templates\StudentAdmissionForm\StudentAdmissionForm.html" />
     <Content Include="App\Templates\Subject\managePopup.html" />
     <Content Include="App\Templates\Subject\subject.html" />
     <Content Include="App\Templates\Task\tasks.html" />
