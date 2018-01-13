@@ -9,24 +9,55 @@ namespace EduRp.Service.Service
 {
     public class EmployeeService : IEmployeeService
     {
-        public bool DeleteemployeeMaster(int id)
-        {
-            throw new NotImplementedException();
-        }
+        private edurp_devEntities db = new edurp_devEntities();
 
         public List<EmployeeMaster> GetList(int id)
         {
-            throw new NotImplementedException();
+            return db.EmployeeMasters.ToList();
         }
 
         public bool SaveemployeeMaster(EmployeeMaster employeeMaster)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.EmployeeMasters.Add(employeeMaster);
+                db.SaveChanges();
+                return true;
+            }
+
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool UpdateemployeeMaster(int id, EmployeeMaster employeeMaster)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.Entry(employeeMaster).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool DeleteemployeeMaster(int id)
+        {
+            try
+            {
+                var employeeMaster = db.EmployeeMasters.Where(x => x.EmployeeId == id).FirstOrDefault();
+                if (employeeMaster == null) return false;
+                db.Entry(employeeMaster).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

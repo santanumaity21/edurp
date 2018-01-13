@@ -10,5 +10,8 @@ namespace EduRp.Service.IService
     {
         List<GetProgramStudyID_Result> GetList(int id);
         List<GetProgramStudyCourseList_Result> GetByUid(int uid, string pid);
+        bool SaveProgramStudy(ProgramStudy programStudy);
+        bool UpdateProgramStudy(int id, ProgramStudy programStudy);
+        bool DeleteProgramStudy(int id);
     }
 }

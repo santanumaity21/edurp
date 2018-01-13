@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EduRp.Service.IService
 {
-    public interface IBatchMaster
+    public interface IBatchMasterService
     {
         List<BatchMaster> GetList();
 

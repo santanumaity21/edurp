@@ -23,6 +23,29 @@ namespace EduRp.WebApi.Controllers
         {
             return programStudyService.GetByUid(uid,pid);
         }
- 
+        [HttpPost]
+        public IHttpActionResult Post(ProgramStudy programStudy)
+        {
+            var isSave = programStudyService.SaveProgramStudy(programStudy);
+            if (isSave == true)
+                return Ok();
+            return BadRequest();
+        }
+        [HttpPut]
+        public IHttpActionResult Put(ProgramStudy programStudy)
+        {
+            var isUpdate = programStudyService.UpdateProgramStudy(programStudy.ProgramStudyId, programStudy);
+            if (isUpdate == true)
+                return Ok();
+            return BadRequest();
+        }
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            var isDeleted = programStudyService.DeleteProgramStudy(id);
+            if (isDeleted == true)
+                return Ok();
+            return BadRequest();
+        }
     }
 }

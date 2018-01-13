@@ -86,7 +86,7 @@
   <ItemGroup>
     <Compile Include="IService\IClassRoomMasterService.cs" />
     <Compile Include="IService\ICourseMasterService.cs" />
-    <Compile Include="IService\IBatchMaster.cs" />
+    <Compile Include="IService\IBatchMasterService.cs" />
     <Compile Include="IService\IEmployeeService.cs" />
     <Compile Include="IService\IFeeService.cs" />
     <Compile Include="IService\ITaskService.cs" />
