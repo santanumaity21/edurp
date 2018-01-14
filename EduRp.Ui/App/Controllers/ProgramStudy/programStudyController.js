@@ -11,15 +11,18 @@
 
         $scope.courseData = [];
         $scope.filteredCourseData = [];
-        $scope.courseCurrentPage = 1, $scope.courseNumPerPage = 10, $scope.courseMaxSize = 5;
-        $scope.assignedCoursesReverseSort = 'CourseName';
+        $scope.courseCurrentPage = 1;
+        $scope.courseNumPerPage = 10;
+        $scope.courseMaxSize = 5;
+        $scope.assignedCoursesOrderByField = 'CourseName';
         $scope.assignedCoursesReverseSort = false;
-        $scope.NonAssignedCoursesReverseSort = 'CourseName';
-        $scope.NonAssignedCoursesReverseSort = false;
+        $scope.nonAssignedCoursesOrderByField = 'CourseName';
+        $scope.nonAssignedCoursesReverseSort = false;
         $scope.selectedProgramStudy = null;
         $scope.mainContent = false;
         $scope.mainContentSubPart = false;
         $scope.linkedCoursesSelectedArr = [];
+        $scope.unlinkedCoursesSelectedArr = [];
         $scope.adjustCourseList = function () {
             var begin = (($scope.courseCurrentPage - 1) * $scope.courseNumPerPage)
                 , end = begin + $scope.courseNumPerPage;
@@ -35,12 +38,15 @@
 
         $scope.feesData = [];
         $scope.filteredFeesData = [];
-        $scope.feesCurrentPage = 1, $scope.feesNumPerPage = 10, $scope.feesMaxSize = 5;
-        $scope.assignedFeesReverseSort = 'feesName';
+        $scope.feesCurrentPage = 1;
+        $scope.feesNumPerPage = 10;
+        $scope.feesMaxSize = 5;
+        $scope.assignedFeesOrderByField = 'feesName';
         $scope.assignedFeesReverseSort = false;
-        $scope.NonAssignedFeesReverseSort = 'feesName';
-        $scope.NonAssignedFeesReverseSort = false;
+        $scope.nonAssignedFeesOrderByField = 'feesName';
+        $scope.nonAssignedFeesReverseSort = false;
         $scope.linkedFeesSelectedArr = [];
+        $scope.unlinkedFeesSelectedArr = [];
 
         $scope.adjustFeesList = function () {
             var begin = (($scope.feesCurrentPage - 1) * $scope.feesNumPerPage)
@@ -102,6 +108,34 @@
                 });
             }
         };
+        $scope.isUnlinkedCoursesAllSelected = function () {
+            if ($scope.unlinkedCoursesAllSelected) {
+                var tt = $scope.unlinkedCoursesOfPSList;
+                for (var i = 0; i < tt.length; i++) {
+                    $scope.unlinkedCoursesSelectedArr.push(tt[i].id);
+                    $scope.unlinkedCoursesOfPSList[i].Selected = 'true';
+                }
+            } else {
+                angular.forEach($scope.unlinkedCoursesOfPSList, function (item) {
+                    $scope.unlinkedCoursesSelectedArr = [];
+                    item.Selected = 'false';
+                });
+            }
+        };
+        $scope.isUnlinkedFeesAllSelected = function () {
+            if ($scope.unlinkedFeesAllSelected) {
+                var tt = $scope.unlinkedFeesOfPSList;
+                for (var i = 0; i < tt.length; i++) {
+                    $scope.unlinkedFeesSelectedArr.push(tt[i].id);
+                    $scope.unlinkedFeesOfPSList[i].Selected = 'true';
+                }
+            } else {
+                angular.forEach($scope.unlinkedFeesOfPSList, function (item) {
+                    $scope.unlinkedFeesSelectedArr = [];
+                    item.Selected = 'false';
+                });
+            }
+        };
         $scope.isLinkedFeesAllSelected = function () {
             if ($scope.linkedFeesAllSelected) {
                 var tt = $scope.filteredFeesData;
@@ -141,6 +175,58 @@
                     }
                 }
                 
+            }
+        };
+        $scope.isThisUnlinkedCourseSelected = function (that) {
+            if ($scope.unlinkedCoursesAllSelected) {
+                if (that.Selected === 'true') {
+                    $scope.unlinkedCoursesSelectedArr.push(that.id);
+                } else {
+                    $scope.unlinkedCoursesSelectedArr = commonService.removeItemFromArray($scope.unlinkedCoursesSelectedArr, that.id);
+                    if ($scope.unlinkedCoursesSelectedArr.length === 0) {
+                        $scope.unlinkedCoursesAllSelected = false;
+                    }
+
+                }
+            } else {
+                if (that.Selected) {
+                    $scope.unlinkedCoursesSelectedArr.push(that.id);
+                    if ($scope.unlinkedCoursesOfPSList.length === $scope.unlinkedCoursesSelectedArr.length) {
+                        $scope.unlinkedCoursesAllSelected = true;
+                    }
+                } else {
+                    $scope.unlinkedCoursesSelectedArr = commonService.removeItemFromArray($scope.unlinkedCoursesSelectedArr, that.id);
+                    if ($scope.unlinkedCoursesSelectedArr.length === 0) {
+                        $scope.unlinkedCoursesAllSelected = false;
+                    }
+                }
+
+            }
+        };
+        $scope.isThisUnlinkedFeeSelected = function (that) {
+            if ($scope.unlinkedFeesAllSelected) {
+                if (that.Selected === 'true') {
+                    $scope.unlinkedFeesSelectedArr.push(that.id);
+                } else {
+                    $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that.id);
+                    if ($scope.unlinkedFeesSelectedArr.length === 0) {
+                        $scope.unlinkedFeesAllSelected = false;
+                    }
+
+                }
+            } else {
+                if (that.Selected) {
+                    $scope.unlinkedFeesSelectedArr.push(that.id);
+                    if ($scope.unlinkedFeesOfPSList.length === $scope.unlinkedFeesSelectedArr.length) {
+                        $scope.unlinkedFeesAllSelected = true;
+                    }
+                } else {
+                    $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that.id);
+                    if ($scope.unlinkedFeesSelectedArr.length === 0) {
+                        $scope.unlinkedFeesAllSelected = false;
+                    }
+                }
+
             }
         };
         $scope.isThisLinkedFeeSelected = function (that) {
@@ -228,6 +314,39 @@
 
         };
 
+        $scope.assignUnlinkedCourses = function () {
+            if ($scope.unlinkedCoursesSelectedArr.length > 0) {
+                $q.when(programStudyService.assignUnlinkedCourses($scope.unlinkedCoursesSelectedArr)).then(function (success) {
+                    $scope.Modals.close();
+                    $scope.courseData.push($scope.unlinkedCoursesSelectedArr);
+                    $scope.adjustCourseList();
+                    $scope.unlinkedCoursesSelectedArr = [];
+                    $scope.unlinkedCoursesAllSelected = false;
+                }, function (error) {
+                    alert("Please try again.");
+                });
+            } else {
+                alert("Please select courses before assigning it.");
+            }
+
+        };
+
+        $scope.assignUnlinkedFees = function () {
+            if ($scope.unlinkedFeesSelectedArr.length > 0) {
+                $q.when(programStudyService.assignUnlinkedFees($scope.unlinkedFeesSelectedArr)).then(function (success) {
+                    $scope.Modals.close();
+                    $scope.feesData.push($scope.unlinkedFeesSelectedArr);
+                    $scope.adjustFeesList();
+                    $scope.unlinkedFeesSelectedArr = [];
+                    $scope.unlinkedCoursesAllSelected = false;
+                }, function (error) {
+                    alert("Please try again.");
+                });
+            } else {
+                alert("Please select fees before assigning it.");
+            }
+
+        };
         $scope.addCourseContainer = function (data) {
             $scope.modalType = 'add';
             $scope.modCourseObj = data;

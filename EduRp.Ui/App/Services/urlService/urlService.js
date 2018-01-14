@@ -26,5 +26,8 @@ var urlService =
         getUnlinkedFeesOfBatch: localhost ? '/sampleData/createBatch/getUnlinkedFeesOfBatch.json' : apiPrefix + '/api/NewCourseMasters/GetAll/{{id}}',
         removeSelectedCourses: localhost ? '/sampleData/programStudy/removeSelectedCourses.json' : apiPrefix + '/api/NewCourseMasters/GetAll/',
         removeSelectedFees: localhost ? '/sampleData/programStudy/removeSelectedFees.json' : apiPrefix + '/api/NewCourseMasters/GetAll/',
-        getBulkModule: localhost ? '/sampleData/courseList.json' : apiUrl + '/api/BulkLoadMaster/Get/1'
+        getBulkModule: localhost ? '/sampleData/courseList.json' : apiUrl + '/api/BulkLoadMaster/Get/1',
+        assignUnlinkedCourses: localhost ? '/sampleData/programStudy/assignUnlinkedCourses.json' : apiUrl + '/api/programStudy/post',
+        assignUnlinkedFees: localhost ? '/sampleData/programStudy/assignUnlinkedFees.json' : apiUrl + '/api/programStudy/post'
+        
     };

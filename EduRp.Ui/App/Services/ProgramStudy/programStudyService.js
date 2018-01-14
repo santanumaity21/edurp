@@ -58,6 +58,12 @@
         var _getUnlinkedFeesOfProgramStudy = function () {
             return execute('getUnlinkedFeesOfProgramStudy', 'get', null);
         };
+        var _assignUnlinkedCourses = function (postData) {
+            return execute('assignUnlinkedCourses', 'post', postData);
+        };
+        var _assignUnlinkedFees = function (postData) {
+            return execute('assignUnlinkedFees', 'post', postData);
+        };
 
         return {
             getProgramStudyList: _getProgramStudyList,
@@ -67,7 +73,10 @@
             getUnlinkedCoursesOfProgramStudy: _getUnlinkedCoursesOfProgramStudy,
             getUnlinkedFeesOfProgramStudy: _getUnlinkedFeesOfProgramStudy,
             removeSelectedCourses: _removeSelectedCourses,
-            removeSelectedFees: _removeSelectedFees
+            removeSelectedFees: _removeSelectedFees,
+            assignUnlinkedCourses: _assignUnlinkedCourses,
+            assignUnlinkedFees: _assignUnlinkedFees
+
         };
 
     }
