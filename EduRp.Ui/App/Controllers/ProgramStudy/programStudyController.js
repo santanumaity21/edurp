@@ -271,7 +271,7 @@
 
         $scope.removeSelectedCourses = function () {
             if ($scope.linkedCoursesSelectedArr.length > 0) {
-                $q.when(programStudyService.removeSelectedCourses($scope.linkedCoursesSelectedArr)).then(function (success) {
+                $q.when(programStudyService.removeSelectedCoursesFromProgramStudy($scope.linkedCoursesSelectedArr)).then(function (success) {
                     $scope.Modals.close();
                     var tempCD = [];
                     angular.forEach($scope.courseData, function (tcd, key) {
@@ -293,7 +293,7 @@
         };
         $scope.removeSelectedFees = function () {
             if ($scope.linkedFeesSelectedArr.length > 0) {
-                $q.when(programStudyService.removeSelectedFees($scope.linkedFeesSelectedArr)).then(function (success) {
+                $q.when(programStudyService.removeSelectedFeesFromProgramStudy($scope.linkedFeesSelectedArr)).then(function (success) {
                     $scope.Modals.close();
                     var tempCD = [];
                     angular.forEach($scope.feesData, function (tcd, key) {
@@ -316,7 +316,7 @@
 
         $scope.assignUnlinkedCourses = function () {
             if ($scope.unlinkedCoursesSelectedArr.length > 0) {
-                $q.when(programStudyService.assignUnlinkedCourses($scope.unlinkedCoursesSelectedArr)).then(function (success) {
+                $q.when(programStudyService.assignUnlinkedCoursesToProgramStudy($scope.unlinkedCoursesSelectedArr)).then(function (success) {
                     $scope.Modals.close();
                     $scope.courseData.push($scope.unlinkedCoursesSelectedArr);
                     $scope.adjustCourseList();
@@ -333,7 +333,7 @@
 
         $scope.assignUnlinkedFees = function () {
             if ($scope.unlinkedFeesSelectedArr.length > 0) {
-                $q.when(programStudyService.assignUnlinkedFees($scope.unlinkedFeesSelectedArr)).then(function (success) {
+                $q.when(programStudyService.assignUnlinkedFeesToProgramStudy($scope.unlinkedFeesSelectedArr)).then(function (success) {
                     $scope.Modals.close();
                     $scope.feesData.push($scope.unlinkedFeesSelectedArr);
                     $scope.adjustFeesList();

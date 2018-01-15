@@ -45,11 +45,11 @@
             return execute('addProgramStudy', 'post', postData);
         };
 
-        var _removeSelectedCourses = function (postData) {
-            return execute('removeSelectedCourses', 'post', postData);
+        var _removeSelectedCoursesFromProgramStudy = function (postData) {
+            return execute('removeSelectedCoursesFromProgramStudy', 'post', postData);
         };
-        var _removeSelectedFees = function (postData) {
-            return execute('removeSelectedFees', 'post', postData);
+        var _removeSelectedFeesFromProgramStudy = function (postData) {
+            return execute('removeSelectedFeesFromProgramStudy', 'post', postData);
         };
         var _getUnlinkedCoursesOfProgramStudy = function () {
             return execute('getUnlinkedCoursesOfProgramStudy', 'get', null);
@@ -58,11 +58,11 @@
         var _getUnlinkedFeesOfProgramStudy = function () {
             return execute('getUnlinkedFeesOfProgramStudy', 'get', null);
         };
-        var _assignUnlinkedCourses = function (postData) {
-            return execute('assignUnlinkedCourses', 'post', postData);
+        var _assignUnlinkedCoursesToProgramStudy = function (postData) {
+            return execute('assignUnlinkedCoursesToProgramStudy', 'post', postData);
         };
-        var _assignUnlinkedFees = function (postData) {
-            return execute('assignUnlinkedFees', 'post', postData);
+        var _assignUnlinkedFeesToProgramStudy = function (postData) {
+            return execute('assignUnlinkedFeesToProgramStudy', 'post', postData);
         };
 
         return {
@@ -72,11 +72,10 @@
             addProgramStudy: _addProgramStudy,
             getUnlinkedCoursesOfProgramStudy: _getUnlinkedCoursesOfProgramStudy,
             getUnlinkedFeesOfProgramStudy: _getUnlinkedFeesOfProgramStudy,
-            removeSelectedCourses: _removeSelectedCourses,
-            removeSelectedFees: _removeSelectedFees,
-            assignUnlinkedCourses: _assignUnlinkedCourses,
-            assignUnlinkedFees: _assignUnlinkedFees
-
+            removeSelectedCoursesFromProgramStudy: _removeSelectedCoursesFromProgramStudy,
+            removeSelectedFeesFromProgramStudy: _removeSelectedFeesFromProgramStudy,
+            assignUnlinkedCoursesToProgramStudy: _assignUnlinkedCoursesToProgramStudy,
+            assignUnlinkedFeesToProgramStudy: _assignUnlinkedFeesToProgramStudy
         };
 
     }
