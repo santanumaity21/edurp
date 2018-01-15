@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using EduRp.Data;
+using EduRp.Service.IService;
 
 namespace EduRp.Service.Service
 {
@@ -28,6 +29,7 @@ namespace EduRp.Service.Service
             {
                 return false;
             }
+            throw new NotImplementedException();
         }
         public bool UpdateSubjectMaster(int id, SubjectMaster subjectMaster)
         {
@@ -37,6 +39,22 @@ namespace EduRp.Service.Service
                 db.SaveChanges();
                 return true;
 
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+            throw new NotImplementedException();
+        }
+        public bool DeleteSubjectMaster(int id)
+        {
+            try
+            {
+                var subject = db.SubjectMasters.Where(x => x.SubjectId == id).FirstOrDefault();
+                if (subject == null) return false;
+                db.Entry(subject).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+                return true;
             }
             catch(Exception ex)
             {
