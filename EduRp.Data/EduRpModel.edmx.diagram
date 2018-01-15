@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b92f0875630b444f9ce9275b606502d8" Name="Diagram1">
+      <Diagram DiagramId="29011ca9edca41e0ae705188f20562d4" Name="Diagram1">
         <EntityTypeShape EntityType="edurp_devModel.ApplicationFormMaster" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="edurp_devModel.BatchApplicationFormAssociation" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="edurp_devModel.BatchFeeAssociation" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
