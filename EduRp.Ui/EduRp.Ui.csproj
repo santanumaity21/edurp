@@ -2169,7 +2169,7 @@
     <Content Include="sampleData\addProgramStudy.json" />
     <Content Include="sampleData\chapterList.json" />
     <Content Include="sampleData\classRoomList.json" />
-    <Content Include="sampleData\courseList.json" />
+    <Content Include="sampleData\Course\list.json" />
     <Content Include="sampleData\employees.json" />
     <Content Include="sampleData\examinationtypeList.json" />
     <Content Include="sampleData\feesList.json" />
@@ -2297,6 +2297,7 @@
     <Content Include="Assets\Styles\material.css.map" />
     <Content Include="Assets\Styles\ripples.css.map" />
     <Content Include="Assets\Styles\roboto.css.map" />
+    <Content Include="sampleData\Course\add.json" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />

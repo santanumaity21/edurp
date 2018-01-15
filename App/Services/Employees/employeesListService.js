@@ -33,8 +33,8 @@
 
         }
 
-        var _getEmployeesList = function () {
-            return execute('getEmployeesList', 'get', null);
+        var _getemployeesList= function () {
+            return execute('getemployeesList', 'get', null);
 
 
         };

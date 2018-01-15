@@ -5,16 +5,15 @@
         .module('EduRpApp')
         .factory('courseListService', courseListService);
 
-    courseListService.$inject = ['$q', '$http'];
+    courseListService.$inject = ['$q', '$http', '$interpolate'];
 
-    function courseListService($q, $http) {
+    function courseListService($q, $http, $interpolate) {
 
-        var execute = function (url, method, data) {
+        var execute = function (url, method, data, ip) {
             var deferred = $q.defer();
 
             $http({
-
-                url: urlService[url],
+                url: $interpolate(urlService[url])(ip),
                 method: method,
                 data: data,
                 headers: {
@@ -26,8 +25,6 @@
             ).then(function (data) {
                 deferred.resolve(data.data);
                 }, function (error) { deferred.reject(error); }
-                
-
                 );
             return deferred.promise;
 
@@ -35,14 +32,15 @@
 
         var _getCourseList = function () {
             return execute('getCourseList', 'get', null);
-            
-
         };
-
+        var _addCourse = function (postData) {
+            return execute('addCourse', 'post', postData);
+        };
        
 
         return {
-            getCourseList: _getCourseList
+            getCourseList: _getCourseList,
+            addCourse: _addCourse
            
         };
 

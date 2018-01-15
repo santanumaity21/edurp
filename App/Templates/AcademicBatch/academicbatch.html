@@ -83,13 +83,6 @@
                                             <span ng-show="reverseSort">v</span>
                                         </span>
                                     </th>
-                                    <th ng-click="orderByField='ResultType'; reverseSort = !reverseSort">
-                                        Result Type
-                                        <span ng-show="orderByField == 'ResultType'">
-                                            <span ng-show="!reverseSort">^</span>
-                                            <span ng-show="reverseSort">v</span>
-                                        </span>
-                                    </th>
                                     <th ng-click="orderByField='AcademicTerm'; reverseSort = !reverseSort">
                                         Academic Term
                                         <span ng-show="orderByField == 'AcademicTerm'">
@@ -97,21 +90,37 @@
                                             <span ng-show="reverseSort">v</span>
                                         </span>
                                     </th>
-                                    <th>
-                                        Status
+                                    <th ng-click="orderByField='ResultsBasedOnDisplay'; reverseSort = !reverseSort">
+                                        Result Type
+                                        <span ng-show="orderByField == 'ResultsBasedOnDisplay'">
+                                            <span ng-show="!reverseSort">^</span>
+                                            <span ng-show="reverseSort">v</span>
+                                        </span>
                                     </th>
+                                    <th ng-click="orderByField='StatusDisplay'; reverseSort = !reverseSort">
+                                        Status
+                                        <span ng-show="orderByField == 'StatusDisplay'">
+                                            <span ng-show="!reverseSort">^</span>
+                                            <span ng-show="reverseSort">v</span>
+                                        </span>
+                                    </th>
+
+                                    <th></th>
 
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr data-ng-repeat="cd in filteredAcademicBatchData|orderBy:orderByField:reverseSort">
-                                    <td>{{ cd.BatchName}}</td>
-                                    <td>{{ cd.ResultType}}</td>
-                                    <td>{{ cd.AcademicTerm}}</td>
-                                    <td>{{ cd.Status}}</td>
-                                    <td><i class="fa fa-pencil-square-o m-r-5" data-ng-click="editAcademicBatchContainer(cd)" style="cursor: pointer;"></i></td>
-                                    <td><i class="fa fa-trash-o fa-lg" data-ng-click="deleteAcademicBatchContainer(cd)"></i></td>
+                                <tr data-ng-repeat="ad in filteredacademicBatchData|orderBy:orderByField:reverseSort">
+                                    <td>{{ ad.BatchName}}</td>
+                                    <td>{{ ad.AcademicTerm}}</td>
+                                    <td>{{ ad.ResultsBasedOnDisplay}}</td>
+                                    <td>{{ ad.StatusDisplay}}</td>
+                                    <td>
+                                        <i class="fa fa-pencil-square-o m-r-5" data-ng-click="editSubjectContainer(ad)" style="cursor: pointer;"></i>  &nbsp;
+                                        <i class="fa fa-trash-o fa-lg"></i>
+                                    </td>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -134,14 +143,12 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
-                        Showing {{currentPage*numPerPage - numPerPage  + 1}} to {{academicBatchData.length > currentPage*numPerPage ? currentPage*numPerPage : academicBatchData.length}} of {{academicBatchData.length}} entries
-                    </div>
+                    <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing {{currentPage}} to {{numPerPage}} of {{academicBatchData.length}} entries</div>
                 </div>
                 <div class="col-sm-6">
                     <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
                         <pagination ng-model="currentPage"
-                                    total-items="academicBatchData.length"
+                                    total-items="academicBatchDataData.length"
                                     max-size="maxSize"
                                     boundary-links="true"
                                     items-per-page="numPerPage">
@@ -149,7 +156,8 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div> <!-- end card -->
+
     </div>
     <!-- end col -->
 </div>

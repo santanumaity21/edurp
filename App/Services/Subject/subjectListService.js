@@ -35,11 +35,6 @@
 
         var _getSubjectList = function () {
             return execute('getSubjectList', 'get', null);
-<<<<<<< HEAD:EduRp.WebApi/App/Services/Subject/subjectListService.js
-        };
-        var _addSubject = function (postData) {
-            return execute('addSubject', 'post', postData);
-=======
 
         };
         var _addSubject = function (form) {
@@ -51,7 +46,6 @@
             debugger
             return execute('updateSubject', 'put', form);
 
->>>>>>> orgin/Vipin_NewEduRp:App/Services/Subject/subjectListService.js
         };
 
         //var _deleteSubject = function (id) {
@@ -61,17 +55,12 @@
         //};
 
         return {
-<<<<<<< HEAD:EduRp.WebApi/App/Services/Subject/subjectListService.js
-            getSubjectList: _getSubjectList,
-            addSubject: _addSubject
-=======
 
             getSubjectList : _getSubjectList,
             addSubjects : _addSubject,
             updateSubject : _updateSubject,
             //deleteSubject : _deleteSubject
 
->>>>>>> orgin/Vipin_NewEduRp:App/Services/Subject/subjectListService.js
         };
 
     }

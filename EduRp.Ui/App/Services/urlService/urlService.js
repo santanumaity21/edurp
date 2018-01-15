@@ -3,8 +3,8 @@
 var apiPrefix = 'http://localhost:50381/';
 var urlService =
     {
-        getCourseList: localhost ? '/sampleData/courseList.json' : apiPrefix + 'api/CourseMasters/Get/1',
-        //addCourse: localhost ? '' : apiPrefix + '/api/CourseMasters/Post/',
+        getCourseList: localhost ? '/sampleData/Course/list.json' : apiPrefix + 'api/CourseMasters/Get/1',
+        addCourse: localhost ? '/sampleData/Course/add.json' : apiPrefix + '/api/CourseMasters/Post/',
         //updateCourse: localhost ? ' ' : apiPrefix + 'api/CourseMasters/Put/',
         //deleteCourse: localhost ? ' ' : apiPrefix + 'api/CourseMasters/Delete/',
 

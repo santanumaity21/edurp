@@ -35,72 +35,7 @@
         $scope.toggleFilterPanel = function () {
             $scope.filterPanel = !$scope.filterPanel;
         };
-<<<<<<< HEAD:EduRp.WebApi/App/Controllers/Subject/subjectListContoller.js
-
-
-        $scope.editSubjectContainer = function (data) {
-            $scope.modalType = 'update';
-            $scope.modSubjectObj = data;
-            $scope.Modals.openSubjectContainer();
-        };
-
-        $scope.addSubjectContainer = function (data) {
-            $scope.modalType = 'add';
-            $scope.modSubjectObj = data;
-            $scope.Modals.openSubjectContainer();
-        };
-
-
-
-
-        $scope.updateSubjectDetails = function () {
-            console.log($scope.modSubjectObj);
-            var postData = {
-                "batchUpdateData":
-                [{
-           
-                    "SubjectCode": $scope.modSubjectObj.SubjectCode,
-                    "SubjectName": $scope.modSubjectObj.SubjectName,
-                    "SKS": $scope.modSubjectObj.SKS
-
-                }]
-            };
-            $scope.Modals.closeSubjectContainer();
-        };
-        $scope.addSubjectDetailsSuccess = function (data) {
-            $('#subject-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addSubjectDetailsError = function (data) {
-            $('#subject-modal-popup').modal({
-                show: 'false'
-            });
-        };
-        $scope.addSubjectDetails = function (form) {
-            debugger;
-            if (form.$valid) {
-                
-                var postData = {
-                    "batchInsertData":
-                    [{
-                        "SubjectCode": $scope.modSubjectObj.SubjectCode,
-                        "SubjectName": $scope.modSubjectObj.SubjectName,
-                        "SKS": $scope.modSubjectObj.SKS
-                    }]
-                };
-                console.log(postData);
-                $scope.filteredSubjectData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeSubjectContainer();
-            }
-
-        };
-
-
-=======
 //Get PageLoad
->>>>>>> orgin/Vipin_NewEduRp:App/Controllers/Subject/subjectListContoller.js
         (function startup() {
 
             $q.all([

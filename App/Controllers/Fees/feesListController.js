@@ -35,76 +35,13 @@
         $scope.toggleFilterPanel = function () {
             $scope.filterPanel = !$scope.filterPanel;
         };
-
-
-
-
-        $scope.editFeesContainer = function (data) {
-            $scope.modalType = 'update';
-            $scope.modFeesObj = data;
-            $scope.Modals.openFeesContainer();
-        };
-
-        $scope.addFeesContainer = function (data) {
-            $scope.modalType = 'add';
-            $scope.modFeesObj = data;
-            $scope.Modals.openFeesContainer();
-        };
-
-
-
-
-        $scope.updateFeesDetails = function () {
-            console.log($scope.modFeesObj);
-            var postData = {
-                "batchUpdateData":
-                [{
-           
-                    "SubjectId": $scope.modFeesObj,
-                    "SubjectCode": $scope.modFeesObj,
-                    "SubjectName": $scope.modFeesObj,
-                    "SKS": $scope.modFeesObj
-
-                }]
-            };
-
-        };
-        $scope.addFeesDetailsSuccess = function (data) {
-            $('#subject-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addFeesDetailsError = function (data) {
-            $('#subject-modal-popup').modal({
-                show: 'false'
-            });
-        };
-        $scope.addSubjectDetails = function (form) {
-            if (form.$valid) {
-
-                var postData = {
-                    "batchInsertData":
-                    [{
-                        "SubjectCode": $scope.modFeesObj,
-                        "SubjectName": $scope.modFeesObj,
-                        "SKS": $scope.modFeesObj
-                    }]
-                };
-
-                $scope.filteredFeesData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeFeesContainer();
-            }
-
-        };
-
-
+        //Get PageLoad
         (function startup() {
 
             $q.all([
                 feesListService.getFeesList()
             ]).then(function (data) {
-                if (data != null) {
+                if (data !== null) {
                     console.log(data[0].results);
                     $scope.feesData = data[0].results;
                     $scope.adjustFeesList();
@@ -116,63 +53,131 @@
             });
         })();
 
-        function removeContact(contactId) {
-            for (var i = 0; i < $scope.contacts.length; i++) {
-                if ($scope.contacts[i].id == contactId) {
-                    $scope.contacts.splice(i, 1);
-                    break;
-                }
+
+        $scope.addFeesContainer = function () {
+            $scope.modalType = 'add';
+            $scope.Modals.openFeesContainer();
+        };
+        //Add
+        $scope.addFeesDetailsSuccess = function (form) {
+            debugger
+            if (form.$valid) {
+                $q.when([feesListService.addFees($scope.modFeesObj)]).then(function (data) {
+                    $scope.filteredFeesData.push($scope.modFeesObj);
+                    $scope.Modals.closeFeesContainer();
+                }, function (error) {
+
+                });
+
+            }
+
+        };
+
+        //update
+        $scope.editFeesContainer = function (data) {
+            $scope.modalType = 'update';
+            $scope.modFeesObj = data;
+            $scope.Modals.openFeesContainer();
+        };
+
+        $scope.updateFeesDetails = function (form) {
+            console.log($scope.modFeesObj);
+            if (form.$valid) {
+                $q.when([feesListService.updateFees($scope.modFeesObj)]).then(function (data) {
+                    $scope.Modals.closeFeesContainer();
+                }, function (error) {
+
+                });
+
             }
         };
+        //delete 
+
+        //$scope.deleteSubject = function () {
+        //    if (confirm('Are you sure you want to delete this subject?')) {
+        //        angular.forEach($scope.filteredCourseData, function (v, key) {
+        //            if ($scope.filteredCourseData[key].Selected == $scope.filteredCourseData[key].id) {
+        //                coursesSelected.push($scope.filteredCourseData[key].Selected);
+        //            }
+        //        });
+        //    }
+        //    $q.when(programStudyService.removeSelectedCourses(coursesSelected)).then(function (success) {
+        //        $scope.Modals.close();
+        //        $scope.filteredProgramStudyData.push($scope.addPSFormObj);
+        //    }, function (error) {
+
+        //    });
+        //};
+        //$scope.deleteSubject = function (id) {
+        //    if (confirm('Are you sure you want to delete this subject?')) {
+        //        $q.when(subjectListService.deleteSubject(id)).then(
+        //            function (success) {
+        //                removeSubject(data);
+        //            },
+        //            function (response) {
+        //                console.log(response);
+        //            });
+        //    }
+        //    else {
+        //        console.log('delete cancelled');
+        //    }
+        //}
+
+        //function removesubject(data) {
+        //    for (var i = 0; i < $scope.subjectData.length; i++) {
+        //        if ($scope.subjectData[i].id === data) {
+        //            $scope.subjectData.splice(i, 1);
+        //            break;
+        //        }
+        //    }
+        //}   
+
 
         $scope.Modals = {
             openFeesContainer: function () {
                 $scope.modalInstance = $modal.open({
                     animation: true,
-                    templateUrl: '/App/Templates/Fees/managePopup.html',
+                    templateUrl: '/App/Templates/Fees/addEditModalPopup.html',
                     size: 'lg',
                     scope: $scope,
                     backdrop: 'static'
                 });
 
                 $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
+                    function (subject) {
+                        if (subject.SubjectId !== null) {
+                            $scope.Commands.updatesubject(subject);
                         }
                         else {
-                            $scope.Commands.saveContact(contact);
+                            $scope.Commands.savesubject(subject);
                         }
                     },
                     function (event) {
 
                     });
             },
-            openFeesContainer: function () {
-                $scope.modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: '/App/Templates/Subject/managePopup.html',
-                    size: 'lg',
-                    scope: $scope,
-                    backdrop: 'static'
-                });
+            //openSubjectManagePopUp: function () {
+            //    $scope.modalInstance = $modal.open({
+            //        animation: true,
+            //        templateUrl: '/App/Templates/Subject/managePopup.html',
+            //        size: 'lg',
+            //        scope: $scope,
+            //        backdrop: 'static'
+            //    });
 
-                $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
-                        }
-                        else {
-                            $scope.Commands.saveContact(contact);
-                        }
-                    },
-                    function (event) {
+            //    $scope.modalInstance.result.then(
+            //        function (subject) {
+            //            if (subject.SubjectId !== null) {
+            //                $scope.Commands.updatesubject(subject);
+            //            }
+            //            else {
+            //                $scope.Commands.savesubject(subject);
+            //            }
+            //        },
+            //        function (event) {
 
-                    });
-            },
-            closeFeesContainer: function () {
-                $scope.modalInstance.dismiss();
-            },
+            //        });
+            //},
             closeFeesContainer: function () {
                 $scope.modalInstance.dismiss();
             }
@@ -180,4 +185,4 @@
 
     };
 })
-();
+    ();

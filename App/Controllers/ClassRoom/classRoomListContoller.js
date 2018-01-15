@@ -35,75 +35,13 @@
         $scope.toggleFilterPanel = function () {
             $scope.filterPanel = !$scope.filterPanel;
         };
-
-
-
-
-        $scope.editClassRoomContainer = function (data) {
-            $scope.modalType = 'update';
-            $scope.modclassRoomObj = data;
-            $scope.Modals.openClassRoomContainer();
-        };
-
-        $scope.addClassRoomContainer = function (data) {
-            $scope.modalType = 'add';
-            $scope.modclassRoomObj = data;
-            $scope.Modals.openClassRoomContainer();
-        };
-
-
-
-
-        $scope.updatClassRoomDetails = function () {
-            console.log($scope.modclassRoomObj);
-            var postData = {
-                "batchUpdateData":
-                [{
-               
-                    
-
-                }]
-            };
-
-        };
-        $scope.addClassRoomDetailsSuccess = function (data) {
-            $('#subject-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addClassRoomDetailsError = function (data) {
-            $('#subject-modal-popup').modal({
-                show: 'false'
-            });
-        };
-        $scope.addClassRoomDetails = function (form) {
-            if (form.$valid) {
-
-                var postData = {
-                    "batchInsertData":
-                    [{
-                        "BuildingCode": $scope.modclassRoomObj,
-                        "BuildingName": $scope.modclassRoomObj,
-                        "RoomName": $scope.modclassRoomObj,
-                        "CapasityofRoom": $scope.modclassRoomObj,
-                        "LocationperLevel": $scope.modclassRoomObj
-                    }]
-                };
-
-                $scope.filteredclassRoomData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeClassRoomContainer();
-            }
-
-        };
-
-
+        //Get PageLoad
         (function startup() {
 
             $q.all([
                 classRoomListService.getClassRoomList()
             ]).then(function (data) {
-                if (data != null) {
+                if (data !== null) {
                     console.log(data[0].results);
                     $scope.classRoomData = data[0].results;
                     $scope.adjustclassRoomList();
@@ -115,60 +53,132 @@
             });
         })();
 
-        function removeContact(contactId) {
-            for (var i = 0; i < $scope.contacts.length; i++) {
-                if ($scope.contacts[i].id == contactId) {
-                    $scope.contacts.splice(i, 1);
-                    break;
-                }
+
+        $scope.addClassRoomContainer = function () {
+            $scope.modalType = 'add';
+            $scope.Modals.openClassRoomContainer();
+        };
+        //Add
+        $scope.addClassRoomDetails = function (form) {
+            debugger
+            if (form.$valid) {
+                $q.when([classRoomListService.addclassRoom($scope.modclassRoomObj)]).then(function (data) {
+                    $scope.filteredclassRoomData.push($scope.modclassRoomObj);
+                    $scope.Modals.closeClassRoomContainer();
+                }, function (error) {
+
+                });
+
+            }
+
+        };
+
+        //update
+        $scope.addClassRoomContainer = function (data) {
+            $scope.modalType = 'update';
+            $scope.modclassRoomObj = data;
+            $scope.Modals.openClassRoomContainer();
+        };
+
+        $scope.updatClassRoomDetails = function (form) {
+            console.log($scope.modclassRoomObj);
+            if (form.$valid) {
+                $q.when([classRoomListService.updateclassRoom($scope.modclassRoomObj)]).then(function (data) {
+                    $scope.Modals.closeClassRoomContainer();
+                }, function (error) {
+
+                });
+
             }
         };
+        //delete 
+
+        //$scope.deleteSubject = function () {
+        //    if (confirm('Are you sure you want to delete this subject?')) {
+        //        angular.forEach($scope.filteredCourseData, function (v, key) {
+        //            if ($scope.filteredCourseData[key].Selected == $scope.filteredCourseData[key].id) {
+        //                coursesSelected.push($scope.filteredCourseData[key].Selected);
+        //            }
+        //        });
+        //    }
+        //    $q.when(programStudyService.removeSelectedCourses(coursesSelected)).then(function (success) {
+        //        $scope.Modals.close();
+        //        $scope.filteredProgramStudyData.push($scope.addPSFormObj);
+        //    }, function (error) {
+
+        //    });
+        //};
+        //$scope.deleteSubject = function (id) {
+        //    if (confirm('Are you sure you want to delete this subject?')) {
+        //        $q.when(subjectListService.deleteSubject(id)).then(
+        //            function (success) {
+        //                removeSubject(data);
+        //            },
+        //            function (response) {
+        //                console.log(response);
+        //            });
+        //    }
+        //    else {
+        //        console.log('delete cancelled');
+        //    }
+        //}
+
+        //function removesubject(data) {
+        //    for (var i = 0; i < $scope.subjectData.length; i++) {
+        //        if ($scope.subjectData[i].id === data) {
+        //            $scope.subjectData.splice(i, 1);
+        //            break;
+        //        }
+        //    }
+        //}   
+
 
         $scope.Modals = {
             openClassRoomContainer: function () {
                 $scope.modalInstance = $modal.open({
                     animation: true,
-                    templateUrl: '/App/Templates/Subject/AddEditModalPopup.html',
+                    templateUrl: '/App/Templates/ClassRoom/addEditModalPopup.html',
+                    size: 'lg',
                     size: 'lg',
                     scope: $scope,
                     backdrop: 'static'
                 });
 
                 $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
+                    function (subject) {
+                        if (subject.SubjectId !== null) {
+                            $scope.Commands.updatesubject(subject);
                         }
                         else {
-                            $scope.Commands.saveContact(contact);
+                            $scope.Commands.savesubject(subject);
                         }
                     },
                     function (event) {
 
                     });
             },
-            openClassRoomContainer: function () {
-                $scope.modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: '/App/Templates/ClassRoom/managePopup.html',
-                    size: 'lg',
-                    scope: $scope,
-                    backdrop: 'static'
-                });
+            //openSubjectManagePopUp: function () {
+            //    $scope.modalInstance = $modal.open({
+            //        animation: true,
+            //        templateUrl: '/App/Templates/Subject/managePopup.html',
+            //        size: 'lg',
+            //        scope: $scope,
+            //        backdrop: 'static'
+            //    });
 
-                $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
-                        }
-                        else {
-                            $scope.Commands.saveContact(contact);
-                        }
-                    },
-                    function (event) {
+            //    $scope.modalInstance.result.then(
+            //        function (subject) {
+            //            if (subject.SubjectId !== null) {
+            //                $scope.Commands.updatesubject(subject);
+            //            }
+            //            else {
+            //                $scope.Commands.savesubject(subject);
+            //            }
+            //        },
+            //        function (event) {
 
-                    });
-            },
+            //        });
+            //},
             closeClassRoomContainer: function () {
                 $scope.modalInstance.dismiss();
             }
@@ -176,4 +186,4 @@
 
     };
 })
-();
+    ();

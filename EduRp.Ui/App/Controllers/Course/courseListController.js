@@ -35,9 +35,6 @@
             $scope.filterPanel = !$scope.filterPanel;
         };
        
-       
-
-
         $scope.editCourseContainer = function (data) {
             $scope.modalType = 'update';
             $scope.modCourseObj = data;
@@ -52,9 +49,7 @@
 
        
 
-
         $scope.updateCourseDetails = function () {
-            console.log($scope.modCourseObj);
             var postData = {
                 "batchUpdateData":
                 [{
@@ -70,20 +65,9 @@
             };
 
         };
-        $scope.addCourseDetailsSuccess = function (data) {
-            $('#course-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addCourseDetailsError = function (data) {
-            $('#course-modal-popup').modal({
-                show: 'false'
-            });
-        };
+        
         $scope.addCourseDetails = function (form) {
             if (form.$valid) {
-                
                 var postData = {
                     "batchInsertData":
                     [{
@@ -91,9 +75,13 @@
                         "CourseName": $scope.modCourseObj.CourseName
                     }]
                 };
+                courseListService.addCourse(postData).then(function (data) {
+                    $scope.filteredCourseData.push(postData.batchInsertData[0]);
+                    $scope.Modals.closeCourseContainer();
+                }, function (error) {
+                    alert("Please try again");
+                });
                 
-                $scope.filteredCourseData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeCourseContainer();
             }
 
         };
@@ -105,7 +93,6 @@
                 courseListService.getCourseList()
             ]).then(function (data) {
                 if (data != null) {
-                    console.log(data[0].results);
                     $scope.courseData = data[0].results;
                     $scope.adjustCourseList();
                 }

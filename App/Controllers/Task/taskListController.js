@@ -35,78 +35,13 @@
         $scope.toggleFilterPanel = function () {
             $scope.filterPanel = !$scope.filterPanel;
         };
-
-
-
-
-        $scope.editTaskContainer = function (data) {
-            $scope.modalType = 'update';
-            $scope.modtaskObj = data;
-            $scope.Modals.openTaskContainer();
-        };
-
-        $scope.addTaskContainer = function (data) {
-            $scope.modalType = 'add';
-            $scope.modtaskObj = data;
-            $scope.Modals.openTaskContainer();
-        };
-
-
-
-
-        $scope.updateTaskDetails = function () {
-            console.log($scope.modtaskObj);
-            var postData = {
-                "batchUpdateData":
-                [{
-
-                    "id": $scope.modtaskObj,
-                    "TaskName": $scope.modtaskObj,
-                    "TaskDescription": $scope.modtaskObj,
-                    "TaskDuration": $scope.modtaskObj,
-                   
-
-                }]
-            };
-
-        };
-        $scope.addTaskDetailsSuccess = function (data) {
-            $('#task-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addTaskDetailsError = function (data) {
-            $('#task-modal-popup').modal({
-                show: 'false'
-            });
-        };
-        $scope.addTaskDetails = function (form) {
-            if (form.$valid) {
-
-                var postData = {
-                    "batchInsertData":
-                    [{
-                        "id": $scope.modtaskObj,
-                        "TaskName": $scope.modtaskObj,
-                        "TaskDescription": $scope.modtaskObj,
-                        "TaskDuration": $scope.modtaskObj,
-                    }]
-                };
-
-                $scope.filteredtaskData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeTaskContainer();
-            }
-
-        };
-
-
+        //Get PageLoad
         (function startup() {
 
             $q.all([
                 taskListService.getTaskList()
             ]).then(function (data) {
-                if (data != null) {
+                if (data !== null) {
                     console.log(data[0].results);
                     $scope.taskData = data[0].results;
                     $scope.adjusttaskList();
@@ -118,60 +53,132 @@
             });
         })();
 
-        function removesubject(subjectId) {
-            for (var i = 0; i < $scope.subjects.length; i++) {
-                if ($scope.subjects[i].id == subjectId) {
-                    $scope.subjects.splice(i, 1);
-                    break;
-                }
+
+        $scope.addTaskContainer = function () {
+            $scope.modalType = 'add';
+            $scope.Modals.openTaskContainer();
+        };
+        //Add
+        $scope.addTaskDetails = function (form) {
+            debugger
+            if (form.$valid) {
+                $q.when([taskListService.addTask($scope.modtaskObj)]).then(function (data) {
+                    $scope.filteredtaskData.push($scope.modtaskObj);
+                    $scope.Modals.closeTaskContainer();
+                }, function (error) {
+
+                });
+
+            }
+
+        };
+
+        //update
+        $scope.editTaskContainer = function (data) {
+            $scope.modalType = 'update';
+            $scope.modtaskObj = data;
+            $scope.Modals.openTaskContainer();
+        };
+
+        $scope.updateTaskDetails = function (form) {
+            console.log($scope.modtaskObj);
+            if (form.$valid) {
+                $q.when([taskListService.updateTask($scope.modtaskObj)]).then(function (data) {
+                    $scope.Modals.closeTaskContainer();
+                }, function (error) {
+
+                });
+
             }
         };
+        //delete 
+
+        //$scope.deleteSubject = function () {
+        //    if (confirm('Are you sure you want to delete this subject?')) {
+        //        angular.forEach($scope.filteredCourseData, function (v, key) {
+        //            if ($scope.filteredCourseData[key].Selected == $scope.filteredCourseData[key].id) {
+        //                coursesSelected.push($scope.filteredCourseData[key].Selected);
+        //            }
+        //        });
+        //    }
+        //    $q.when(programStudyService.removeSelectedCourses(coursesSelected)).then(function (success) {
+        //        $scope.Modals.close();
+        //        $scope.filteredProgramStudyData.push($scope.addPSFormObj);
+        //    }, function (error) {
+
+        //    });
+        //};
+        //$scope.deleteSubject = function (id) {
+        //    if (confirm('Are you sure you want to delete this subject?')) {
+        //        $q.when(subjectListService.deleteSubject(id)).then(
+        //            function (success) {
+        //                removeSubject(data);
+        //            },
+        //            function (response) {
+        //                console.log(response);
+        //            });
+        //    }
+        //    else {
+        //        console.log('delete cancelled');
+        //    }
+        //}
+
+        //function removesubject(data) {
+        //    for (var i = 0; i < $scope.subjectData.length; i++) {
+        //        if ($scope.subjectData[i].id === data) {
+        //            $scope.subjectData.splice(i, 1);
+        //            break;
+        //        }
+        //    }
+        //}   
+
 
         $scope.Modals = {
             openTaskContainer: function () {
                 $scope.modalInstance = $modal.open({
                     animation: true,
-                    templateUrl: '/App/Templates/Task/managePopup.html',
+                    templateUrl: '/App/Templates/Task/addEditModalPopup.html',
+                    size: 'lg',
                     size: 'lg',
                     scope: $scope,
                     backdrop: 'static'
                 });
 
                 $scope.modalInstance.result.then(
-                    function (task) {
-                        if (task.SubjectId != null) {
-                            $scope.Commands.updatesubject(task);
+                    function (subject) {
+                        if (subject.SubjectId !== null) {
+                            $scope.Commands.updatesubject(subject);
                         }
                         else {
-                            $scope.Commands.savesubject(task);
+                            $scope.Commands.savesubject(subject);
                         }
                     },
                     function (event) {
 
                     });
             },
-            openTaskContainer: function () {
-                $scope.modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: '/App/Templates/Task/managePopup.html',
-                    size: 'lg',
-                    scope: $scope,
-                    backdrop: 'static'
-                });
+            //openSubjectManagePopUp: function () {
+            //    $scope.modalInstance = $modal.open({
+            //        animation: true,
+            //        templateUrl: '/App/Templates/Subject/managePopup.html',
+            //        size: 'lg',
+            //        scope: $scope,
+            //        backdrop: 'static'
+            //    });
 
-                $scope.modalInstance.result.then(
-                    function (task) {
-                        if (task.SubjectId != null) {
-                            $scope.Commands.updatesubject(task);
-                        }
-                        else {
-                            $scope.Commands.savesubject(task);
-                        }
-                    },
-                    function (event) {
+            //    $scope.modalInstance.result.then(
+            //        function (subject) {
+            //            if (subject.SubjectId !== null) {
+            //                $scope.Commands.updatesubject(subject);
+            //            }
+            //            else {
+            //                $scope.Commands.savesubject(subject);
+            //            }
+            //        },
+            //        function (event) {
 
-                    });
-            },
+            //        });
+            //},
             closeTaskContainer: function () {
                 $scope.modalInstance.dismiss();
             }
@@ -179,4 +186,5 @@
 
     };
 })
-    ();
+();
+  
