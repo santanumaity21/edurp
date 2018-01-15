@@ -5,7 +5,7 @@
         .module('EduRpApp')
         .controller('studentadmissionformController', studentadmissionformController);
 
-    studentadmissionformController.$inject = ['$scope','$q','$modal'];
+    studentadmissionformController.$inject = ['$scope', '$q', '$modal'];
 
     function studentadmissionformController($scope) {
         /* jshint validthis:true */
@@ -17,10 +17,15 @@
             isFirstOpen: true,
             isFirstDisabled: false
         };
+
+        $scope.currentAccordionState = 1;
+        $scope.currentAccordion = function (index) {
+            console.log(index, $scope.currentAccordionState);
+            $scope.currentAccordionState = $scope.currentAccordionState === index ? !index : index;
+        };
         activate();
 
         $scope.addAdmissionForm = function (form) {
-            debugger
             if (form.$valid) {
                 //$q.when([subjectListService.addAdmissionForm($scope.modSubjectObj)]).then(function (data) {
                 //    $scope.filteredSubjectData.push($scope.modSubjectObj);
@@ -35,6 +40,6 @@
 
         function activate() { }
 
-       
+
     }
 })();

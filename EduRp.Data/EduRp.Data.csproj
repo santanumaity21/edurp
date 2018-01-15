@@ -106,7 +106,16 @@
     <Compile Include="ApplicationFormMaster.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BatchApplicationFormAssociation.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BatchFeeAssociation.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="BatchMaster.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BatchProgramStudyAssociation.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ChapterMaster.cs">
@@ -143,6 +152,39 @@
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Fee.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetApplicationFormDetail_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetApplicationFormList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBatchApplicationFormList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBatchApplicationFormNotLinkedList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBatchDetail_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBatchFeeNotLinkedList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBatchFeesList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBatchID_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBatchList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBatchProgramStudyList_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBatchProgramStudyNotLinkedList_Result.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetChapterDetail_Result.cs">

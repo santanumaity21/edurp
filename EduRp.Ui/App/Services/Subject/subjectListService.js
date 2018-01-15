@@ -39,7 +39,7 @@
         };
         var _addSubject = function (form) {
             debugger
-            return execute('addSubjects', 'post', form);
+            return execute('addSubject', 'post', form);
 
         };
         var _updateSubject = function (form) {
@@ -57,22 +57,11 @@
         return {
 
             getSubjectList : _getSubjectList,
-            addSubjects : _addSubject,
+            addSubject : _addSubject,
             updateSubject : _updateSubject,
             //deleteSubject : _deleteSubject
 
         };
 
     }
-
-    //var deleteSubject = function (id) {
-    //    var url = 'http://localhost:50381/api/Subjectmasters/Delete/' + id;
-    //    return $http(
-    //        {
-    //            method: 'delete',
-    //            data: id,
-    //            url: url
-    //        });
-
-    //}
 })();

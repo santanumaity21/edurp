@@ -16,6 +16,24 @@
           <Property Name="lastupdateddt" Type="datetime" />
           <Property Name="lastupdatedby" Type="int" />
         </EntityType>
+        <EntityType Name="BatchApplicationFormAssociation">
+          <Key>
+            <PropertyRef Name="BatchApplicationFormId" />
+          </Key>
+          <Property Name="BatchApplicationFormId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BatchId" Type="int" Nullable="false" />
+          <Property Name="ApplicationFormId" Type="int" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+        </EntityType>
+        <EntityType Name="BatchFeeAssociation">
+          <Key>
+            <PropertyRef Name="BatchFeeId" />
+          </Key>
+          <Property Name="BatchFeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BatchId" Type="int" Nullable="false" />
+          <Property Name="FeeId" Type="int" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+        </EntityType>
         <EntityType Name="BatchMaster">
           <Key>
             <PropertyRef Name="BatchId" />
@@ -28,6 +46,15 @@
           <Property Name="Active" Type="tinyint" />
           <Property Name="lastupdateddt" Type="datetime" />
           <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="BatchProgramStudyAssociation">
+          <Key>
+            <PropertyRef Name="BatchProgramStudyId" />
+          </Key>
+          <Property Name="BatchProgramStudyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BatchId" Type="int" Nullable="false" />
+          <Property Name="ProgramStudyId" Type="int" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
         </EntityType>
         <EntityType Name="ChapterMaster">
           <Key>
@@ -327,6 +354,47 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
+        <Function Name="GetApplicationFormDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetApplicationFormList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetBatchApplicationFormList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetBatchApplicationFormNotLinkedList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetBatchDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetBatchFeeNotLinkedList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetBatchFeesList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetBatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetBatchList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetBatchProgramStudyList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="GetBatchProgramStudyNotLinkedList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="GetChapterDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="chapterid" Type="int" Mode="In" />
@@ -435,6 +503,18 @@
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="LinkBatchApplicationForm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="LinkBatchFees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="LinkBatchProgramStudy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="LinkCourseSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
@@ -452,6 +532,14 @@
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="LinkTaskStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="RemoveApplicationForm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="RemoveBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
@@ -489,6 +577,18 @@
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="UnLinkBatchApplicationForm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UnLinkBatchFees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UnLinkBatchProgramStudy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="UnLinkCourseSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
@@ -506,6 +606,14 @@
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="UnLinkTaskStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateApplicationForm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
@@ -555,7 +663,10 @@
         </Function>
         <EntityContainer Name="edurp_devModelStoreContainer">
           <EntitySet Name="ApplicationFormMaster" EntityType="Self.ApplicationFormMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BatchApplicationFormAssociation" EntityType="Self.BatchApplicationFormAssociation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BatchFeeAssociation" EntityType="Self.BatchFeeAssociation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BatchMaster" EntityType="Self.BatchMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BatchProgramStudyAssociation" EntityType="Self.BatchProgramStudyAssociation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChapterMaster" EntityType="Self.ChapterMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClassRoomMaster" EntityType="Self.ClassRoomMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CourseMaster" EntityType="Self.CourseMaster" Schema="dbo" store:Type="Tables" />
@@ -593,6 +704,24 @@
           <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
           <Property Name="lastupdatedby" Type="Int32" />
         </EntityType>
+        <EntityType Name="BatchApplicationFormAssociation">
+          <Key>
+            <PropertyRef Name="BatchApplicationFormId" />
+          </Key>
+          <Property Name="BatchApplicationFormId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationFormId" Type="Int32" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BatchFeeAssociation">
+          <Key>
+            <PropertyRef Name="BatchFeeId" />
+          </Key>
+          <Property Name="BatchFeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchId" Type="Int32" Nullable="false" />
+          <Property Name="FeeId" Type="Int32" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+        </EntityType>
         <EntityType Name="BatchMaster">
           <Key>
             <PropertyRef Name="BatchId" />
@@ -605,6 +734,15 @@
           <Property Name="Active" Type="Byte" />
           <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
           <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BatchProgramStudyAssociation">
+          <Key>
+            <PropertyRef Name="BatchProgramStudyId" />
+          </Key>
+          <Property Name="BatchProgramStudyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchId" Type="Int32" Nullable="false" />
+          <Property Name="ProgramStudyId" Type="Int32" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
         </EntityType>
         <EntityType Name="ChapterMaster">
           <Key>
@@ -906,7 +1044,10 @@
         </EntityType>
         <EntityContainer Name="edurp_devEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ApplicationFormMasters" EntityType="Self.ApplicationFormMaster" />
+          <EntitySet Name="BatchApplicationFormAssociations" EntityType="Self.BatchApplicationFormAssociation" />
+          <EntitySet Name="BatchFeeAssociations" EntityType="Self.BatchFeeAssociation" />
           <EntitySet Name="BatchMasters" EntityType="Self.BatchMaster" />
+          <EntitySet Name="BatchProgramStudyAssociations" EntityType="Self.BatchProgramStudyAssociation" />
           <EntitySet Name="ChapterMasters" EntityType="Self.ChapterMaster" />
           <EntitySet Name="ClassRoomMasters" EntityType="Self.ClassRoomMaster" />
           <EntitySet Name="CourseMasters" EntityType="Self.CourseMaster" />
@@ -927,6 +1068,47 @@
           <EntitySet Name="UniversityMasters" EntityType="Self.UniversityMaster" />
           <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
           <EntitySet Name="UserUniversityAssociations" EntityType="Self.UserUniversityAssociation" />
+          <FunctionImport Name="GetApplicationFormDetail" ReturnType="Collection(edurp_devModel.GetApplicationFormDetail_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetApplicationFormList" ReturnType="Collection(edurp_devModel.GetApplicationFormList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchApplicationFormList" ReturnType="Collection(edurp_devModel.GetBatchApplicationFormList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchApplicationFormNotLinkedList" ReturnType="Collection(edurp_devModel.GetBatchApplicationFormNotLinkedList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchDetail" ReturnType="Collection(edurp_devModel.GetBatchDetail_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchFeeNotLinkedList" ReturnType="Collection(edurp_devModel.GetBatchFeeNotLinkedList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchFeesList" ReturnType="Collection(edurp_devModel.GetBatchFeesList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchID" ReturnType="Collection(edurp_devModel.GetBatchID_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchList" ReturnType="Collection(edurp_devModel.GetBatchList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchProgramStudyList" ReturnType="Collection(edurp_devModel.GetBatchProgramStudyList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchProgramStudyNotLinkedList" ReturnType="Collection(edurp_devModel.GetBatchProgramStudyNotLinkedList_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="GetChapterDetail" ReturnType="Collection(edurp_devModel.GetChapterDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="chapterid" Mode="In" Type="Int32" />
@@ -1035,6 +1217,18 @@
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="LinkBatchApplicationForm">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LinkBatchFees">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LinkBatchProgramStudy">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="LinkCourseSubject">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
@@ -1052,6 +1246,14 @@
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="LinkTaskStaff">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveApplicationForm">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="RemoveBatch">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
@@ -1089,6 +1291,18 @@
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="UnLinkBatchApplicationForm">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UnLinkBatchFees">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UnLinkBatchProgramStudy">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="UnLinkCourseSubject">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
@@ -1106,6 +1320,14 @@
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UnLinkTaskStaff">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateApplicationForm">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateBatch">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
@@ -1154,6 +1376,66 @@
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="GetApplicationFormDetail_Result">
+          <Property Type="Int32" Name="ApplicationFormId" Nullable="false" />
+          <Property Type="String" Name="ApplicationFormName" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetApplicationFormList_Result">
+          <Property Type="Int32" Name="ApplicationFormId" Nullable="false" />
+          <Property Type="String" Name="ApplicationFormName" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetBatchApplicationFormList_Result">
+          <Property Type="Int32" Name="BatchId" Nullable="false" />
+          <Property Type="Int32" Name="ApplicationFormId" Nullable="false" />
+          <Property Type="String" Name="ApplicationFormName" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetBatchApplicationFormNotLinkedList_Result">
+          <Property Type="Int32" Name="ApplicationFormId" Nullable="false" />
+          <Property Type="String" Name="ApplicationFormName" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetBatchDetail_Result">
+          <Property Type="Int32" Name="BatchId" Nullable="false" />
+          <Property Type="String" Name="BatchName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ResultType" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="AcademicTerm" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetBatchFeeNotLinkedList_Result">
+          <Property Type="Int32" Name="FeeId" Nullable="false" />
+          <Property Type="String" Name="FeeLabel" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetBatchFeesList_Result">
+          <Property Type="Int32" Name="BatchId" Nullable="false" />
+          <Property Type="Int32" Name="FeeId" Nullable="false" />
+          <Property Type="String" Name="FeeLabel" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetBatchID_Result">
+          <Property Type="Int32" Name="BatchId" Nullable="false" />
+          <Property Type="String" Name="BatchName" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetBatchList_Result">
+          <Property Type="Int32" Name="BatchId" Nullable="false" />
+          <Property Type="String" Name="BatchName" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ResultType" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="AcademicTerm" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="GetBatchProgramStudyList_Result">
+          <Property Type="Int32" Name="BatchId" Nullable="false" />
+          <Property Type="Int32" Name="ProgramStudyId" Nullable="false" />
+          <Property Type="String" Name="ProgramStudyCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ProgramStudyName" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetBatchProgramStudyNotLinkedList_Result">
+          <Property Type="Int32" Name="ProgramStudyId" Nullable="false" />
+          <Property Type="String" Name="ProgramStudyCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ProgramStudyName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="SKS" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="GetChapterDetail_Result">
           <Property Type="Int32" Name="ChapterId" Nullable="false" />
           <Property Type="String" Name="ChapterNumber" Nullable="false" MaxLength="10" />
@@ -1385,6 +1667,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="BatchApplicationFormAssociations">
+            <EntityTypeMapping TypeName="edurp_devModel.BatchApplicationFormAssociation">
+              <MappingFragment StoreEntitySet="BatchApplicationFormAssociation">
+                <ScalarProperty Name="BatchApplicationFormId" ColumnName="BatchApplicationFormId" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BatchFeeAssociations">
+            <EntityTypeMapping TypeName="edurp_devModel.BatchFeeAssociation">
+              <MappingFragment StoreEntitySet="BatchFeeAssociation">
+                <ScalarProperty Name="BatchFeeId" ColumnName="BatchFeeId" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="BatchMasters">
             <EntityTypeMapping TypeName="edurp_devModel.BatchMaster">
               <MappingFragment StoreEntitySet="BatchMaster">
@@ -1396,6 +1698,16 @@
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
                 <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BatchProgramStudyAssociations">
+            <EntityTypeMapping TypeName="edurp_devModel.BatchProgramStudyAssociation">
+              <MappingFragment StoreEntitySet="BatchProgramStudyAssociation">
+                <ScalarProperty Name="BatchProgramStudyId" ColumnName="BatchProgramStudyId" />
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1717,6 +2029,110 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetApplicationFormDetail" FunctionName="edurp_devModel.Store.GetApplicationFormDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetApplicationFormDetail_Result">
+                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
+                <ScalarProperty Name="ApplicationFormName" ColumnName="ApplicationFormName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetApplicationFormList" FunctionName="edurp_devModel.Store.GetApplicationFormList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetApplicationFormList_Result">
+                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
+                <ScalarProperty Name="ApplicationFormName" ColumnName="ApplicationFormName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBatchApplicationFormList" FunctionName="edurp_devModel.Store.GetBatchApplicationFormList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchApplicationFormList_Result">
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
+                <ScalarProperty Name="ApplicationFormName" ColumnName="ApplicationFormName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBatchApplicationFormNotLinkedList" FunctionName="edurp_devModel.Store.GetBatchApplicationFormNotLinkedList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchApplicationFormNotLinkedList_Result">
+                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
+                <ScalarProperty Name="ApplicationFormName" ColumnName="ApplicationFormName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBatchDetail" FunctionName="edurp_devModel.Store.GetBatchDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchDetail_Result">
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="BatchName" ColumnName="BatchName" />
+                <ScalarProperty Name="ResultType" ColumnName="ResultType" />
+                <ScalarProperty Name="AcademicTerm" ColumnName="AcademicTerm" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBatchFeeNotLinkedList" FunctionName="edurp_devModel.Store.GetBatchFeeNotLinkedList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchFeeNotLinkedList_Result">
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="FeeLabel" ColumnName="FeeLabel" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="FeeType" ColumnName="FeeType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBatchFeesList" FunctionName="edurp_devModel.Store.GetBatchFeesList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchFeesList_Result">
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="FeeLabel" ColumnName="FeeLabel" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="FeeType" ColumnName="FeeType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBatchID" FunctionName="edurp_devModel.Store.GetBatchID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchID_Result">
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="BatchName" ColumnName="BatchName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBatchList" FunctionName="edurp_devModel.Store.GetBatchList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchList_Result">
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="BatchName" ColumnName="BatchName" />
+                <ScalarProperty Name="ResultType" ColumnName="ResultType" />
+                <ScalarProperty Name="AcademicTerm" ColumnName="AcademicTerm" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBatchProgramStudyList" FunctionName="edurp_devModel.Store.GetBatchProgramStudyList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchProgramStudyList_Result">
+                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
+                <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
+                <ScalarProperty Name="ProgramStudyCode" ColumnName="ProgramStudyCode" />
+                <ScalarProperty Name="ProgramStudyName" ColumnName="ProgramStudyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBatchProgramStudyNotLinkedList" FunctionName="edurp_devModel.Store.GetBatchProgramStudyNotLinkedList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchProgramStudyNotLinkedList_Result">
+                <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
+                <ScalarProperty Name="ProgramStudyCode" ColumnName="ProgramStudyCode" />
+                <ScalarProperty Name="ProgramStudyName" ColumnName="ProgramStudyName" />
+                <ScalarProperty Name="SKS" ColumnName="SKS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetChapterDetail" FunctionName="edurp_devModel.Store.GetChapterDetail">
             <ResultMapping>
               <ComplexTypeMapping TypeName="edurp_devModel.GetChapterDetail_Result">
@@ -2050,11 +2466,16 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LinkBatchApplicationForm" FunctionName="edurp_devModel.Store.LinkBatchApplicationForm" />
+          <FunctionImportMapping FunctionImportName="LinkBatchFees" FunctionName="edurp_devModel.Store.LinkBatchFees" />
+          <FunctionImportMapping FunctionImportName="LinkBatchProgramStudy" FunctionName="edurp_devModel.Store.LinkBatchProgramStudy" />
           <FunctionImportMapping FunctionImportName="LinkCourseSubject" FunctionName="edurp_devModel.Store.LinkCourseSubject" />
           <FunctionImportMapping FunctionImportName="LinkProgramStudyCourse" FunctionName="edurp_devModel.Store.LinkProgramStudyCourse" />
           <FunctionImportMapping FunctionImportName="LinkProgramStudyFees" FunctionName="edurp_devModel.Store.LinkProgramStudyFees" />
           <FunctionImportMapping FunctionImportName="LinkSubjectChapter" FunctionName="edurp_devModel.Store.LinkSubjectChapter" />
           <FunctionImportMapping FunctionImportName="LinkTaskStaff" FunctionName="edurp_devModel.Store.LinkTaskStaff" />
+          <FunctionImportMapping FunctionImportName="RemoveApplicationForm" FunctionName="edurp_devModel.Store.RemoveApplicationForm" />
+          <FunctionImportMapping FunctionImportName="RemoveBatch" FunctionName="edurp_devModel.Store.RemoveBatch" />
           <FunctionImportMapping FunctionImportName="RemoveChapter" FunctionName="edurp_devModel.Store.RemoveChapter" />
           <FunctionImportMapping FunctionImportName="RemoveClassRoom" FunctionName="edurp_devModel.Store.RemoveClassRoom" />
           <FunctionImportMapping FunctionImportName="RemoveCourse" FunctionName="edurp_devModel.Store.RemoveCourse" />
@@ -2063,11 +2484,16 @@
           <FunctionImportMapping FunctionImportName="RemoveProgramStudy" FunctionName="edurp_devModel.Store.RemoveProgramStudy" />
           <FunctionImportMapping FunctionImportName="RemoveSubject" FunctionName="edurp_devModel.Store.RemoveSubject" />
           <FunctionImportMapping FunctionImportName="RemoveTask" FunctionName="edurp_devModel.Store.RemoveTask" />
+          <FunctionImportMapping FunctionImportName="UnLinkBatchApplicationForm" FunctionName="edurp_devModel.Store.UnLinkBatchApplicationForm" />
+          <FunctionImportMapping FunctionImportName="UnLinkBatchFees" FunctionName="edurp_devModel.Store.UnLinkBatchFees" />
+          <FunctionImportMapping FunctionImportName="UnLinkBatchProgramStudy" FunctionName="edurp_devModel.Store.UnLinkBatchProgramStudy" />
           <FunctionImportMapping FunctionImportName="UnLinkCourseSubject" FunctionName="edurp_devModel.Store.UnLinkCourseSubject" />
           <FunctionImportMapping FunctionImportName="UnLinkProgramStudyCourse" FunctionName="edurp_devModel.Store.UnLinkProgramStudyCourse" />
           <FunctionImportMapping FunctionImportName="UnLinkProgramStudyFees" FunctionName="edurp_devModel.Store.UnLinkProgramStudyFees" />
           <FunctionImportMapping FunctionImportName="UnLinkSubjectChapter" FunctionName="edurp_devModel.Store.UnLinkSubjectChapter" />
           <FunctionImportMapping FunctionImportName="UnLinkTaskStaff" FunctionName="edurp_devModel.Store.UnLinkTaskStaff" />
+          <FunctionImportMapping FunctionImportName="UpdateApplicationForm" FunctionName="edurp_devModel.Store.UpdateApplicationForm" />
+          <FunctionImportMapping FunctionImportName="UpdateBatch" FunctionName="edurp_devModel.Store.UpdateBatch" />
           <FunctionImportMapping FunctionImportName="UpdateChapter" FunctionName="edurp_devModel.Store.UpdateChapter" />
           <FunctionImportMapping FunctionImportName="UpdateClassRoom" FunctionName="edurp_devModel.Store.UpdateClassRoom" />
           <FunctionImportMapping FunctionImportName="UpdateCourse" FunctionName="edurp_devModel.Store.UpdateCourse" />
