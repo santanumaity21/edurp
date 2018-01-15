@@ -83,7 +83,6 @@
         };
         $scope.addTaskDetails = function (form) {
             if (form.$valid) {
-
                 var postData = {
                     "batchInsertData":
                     [{
