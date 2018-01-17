@@ -20,7 +20,7 @@
                 }
             }, function (reason) {
                 console.log("reason" + reason);
-                errorHandler.logServiceError('BulkUploadModuleController', reason);
+                errorHandler.logServiceError('bulkUploadCntrl', reason);
             });
         })();
 

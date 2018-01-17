@@ -3,6 +3,8 @@
 var apiPrefix = 'http://localhost:50381/';
 var urlService =
     {
+       
+
         getCourseList: localhost ? '/sampleData/Course/list.json' : apiPrefix + 'api/CourseMasters/Get/1',
         addCourse: localhost ? '/sampleData/Course/add.json' : apiPrefix + '/api/CourseMasters/Post/',
         //updateCourse: localhost ? ' ' : apiPrefix + 'api/CourseMasters/Put/',
@@ -69,7 +71,7 @@ var urlService =
         assignUnlinkedCoursesToBatch: localhost ? '/sampleData/createBatch/assignUnlinkedCourses.json' : apiPrefix + '/api/programStudy/post',
         assignUnlinkedFeesToBatch: localhost ? '/sampleData/createBatch/assignUnlinkedFees.json' : apiPrefix + '/api/programStudy/post',
         
-        getBulkModule: localhost ? '/sampleData/courseList.json' : apiPrefix + '/api/BulkLoadMaster/Get/1'
+        getBulkModule: localhost ? '/sampleData/bulkUpload.json' : apiPrefix + '/api/BulkLoadMaster/Get/1'
         
 		
         

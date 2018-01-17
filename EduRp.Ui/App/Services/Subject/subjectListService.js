@@ -38,12 +38,10 @@
 
         };
         var _addSubject = function (form) {
-            debugger
             return execute('addSubjects', 'post', form);
 
         };
         var _updateSubject = function (form) {
-            debugger
             return execute('updateSubject', 'put', form);
 
         };

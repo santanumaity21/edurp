@@ -60,7 +60,6 @@
         };
 //Add
         $scope.addSubjectDetails = function (form) {
-            debugger
             if (form.$valid) {
                 $q.when([subjectListService.addSubjects($scope.modSubjectObj)]).then(function (data) {
                     $scope.filteredSubjectData.push($scope.modSubjectObj);
