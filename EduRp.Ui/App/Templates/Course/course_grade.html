@@ -9,13 +9,13 @@
                     <div class="btn-group pull-left">
                         <ol class="breadcrumb hide-phone p-0 m-0">
                             <li>
-                                <a href="#">EDuRP</a>
+                                <a href="#">{{'breadcrumb1OfCourseGrade'|translate}}</a>
                             </li>
                             <li>
-                                <a href="#">Dashboard</a>
+                                <a href="#">{{'breadcrumb1OfCourseGrade'|translate}}</a>
                             </li>
                             <li class="active">
-                                Course Grade
+                                {{'breadcrumb1OfCourseGrade'|translate}}
 
                             </li>
                         </ol>
@@ -33,10 +33,10 @@
                 <div class="card-box">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h4 class="m-t-0 header-title"><b>Course Grades</b></h4>
+                            <h4 class="m-t-0 header-title"><b>{{'CourseGradeHeader'|translate}}</b></h4>
                         </div>
                         <div class="col-lg-4 pull-right">
-                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-ng-click="addCourseContainer()">Add New Course / Grade</button>
+                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-ng-click="addCourseContainer()">{{'CourseGradeAddBtn'|translate}}</button>
                         </div>
                     </div>
                     <div class="row">
@@ -54,7 +54,7 @@
                                     <div class="panel-heading" role="tab">
                                         <h4 class="panel-title" data-ng-click="toggleFilterPanel()">
                                             <a ng-class="!filterPanel ? 'collapsed': ''" aria-expanded="false" aria-controls="collapseThree">
-                                                Filters
+                                                {{'filters'|translate}}
                                             </a>
                                         </h4>
                                     </div>
@@ -65,14 +65,14 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="userName">Course Code</label>
+                                                            <label for="userName">{{'courseCodeColumn'|translate}}</label>
                                                             <textarea cols="25" rows="5" name="course_code_tobe_filtered" data-ng-model="course_code_tobe_filtered">
                                                             </textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="userName">Course Name</label>
+                                                            <label for="userName">{{'courseNameColumn'|translate}}</label>
                                                             <input type="text" name="course_name_tobe_filtered" data-ng-model="course_name_tobe_filtered" />
                                                         </div>
                                                     </div>
@@ -83,10 +83,10 @@
 
                                                 <div class="form-group text-right m-b-0">
                                                     <button class="btn btn-teal btn-bordered waves-light waves-effect w-xs  m-b-2" type="button" data-ng-click="getFilteredData()">
-                                                        GO
+                                                        {{'goBtn'|translate}}
                                                     </button>
                                                     <button type="reset" data-ng-click="toggleFilterPanel()" class="btn btn-default waves-effect m-l-5">
-                                                        Clear
+                                                        {{'clearBtn'|translate}}
                                                     </button>
                                                 </div>
                                             </form>
@@ -109,24 +109,24 @@
                                             <thead>
                                                 <tr>
                                                     <th ng-click="orderByField='CourseCode'; reverseSort = !reverseSort">
-                                                        Course Code
+                                                        {{'courseCodeColumn'|translate}}
                                                         <span ng-show="orderByField == 'CourseCode'">
                                                             <span ng-show="!reverseSort">^</span>
                                                             <span ng-show="reverseSort">v</span>
                                                         </span>
                                                     </th>
                                                     <th ng-click="orderByField='CourseName'; reverseSort = !reverseSort">
-                                                        Course Name
+                                                        {{'courseNameColumn'|translate}}
                                                         <span ng-show="orderByField == 'CourseName'">
                                                             <span ng-show="!reverseSort">^</span>
                                                             <span ng-show="reverseSort">v</span>
                                                         </span>
                                                     </th>
                                                     <th>
-                                                        Manage
+                                                        {{'manageColumn'| translate}}
                                                     </th>
                                                     <th>
-                                                        Delete
+                                                        {{'deleteColumn'| translate}}
                                                     </th>
 
                                                 </tr>
@@ -150,19 +150,19 @@
                                     <div class="dataTables_length" id="datatable_length">
 
                                         <label>
-                                            Show
+                                            {{'show'| translate}}
                                             <select name="datatable_length"
                                                     aria-controls="datatable"
                                                     class="form-control input-sm"
                                                     data-ng-model="numPerPage"
                                                     data-ng-options="x for x in showPerPageDataOptions"></select>
-                                            entries
+                                            {{'entries'| translate}}
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
-                                        Showing {{currentPage*numPerPage - numPerPage  + 1}} to {{courseData.length > currentPage*numPerPage ? currentPage*numPerPage : courseData.length}} of {{courseData.length}} entries
+                                        {{'showing'| translate}} {{currentPage*numPerPage - numPerPage  + 1}} to {{courseData.length > currentPage*numPerPage ? currentPage*numPerPage : courseData.length}} {{'of'| translate}} {{courseData.length}} {{'entries'| translate}}
                                     </div>
                                 </div>
                                 <div class="col-sm-6">

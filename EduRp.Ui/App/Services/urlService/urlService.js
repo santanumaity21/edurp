@@ -1,16 +1,13 @@
 
-﻿var localhost = true;
+﻿var localhost = false;
 var apiPrefix = 'http://localhost:50381/';
 var urlService =
     {
-       
-
         getCourseList: localhost ? '/sampleData/Course/list.json' : apiPrefix + 'api/CourseMasters/Get/1',
         addCourse: localhost ? '/sampleData/Course/add.json' : apiPrefix + '/api/CourseMasters/Post/',
-        //updateCourse: localhost ? ' ' : apiPrefix + 'api/CourseMasters/Put/',
-        //deleteCourse: localhost ? ' ' : apiPrefix + 'api/CourseMasters/Delete/',
+        updateCourse: localhost ?  '' : apiPrefix + 'api/CourseMasters/Put/',
+        deleteCourse: localhost ? ' ' : apiPrefix + 'api/CourseMasters/Delete/',
 
-       
 
         getFeesList: localhost ? '/sampleData/feesList.json' : apiPrefix + 'api/Fees/Get',
         //addFee: localhost ? ' ' : apiPrefix + '/api/Fees/Post/',
@@ -47,7 +44,6 @@ var urlService =
         //updateBatch: localhost ? ' ' : apiPrefix + 'api/BatchMasters/Put/',
         //deleteTask: localhost ? ' ' : apiPrefix + 'api/Tasks/Delete/',
 
-		
         
         getProgramStudyList: localhost ? '/sampleData/programStudy/programStudyList.json' : apiPrefix +'/api/ProgramStudies/Get/1',
         addProgramStudy: localhost ? '/sampleData/programStudy/addProgramStudy.json' : apiPrefix + '/api/ProgramStudy/Add',
@@ -74,7 +70,5 @@ var urlService =
         getBulkModule: localhost ? '/sampleData/bulkUpload.json' : apiPrefix + '/api/BulkLoadMaster/Get/1'
         
 		
-        
- 
 
     };

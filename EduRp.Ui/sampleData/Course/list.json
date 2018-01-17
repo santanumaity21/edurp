@@ -1,20 +1,28 @@
 ﻿{
   "results": [
     {
-      "id": "2",
+      "CourseId": 1,
       "CourseCode": "CSE",
       "CourseName": "Computer Science and Engineering",
-      "sks": "10",
-      "courseType": "R",
-      "courseGroup": "Degree"
+      "SKS": 10,
+      "CourseType": "R",
+      "CourseGroup": "Degree"
     },
     {
-      "id": "3",
+      "CourseId": 2,
       "CourseCode": "ECE",
       "CourseName": "Electronics and Communication",
-      "sks": "20",
-      "courseType": "R",
-      "courseGroup": "Degree"
+      "SKS": 20,
+      "CourseType": "R",
+      "CourseGroup": "Degree"
+    },
+    {
+      "CourseId": 3,
+      "CourseCode": "FIN",
+      "CourseName": "Finance",
+      "SKS": 20,
+      "CourseType": "R",
+      "CourseGroup": "Degree"
     }
   ]
 }

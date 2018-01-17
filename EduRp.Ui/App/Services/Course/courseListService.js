@@ -36,11 +36,17 @@
         var _addCourse = function (postData) {
             return execute('addCourse', 'post', postData);
         };
-       
-
+        var _updateCourse = function (postData) {
+            return execute('updateCourse', 'post', postData);
+        };
+        var _deleteCourse = function (postData) {
+            return execute('deleteCourse', 'post', postData, postData.CourseId);
+        };
         return {
             getCourseList: _getCourseList,
-            addCourse: _addCourse
+            addCourse: _addCourse,
+            updateCourse: _updateCourse,
+            deleteCourse: _deleteCourse
            
         };
 
