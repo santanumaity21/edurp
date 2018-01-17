@@ -95,11 +95,14 @@
         };
 
         $scope.deleteCourseContainer = function (cd) {
-            courseListService.deleteCourse(cd).then(function (data) {
+            if (confirm('Are you sure you want to delete this course?')) {
+                courseListService.deleteCourse(cd).then(function (data) {
                     $scope.filteredCourseData = commonService.removeItemFromArray($scope.filteredCourseData, cd);
                 }, function (error) {
                     alert("Please try again");
                 });
+            }
+            
 
         };
         

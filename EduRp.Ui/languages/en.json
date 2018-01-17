@@ -12,10 +12,21 @@
   "breadcrumb2OfCourseGrade": "Dashboard",
   "breadcrumb3OfCourseGrade": "Course Grade",
 
+  "breadcrumb1OfSubject": "Home",
+  "breadcrumb2OfSubject": "Products",
+  "breadcrumb3OfSubject": "Accessories",
+
+
   "manageProgramStudy": "Manage Program Study",
   "manageCreateBatch": "Manage Batch",
   "CourseGradeHeader": "Course Grades",
+  "subjectHeader": "Subject",
+  "subjectAddHeader": "Add New Subject",
+  "subjectUpdateHeader": "Update Subject",
+
   "CourseGradeAddBtn": "Add New Course / Grade",
+  "subjectAddBtn": "Add New Subject",
+
   "CourseGradeAddHeader": "Add New Course / Grade",
   "CourseGradeUpdateHeader": "Update New Course / Grade",
   "goBtn": "Go",
@@ -40,6 +51,9 @@
   "removeCoursesBtn": "Remove Courses",
   "courseCodeColumn": "Course Code",
   "courseNameColumn": "Course Name",
+  "subjectCodeColumn": "Subject Code",
+  "subjectNameColumn": "Subject Name",
+  "sksColumn":  "SKS",
   "manageColumn": "Manage",
   "deleteColumn": "Delete",
   "filters": "Filters",
