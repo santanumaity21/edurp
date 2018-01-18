@@ -4,7 +4,7 @@
     angular.module('EduRpApp', [
         'ngAnimate', 'ngCookies', 'ngResource', 'ngRoute', 'ngSanitize', 'ngTouch', 'ui.bootstrap', 'pascalprecht.translate'
     ])
-        .config(['$httpProvider', '$translateProvider', function ($httpProvider, $translateProvider) {
+        .config(['$httpProvider', '$translateProvider',  function ($httpProvider, $translateProvider) {
         $httpProvider.interceptors.push('xmlHttpInteceptor');
         if (!$httpProvider.defaults.headers.get) {
             $httpProvider.defaults.headers.get = {};

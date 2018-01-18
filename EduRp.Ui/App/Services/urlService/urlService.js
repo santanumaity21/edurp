@@ -6,7 +6,7 @@ var urlService =
         getCourseList: localhost ? '/sampleData/Course/list.json' : apiPrefix + 'api/CourseMasters/Get/1',
         addCourse: localhost ? '/sampleData/Course/add.json' : apiPrefix + '/api/CourseMasters/Post/',
         updateCourse: localhost ?  '' : apiPrefix + 'api/CourseMasters/Put/',
-        deleteCourse: localhost ? ' ' : apiPrefix + 'api/CourseMasters/Delete/',
+        deleteCourse: localhost ? ' ' : apiPrefix + 'api/CourseMasters/Delete/{{id}}',
 
 
         getFeesList: localhost ? '/sampleData/feesList.json' : apiPrefix + 'api/Fees/Get',

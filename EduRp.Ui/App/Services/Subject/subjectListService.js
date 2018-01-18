@@ -5,15 +5,22 @@
         .module('EduRpApp')
         .factory('subjectListService', subjectListService);
 
-    subjectListService.$inject = ['$q', '$http', '$interpolate'];
+    subjectListService.$inject = ['$q', '$http', '$interpolate', '$cookieStore'];
 
-    function subjectListService($q, $http, $interpolate) {
-
+    function subjectListService($q, $http, $interpolate, $cookieStore) {
+        var universityId = $cookieStore.get('unversityId');
+        var userId = $cookieStore.get('userId');
+        var tokenId = $cookieStore.get('tokenId');
+        var mandatoryData = { universityId: universityId, userId: userId, tokenId: tokenId };
         var execute = function (url, method, data, ip) {
             var deferred = $q.defer();
-
+            if (ip != null && ip.length) {
+                angular.forEach(ip, function (v, k) {
+                    mandatoryData[k] = v;
+                });
+            }
             $http({
-                url: $interpolate(urlService[url])(ip),
+                url: $interpolate(urlService[url])(mandatoryData),
                 method: method,
                 data: data,
                 headers: {
@@ -46,7 +53,7 @@
         };
 
         var _deleteSubject = function (postData) {
-            return execute('deleteSubject', 'delete', postData, postData.SubjectId);
+            return execute('deleteSubject', 'delete', postData, [{ SubjectId: postData.SubjectId }]);
 
         };
 
