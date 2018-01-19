@@ -1,0 +1,40 @@
+﻿using EduRp.Data;
+using EduRp.Service.IService;
+using EduRp.Service.Service;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace EduRp.WebApi.Controllers
+{
+    public class EmployeesController : ApiController
+    {
+        private IEmployeeMasterService employeeService = new EmployeeMasterService();
+        [HttpGet]
+        public IHttpActionResult Get(int id)
+        {
+            return Ok(new { results = employeeService.GetList(id) });
+        }
+
+        [HttpPut]
+        [HttpPost]
+        public IHttpActionResult Save(int? id, EmployeeMaster employeeMaster)
+        {
+            var isUpdate = employeeService.InsUpdEmployeeMaster(id, employeeMaster);
+            if (isUpdate == true)
+                return Ok();
+            return BadRequest();
+        }
+        [HttpDelete]
+        public IHttpActionResult Delete(int? id, EmployeeMaster employeeMaster)
+        {
+            var isDeleted = employeeService.DeleteEmployeeMaster(id,employeeMaster);
+            if (isDeleted == true)
+                return Ok();
+            return BadRequest();
+        }
+    }
+}

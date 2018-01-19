@@ -11,11 +11,9 @@ namespace EduRp.Service.IService
     {
         List<GetTaskList_Result> GetList(int id);
 
-        bool SaveTask(Task task);
+        bool InsUpdTask(int? id,Task task);
 
-        bool UpdateTask(int id,Task task);
-
-        bool DeleteTask(int id);
+        bool DeleteTask(int? id, Task task);
 
     }
 }

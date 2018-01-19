@@ -14,8 +14,8 @@ var urlService =
         //updateFee: localhost ? ' ' : apiPrefix + 'api/Fees/Put/',
         //deleteFee: localhost ? ' ' : apiPrefix + 'api/Fees/Delete/',
 
-        getSubjectList: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/SubjectMasters/Get//{{UniversityId}}/{{UserId}}/{{TokenId}}',
-        addSubject: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/SubjectMasters/Post/',
+        getSubjectList: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/SubjectMasters?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        addSubject: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/Subjectmasters/Save/',
         updateSubject: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/SubjectMasters/Put/',
         deleteSubject: localhost ? '/sampledata/subjectlist.json' : apiPrefix + 'api/SubjectMasters/Delete/',
 

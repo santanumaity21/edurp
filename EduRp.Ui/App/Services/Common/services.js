@@ -35,7 +35,9 @@
             var finalData = null;
             if (method !== 'get') {
                 finalData = this.fetchMainCookieData();
-                finalData['data'] = angular.toJson(data);
+                angular.forEach(data, function (v, k) {
+                    finalData[k] = v;
+                });
             } 
             console.log(finalData);
            $http({

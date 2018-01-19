@@ -1,5 +1,6 @@
 ﻿using EduRp.Data;
 using EduRp.Service.IService;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,12 +16,26 @@ namespace EduRp.Service.Service
             return db.GetFeeList(id).ToList();
         }
 
-        public bool SaveFee(Fee fee)
+        public bool InsUpdFee(int? id, Fee fee)
         {
             try
             {
-                db.Fees.Add(fee);
-                db.SaveChanges();
+                var obj = JsonConvert.SerializeObject
+                 (new Fee
+                 {
+                     FeeId = fee.FeeId,
+                     FeeLabel = fee.FeeLabel,
+                     FeeType = fee.FeeType,
+                     Amount = fee.Amount,
+                     Description = fee.Description,
+                    
+                 });
+
+
+                var FeeObj = obj.ToString();
+
+                var JsonObj = db.UpdateFee(id, FeeObj);
+
                 return true;
             }
 
@@ -32,29 +47,22 @@ namespace EduRp.Service.Service
             throw new NotImplementedException();
         }
 
-        public bool UpdateFee(int id, Fee fee)
+        public bool DeleteFee(int? id,Fee fee)
         {
             try
             {
-                db.Entry(fee).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            throw new NotImplementedException();
-        }
+                var obj = JsonConvert.SerializeObject
+                 (new Fee
+                 {
+                     FeeId = fee.FeeId,
+                     UserId = fee.UserId,
 
-        public bool DeleteFee(int id)
-        {
-            try
-            {
-                var fee = db.Fees.Where(x => x.FeeId == id).FirstOrDefault();
-                if (fee == null) return false;
-                db.Entry(fee).State = System.Data.Entity.EntityState.Deleted;
-                db.SaveChanges();
+                 });
+
+                var FeeObj = obj.ToString();
+
+                var JsonObj = db.RemoveFee(id, FeeObj);
+
                 return true;
             }
             catch (Exception ex)

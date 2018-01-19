@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using EduRp.Data;
 using EduRp.Service.IService;
+using Newtonsoft.Json;
 
 namespace EduRp.Service.Service
 {
@@ -16,13 +17,34 @@ namespace EduRp.Service.Service
             return db.GetExaminationList(id).ToList();
         }
 
-        public bool SaveExaminationType(ExaminationType examinationType)
+        public bool InsUpdExaminationType(int? id, ExaminationType examinationType)
         {
             try
             {
-                db.ExaminationTypes.Add(examinationType);
-                db.SaveChanges();
+                var obj = JsonConvert.SerializeObject
+                   (new ExaminationType
+                   {
+                       ExaminationId = examinationType.ExaminationId,
+                       ExamName = examinationType.ExamName,
+                       ExamGroup = examinationType.ExamGroup,
+                       MinMarks = examinationType.MinMarks,
+                       MaxMarks = examinationType.MaxMarks,
+                       FeeLabel = examinationType.FeeLabel,
+                       Amount = examinationType.Amount,
+                       UserId = examinationType.UserId,
+                     
+                   });
+
+
+                var ExamTypeObj = obj.ToString();
+
+                var JsonObj = db.UpdateExamination(id, ExamTypeObj);
+
                 return true;
+
+                //db.ExaminationTypes.Add(examinationType);
+                //db.SaveChanges();
+                //return true;
             }
             catch (Exception ex)
             {
@@ -30,29 +52,27 @@ namespace EduRp.Service.Service
             }
         }
 
-        public bool UpdateExaminationType(int id, ExaminationType examinationType)
-        {
-            try
-            {
-                db.Entry(examinationType).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
+       
 
-        public bool DeleteExaminationType(int id)
+        public bool DeleteExaminationType(int? id,ExaminationType examinationType)
         {
             try
             {
-                var exam = db.ExaminationTypes.Where(x => x.ExaminationId == id).FirstOrDefault();
-                if (exam == null) return false;
-                db.Entry(exam).State = System.Data.Entity.EntityState.Deleted;
-                db.SaveChanges();
+                var obj = JsonConvert.SerializeObject
+                  (new ExaminationType
+                  {
+                      ExaminationId = examinationType.ExaminationId,
+                      UserId = examinationType.UserId,
+
+                  });
+
+
+                var ExamTypeObj = obj.ToString();
+
+                var JsonObj = db.RemoveExamination(id, ExamTypeObj);
+
                 return true;
+           
             }
             catch (Exception ex)
             {

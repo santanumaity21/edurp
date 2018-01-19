@@ -5,12 +5,117 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="edurp_devModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ApplicationFormMaster">
+        <EntityType Name="ApplicationForm">
           <Key>
             <PropertyRef Name="ApplicationFormId" />
           </Key>
           <Property Name="ApplicationFormId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ApplicationFormName" Type="varchar" MaxLength="20" />
+          <Property Name="AppFormTemplateId" Type="int" />
+          <Property Name="AdmissionNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="Approve" Type="tinyint" />
+          <Property Name="ApprovedDt" Type="datetime" />
+          <Property Name="ApprovedBy" Type="int" />
+          <Property Name="Comments" Type="varchar" MaxLength="200" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentDt" Type="datetime" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ReceiptNumber" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentReceivedBy" Type="int" />
+          <Property Name="PaymentComments" Type="varchar" MaxLength="200" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="Active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplicationFormDetail">
+          <Key>
+            <PropertyRef Name="AppFormDetailId" />
+          </Key>
+          <Property Name="AppFormDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationFormId" Type="int" />
+          <Property Name="AppFormFieldId" Type="int" />
+          <Property Name="Value" Type="varchar" MaxLength="500" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="Active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplicationFormDocument">
+          <Key>
+            <PropertyRef Name="AppFormDocumentID" />
+          </Key>
+          <Property Name="AppFormDocumentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationFormId" Type="int" />
+          <Property Name="DocumentName" Type="varchar" MaxLength="100" />
+          <Property Name="DocumentLink" Type="varchar" MaxLength="100" />
+          <Property Name="ReviewStatus" Type="tinyint" />
+          <Property Name="ReviewdBy" Type="int" />
+          <Property Name="Comments" Type="varchar" MaxLength="200" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="Active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplicationFormExamResult">
+          <Key>
+            <PropertyRef Name="AppFormExamResultID" />
+          </Key>
+          <Property Name="AppFormExamResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationFormId" Type="int" />
+          <Property Name="ExamType" Type="varchar" MaxLength="50" />
+          <Property Name="Marks" Type="varchar" MaxLength="50" />
+          <Property Name="Result" Type="varchar" MaxLength="20" />
+          <Property Name="Comments" Type="varchar" MaxLength="200" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="Active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplicationFormFeeAssociation">
+          <Key>
+            <PropertyRef Name="AppFormFeeId" />
+          </Key>
+          <Property Name="AppFormFeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppFormTemplateId" Type="int" Nullable="false" />
+          <Property Name="FeeId" Type="int" Nullable="false" />
+          <Property Name="UniversityId" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplicationFormField">
+          <Key>
+            <PropertyRef Name="AppFormFieldId" />
+          </Key>
+          <Property Name="AppFormFieldId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppFormGroupID" Type="int" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="50" />
+          <Property Name="FieldName" Type="varchar" MaxLength="50" />
+          <Property Name="FieldDataType" Type="varchar" MaxLength="50" />
+          <Property Name="FieldOrder" Type="tinyint" />
+          <Property Name="FieldDropDownValue" Type="varchar" MaxLength="500" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="Active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplicationFormGroup">
+          <Key>
+            <PropertyRef Name="AppFormGroupId" />
+          </Key>
+          <Property Name="AppFormGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppFormGroupName" Type="varchar" MaxLength="50" />
+          <Property Name="EnableToUser" Type="varchar" MaxLength="50" />
+          <Property Name="AppFormTemplateId" Type="int" />
+          <Property Name="UniversityId" Type="int" />
+          <Property Name="Active" Type="tinyint" />
+          <Property Name="lastupdateddt" Type="datetime" />
+          <Property Name="lastupdatedby" Type="int" />
+        </EntityType>
+        <EntityType Name="ApplicationFormTemplate">
+          <Key>
+            <PropertyRef Name="AppFormTemplateId" />
+          </Key>
+          <Property Name="AppFormTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppFormTemplateName" Type="varchar" MaxLength="20" />
           <Property Name="UniversityId" Type="int" />
           <Property Name="Active" Type="tinyint" />
           <Property Name="lastupdateddt" Type="datetime" />
@@ -354,6 +459,15 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
         </EntityType>
+        <Function Name="fValidateToken" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetAppFormTemplateDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="GetApplicationFormDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
@@ -397,7 +511,7 @@
         </Function>
         <Function Name="GetChapterDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
-          <Parameter Name="chapterid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="GetChapterList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -484,6 +598,8 @@
         </Function>
         <Function Name="GetSubjectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetTaskDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -545,8 +661,7 @@
         </Function>
         <Function Name="RemoveChapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
-          <Parameter Name="chapterid" Type="int" Mode="In" />
-          <Parameter Name="updatedby" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="RemoveClassRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -554,8 +669,7 @@
         </Function>
         <Function Name="RemoveCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
-          <Parameter Name="courseid" Type="int" Mode="In" />
-          <Parameter Name="updatedby" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="RemoveExamination" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -619,13 +733,7 @@
         </Function>
         <Function Name="UpdateChapter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
-          <Parameter Name="chapterid" Type="int" Mode="In" />
-          <Parameter Name="chapternumber" Type="varchar" Mode="In" />
-          <Parameter Name="chaptertitle" Type="varchar" Mode="In" />
-          <Parameter Name="modeofteaching" Type="varchar" Mode="In" />
-          <Parameter Name="chapterdetails" Type="varchar" Mode="In" />
-          <Parameter Name="sks" Type="int" Mode="In" />
-          <Parameter Name="updatedby" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="UpdateClassRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -633,13 +741,7 @@
         </Function>
         <Function Name="UpdateCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
-          <Parameter Name="courseid" Type="int" Mode="In" />
-          <Parameter Name="coursecode" Type="varchar" Mode="In" />
-          <Parameter Name="coursename" Type="varchar" Mode="In" />
-          <Parameter Name="sks" Type="int" Mode="In" />
-          <Parameter Name="coursetype" Type="char" Mode="In" />
-          <Parameter Name="coursegroup" Type="varchar" Mode="In" />
-          <Parameter Name="updatedby" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="UpdateExamination" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -654,6 +756,9 @@
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="UpdateSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="UpdateSubject_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
@@ -662,7 +767,14 @@
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <EntityContainer Name="edurp_devModelStoreContainer">
-          <EntitySet Name="ApplicationFormMaster" EntityType="Self.ApplicationFormMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationForm" EntityType="Self.ApplicationForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationFormDetail" EntityType="Self.ApplicationFormDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationFormDocument" EntityType="Self.ApplicationFormDocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationFormExamResult" EntityType="Self.ApplicationFormExamResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationFormFeeAssociation" EntityType="Self.ApplicationFormFeeAssociation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationFormField" EntityType="Self.ApplicationFormField" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationFormGroup" EntityType="Self.ApplicationFormGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationFormTemplate" EntityType="Self.ApplicationFormTemplate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BatchApplicationFormAssociation" EntityType="Self.BatchApplicationFormAssociation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BatchFeeAssociation" EntityType="Self.BatchFeeAssociation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BatchMaster" EntityType="Self.BatchMaster" Schema="dbo" store:Type="Tables" />
@@ -693,12 +805,117 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="edurp_devModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ApplicationFormMaster">
+        <EntityType Name="ApplicationForm">
           <Key>
             <PropertyRef Name="ApplicationFormId" />
           </Key>
           <Property Name="ApplicationFormId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ApplicationFormName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AppFormTemplateId" Type="Int32" />
+          <Property Name="AdmissionNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="Approve" Type="Byte" />
+          <Property Name="ApprovedDt" Type="DateTime" Precision="3" />
+          <Property Name="ApprovedBy" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentDt" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ReceiptNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentReceivedBy" Type="Int32" />
+          <Property Name="PaymentComments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="Active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicationFormDetail">
+          <Key>
+            <PropertyRef Name="AppFormDetailId" />
+          </Key>
+          <Property Name="AppFormDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationFormId" Type="Int32" />
+          <Property Name="AppFormFieldId" Type="Int32" />
+          <Property Name="Value" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="Active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicationFormDocument">
+          <Key>
+            <PropertyRef Name="AppFormDocumentID" />
+          </Key>
+          <Property Name="AppFormDocumentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationFormId" Type="Int32" />
+          <Property Name="DocumentName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentLink" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewStatus" Type="Byte" />
+          <Property Name="ReviewdBy" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="Active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicationFormExamResult">
+          <Key>
+            <PropertyRef Name="AppFormExamResultID" />
+          </Key>
+          <Property Name="AppFormExamResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationFormId" Type="Int32" />
+          <Property Name="ExamType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Marks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Result" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="Active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicationFormFeeAssociation">
+          <Key>
+            <PropertyRef Name="AppFormFeeId" />
+          </Key>
+          <Property Name="AppFormFeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppFormTemplateId" Type="Int32" Nullable="false" />
+          <Property Name="FeeId" Type="Int32" Nullable="false" />
+          <Property Name="UniversityId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicationFormField">
+          <Key>
+            <PropertyRef Name="AppFormFieldId" />
+          </Key>
+          <Property Name="AppFormFieldId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppFormGroupID" Type="Int32" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FieldName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FieldDataType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FieldOrder" Type="Byte" />
+          <Property Name="FieldDropDownValue" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="Active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicationFormGroup">
+          <Key>
+            <PropertyRef Name="AppFormGroupId" />
+          </Key>
+          <Property Name="AppFormGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppFormGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnableToUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AppFormTemplateId" Type="Int32" />
+          <Property Name="UniversityId" Type="Int32" />
+          <Property Name="Active" Type="Byte" />
+          <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
+          <Property Name="lastupdatedby" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ApplicationFormTemplate">
+          <Key>
+            <PropertyRef Name="AppFormTemplateId" />
+          </Key>
+          <Property Name="AppFormTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppFormTemplateName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="UniversityId" Type="Int32" />
           <Property Name="Active" Type="Byte" />
           <Property Name="lastupdateddt" Type="DateTime" Precision="3" />
@@ -1043,7 +1260,14 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityContainer Name="edurp_devEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ApplicationFormMasters" EntityType="Self.ApplicationFormMaster" />
+          <EntitySet Name="ApplicationForms" EntityType="Self.ApplicationForm" />
+          <EntitySet Name="ApplicationFormDetails" EntityType="Self.ApplicationFormDetail" />
+          <EntitySet Name="ApplicationFormDocuments" EntityType="Self.ApplicationFormDocument" />
+          <EntitySet Name="ApplicationFormExamResults" EntityType="Self.ApplicationFormExamResult" />
+          <EntitySet Name="ApplicationFormFeeAssociations" EntityType="Self.ApplicationFormFeeAssociation" />
+          <EntitySet Name="ApplicationFormFields" EntityType="Self.ApplicationFormField" />
+          <EntitySet Name="ApplicationFormGroups" EntityType="Self.ApplicationFormGroup" />
+          <EntitySet Name="ApplicationFormTemplates" EntityType="Self.ApplicationFormTemplate" />
           <EntitySet Name="BatchApplicationFormAssociations" EntityType="Self.BatchApplicationFormAssociation" />
           <EntitySet Name="BatchFeeAssociations" EntityType="Self.BatchFeeAssociation" />
           <EntitySet Name="BatchMasters" EntityType="Self.BatchMaster" />
@@ -1068,18 +1292,22 @@
           <EntitySet Name="UniversityMasters" EntityType="Self.UniversityMaster" />
           <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
           <EntitySet Name="UserUniversityAssociations" EntityType="Self.UserUniversityAssociation" />
-          <FunctionImport Name="GetApplicationFormDetail" ReturnType="Collection(edurp_devModel.GetApplicationFormDetail_Result)">
+          <FunctionImport Name="GetAppFormTemplateDetail" ReturnType="Collection(edurp_devModel.GetAppFormTemplateDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetApplicationFormList" ReturnType="Collection(edurp_devModel.GetApplicationFormList_Result)">
-            <Parameter Name="universityid" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="GetBatchApplicationFormList" ReturnType="Collection(edurp_devModel.GetBatchApplicationFormList_Result)">
+          <FunctionImport Name="GetApplicationFormDetail">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetBatchApplicationFormNotLinkedList" ReturnType="Collection(edurp_devModel.GetBatchApplicationFormNotLinkedList_Result)">
+          <FunctionImport Name="GetApplicationFormList">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchApplicationFormList">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetBatchApplicationFormNotLinkedList">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
@@ -1111,7 +1339,7 @@
           </FunctionImport>
           <FunctionImport Name="GetChapterDetail" ReturnType="Collection(edurp_devModel.GetChapterDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
-            <Parameter Name="chapterid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetChapterList" ReturnType="Collection(edurp_devModel.GetChapterList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1198,6 +1426,8 @@
           </FunctionImport>
           <FunctionImport Name="GetSubjectList" ReturnType="Collection(edurp_devModel.GetSubjectList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetTaskDetail" ReturnType="Collection(edurp_devModel.GetTaskDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1259,8 +1489,7 @@
           </FunctionImport>
           <FunctionImport Name="RemoveChapter">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
-            <Parameter Name="chapterid" Mode="In" Type="Int32" />
-            <Parameter Name="updatedby" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RemoveClassRoom">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1268,8 +1497,7 @@
           </FunctionImport>
           <FunctionImport Name="RemoveCourse">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
-            <Parameter Name="courseid" Mode="In" Type="Int32" />
-            <Parameter Name="updatedby" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="RemoveExamination">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1333,13 +1561,7 @@
           </FunctionImport>
           <FunctionImport Name="UpdateChapter">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
-            <Parameter Name="chapterid" Mode="In" Type="Int32" />
-            <Parameter Name="chapternumber" Mode="In" Type="String" />
-            <Parameter Name="chaptertitle" Mode="In" Type="String" />
-            <Parameter Name="modeofteaching" Mode="In" Type="String" />
-            <Parameter Name="chapterdetails" Mode="In" Type="String" />
-            <Parameter Name="sks" Mode="In" Type="Int32" />
-            <Parameter Name="updatedby" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdateClassRoom">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1347,13 +1569,7 @@
           </FunctionImport>
           <FunctionImport Name="UpdateCourse">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
-            <Parameter Name="courseid" Mode="In" Type="Int32" />
-            <Parameter Name="coursecode" Mode="In" Type="String" />
-            <Parameter Name="coursename" Mode="In" Type="String" />
-            <Parameter Name="sks" Mode="In" Type="Int32" />
-            <Parameter Name="coursetype" Mode="In" Type="String" />
-            <Parameter Name="coursegroup" Mode="In" Type="String" />
-            <Parameter Name="updatedby" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdateExamination">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1368,6 +1584,9 @@
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdateSubject">
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateSubject_Test">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
@@ -1376,22 +1595,14 @@
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="GetApplicationFormDetail_Result">
-          <Property Type="Int32" Name="ApplicationFormId" Nullable="false" />
-          <Property Type="String" Name="ApplicationFormName" Nullable="true" MaxLength="20" />
-        </ComplexType>
-        <ComplexType Name="GetApplicationFormList_Result">
-          <Property Type="Int32" Name="ApplicationFormId" Nullable="false" />
-          <Property Type="String" Name="ApplicationFormName" Nullable="true" MaxLength="20" />
-        </ComplexType>
-        <ComplexType Name="GetBatchApplicationFormList_Result">
-          <Property Type="Int32" Name="BatchId" Nullable="false" />
-          <Property Type="Int32" Name="ApplicationFormId" Nullable="false" />
-          <Property Type="String" Name="ApplicationFormName" Nullable="true" MaxLength="20" />
-        </ComplexType>
-        <ComplexType Name="GetBatchApplicationFormNotLinkedList_Result">
-          <Property Type="Int32" Name="ApplicationFormId" Nullable="false" />
-          <Property Type="String" Name="ApplicationFormName" Nullable="true" MaxLength="20" />
+        <ComplexType Name="GetAppFormTemplateDetail_Result">
+          <Property Type="Int32" Name="AppFormTemplateId" Nullable="false" />
+          <Property Type="Int32" Name="AppFormGroupId" Nullable="false" />
+          <Property Type="String" Name="AppFormGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="AppFormFieldId" Nullable="false" />
+          <Property Type="String" Name="DisplayName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FieldName" Nullable="true" MaxLength="50" />
+          <Property Type="Byte" Name="FieldOrder" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetBatchDetail_Result">
           <Property Type="Int32" Name="BatchId" Nullable="false" />
@@ -1655,11 +1866,123 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="edurp_devModelStoreContainer" CdmEntityContainer="edurp_devEntities">
-          <EntitySetMapping Name="ApplicationFormMasters">
-            <EntityTypeMapping TypeName="edurp_devModel.ApplicationFormMaster">
-              <MappingFragment StoreEntitySet="ApplicationFormMaster">
+          <EntitySetMapping Name="ApplicationForms">
+            <EntityTypeMapping TypeName="edurp_devModel.ApplicationForm">
+              <MappingFragment StoreEntitySet="ApplicationForm">
                 <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
-                <ScalarProperty Name="ApplicationFormName" ColumnName="ApplicationFormName" />
+                <ScalarProperty Name="AppFormTemplateId" ColumnName="AppFormTemplateId" />
+                <ScalarProperty Name="AdmissionNumber" ColumnName="AdmissionNumber" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Approve" ColumnName="Approve" />
+                <ScalarProperty Name="ApprovedDt" ColumnName="ApprovedDt" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="PaymentDt" ColumnName="PaymentDt" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="PaymentReceivedBy" ColumnName="PaymentReceivedBy" />
+                <ScalarProperty Name="PaymentComments" ColumnName="PaymentComments" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationFormDetails">
+            <EntityTypeMapping TypeName="edurp_devModel.ApplicationFormDetail">
+              <MappingFragment StoreEntitySet="ApplicationFormDetail">
+                <ScalarProperty Name="AppFormDetailId" ColumnName="AppFormDetailId" />
+                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
+                <ScalarProperty Name="AppFormFieldId" ColumnName="AppFormFieldId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationFormDocuments">
+            <EntityTypeMapping TypeName="edurp_devModel.ApplicationFormDocument">
+              <MappingFragment StoreEntitySet="ApplicationFormDocument">
+                <ScalarProperty Name="AppFormDocumentID" ColumnName="AppFormDocumentID" />
+                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="DocumentLink" ColumnName="DocumentLink" />
+                <ScalarProperty Name="ReviewStatus" ColumnName="ReviewStatus" />
+                <ScalarProperty Name="ReviewdBy" ColumnName="ReviewdBy" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationFormExamResults">
+            <EntityTypeMapping TypeName="edurp_devModel.ApplicationFormExamResult">
+              <MappingFragment StoreEntitySet="ApplicationFormExamResult">
+                <ScalarProperty Name="AppFormExamResultID" ColumnName="AppFormExamResultID" />
+                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
+                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
+                <ScalarProperty Name="Marks" ColumnName="Marks" />
+                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationFormFeeAssociations">
+            <EntityTypeMapping TypeName="edurp_devModel.ApplicationFormFeeAssociation">
+              <MappingFragment StoreEntitySet="ApplicationFormFeeAssociation">
+                <ScalarProperty Name="AppFormFeeId" ColumnName="AppFormFeeId" />
+                <ScalarProperty Name="AppFormTemplateId" ColumnName="AppFormTemplateId" />
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationFormFields">
+            <EntityTypeMapping TypeName="edurp_devModel.ApplicationFormField">
+              <MappingFragment StoreEntitySet="ApplicationFormField">
+                <ScalarProperty Name="AppFormFieldId" ColumnName="AppFormFieldId" />
+                <ScalarProperty Name="AppFormGroupID" ColumnName="AppFormGroupID" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="FieldDataType" ColumnName="FieldDataType" />
+                <ScalarProperty Name="FieldOrder" ColumnName="FieldOrder" />
+                <ScalarProperty Name="FieldDropDownValue" ColumnName="FieldDropDownValue" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationFormGroups">
+            <EntityTypeMapping TypeName="edurp_devModel.ApplicationFormGroup">
+              <MappingFragment StoreEntitySet="ApplicationFormGroup">
+                <ScalarProperty Name="AppFormGroupId" ColumnName="AppFormGroupId" />
+                <ScalarProperty Name="AppFormGroupName" ColumnName="AppFormGroupName" />
+                <ScalarProperty Name="EnableToUser" ColumnName="EnableToUser" />
+                <ScalarProperty Name="AppFormTemplateId" ColumnName="AppFormTemplateId" />
+                <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
+                <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationFormTemplates">
+            <EntityTypeMapping TypeName="edurp_devModel.ApplicationFormTemplate">
+              <MappingFragment StoreEntitySet="ApplicationFormTemplate">
+                <ScalarProperty Name="AppFormTemplateId" ColumnName="AppFormTemplateId" />
+                <ScalarProperty Name="AppFormTemplateName" ColumnName="AppFormTemplateName" />
                 <ScalarProperty Name="UniversityId" ColumnName="UniversityId" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="lastupdateddt" ColumnName="lastupdateddt" />
@@ -2029,39 +2352,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetApplicationFormDetail" FunctionName="edurp_devModel.Store.GetApplicationFormDetail">
+          <FunctionImportMapping FunctionImportName="GetAppFormTemplateDetail" FunctionName="edurp_devModel.Store.GetAppFormTemplateDetail">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="edurp_devModel.GetApplicationFormDetail_Result">
-                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
-                <ScalarProperty Name="ApplicationFormName" ColumnName="ApplicationFormName" />
+              <ComplexTypeMapping TypeName="edurp_devModel.GetAppFormTemplateDetail_Result">
+                <ScalarProperty Name="AppFormTemplateId" ColumnName="AppFormTemplateId" />
+                <ScalarProperty Name="AppFormGroupId" ColumnName="AppFormGroupId" />
+                <ScalarProperty Name="AppFormGroupName" ColumnName="AppFormGroupName" />
+                <ScalarProperty Name="AppFormFieldId" ColumnName="AppFormFieldId" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="FieldOrder" ColumnName="FieldOrder" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetApplicationFormList" FunctionName="edurp_devModel.Store.GetApplicationFormList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="edurp_devModel.GetApplicationFormList_Result">
-                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
-                <ScalarProperty Name="ApplicationFormName" ColumnName="ApplicationFormName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetBatchApplicationFormList" FunctionName="edurp_devModel.Store.GetBatchApplicationFormList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchApplicationFormList_Result">
-                <ScalarProperty Name="BatchId" ColumnName="BatchId" />
-                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
-                <ScalarProperty Name="ApplicationFormName" ColumnName="ApplicationFormName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetBatchApplicationFormNotLinkedList" FunctionName="edurp_devModel.Store.GetBatchApplicationFormNotLinkedList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="edurp_devModel.GetBatchApplicationFormNotLinkedList_Result">
-                <ScalarProperty Name="ApplicationFormId" ColumnName="ApplicationFormId" />
-                <ScalarProperty Name="ApplicationFormName" ColumnName="ApplicationFormName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetApplicationFormDetail" FunctionName="edurp_devModel.Store.GetApplicationFormDetail" />
+          <FunctionImportMapping FunctionImportName="GetApplicationFormList" FunctionName="edurp_devModel.Store.GetApplicationFormList" />
+          <FunctionImportMapping FunctionImportName="GetBatchApplicationFormList" FunctionName="edurp_devModel.Store.GetBatchApplicationFormList" />
+          <FunctionImportMapping FunctionImportName="GetBatchApplicationFormNotLinkedList" FunctionName="edurp_devModel.Store.GetBatchApplicationFormNotLinkedList" />
           <FunctionImportMapping FunctionImportName="GetBatchDetail" FunctionName="edurp_devModel.Store.GetBatchDetail">
             <ResultMapping>
               <ComplexTypeMapping TypeName="edurp_devModel.GetBatchDetail_Result">
@@ -2501,6 +2808,7 @@
           <FunctionImportMapping FunctionImportName="UpdateFee" FunctionName="edurp_devModel.Store.UpdateFee" />
           <FunctionImportMapping FunctionImportName="UpdateProgramStudy" FunctionName="edurp_devModel.Store.UpdateProgramStudy" />
           <FunctionImportMapping FunctionImportName="UpdateSubject" FunctionName="edurp_devModel.Store.UpdateSubject" />
+          <FunctionImportMapping FunctionImportName="UpdateSubject_Test" FunctionName="edurp_devModel.Store.UpdateSubject_Test" />
           <FunctionImportMapping FunctionImportName="UpdateTask" FunctionName="edurp_devModel.Store.UpdateTask" />
         </EntityContainerMapping>
       </Mapping>

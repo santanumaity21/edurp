@@ -9,10 +9,11 @@
 
 namespace EduRp.Data
 {
+    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class Fee
+    public partial class Fee : BaseEntity
     {
         public int FeeId { get; set; }
         public string FeeLabel { get; set; }

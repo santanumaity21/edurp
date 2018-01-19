@@ -14,17 +14,10 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = chapterMasterService.GetList(id) });
         }
         [HttpPost]
-        public IHttpActionResult Post(ChapterMaster chapterMaster)
-        {
-            var isSave = chapterMasterService.SaveChapterMaster(chapterMaster);
-            if (isSave == true)
-                return Ok();
-            return BadRequest();
-        }
         [HttpPut]
-        public IHttpActionResult Put(ChapterMaster chapterMaster)
+        public IHttpActionResult Save(int? id, ChapterMaster chapterMaster)
         {
-            var isUpdate = chapterMasterService.UpdateChapterMaster(chapterMaster.ChapterId, chapterMaster);
+            var isUpdate = chapterMasterService.InsUpdChapterMaster(id, chapterMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();

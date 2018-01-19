@@ -11,10 +11,8 @@ namespace EduRp.Service.IService
     {
         List<BatchMaster> GetList();
 
-        bool SaveBatchMaster(BatchMaster batchMaster);
+        bool InsUpdBatchMaster(int? id, BatchMaster batchMaster);
 
-        bool UpdateBatchMaster(int id, BatchMaster batchMaster);
-
-        bool DeleteBatchMaster(int id);
+        bool DeleteBatchMaster(int? id, BatchMaster batchMaster);
     }
 }

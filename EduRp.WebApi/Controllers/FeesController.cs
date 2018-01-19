@@ -14,25 +14,18 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = feeService.GetList(id) });
         }
         [HttpPost]
-        public IHttpActionResult Post(Fee fee)
-        {
-            var isSave = feeService.SaveFee(fee);
-            if (isSave == true)
-                return Ok();
-            return BadRequest();
-        }
         [HttpPut]
-        public IHttpActionResult Put(Fee fee)
+        public IHttpActionResult Save(int? id,Fee fee)
         {
-            var isUpdate = feeService.UpdateFee(fee.FeeId, fee);
+            var isUpdate = feeService.InsUpdFee(id,fee);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(int? id,Fee fee)
         {
-            var isDeleted = feeService.DeleteFee(id);
+            var isDeleted = feeService.DeleteFee(id,fee);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

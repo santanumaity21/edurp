@@ -14,25 +14,18 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = taskService.GetList(id) });
         }
         [HttpPost]
-        public IHttpActionResult Post(Task task)
-        {
-            var isSave = taskService.SaveTask(task);
-            if (isSave == true)
-                return Ok();
-            return BadRequest();
-        }
         [HttpPut]
-        public IHttpActionResult Put(Task task)
+        public IHttpActionResult Save(int? id,Task task)
         {
-            var isUpdate = taskService.UpdateTask(task.TaskId, task);
+            var isUpdate = taskService.InsUpdTask(id,task);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(int? id, Task task)
         {
-            var isDeleted = taskService.DeleteTask(id);
+            var isDeleted = taskService.DeleteTask(id,task);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

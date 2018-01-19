@@ -11,10 +11,8 @@ namespace EduRp.Service.IService
     {
         List<GetCourseList_Result> GetList(int id);
 
-        bool SaveCourseMaster(CourseMaster courseMaster);
+        bool InsUpdCourseMaster(int? id, CourseMaster courseMaster);
 
-        bool UpdateCourseMaster(int id, CourseMaster courseMaster);
-
-        bool DeleteCourseMaster(int id);
+        bool DeleteCourseMaster(int? id, CourseMaster courseMaster);
     }
 }

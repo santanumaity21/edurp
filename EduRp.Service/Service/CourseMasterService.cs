@@ -1,5 +1,6 @@
 ﻿using EduRp.Data;
 using EduRp.Service.IService;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +17,32 @@ namespace EduRp.Service.Service
             return db.GetCourseList(id).ToList();
         }
 
-        public bool SaveCourseMaster(CourseMaster courseMaster)
+        public bool InsUpdCourseMaster(int? id, CourseMaster courseMaster)
         {
             try
             {
-                db.CourseMasters.Add(courseMaster);
-                db.SaveChanges();
+                var obj = JsonConvert.SerializeObject
+                 (new CourseMaster
+                 {
+                     CourseId = courseMaster.CourseId,
+                     CourseCode = courseMaster.CourseCode,
+                     CourseName = courseMaster.CourseName,
+                     CourseGroup = courseMaster.CourseGroup,
+                     CourseType = courseMaster.CourseType,
+                     SKS = courseMaster.SKS,
+                     UserId = courseMaster.UserId,
+
+                 });
+
+
+                var CourseObj = obj.ToString();
+
+                var JsonObj = db.UpdateCourse(id, CourseObj);
+
                 return true;
+                //db.CourseMasters.Add(courseMaster);
+                //db.SaveChanges();
+                //return true;
             }
 
             catch (Exception ex)
@@ -33,29 +53,29 @@ namespace EduRp.Service.Service
            
         }
 
-        public bool UpdateCourseMaster(int id,CourseMaster courseMaster)
+        public bool DeleteCourseMaster(int? id, CourseMaster courseMaster)
         {
             try
             {
-                db.Entry(courseMaster).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                var obj = JsonConvert.SerializeObject
+                (new CourseMaster
+                {
+                    CourseId = courseMaster.CourseId,
+                    UserId = courseMaster.UserId,
+
+                });
+
+
+                var CourseObj = obj.ToString();
+
+                var JsonObj = db.RemoveCourse(id, CourseObj);
+
                 return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        
-        }
-        public bool DeleteCourseMaster(int id)
-        {
-            try
-            {
-                var courseMaster = db.CourseMasters.Where(x => x.CourseId == id).FirstOrDefault();
-                if (courseMaster == null) return false;
-                db.Entry(courseMaster).State = System.Data.Entity.EntityState.Deleted;
-                db.SaveChanges();
-                return true;
+                //var courseMaster = db.CourseMasters.Where(x => x.CourseId == id).FirstOrDefault();
+                //if (courseMaster == null) return false;
+                //db.Entry(courseMaster).State = System.Data.Entity.EntityState.Deleted;
+                //db.SaveChanges();
+                //return true;
             }
             catch (Exception ex)
             {

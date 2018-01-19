@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using EduRp.Data;
 using EduRp.Service.IService;
+using Newtonsoft.Json;
 
 namespace EduRp.Service.Service
 {
@@ -15,37 +16,39 @@ namespace EduRp.Service.Service
             return db.GetChapterList(id).ToList();
         }
 
-        public bool SaveChapterMaster(ChapterMaster chapterMaster)
+        public bool InsUpdChapterMaster(int? id, ChapterMaster chapterMaster)
         {
             try
             {
-                db.ChapterMasters.Add(chapterMaster);
-                db.SaveChanges();
-                return true;
-            }
-               
-            catch (Exception ex)
-            {
-                return false;
-            }
-             throw new NotImplementedException();
-        }
+                var obj = JsonConvert.SerializeObject
+                 (new ChapterMaster
+                 {
+                     ChapterId = chapterMaster.ChapterId,
+                     ChapterDetails = chapterMaster.ChapterDetails,
+                     ChapterTitle = chapterMaster.ChapterTitle,
+                     ChapterNumber = chapterMaster.ChapterNumber,
+                     ModeOfTeaching = chapterMaster.ModeOfTeaching,
+                     SKS = chapterMaster.SKS,
+                     UserId = chapterMaster.UserId,
 
-        public bool UpdateChapterMaster(int id, ChapterMaster chapterMaster)
-        {
-            try
-            {
-                db.Entry(chapterMaster).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                 });
+
+                var ChptrObj = obj.ToString();
+
+                var JsonObj = db.UpdateClassRoom(id, ChptrObj);
+
                 return true;
+                //db.ChapterMasters.Add(chapterMaster);
+                //db.SaveChanges();
+                //return true;
             }
-            catch(Exception ex)
+
+            catch (Exception ex)
             {
                 return false;
             }
             throw new NotImplementedException();
         }
-        
 
         public bool DeleteChaptertMaster(int id)
         {

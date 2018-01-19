@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Web.Script.Serialization;
 using EduRp.Data;
 using EduRp.Service.IService;
+using Newtonsoft.Json;
 
 namespace EduRp.Service.Service
 {
@@ -11,18 +15,40 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
-        public List<GetSubjectList_Result> GetList(int id)
+        public List<GetSubjectList_Result> GetList(int? id, int? userid,string tokenid)
         {
-                return db.GetSubjectList(id).ToList();
+            return db.GetSubjectList(id, userid, tokenid).ToList();
         }
-
-        public bool SaveSubjectMaster(SubjectMaster subjectMaster)
+        //public List<GetSubjectByCourseId_Result> GetByCourse(int id, int CourseId)
+        //{
+        //    return db.GetSubjectByCourseId(id, CourseId).ToList();
+        //}
+   
+        public bool InsUpdSubjectMaster(SubjectMaster subjectMaster)
         {
             try
             {
-                db.SubjectMasters.Add(subjectMaster);
-                db.SaveChanges();
+                var obj = JsonConvert.SerializeObject
+                   (new SubjectMaster
+                   {
+                       SubjectId = subjectMaster.SubjectId,
+                       SubjectName = subjectMaster.SubjectName,
+                       SubjectCode = subjectMaster.SubjectCode,
+                       SKS = subjectMaster.SKS,
+                       UserId = subjectMaster.UserId,
+                       TokenId = subjectMaster.TokenId,
+                   });
+
+
+                var SubjObj = obj.ToString();
+
+                var JsonObj = db.UpdateSubject(SubjObj);
+
                 return true;
+
+                //db.Entry(subjectMaster).State = System.Data.Entity.EntityState.Modified;
+                //db.SaveChanges();
+                //return true;
 
             }
             catch (Exception ex)
@@ -31,30 +57,24 @@ namespace EduRp.Service.Service
             }
             throw new NotImplementedException();
         }
-        public bool UpdateSubjectMaster(int id, SubjectMaster subjectMaster)
+        public bool DeleteSubjectMaster(int? id, SubjectMaster subjectMaster)
         {
             try
             {
-                db.Entry(subjectMaster).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                var obj = JsonConvert.SerializeObject
+                  (new SubjectMaster
+                  {
+                      SubjectId = subjectMaster.SubjectId,
+                      UserId = subjectMaster.UserId
+                  });
+
+
+                var SubjObj = obj.ToString();
+
+                var JsonObj = db.RemoveSubject(id, SubjObj);
+
                 return true;
 
-            }
-            catch(Exception ex)
-            {
-                return false;
-            }
-            throw new NotImplementedException();
-        }
-        public bool DeleteSubjectMaster(int id)
-        {
-            try
-            {
-                var subject = db.SubjectMasters.Where(x => x.SubjectId == id).FirstOrDefault();
-                if (subject == null) return false;
-                db.Entry(subject).State = System.Data.Entity.EntityState.Deleted;
-                db.SaveChanges();
-                return true;
             }
             catch(Exception ex)
             {
