@@ -81,11 +81,8 @@
            
             if (form.$valid) {
                 var postData = {
-                    "batchInsertData":
-                    [{
-                        "SubjectCode": $scope.modSubjectObj.SubjectCode,
-                        "SubjectName": $scope.modSubjectObj.SubjectName
-                    }]
+                    "SubjectCode": $scope.modSubjectObj.SubjectCode,
+                    "SubjectName": $scope.modSubjectObj.SubjectName
                 };
                 subjectListService.updateSubject($scope.modSubjectObj).then(function (data) {
                     angular.forEach($scope.filteredSubjectData, function (v, k) {
