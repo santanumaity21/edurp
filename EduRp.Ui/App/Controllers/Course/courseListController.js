@@ -52,11 +52,8 @@
         $scope.updateCourseDetails = function (form , cid) {
             if (form.$valid) {
                 var postData = {
-                    "batchInsertData":
-                    [{
-                        "CourseCode": $scope.modCourseObj.CourseCode,
-                        "CourseName": $scope.modCourseObj.CourseName
-                    }]
+                    "CourseCode": $scope.modCourseObj.CourseCode,
+                    "CourseName": $scope.modCourseObj.CourseName
                 };
                 courseListService.updateCourse(postData).then(function (data) {
                     angular.forEach($scope.filteredCourseData, function (v, k) {
@@ -77,11 +74,8 @@
         $scope.addCourseDetails = function (form) {
             if (form.$valid) {
                 var postData = {
-                    "batchInsertData":
-                    [{
-                        "CourseCode": $scope.modCourseObj.CourseCode,
-                        "CourseName": $scope.modCourseObj.CourseName
-                    }]
+                    "CourseCode": $scope.modCourseObj.CourseCode,
+                    "CourseName": $scope.modCourseObj.CourseName
                 };
                 courseListService.addCourse(postData).then(function (data) {
                     $scope.filteredCourseData.push(postData.batchInsertData[0]);

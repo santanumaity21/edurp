@@ -112,7 +112,12 @@
                         <!-- end col -->
                         <!-- end col -->
 
-
+                        <form role="form" enctype="multipart/form-data" name="myForm">
+                            <input type="text" ng-model="fdata.UserName">
+                            <input type="text" ng-model="fdata.FirstName">
+                            <input type="file" file-model ng-model="filesArray" multiple>
+                            <button type="submit" ng-click="upload()">save</button>
+                        </form>
 
                     </div>
                     <!-- end row -->

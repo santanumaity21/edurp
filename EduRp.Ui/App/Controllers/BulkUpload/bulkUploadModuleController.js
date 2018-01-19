@@ -63,7 +63,18 @@
             }
         };
 
+$scope.upload = function() {
+    var fd = new FormData();
+    fd.append("data", angular.toJson($scope.fdata));
+    for (i=0; i<$scope.filesArray.length; i++) {
+        fd.append("file"+i, $scope.filesArray[i]);
+    };
 
+    var config = { headers: {'Content-Type': undefined},
+                   transformRequest: angular.identity
+                 }
+    return $http.post(url, fd, config);
+};
 
 
     };

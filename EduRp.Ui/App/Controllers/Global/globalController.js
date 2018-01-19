@@ -8,9 +8,9 @@
     GlobalController.$inject = ['$scope', '$location', 'AuthService', '$cookieStore'];
 
     function GlobalController($scope, $location, AuthService, $cookieStore) {
-        $cookieStore.put('unversityId', '1');
-        $cookieStore.put('userId', '2');
-        $cookieStore.put('tokenId', '3');
+        $cookieStore.put('UniversityId', '1');
+        $cookieStore.put('UserId', '2');
+        $cookieStore.put('TokenId', '3');
         $scope.$on('$viewContentLoaded', onLoaded);
         $scope.$on('viewContentLoadComplete', onLoadComplete);
 
