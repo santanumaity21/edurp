@@ -15,25 +15,18 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = batchMasterService.GetList() });
         }
         [HttpPost]
-        public IHttpActionResult Post(BatchMaster batchMaster)
-        {
-            var isSave = batchMasterService.SaveBatchMaster(batchMaster);
-            if (isSave == true)
-                return Ok();
-            return BadRequest();
-        }
         [HttpPut]
-        public IHttpActionResult Put(BatchMaster batchMaster)
+        public IHttpActionResult Save(int? id,BatchMaster batchMaster)
         {
-            var isUpdate = batchMasterService.UpdateBatchMaster(batchMaster.BatchId, batchMaster);
+            var isUpdate = batchMasterService.InsUpdBatchMaster(id, batchMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(int? id, BatchMaster batchMaster)
         {
-            var isDeleted = batchMasterService.DeleteBatchMaster(id);
+            var isDeleted = batchMasterService.DeleteBatchMaster(id, batchMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

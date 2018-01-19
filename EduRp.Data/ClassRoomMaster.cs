@@ -9,10 +9,11 @@
 
 namespace EduRp.Data
 {
+    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class ClassRoomMaster
+    public partial class ClassRoomMaster : BaseEntity
     {
         public int ClassRoomId { get; set; }
         public string BuildingCode { get; set; }

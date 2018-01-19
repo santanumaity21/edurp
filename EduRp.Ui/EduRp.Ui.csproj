@@ -319,14 +319,12 @@
     <Content Include="App\Templates\ExaminationType\managePopup.html" />
     <Content Include="App\Templates\Fees\fees.html" />
     <Content Include="App\Templates\Master\master.html" />
-    <Content Include="App\Templates\NotificationType\addEditModalPopup.html" />
     <Content Include="App\Templates\NotificationType\notificationtype.html" />
     <Content Include="App\Templates\ProgramStudy\programStudy.html" />
     <Content Include="App\Templates\Shared\_404.html" />
     <Content Include="App\Templates\StudentAdmissionForm\StudentAdmissionForm.html" />
     <Content Include="App\Templates\Subject\managePopup.html" />
     <Content Include="App\Templates\Subject\subject.html" />
-    <Content Include="App\Templates\Task\addEditModalPopup.html" />
     <Content Include="App\Templates\Task\tasks.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />

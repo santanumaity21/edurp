@@ -9,10 +9,11 @@
 
 namespace EduRp.Data
 {
+    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class BatchMaster
+    public partial class BatchMaster : BaseEntity
     {
         public int BatchId { get; set; }
         public string BatchName { get; set; }

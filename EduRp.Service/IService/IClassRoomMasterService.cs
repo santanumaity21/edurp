@@ -11,10 +11,8 @@ namespace EduRp.Service.IService
     {
         List<GetClassRoomList_Result> GetList(int id);
 
-        bool SaveClassRoomMaster(ClassRoomMaster classRoomMaster);
+        bool InsUpdClassRoomMaster(int? id, ClassRoomMaster classRoomMaster);
 
-        bool UpdateClassRoomMaster(int id, ClassRoomMaster classRoomMaster);
-
-        bool DeleteClassRoomMaster(int id);
+        bool DeleteClassRoomMaster(int? id, ClassRoomMaster classRoomMaster);
     }
 }

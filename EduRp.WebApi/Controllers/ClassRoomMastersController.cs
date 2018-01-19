@@ -16,25 +16,18 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = classRoomMasterService.GetList(id) });
         }
         [HttpPost]
-        public IHttpActionResult Post(ClassRoomMaster classRoomMaster)
-        {
-            var isSave = classRoomMasterService.SaveClassRoomMaster(classRoomMaster);
-            if (isSave == true)
-                return Ok();
-            return BadRequest();
-        }
         [HttpPut]
-        public IHttpActionResult Put(ClassRoomMaster classRoomMaster)
+        public IHttpActionResult Save(int? id,ClassRoomMaster classRoomMaster)
         {
-            var isUpdate = classRoomMasterService.UpdateClassRoomMaster(classRoomMaster.ClassRoomId, classRoomMaster);
+            var isUpdate = classRoomMasterService.InsUpdClassRoomMaster(id, classRoomMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(int? id, ClassRoomMaster classRoomMaster)
         {
-            var isDeleted = classRoomMasterService.DeleteClassRoomMaster(id);
+            var isDeleted = classRoomMasterService.DeleteClassRoomMaster(id, classRoomMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

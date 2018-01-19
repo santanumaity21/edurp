@@ -9,10 +9,11 @@
 
 namespace EduRp.Data
 {
+    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class ChapterMaster
+    public partial class ChapterMaster:BaseEntity
     {
         public int ChapterId { get; set; }
         public string ChapterNumber { get; set; }

@@ -11,9 +11,7 @@ namespace EduRp.Service.IService
     {
         List<GetChapterList_Result> GetList(int id);
 
-        bool SaveChapterMaster(ChapterMaster chapterMaster);
-
-        bool UpdateChapterMaster(int id, ChapterMaster chapterMaster);
+        bool InsUpdChapterMaster(int? id, ChapterMaster chapterMaster);
 
         bool DeleteChaptertMaster(int id);
     }

@@ -19,25 +19,18 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = examinationTypeService.GetList(id) });
         }
         [HttpPost]
-        public IHttpActionResult Post(ExaminationType examinationType)
-        {
-            var isSave = examinationTypeService.SaveExaminationType(examinationType);
-            if (isSave == true)
-                return Ok();
-            return BadRequest();
-        }
         [HttpPut]
-        public IHttpActionResult Put(ExaminationType examinationType)
+        public IHttpActionResult Save(int? id,ExaminationType examinationType)
         {
-            var isUpdate = examinationTypeService.UpdateExaminationType(examinationType.ExaminationId, examinationType);
+            var isUpdate = examinationTypeService.InsUpdExaminationType(id, examinationType);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(int? id,ExaminationType examinationType)
         {
-            var isDeleted = examinationTypeService.DeleteExaminationType(id);
+            var isDeleted = examinationTypeService.DeleteExaminationType(id,examinationType);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

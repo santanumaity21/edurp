@@ -5,9 +5,11 @@ namespace EduRp.Service.IService
 {
     public interface ISubjectMasterService
     {
-        List<GetSubjectList_Result> GetList(int id);
-        bool SaveSubjectMaster(SubjectMaster subjectMaster);
-        bool UpdateSubjectMaster(int id,SubjectMaster subjectMaster);
-        bool DeleteSubjectMaster(int id);
+        List<GetSubjectList_Result> GetList(int? id, int? userid, string tokenid);
+        //List<GetSubjectByCourseId_Result> GetByCourse(int id, int CourseId);
+        //bool SaveSubjectMaster(SubjectMaster subjectMaster);
+        bool InsUpdSubjectMaster(SubjectMaster subjectMaster);
+        bool DeleteSubjectMaster(int? id, SubjectMaster subjectMaster);
+
     }
 }

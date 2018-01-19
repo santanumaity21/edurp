@@ -37,31 +37,34 @@
             return execute('getSubjectList', 'get', null);
 
         };
-        var _addSubject = function (form) {
-            debugger
-            return execute('addSubject', 'post', form);
 
-        };
-        var _updateSubject = function (form) {
+        var _addSubject = function (subdata) {
             debugger
-            return execute('updateSubject', 'put', form);
+            return execute('addSubjects', 'post', subdata);
 
         };
 
-        //var _deleteSubject = function (id) {
-        //   debugger
-        //    return execute('deleteSubject', 'delete', id);
+        var _updateSubject = function (subdata) {
+            debugger
+            return execute('updateSubject', 'put', subdata);
 
-        //};
+        };
+
+        var _deleteSubject = function (subdata) {
+           debugger
+           return execute('deleteSubject', 'delete', subdata);
+
+        };
 
         return {
 
             getSubjectList : _getSubjectList,
-            addSubject : _addSubject,
+            addSubjects : _addSubject,
             updateSubject : _updateSubject,
-            //deleteSubject : _deleteSubject
+            deleteSubject : _deleteSubject
 
         };
 
     }
+
 })();

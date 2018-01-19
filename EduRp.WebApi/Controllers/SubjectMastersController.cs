@@ -6,35 +6,37 @@ using System.Web.Http;
 
 namespace EduRp.WebApi.Controllers
 {
-    public class SubjectMastersController:ApiController
+
+    [Route("api/SubjectMasters")]
+    public class SubjectMastersController : ApiController
     {
         private ISubjectMasterService subjectMasterService = new SubjectMasterService();
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id,int? userid,string tokenid)
         {
-            return Ok(new { results = subjectMasterService.GetList(id)});
+            return Ok(new { results = subjectMasterService.GetList(id, userid, tokenid) });
         }
-        
-        [HttpPost]
-        public IHttpActionResult Post(SubjectMaster subjectMaster)
-        {
-            var isSave = subjectMasterService.SaveSubjectMaster(subjectMaster);
-            if (isSave == true)
-                return Ok();
-            return BadRequest();
-        }
+        //[HttpGet]
+        //[Route("GetByCourse/{id:int?}/{CourseId:int?}")]
+        //public IHttpActionResult GetByCourse(int id, int CourseId)
+        //{
+        //    return Ok(new { results = subjectMasterService.GetByCourse(id, CourseId)});
+        //}
+       
         [HttpPut]
-        public IHttpActionResult Put(SubjectMaster subjectMaster)
+        [HttpPost]     
+        public IHttpActionResult Save(SubjectMaster subjectMaster)
         {
-            var isUpdate = subjectMasterService.UpdateSubjectMaster(subjectMaster.SubjectId, subjectMaster);
+            var isUpdate = subjectMasterService.InsUpdSubjectMaster(subjectMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
+
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(int? id, SubjectMaster subjectMaster)
         {
-            var isDeleted = subjectMasterService.DeleteSubjectMaster(id);
+            var isDeleted = subjectMasterService.DeleteSubjectMaster(id, subjectMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

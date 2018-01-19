@@ -1,5 +1,6 @@
 ﻿using EduRp.Data;
 using EduRp.Service.IService;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,44 +24,53 @@ namespace EduRp.Service.Service
                 return db.GetProgramStudyID(id).ToList(); 
         }
 
-        public bool SaveProgramStudy(ProgramStudy programStudy)
+       
+        public bool InsUpdProgramStudy(int? id, ProgramStudy programStudy)
         {
             try
             {
-                db.ProgramStudies.Add(programStudy);
-                db.SaveChanges();
-                return true;
-            }
+                var obj = JsonConvert.SerializeObject
+                  (new ProgramStudy
+                  {
+                      ProgramStudyId = programStudy.ProgramStudyId,
+                      ProgramStudyCode = programStudy.ProgramStudyCode,
+                      ProgramStudyName = programStudy.ProgramStudyName,
+                      SKS = programStudy.SKS,
+                      AcademicTerm = programStudy.AcademicTerm,
+                      Status= programStudy.Status,
+                      UserId = programStudy.UserId,
+                  });
 
+
+                var PrgmObj = obj.ToString();
+
+                var JsonObj = db.UpdateProgramStudy(id, PrgmObj);
+
+                return true;
+         
+            }
             catch (Exception ex)
             {
                 return false;
             }
             throw new NotImplementedException();
         }
+        public bool DeleteProgramStudy(int? id, ProgramStudy programStudy)
+        {
+            try
+            {
+                var obj = JsonConvert.SerializeObject
+                  (new ProgramStudy
+                  {
+                      ProgramStudyId = programStudy.ProgramStudyId,
+                      UserId = programStudy.UserId,
+                  });
 
-        public bool UpdateProgramStudy(int id, ProgramStudy programStudy)
-        {
-            try
-            {
-                db.Entry(programStudy).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-            throw new NotImplementedException();
-        }
-        public bool DeleteProgramStudy(int id)
-        {
-            try
-            {
-                var programStudy = db.ProgramStudies.Where(x => x.ProgramStudyId == id).FirstOrDefault();
-                if (programStudy == null) return false;
-                db.Entry(programStudy).State = System.Data.Entity.EntityState.Deleted;
-                db.SaveChanges();
+
+                var PrgmObj = obj.ToString();
+
+                var JsonObj = db.UpdateProgramStudy(id, PrgmObj);
+
                 return true;
             }
             catch (Exception ex)

@@ -62,7 +62,7 @@
         $scope.addSubjectDetails = function (form) {
             debugger
             if (form.$valid) {
-                $q.when([subjectListService.addSubject($scope.modSubjectObj)]).then(function (data) {
+                $q.when([subjectListService.addSubjects($scope.modSubjectObj)]).then(function (data) {
                     $scope.filteredSubjectData.push($scope.modSubjectObj);
                     $scope.Modals.closeSubjectContainer();
                 }, function (error) {

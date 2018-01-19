@@ -10,8 +10,7 @@ namespace EduRp.Service.IService
     public interface IExaminationTypeService
     {
         List<GetExaminationList_Result> GetList(int id);
-        bool SaveExaminationType(ExaminationType examinationType);
-        bool UpdateExaminationType(int id, ExaminationType examinationType);
-        bool DeleteExaminationType(int id);
+        bool InsUpdExaminationType(int? id, ExaminationType examinationType);
+        bool DeleteExaminationType(int? id, ExaminationType examinationType);
     }
 }

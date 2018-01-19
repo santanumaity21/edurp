@@ -16,25 +16,18 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = courseMasterService.GetList(id) });
         }
         [HttpPost]
-        public IHttpActionResult Post(CourseMaster courseMaster)
-        {
-            var isSave = courseMasterService.SaveCourseMaster(courseMaster);
-            if (isSave == true)
-                return Ok();
-            return BadRequest();
-        }
         [HttpPut]
-        public IHttpActionResult Put(CourseMaster courseMaster)
+        public IHttpActionResult Save(int? id,CourseMaster courseMaster)
         {
-            var isUpdate = courseMasterService.UpdateCourseMaster(courseMaster.CourseId, courseMaster);
+            var isUpdate = courseMasterService.InsUpdCourseMaster(id, courseMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(int? id, CourseMaster courseMaster)
         {
-            var isDeleted = courseMasterService.DeleteCourseMaster(id);
+            var isDeleted = courseMasterService.DeleteCourseMaster(id, courseMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

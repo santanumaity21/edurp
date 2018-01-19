@@ -1,5 +1,6 @@
 ﻿using EduRp.Data;
 using EduRp.Service.IService;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +17,34 @@ namespace EduRp.Service.Service
             return db.GetClassRoomList(id).ToList();
         }
 
-        public bool SaveClassRoomMaster(ClassRoomMaster classRoomMaster)
+        public bool InsUpdClassRoomMaster(int? id, ClassRoomMaster classRoomMaster)
         {
             try
             {
-                db.ClassRoomMasters.Add(classRoomMaster);
-                db.SaveChanges();
+                var obj = JsonConvert.SerializeObject
+                 (new ClassRoomMaster
+                 {
+                     ClassRoomId = classRoomMaster.ClassRoomId,
+                     CapacityOfRoom = classRoomMaster.CapacityOfRoom,
+                     BuildingCode = classRoomMaster.BuildingCode,
+                     BuildingName = classRoomMaster.BuildingName,
+                     RoomCode = classRoomMaster.RoomCode,
+                     RoomName = classRoomMaster.RoomName,
+                     Facility = classRoomMaster.Facility,
+                     Location = classRoomMaster.Location,
+                     UserId = classRoomMaster.UserId,
+
+                 });
+
+
+                var ClsRmObj = obj.ToString();
+
+                var JsonObj = db.UpdateClassRoom(id, ClsRmObj);
+
                 return true;
+                //db.ClassRoomMasters.Add(classRoomMaster);
+                //db.SaveChanges();
+                //return true;
             }
 
             catch (Exception ex)
@@ -31,30 +53,29 @@ namespace EduRp.Service.Service
             }
 
         }
-
-        public bool UpdateClassRoomMaster(int id,ClassRoomMaster classRoomMaster)
+        public bool DeleteClassRoomMaster(int? id, ClassRoomMaster classRoomMaster)
         {
             try
             {
-                db.Entry(classRoomMaster).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
+                 var obj = JsonConvert.SerializeObject
+                         (new ClassRoomMaster
+                         {
+                             ClassRoomId = classRoomMaster.ClassRoomId,
+                             UserId = classRoomMaster.UserId,
 
-        }
-        public bool DeleteClassRoomMaster(int id)
-        {
-            try
-            {
-                var classRoomMaster = db.ClassRoomMasters.Where(x => x.ClassRoomId == id).FirstOrDefault();
-                if (classRoomMaster == null) return false;
-                db.Entry(classRoomMaster).State = System.Data.Entity.EntityState.Deleted;
-                db.SaveChanges();
+                         });
+
+
+                var ClsRmObj = obj.ToString();
+
+                var JsonObj = db.RemoveClassRoom(id, ClsRmObj);
+
                 return true;
+                //var classRoomMaster = db.ClassRoomMasters.Where(x => x.ClassRoomId == id).FirstOrDefault();
+                //if (classRoomMaster == null) return false;
+                //db.Entry(classRoomMaster).State = System.Data.Entity.EntityState.Deleted;
+                //db.SaveChanges();
+                //return true;
             }
             catch (Exception ex)
             {
