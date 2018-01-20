@@ -1,18 +1,18 @@
 ﻿{
   "results": [
     {
-      "id": 2,
-      "CourseCode": "CSE",
-      "CourseName": "Computer Science and Engineering",
-      "sks": 10,
+      "id": 4,
+      "CourseCode": "CSE 4",
+      "CourseName": "Computer Science and Engineering 4",
+      "sks": 104,
       "courseType": "R",
       "courseGroup": "Degree"
     },
     {
-      "id": 3,
-      "CourseCode": "ECE",
-      "CourseName": "Electronics and Communication",
-      "sks": 20,
+      "id": 5,
+      "CourseCode": "ECE 5",
+      "CourseName": "Electronics and Communication 5",
+      "sks": 205,
       "courseType": "R",
       "courseGroup": "Degree"
     }

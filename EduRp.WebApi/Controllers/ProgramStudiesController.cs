@@ -14,20 +14,20 @@ namespace EduRp.WebApi.Controllers
     {
         private IProgramStudyService programStudyService = new ProgramStudyService();
         // GET api/<controller>
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = programStudyService.GetList(id) });
+            return Ok(new { results = programStudyService.GetList(id,userid,tokenid) });
         }
 
-        public List<GetProgramStudyCourseList_Result>GetByPid(int uid,string pid)
-        {
-            return programStudyService.GetByUid(uid,pid);
-        }
+        //public List<GetProgramStudyCourseList_Result>GetByPid(int uid,string pid)
+        //{
+        //    return programStudyService.GetByUid(uid,pid);
+        //}
         [HttpPost]
         [HttpPut]
         public IHttpActionResult Save(int? id,ProgramStudy programStudy)
         {
-            var isUpdate = programStudyService.InsUpdProgramStudy(id, programStudy);
+            var isUpdate = programStudyService.InsUpdProgramStudy(programStudy.UniversityId, programStudy);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
@@ -35,7 +35,7 @@ namespace EduRp.WebApi.Controllers
         [HttpDelete]
         public IHttpActionResult Delete(int? id, ProgramStudy programStudy)
         {
-            var isDeleted = programStudyService.DeleteProgramStudy(id,programStudy);
+            var isDeleted = programStudyService.DeleteProgramStudy(programStudy.UniversityId, programStudy);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

@@ -1,7 +1,7 @@
 ﻿
             <div class="modal-header">
                 <button type="button" class="close" data-ng-click="Modals.close();">x</button>
-                <h4 class="modal-title">Assign Courses</h4>
+                <h4 class="modal-title">{{'assignCoursesHeader'|translate}}</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -12,7 +12,7 @@
                                 <div class="panel-heading" role="tab" id="headingThreeff">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThreeff" aria-expanded="false" aria-controls="collapseThreeff">
-                                            Filters
+                                            {{'filter'|translate}}
                                         </a>
                                     </h4>
                                 </div>
@@ -23,7 +23,7 @@
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="userName">Course Code</label>
+                                                        <label for="userName">{{'courseCodeColumn'| translate}}</label>
                                                         <select id="heard" class="form-control" multiple>
                                                             <option value="0001">0001</option>
                                                             <option value="0002">0002</option>
@@ -34,7 +34,7 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="userName">Course Name</label>
+                                                        <label for="userName">{{'courseNameColumn'| translate}}</label>
                                                         <select id="heard" class="form-control" multiple>
                                                             <option value="">Choose..</option>
                                                             <option value="Free">Training</option>
@@ -52,10 +52,10 @@
 
                                             <div class="form-group text-right m-b-0">
                                                 <button class="btn btn-teal btn-bordered waves-light waves-effect w-xs  m-b-2" type="submit">
-                                                    GO
+                                                    {{'goBtn'|translate}}
                                                 </button>
                                                 <button type="reset" class="btn btn-default waves-effect m-l-5">
-                                                    Clear
+                                                    {{'clearBtn'|translate}}
                                                 </button>
                                             </div>
                                         </form>
@@ -74,19 +74,36 @@
                                 <thead>
                                     <tr>
 
-                                        <th>Course Code</th>
-                                        <th>Course Name</th>
-                                        <th class="check"><label><input type="checkbox" id="flowcheckallco" value="" data-ng-model="ulCoursesOfPSListSelAll" />&nbsp;Select All</label></th>
+                                        <th ng-click="$parent.nonAssignedCoursesOrderByField='CourseCode'; $parent.nonAssignedCoursesReverseSort = !$parent.nonAssignedCoursesReverseSort">
+                                            {{'courseCodeColumn'| translate}}
+                                            <span ng-show="$parent.nonAssignedCoursesOrderByField == 'CourseCode'">
+                                                <span ng-show="!$parent.nonAssignedCoursesReverseSort">^</span>
+                                                <span ng-show="$parent.nonAssignedCoursesReverseSort">v</span>
+                                            </span>
+                                        </th>
+                                        <th ng-click="nonAssignedCoursesOrderByField='CourseName'; nonAssignedCoursesReverseSort = !nonAssignedCoursesReverseSort">
+                                            {{'courseNameColumn'| translate}}
+                                            <span ng-show="nonAssignedCoursesOrderByField == 'CourseName'">
+                                                <span ng-show="!nonAssignedCoursesReverseSort">^</span>
+                                                <span ng-show="nonAssignedCoursesReverseSort">v</span>
+                                            </span>
+                                        </th>
+                                        <th class="check">
+                                        <label>
+                                            <input type="checkbox" id="flowcheckallco" value="" data-ng-model="$parent.unlinkedCoursesAllSelected" ng-change="isUnlinkedCoursesAllSelected();" />
+                                            &nbsp;{{'selectAll' | translate}}
+                                        </label>
+                                        </th>
 
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr data-ng-repeat="uc in unlinkedCoursesOfBatchList">
+                                    <tr data-ng-repeat="uc in $parent.unlinkedCoursesOfPSList | orderBy:nonAssignedCoursesOrderByField:nonAssignedCoursesReverseSort">
 
                                         <td>{{uc.CourseCode}}</td>
                                         <td>{{uc.CourseName}} </td>
-                                        <td><input  type="checkbox" data-ng-checked="ulCoursesOfPSListSelAll" /></td>
+                                        <td><input  type="checkbox" data-ng-model="uc.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="unlinkedCoursesAllSelected" ng-click="isThisUnlinkedCourseSelected(uc)" /></td>
 
                                     </tr>
 
@@ -97,8 +114,8 @@
 
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-teal btn-bordered waves-light" id="btnUploadAdd">Save Details</button>
-                            <button type="button" class="btn btn-default btn-bordered waves-effect w-md m-b-5" data-ng-click="Modals.close();">Close</button>
+                            <button type="button" class="btn btn-teal btn-bordered waves-light" id="btnUploadAdd" data-ng-click="assignUnlinkedCourses();">{{'saveDetailsBtn'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-bordered waves-effect w-md m-b-5" data-ng-click="Modals.close();">{{'closeBtn'|translate}}</button>
                         </div>
 
 
@@ -106,4 +123,3 @@
                 </div>
             </div>
 <!-- /.modal -->
-        

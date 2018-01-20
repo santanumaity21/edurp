@@ -9,7 +9,7 @@ namespace EduRp.Service.IService
 {
     public interface ICourseMasterService
     {
-        List<GetCourseList_Result> GetList(int id);
+        List<GetCourseList_Result> GetList(int? id, int? userid, string tokenid);
 
         bool InsUpdCourseMaster(int? id, CourseMaster courseMaster);
 

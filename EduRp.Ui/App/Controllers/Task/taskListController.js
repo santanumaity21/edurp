@@ -83,7 +83,6 @@
         };
         $scope.addTaskDetails = function (form) {
             if (form.$valid) {
-
                 var postData = {
                     "batchInsertData":
                     [{
@@ -131,29 +130,7 @@
             openTaskContainer: function () {
                 $scope.modalInstance = $modal.open({
                     animation: true,
-                    templateUrl: '/App/Templates/Task/managePopup.html',
-                    size: 'lg',
-                    scope: $scope,
-                    backdrop: 'static'
-                });
-
-                $scope.modalInstance.result.then(
-                    function (task) {
-                        if (task.SubjectId != null) {
-                            $scope.Commands.updatesubject(task);
-                        }
-                        else {
-                            $scope.Commands.savesubject(task);
-                        }
-                    },
-                    function (event) {
-
-                    });
-            },
-            openTaskContainer: function () {
-                $scope.modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: '/App/Templates/Task/managePopup.html',
+                    templateUrl: '/App/Templates/Task/addEditModalPopup.html',
                     size: 'lg',
                     scope: $scope,
                     backdrop: 'static'

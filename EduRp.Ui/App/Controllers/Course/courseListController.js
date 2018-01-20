@@ -5,9 +5,9 @@
         .module('EduRpApp')
         .controller('courseListController', courseListController);
 
-    courseListController.$inject = ['$scope', '$q', 'courseListService', 'errorHandler', '$modal'];
+    courseListController.$inject = ['$scope', '$q', 'courseListService', 'errorHandler', '$modal', 'commonService'];
 
-    function courseListController($scope, $q, courseListService, errorHandler, $modal) {
+    function courseListController($scope, $q, courseListService, errorHandler, $modal, commonService) {
         $scope.courseData = [];
         $scope.filteredCourseData = [];
         $scope.currentPage = 1
@@ -28,7 +28,6 @@
         $scope.showPerPageDataOptions = [10, 25, 50, 100];
         
         $scope.modCourseObj = {};
-        $scope.pp = '90';
         $scope.modalType = '';
         $scope.filterPanel = false;
 
@@ -36,13 +35,10 @@
             $scope.filterPanel = !$scope.filterPanel;
         };
        
-       
-
-
         $scope.editCourseContainer = function (data) {
             $scope.modalType = 'update';
             $scope.modCourseObj = data;
-            $scope.Modals.openSubjectContainer();
+            $scope.Modals.openCourseContainer();
         };
 
         $scope.addCourseContainer = function (data) {
@@ -53,52 +49,57 @@
 
        
 
+        $scope.updateCourseDetails = function (form , cid) {
+            if (form.$valid) {
+                var postData = {
+                    "CourseCode": $scope.modCourseObj.CourseCode,
+                    "CourseName": $scope.modCourseObj.CourseName
+                };
+                courseListService.updateCourse(postData).then(function (data) {
+                    angular.forEach($scope.filteredCourseData, function (v, k) {
+                        if (v.CourseId === cid) {
+                            $scope.filteredCourseData[k]['CourseCode'] = $scope.modCourseObj.CourseCode;
+                            $scope.filteredCourseData[k]['CourseName'] = $scope.modCourseObj.CourseName;
+                        }
+                    });
+                    $scope.Modals.closeCourseContainer();
+                }, function (error) {
+                    alert("Please try again");
+                });
 
-        $scope.updateCourseDetails = function () {
-            console.log($scope.modCourseObj);
-            var postData = {
-                "batchUpdateData":
-                [{
-                    "DegreeId": $scope.modCourseObj,
-                    "DegreeName": $scope.modCourseObj,
-                    "UniversityId": $scope.modCourseObj,
-                    "CourseId": $scope.modCourseObj,
-                    "CourseCode": $scope.modCourseObj,
-                    "CourseName": $scope.modCourseObj,
-                    "IsActive": $scope.modCourseObj,
-                    "TOTAL": $scope.modCourseObj
-                }]
-            };
+            }
 
         };
-        $scope.addCourseDetailsSuccess = function (data) {
-            $('#course-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addCourseDetailsError = function (data) {
-            $('#course-modal-popup').modal({
-                show: 'false'
-            });
-        };
+        
         $scope.addCourseDetails = function (form) {
             if (form.$valid) {
-                
                 var postData = {
-                    "batchInsertData":
-                    [{
-                        "CourseCode": $scope.modCourseObj.CourseCode,
-                        "CourseName": $scope.modCourseObj.CourseName
-                    }]
+                    "CourseCode": $scope.modCourseObj.CourseCode,
+                    "CourseName": $scope.modCourseObj.CourseName
                 };
+                courseListService.addCourse(postData).then(function (data) {
+                    $scope.filteredCourseData.push(postData.batchInsertData[0]);
+                    $scope.Modals.closeCourseContainer();
+                }, function (error) {
+                    alert("Please try again");
+                });
                 
-                $scope.filteredCourseData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeCourseContainer();
             }
 
         };
 
+        $scope.deleteCourseContainer = function (cd) {
+            if (confirm('Are you sure you want to delete this course?')) {
+                courseListService.deleteCourse(cd).then(function (data) {
+                    $scope.filteredCourseData = commonService.removeItemFromArray($scope.filteredCourseData, cd);
+                }, function (error) {
+                    alert("Please try again");
+                });
+            }
+            
+
+        };
+        
 
         (function startup() {
 
@@ -106,7 +107,6 @@
                 courseListService.getCourseList()
             ]).then(function (data) {
                 if (data != null) {
-                    console.log(data[0].results);
                     $scope.courseData = data[0].results;
                     $scope.adjustCourseList();
                 }
@@ -117,14 +117,7 @@
             });
         })();
 
-        function removeContact(contactId) {
-            for (var i = 0; i < $scope.contacts.length; i++) {
-                if ($scope.contacts[i].id == contactId) {
-                    $scope.contacts.splice(i, 1);
-                    break;
-                }
-            }
-        };
+        
 
         $scope.Modals = {
             openCourseContainer: function () {
@@ -149,32 +142,7 @@
 
                     });
             },
-            openSubjectContainer: function () {
-                $scope.modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: '/App/Templates/Course/managePopup.html',
-                    size: 'lg',
-                    scope: $scope,
-                    backdrop: 'static'
-                });
-
-                $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
-                        }
-                        else {
-                            $scope.Commands.saveContact(contact);
-                        }
-                    },
-                    function (event) {
-
-                    });
-            },
             closeCourseContainer: function () {
-                $scope.modalInstance.dismiss();
-            },
-            closeSubjectContainer: function () {
                 $scope.modalInstance.dismiss();
             }
         };

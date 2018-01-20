@@ -3,19 +3,37 @@
   "breadcrumb1OfProgramStudy": "EduRP",
   "breadcrumb2OfProgramStudy": "Dashboard",
   "breadcrumb3OfProgramStudy": "Program Study",
-  //subject
-  "breadcrumb3OfSubject": "Subject",
 
   "breadcrumb1OfCreateBatch": "EduRP",
   "breadcrumb2OfCreateBatch": "Dashboard",
   "breadcrumb3OfCreateBatch": "Create Batch",
 
+  "breadcrumb1OfCourseGrade": "EduRP",
+  "breadcrumb2OfCourseGrade": "Dashboard",
+  "breadcrumb3OfCourseGrade": "Course Grade",
+
+  "breadcrumb1OfSubject": "Home",
+  "breadcrumb2OfSubject": "Products",
+  "breadcrumb3OfSubject": "Accessories",
+
+
   "manageProgramStudy": "Manage Program Study",
   "manageCreateBatch": "Manage Batch",
+  "CourseGradeHeader": "Course Grades",
+  "subjectHeader": "Subject",
+  "subjectAddHeader": "Add New Subject",
+  "subjectUpdateHeader": "Update Subject",
+
+  "CourseGradeAddBtn": "Add New Course / Grade",
+  "subjectAddBtn": "Add New Subject",
+
+  "CourseGradeAddHeader": "Add New Course / Grade",
+  "CourseGradeUpdateHeader": "Update New Course / Grade",
   "goBtn": "Go",
   "clearBtn": "Clear",
   "selectAll": "Select All",
   "saveDetailsBtn": "Save Details",
+  "addDetailsBtn": "Add Details",
   "closeBtn": "Close",
   "addNewProgramStudyBtn": "Add New Program Study",
   "addNewProgramStudyHeader": "Add New Program Study",
@@ -33,6 +51,11 @@
   "removeCoursesBtn": "Remove Courses",
   "courseCodeColumn": "Course Code",
   "courseNameColumn": "Course Name",
+  "subjectCodeColumn": "Subject Code",
+  "subjectNameColumn": "Subject Name",
+  "sksColumn":  "SKS",
+  "manageColumn": "Manage",
+  "deleteColumn": "Delete",
   "filters": "Filters",
   "show": "show",
   "entries": "entries",
@@ -46,5 +69,5 @@
   "removeFeesBtn": "Remove Fees",
   "feesCodeColumn": "Fees Code",
   "feesColumn": "Fees",
-  "footerHeadLine": "Developed and Designed by Computude Technology"
+  "footerHeadLine": "Developed and Designed by Computude Technolo"
 }

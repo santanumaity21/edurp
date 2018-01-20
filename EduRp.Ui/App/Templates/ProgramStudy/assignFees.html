@@ -1,7 +1,7 @@
 ﻿
             <div class="modal-header">
                 <button type="button" class="close" data-ng-click="Modals.close();">x</button>
-                <h4 class="modal-title">Assign Fees</h4>
+                <h4 class="modal-title">{{'assignFeesHeader'|translate}}</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -12,7 +12,7 @@
                                 <div class="panel-heading" role="tab" id="headingThree">
                                     <h4 class="panel-title">
                                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThreee" aria-expanded="false" aria-controls="collapseThreee">
-                                            Filters
+                                            {{'filters'|translate}}
                                         </a>
                                     </h4>
                                 </div>
@@ -23,25 +23,14 @@
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="userName">Course Code</label>
-                                                        <select id="heard" class="form-control" multiple>
-                                                            <option value="0001">0001</option>
-                                                            <option value="0002">0002</option>
-                                                            <option value="003">0003</option>
-                                                            <option value="other">Other..</option>
-                                                        </select>
+                                                        <label for="userName">{{'feesCodeColumn'|translate}}</label>
+                                                        <textarea></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="userName">Course Name</label>
-                                                        <select id="heard" class="form-control" multiple>
-                                                            <option value="">Choose..</option>
-                                                            <option value="Computer Sciences">Computer Sciences</option>
-                                                            <option value="MBA">MBA</option>
-                                                            <option value="MCA">MCA</option>
-                                                            <option value="other">Other..</option>
-                                                        </select>
+                                                        <label for="userName">{{'feesColumn'|translate}}</label>
+                                                        <input type="text"/>
 
                                                     </div>
                                                 </div>
@@ -52,10 +41,10 @@
 
                                             <div class="form-group text-right m-b-0">
                                                 <button class="btn btn-teal btn-bordered waves-light waves-effect w-xs  m-b-2" type="submit">
-                                                    GO
+                                                    {{'goBtn'|translate}}
                                                 </button>
                                                 <button type="reset" class="btn btn-default waves-effect m-l-5">
-                                                    Clear
+                                                    {{'clearBtn'|translate}}
                                                 </button>
                                             </div>
                                         </form>
@@ -71,19 +60,37 @@
                                 <thead>
                                     <tr>
 
-                                        <th>Fees Code</th>
-                                        <th>Fees</th>
-                                        <th class="check"><input type="checkbox" data-ng-model="ulFeesOfPSListSelAll" />&nbsp;Select All</th>
-
+                                        <th ng-click="nonAssignedFeesOrderByField='feesCode'; nonAssignedFeesReverseSort = !nonAssignedFeesReverseSort">
+                                            {{'feesCodeColumn'| translate}}
+                                            <span ng-show="nonAssignedFeesOrderByField == 'feesCode'">
+                                                <span ng-show="!nonAssignedFeesReverseSort">^</span>
+                                                <span ng-show="nonAssignedFeesReverseSort">v</span>
+                                            </span>
+                                        </th>
+                                        <th ng-click="nonAssignedFeesOrderByField='feesName'; nonAssignedFeesReverseSort = !nonAssignedFeesReverseSort">
+                                            {{'feesColumn'| translate}}
+                                            <span ng-show="nonAssignedFeesOrderByField == 'feesName'">
+                                                <span ng-show="!nonAssignedFeesReverseSort">^</span>
+                                                <span ng-show="nonAssignedFeesReverseSort">v</span>
+                                            </span>
+                                        </th>
+                                        <th class="check">
+                                            <label>
+                                                <input type="checkbox" id="flowcheckallco" value="" data-ng-model="$parent.unlinkedFeesAllSelected" ng-change="isUnlinkedFeesAllSelected();" />
+                                                &nbsp;{{'selectAll' | translate}}
+                                            </label>
+                                        </th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    <tr data-ng-repeat="uf in unlinkedFeesOfPSList">
+                                    <tr data-ng-repeat="uf in $parent.unlinkedFeesOfPSList | orderBy:nonAssignedFeesOrderByField:nonAssignedFeesReverseSort">
 
                                         <td>{{uf.feesCode}}</td>
                                         <td>{{uf.feesName}}  </td>
-                                        <td><input type="checkbox" data-ng-checked="ulFeesOfPSListSelAll" /></td>
+                                        <td>
+                                            <input type="checkbox" data-ng-model="uf.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="unlinkedFeesAllSelected" ng-click="isThisUnlinkedFeeSelected(uf)" />
+                                        </td>
 
                                     </tr>
 
@@ -94,8 +101,8 @@
 
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-teal btn-bordered waves-light" id="btnUploadAddf">Save Details</button>
-                            <button type="button" class="btn btn-default btn-bordered waves-effect w-md m-b-5" data-ng-click="Modals.close();">Close</button>
+                            <button type="button" class="btn btn-teal btn-bordered waves-light" data-ng-click="assignUnlinkedFees();">{{'saveDetailsBtn'|translate}}</button>
+                            <button type="button" class="btn btn-default btn-bordered waves-effect w-md m-b-5" data-ng-click="Modals.close();">{{'closeBtn'|translate}}</button>
                         </div>
 
 

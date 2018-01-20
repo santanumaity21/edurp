@@ -3,7 +3,7 @@
     {
       "id": 1,
       "degreeCode": "0011",
-      "degreeName": "Engineering",
+      "degreeName": "batch 1",
       "academic_term": 10,
       "sks": "R",
       "active": true
@@ -11,7 +11,7 @@
     {
       "id": 2,
       "degreeCode": "0012",
-      "degreeName": "MBA",
+      "degreeName": "batch 2",
       "academic_term": 12,
       "sks": "R",
       "active": false

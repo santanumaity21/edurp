@@ -24,7 +24,7 @@ namespace EduRp.Service.Service
         //    return db.GetSubjectByCourseId(id, CourseId).ToList();
         //}
    
-        public bool InsUpdSubjectMaster(SubjectMaster subjectMaster)
+        public bool InsUpdSubjectMaster(int? id, SubjectMaster subjectMaster)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace EduRp.Service.Service
 
                 var SubjObj = obj.ToString();
 
-                var JsonObj = db.UpdateSubject(SubjObj);
+                var JsonObj = db.UpdateSubject(id,SubjObj);
 
                 return true;
 
@@ -65,7 +65,8 @@ namespace EduRp.Service.Service
                   (new SubjectMaster
                   {
                       SubjectId = subjectMaster.SubjectId,
-                      UserId = subjectMaster.UserId
+                      UserId = subjectMaster.UserId,
+                      TokenId = subjectMaster.TokenId,
                   });
 
 

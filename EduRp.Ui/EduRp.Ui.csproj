@@ -319,12 +319,14 @@
     <Content Include="App\Templates\ExaminationType\managePopup.html" />
     <Content Include="App\Templates\Fees\fees.html" />
     <Content Include="App\Templates\Master\master.html" />
+    <Content Include="App\Templates\NotificationType\addEditModalPopup.html" />
     <Content Include="App\Templates\NotificationType\notificationtype.html" />
     <Content Include="App\Templates\ProgramStudy\programStudy.html" />
     <Content Include="App\Templates\Shared\_404.html" />
     <Content Include="App\Templates\StudentAdmissionForm\StudentAdmissionForm.html" />
     <Content Include="App\Templates\Subject\managePopup.html" />
     <Content Include="App\Templates\Subject\subject.html" />
+    <Content Include="App\Templates\Task\addEditModalPopup.html" />
     <Content Include="App\Templates\Task\tasks.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
@@ -900,6 +902,8 @@
     <Content Include="Assets\Scripts\angular\angular-sanitize.js" />
     <Content Include="Assets\Scripts\angular\angular-scenario.js" />
     <Content Include="Assets\Scripts\angular\angular-touch.js" />
+    <Content Include="Assets\Scripts\angular\angular-translate-loader-static-files.js" />
+    <Content Include="Assets\Scripts\angular\angular-translate.js" />
     <Content Include="Assets\Scripts\angular\angular.js" />
     <Content Include="Assets\Scripts\angular\i18n\angular-locale_aa-dj.js" />
     <Content Include="Assets\Scripts\angular\i18n\angular-locale_aa-er.js" />
@@ -2167,7 +2171,7 @@
     <Content Include="sampleData\addProgramStudy.json" />
     <Content Include="sampleData\chapterList.json" />
     <Content Include="sampleData\classRoomList.json" />
-    <Content Include="sampleData\courseList.json" />
+    <Content Include="sampleData\Course\list.json" />
     <Content Include="sampleData\employees.json" />
     <Content Include="sampleData\examinationtypeList.json" />
     <Content Include="sampleData\feesList.json" />
@@ -2295,6 +2299,7 @@
     <Content Include="Assets\Styles\material.css.map" />
     <Content Include="Assets\Styles\ripples.css.map" />
     <Content Include="Assets\Styles\roboto.css.map" />
+    <Content Include="sampleData\Course\add.json" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />

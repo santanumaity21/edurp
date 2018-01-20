@@ -497,9 +497,13 @@
         </Function>
         <Function Name="GetBatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetBatchList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetBatchProgramStudyList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -513,8 +517,15 @@
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="GetChapterID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetChapterList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetClassRoomDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -522,6 +533,8 @@
         </Function>
         <Function Name="GetClassRoomList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetCourseDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -529,9 +542,13 @@
         </Function>
         <Function Name="GetCourseID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetCourseList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetCourseSubjectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -547,6 +564,8 @@
         </Function>
         <Function Name="GetExaminationList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetFeeDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -554,6 +573,8 @@
         </Function>
         <Function Name="GetFeeList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetProgramStudyCourseList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -577,9 +598,13 @@
         </Function>
         <Function Name="GetProgramStudyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetProgramStudyList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetSubjectChapterList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -595,6 +620,8 @@
         </Function>
         <Function Name="GetSubjectID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetSubjectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -607,9 +634,13 @@
         </Function>
         <Function Name="GetTaskID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetTaskList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetTaskStaffList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -691,6 +722,7 @@
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="testAppForm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="UnLinkBatchApplicationForm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
@@ -756,6 +788,7 @@
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="UpdateSubject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="UpdateSubject_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1325,9 +1358,13 @@
           </FunctionImport>
           <FunctionImport Name="GetBatchID" ReturnType="Collection(edurp_devModel.GetBatchID_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetBatchList" ReturnType="Collection(edurp_devModel.GetBatchList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetBatchProgramStudyList" ReturnType="Collection(edurp_devModel.GetBatchProgramStudyList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1341,8 +1378,15 @@
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="GetChapterID" ReturnType="Collection(edurp_devModel.GetChapterID_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="GetChapterList" ReturnType="Collection(edurp_devModel.GetChapterList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetClassRoomDetail" ReturnType="Collection(edurp_devModel.GetClassRoomDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1350,6 +1394,8 @@
           </FunctionImport>
           <FunctionImport Name="GetClassRoomList" ReturnType="Collection(edurp_devModel.GetClassRoomList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetCourseDetail" ReturnType="Collection(edurp_devModel.GetCourseDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1357,9 +1403,13 @@
           </FunctionImport>
           <FunctionImport Name="GetCourseID" ReturnType="Collection(edurp_devModel.GetCourseID_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetCourseList" ReturnType="Collection(edurp_devModel.GetCourseList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetCourseSubjectList" ReturnType="Collection(edurp_devModel.GetCourseSubjectList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1375,6 +1425,8 @@
           </FunctionImport>
           <FunctionImport Name="GetExaminationList" ReturnType="Collection(edurp_devModel.GetExaminationList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetFeeDetail" ReturnType="Collection(edurp_devModel.GetFeeDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1382,6 +1434,8 @@
           </FunctionImport>
           <FunctionImport Name="GetFeeList" ReturnType="Collection(edurp_devModel.GetFeeList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetProgramStudyCourseList" ReturnType="Collection(edurp_devModel.GetProgramStudyCourseList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1405,9 +1459,13 @@
           </FunctionImport>
           <FunctionImport Name="GetProgramStudyID" ReturnType="Collection(edurp_devModel.GetProgramStudyID_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetProgramStudyList" ReturnType="Collection(edurp_devModel.GetProgramStudyList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetSubjectChapterList" ReturnType="Collection(edurp_devModel.GetSubjectChapterList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1423,6 +1481,8 @@
           </FunctionImport>
           <FunctionImport Name="GetSubjectID" ReturnType="Collection(edurp_devModel.GetSubjectID_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetSubjectList" ReturnType="Collection(edurp_devModel.GetSubjectList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1435,9 +1495,13 @@
           </FunctionImport>
           <FunctionImport Name="GetTaskID" ReturnType="Collection(edurp_devModel.GetTaskID_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetTaskList" ReturnType="Collection(edurp_devModel.GetTaskList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetTaskStaffList" ReturnType="Collection(edurp_devModel.GetTaskStaffList_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1519,6 +1583,7 @@
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="testAppForm" ReturnType="Collection(DateTime)" />
           <FunctionImport Name="UnLinkBatchApplicationForm">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
@@ -1584,6 +1649,7 @@
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdateSubject">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UpdateSubject_Test">
@@ -1654,6 +1720,10 @@
           <Property Type="String" Name="ModeOfTeaching" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="ChapterDetails" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="SKS" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GetChapterID_Result">
+          <Property Type="Int32" Name="ChapterId" Nullable="false" />
+          <Property Type="String" Name="ChapterTitle" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="GetChapterList_Result">
           <Property Type="Int32" Name="ChapterId" Nullable="false" />
@@ -2452,6 +2522,14 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetChapterID" FunctionName="edurp_devModel.Store.GetChapterID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetChapterID_Result">
+                <ScalarProperty Name="ChapterId" ColumnName="ChapterId" />
+                <ScalarProperty Name="ChapterTitle" ColumnName="ChapterTitle" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetChapterList" FunctionName="edurp_devModel.Store.GetChapterList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="edurp_devModel.GetChapterList_Result">
@@ -2791,6 +2869,7 @@
           <FunctionImportMapping FunctionImportName="RemoveProgramStudy" FunctionName="edurp_devModel.Store.RemoveProgramStudy" />
           <FunctionImportMapping FunctionImportName="RemoveSubject" FunctionName="edurp_devModel.Store.RemoveSubject" />
           <FunctionImportMapping FunctionImportName="RemoveTask" FunctionName="edurp_devModel.Store.RemoveTask" />
+          <FunctionImportMapping FunctionImportName="testAppForm" FunctionName="edurp_devModel.Store.testAppForm" />
           <FunctionImportMapping FunctionImportName="UnLinkBatchApplicationForm" FunctionName="edurp_devModel.Store.UnLinkBatchApplicationForm" />
           <FunctionImportMapping FunctionImportName="UnLinkBatchFees" FunctionName="edurp_devModel.Store.UnLinkBatchFees" />
           <FunctionImportMapping FunctionImportName="UnLinkBatchProgramStudy" FunctionName="edurp_devModel.Store.UnLinkBatchProgramStudy" />

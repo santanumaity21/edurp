@@ -5,9 +5,12 @@
         .module('EduRpApp')
         .controller('GlobalController', GlobalController);
 
-    GlobalController.$inject = ['$scope', '$location', 'AuthService'];
+    GlobalController.$inject = ['$scope', '$location', 'AuthService', '$cookieStore'];
 
-    function GlobalController($scope, $location, AuthService) {
+    function GlobalController($scope, $location, AuthService, $cookieStore) {
+        $cookieStore.put('UniversityId', '1');
+        $cookieStore.put('UserId', '2');
+        $cookieStore.put('TokenId', '3');
         $scope.$on('$viewContentLoaded', onLoaded);
         $scope.$on('viewContentLoadComplete', onLoadComplete);
 

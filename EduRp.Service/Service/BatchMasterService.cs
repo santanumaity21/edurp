@@ -12,9 +12,9 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
        
-        public List<BatchMaster> GetList()
+        public List<GetBatchList_Result> GetList(int? id, int? userid, string tokenid)
         {
-            return db.BatchMasters.ToList();
+            return db.GetBatchList(id,userid,tokenid).ToList();
         }
 
         public bool InsUpdBatchMaster(int? id, BatchMaster batchMaster)
@@ -30,12 +30,13 @@ namespace EduRp.Service.Service
                      ResultType = batchMaster.ResultType,
                      AcademicTerm = batchMaster.AcademicTerm,
                      UserId = batchMaster.UserId,
+                     TokenId = batchMaster.TokenId
 
                  });
 
                 var ChptrObj = obj.ToString();
 
-                var JsonObj = db.UpdateClassRoom(id, ChptrObj);
+                var JsonObj = db.UpdateBatch(id, ChptrObj);
 
                 return true;
                 //db.Entry(batchMaster).State = System.Data.Entity.EntityState.Modified;
@@ -56,12 +57,13 @@ namespace EduRp.Service.Service
                 {
                     BatchId = batchMaster.BatchId,
                     UserId = batchMaster.UserId,
+                    TokenId = batchMaster.TokenId
 
                 });
 
                 var ChptrObj = obj.ToString();
 
-                var JsonObj = db.RemoveClassRoom(id, ChptrObj);
+                var JsonObj = db.RemoveBatch(id, ChptrObj);
 
                 return true;
                 //var batchMaster = db.BatchMasters.Where(x => x.BatchId == id).FirstOrDefault();

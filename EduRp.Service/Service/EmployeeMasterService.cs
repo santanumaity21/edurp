@@ -12,7 +12,7 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
-        public List<EmployeeMaster> GetList(int id)
+        public List<EmployeeMaster> GetList(int? id, int? userid, string tokenid)
         {
             return db.EmployeeMasters.ToList();
         }
@@ -57,6 +57,7 @@ namespace EduRp.Service.Service
                       InvitationSent = employeeMaster.InvitationSent,
                       EmailId = employeeMaster.EmailId,
                       UserId = employeeMaster.UserId,
+                      TokenId = employeeMaster.TokenId,
                   });
 
 
@@ -85,6 +86,7 @@ namespace EduRp.Service.Service
                  {
                      EmployeeId = employeeMaster.EmployeeId,
                      UserId = employeeMaster.UserId,
+                     TokenId = employeeMaster.TokenId
                  });
 
                 var EmpObj = obj.ToString();

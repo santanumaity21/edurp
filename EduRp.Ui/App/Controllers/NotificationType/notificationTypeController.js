@@ -60,9 +60,9 @@
                 "batchUpdateData":
                 [{
            
-                    "SubjectId": $scope.modnotificationTypeObj,
-                    "SubjectCode": $scope.modnotificationTypeObj,
-                    "SubjectName": $scope.modnotificationTypeObj,
+                    "NotificationId": $scope.modnotificationTypeObj,
+                    "NotificationCode": $scope.modnotificationTypeObj,
+                    "NotificationName": $scope.modnotificationTypeObj,
                     "SKS": $scope.modnotificationTypeObj
 
                 }]
@@ -86,9 +86,9 @@
                 var postData = {
                     "batchInsertData":
                     [{
-                        "SubjectCode": $scope.modnotificationTypeObj,
-                        "SubjectName": $scope.modnotificationTypeObj,
-                        "SKS": $scope.modnotificationTypeObj
+                        "NotificationCode": $scope.modnotificationTypeObj,
+                        "NotificationName": $scope.modnotificationTypeObj,
+                        //"SKS": $scope.modnotificationTypeObj
                     }]
                 };
 
@@ -129,7 +129,7 @@
             openNotificationTypeContainer: function () {
                 $scope.modalInstance = $modal.open({
                     animation: true,
-                    templateUrl: '/App/Templates/Subject/AddEditModalPopup.html',
+                    templateUrl: '/App/Templates/Notifiaction Type/AddEditModalPopup.html',
                     size: 'lg',
                     scope: $scope,
                     backdrop: 'static'
@@ -151,7 +151,7 @@
             openNotificationTypeContainer: function () {
                 $scope.modalInstance = $modal.open({
                     animation: true,
-                    templateUrl: '/App/Templates/Subject/managePopup.html',
+                    templateUrl: '/App/Templates/Notifiaction Type/AddEditModalPopup.html',
                     size: 'lg',
                     scope: $scope,
                     backdrop: 'static'

@@ -68,7 +68,14 @@
           .when('/Admin/Chapters', {
                 templateUrl: '/App/Templates/Chapters/chapters.html',
                 controller: 'chaptersListController'
-           })
+
+                }).when('/Admin/BulkUpload', {
+                    templateUrl: '/App/Templates/BulkUpload/Bulkupload.html',
+                    controller: 'bulkUploadCntrl'
+                }).when('/StudentAdmissionForm', {
+                    templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
+                    controller: 'studentadmissionformController'
+                })
           .when('/StudentAdmissionForm', {
               templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
               controller: 'studentadmissionformController'

@@ -11,15 +11,15 @@ namespace EduRp.WebApi.Controllers
 
         private ICourseMasterService courseMasterService = new CourseMasterService();
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = courseMasterService.GetList(id) });
+            return Ok(new { results = courseMasterService.GetList(id, userid, tokenid) });
         }
         [HttpPost]
         [HttpPut]
         public IHttpActionResult Save(int? id,CourseMaster courseMaster)
         {
-            var isUpdate = courseMasterService.InsUpdCourseMaster(id, courseMaster);
+            var isUpdate = courseMasterService.InsUpdCourseMaster(courseMaster.UniversityId, courseMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
@@ -27,7 +27,7 @@ namespace EduRp.WebApi.Controllers
         [HttpDelete]
         public IHttpActionResult Delete(int? id, CourseMaster courseMaster)
         {
-            var isDeleted = courseMasterService.DeleteCourseMaster(id, courseMaster);
+            var isDeleted = courseMasterService.DeleteCourseMaster(courseMaster.UniversityId, courseMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

@@ -9,7 +9,7 @@ namespace EduRp.Service.IService
 {
     public interface IEmployeeMasterService
     {
-        List<EmployeeMaster> GetList(int id);
+        List<EmployeeMaster> GetList(int? id, int? userid, string tokenid);
         bool InsUpdEmployeeMaster(int? id, EmployeeMaster employeeMaster);
         bool DeleteEmployeeMaster(int? id, EmployeeMaster employeeMaster);
     }

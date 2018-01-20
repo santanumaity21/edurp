@@ -5,16 +5,16 @@
         .module('EduRpApp')
         .factory('programStudyService', programStudyService);
 
-    programStudyService.$inject = ['$q', '$http'];
+    programStudyService.$inject = ['$q', '$http', '$interpolate'];
 
-    function programStudyService($q, $http) {
+    function programStudyService($q, $http, $interpolate) {
 
-        var execute = function (url, method, data) {
+        var execute = function (url, method, data, ip) {
             var deferred = $q.defer();
 
             $http({
 
-                url: urlService[url],
+                url: $interpolate(urlService[url])(ip),
                 method: method,
                 dataType : 'json',
                 headers: {
@@ -34,23 +34,35 @@
         var _getProgramStudyList = function () {
             return execute('getProgramStudyList', 'get', null);
         };
-        var _getLinkedCoursesOfProgramStudy = function () {
-            return execute('getLinkedCoursesOfProgramStudy', 'get', null);
+        var _getLinkedCoursesOfProgramStudy = function (selPS) {
+            return execute('getLinkedCoursesOfProgramStudy', 'get', null, selPS);
         };
-        var _getLinkedFeesOfProgramStudy = function () {
-            return execute('getLinkedFeesOfProgramStudy', 'get', null);
+        var _getLinkedFeesOfProgramStudy = function (selPS) {
+            return execute('getLinkedFeesOfProgramStudy', 'get', null, selPS);
         };
 
         var _addProgramStudy = function (postData) {
             return execute('addProgramStudy', 'post', postData);
         };
 
+        var _removeSelectedCoursesFromProgramStudy = function (postData) {
+            return execute('removeSelectedCoursesFromProgramStudy', 'post', postData);
+        };
+        var _removeSelectedFeesFromProgramStudy = function (postData) {
+            return execute('removeSelectedFeesFromProgramStudy', 'post', postData);
+        };
         var _getUnlinkedCoursesOfProgramStudy = function () {
             return execute('getUnlinkedCoursesOfProgramStudy', 'get', null);
         };
 
         var _getUnlinkedFeesOfProgramStudy = function () {
             return execute('getUnlinkedFeesOfProgramStudy', 'get', null);
+        };
+        var _assignUnlinkedCoursesToProgramStudy = function (postData) {
+            return execute('assignUnlinkedCoursesToProgramStudy', 'post', postData);
+        };
+        var _assignUnlinkedFeesToProgramStudy = function (postData) {
+            return execute('assignUnlinkedFeesToProgramStudy', 'post', postData);
         };
 
         return {
@@ -59,8 +71,11 @@
             getLinkedFeesOfProgramStudy: _getLinkedFeesOfProgramStudy,
             addProgramStudy: _addProgramStudy,
             getUnlinkedCoursesOfProgramStudy: _getUnlinkedCoursesOfProgramStudy,
-            getUnlinkedFeesOfProgramStudy: _getUnlinkedFeesOfProgramStudy
-
+            getUnlinkedFeesOfProgramStudy: _getUnlinkedFeesOfProgramStudy,
+            removeSelectedCoursesFromProgramStudy: _removeSelectedCoursesFromProgramStudy,
+            removeSelectedFeesFromProgramStudy: _removeSelectedFeesFromProgramStudy,
+            assignUnlinkedCoursesToProgramStudy: _assignUnlinkedCoursesToProgramStudy,
+            assignUnlinkedFeesToProgramStudy: _assignUnlinkedFeesToProgramStudy
         };
 
     }

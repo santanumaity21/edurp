@@ -7,7 +7,6 @@ using System.Web.Http;
 namespace EduRp.WebApi.Controllers
 {
 
-    [Route("api/SubjectMasters")]
     public class SubjectMastersController : ApiController
     {
         private ISubjectMasterService subjectMasterService = new SubjectMasterService();
@@ -27,7 +26,7 @@ namespace EduRp.WebApi.Controllers
         [HttpPost]     
         public IHttpActionResult Save(SubjectMaster subjectMaster)
         {
-            var isUpdate = subjectMasterService.InsUpdSubjectMaster(subjectMaster);
+            var isUpdate = subjectMasterService.InsUpdSubjectMaster(subjectMaster.UniversityId, subjectMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
@@ -36,7 +35,7 @@ namespace EduRp.WebApi.Controllers
         [HttpDelete]
         public IHttpActionResult Delete(int? id, SubjectMaster subjectMaster)
         {
-            var isDeleted = subjectMasterService.DeleteSubjectMaster(id, subjectMaster);
+            var isDeleted = subjectMasterService.DeleteSubjectMaster(subjectMaster.UniversityId, subjectMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

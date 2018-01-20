@@ -8,7 +8,7 @@ namespace EduRp.Service.IService
         List<GetSubjectList_Result> GetList(int? id, int? userid, string tokenid);
         //List<GetSubjectByCourseId_Result> GetByCourse(int id, int CourseId);
         //bool SaveSubjectMaster(SubjectMaster subjectMaster);
-        bool InsUpdSubjectMaster(SubjectMaster subjectMaster);
+        bool InsUpdSubjectMaster(int? id, SubjectMaster subjectMaster);
         bool DeleteSubjectMaster(int? id, SubjectMaster subjectMaster);
 
     }

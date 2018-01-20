@@ -12,9 +12,9 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
-        public List<GetExaminationList_Result> GetList(int id)
+        public List<GetExaminationList_Result> GetList(int? id, int? userid, string tokenid)
         {
-            return db.GetExaminationList(id).ToList();
+            return db.GetExaminationList(id,userid,tokenid).ToList();
         }
 
         public bool InsUpdExaminationType(int? id, ExaminationType examinationType)
@@ -32,6 +32,7 @@ namespace EduRp.Service.Service
                        FeeLabel = examinationType.FeeLabel,
                        Amount = examinationType.Amount,
                        UserId = examinationType.UserId,
+                       TokenId  = examinationType.TokenId,
                      
                    });
 
@@ -63,6 +64,7 @@ namespace EduRp.Service.Service
                   {
                       ExaminationId = examinationType.ExaminationId,
                       UserId = examinationType.UserId,
+                      TokenId = examinationType.TokenId
 
                   });
 

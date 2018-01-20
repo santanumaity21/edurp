@@ -13,7 +13,6 @@
             var deferred = $q.defer();
 
             $http({
-
                 url: urlService[url],
                 method: method,
                 data: data,

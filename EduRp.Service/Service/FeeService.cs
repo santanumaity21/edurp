@@ -11,9 +11,9 @@ namespace EduRp.Service.Service
     public class FeeService : IFeeService
     {
         private edurp_devEntities db = new edurp_devEntities();
-        public List<GetFeeList_Result> GetList(int id)
+        public List<GetFeeList_Result> GetList(int? id, int? userid, string tokenid)
         {
-            return db.GetFeeList(id).ToList();
+            return db.GetFeeList(id,userid,tokenid).ToList();
         }
 
         public bool InsUpdFee(int? id, Fee fee)
@@ -28,6 +28,8 @@ namespace EduRp.Service.Service
                      FeeType = fee.FeeType,
                      Amount = fee.Amount,
                      Description = fee.Description,
+                     UserId = fee.UserId,
+                     TokenId = fee.TokenId,
                     
                  });
 
@@ -56,6 +58,7 @@ namespace EduRp.Service.Service
                  {
                      FeeId = fee.FeeId,
                      UserId = fee.UserId,
+                     TokenId = fee.TokenId,
 
                  });
 

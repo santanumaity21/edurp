@@ -12,9 +12,9 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
-        public List<GetClassRoomList_Result> GetList(int id)
+        public List<GetClassRoomList_Result> GetList(int? id, int? userid, string tokenid)
         {
-            return db.GetClassRoomList(id).ToList();
+            return db.GetClassRoomList(id,userid,tokenid).ToList();
         }
 
         public bool InsUpdClassRoomMaster(int? id, ClassRoomMaster classRoomMaster)
@@ -33,6 +33,7 @@ namespace EduRp.Service.Service
                      Facility = classRoomMaster.Facility,
                      Location = classRoomMaster.Location,
                      UserId = classRoomMaster.UserId,
+                     TokenId = classRoomMaster.TokenId,
 
                  });
 
@@ -62,6 +63,7 @@ namespace EduRp.Service.Service
                          {
                              ClassRoomId = classRoomMaster.ClassRoomId,
                              UserId = classRoomMaster.UserId,
+                             TokenId = classRoomMaster.TokenId,
 
                          });
 

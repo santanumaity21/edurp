@@ -204,6 +204,9 @@
     <Compile Include="GetChapterDetail_Result.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetChapterID_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetChapterList_Result.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>

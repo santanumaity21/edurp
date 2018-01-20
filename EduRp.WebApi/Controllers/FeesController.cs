@@ -9,15 +9,15 @@ namespace EduRp.WebApi.Controllers
     {
         private IFeeService feeService = new FeeService();
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = feeService.GetList(id) });
+            return Ok(new { results = feeService.GetList(id,userid,tokenid) });
         }
         [HttpPost]
         [HttpPut]
         public IHttpActionResult Save(int? id,Fee fee)
         {
-            var isUpdate = feeService.InsUpdFee(id,fee);
+            var isUpdate = feeService.InsUpdFee(fee.UniversityId, fee);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
@@ -25,7 +25,7 @@ namespace EduRp.WebApi.Controllers
         [HttpDelete]
         public IHttpActionResult Delete(int? id,Fee fee)
         {
-            var isDeleted = feeService.DeleteFee(id,fee);
+            var isDeleted = feeService.DeleteFee(fee.UniversityId, fee);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();
