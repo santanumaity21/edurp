@@ -56,12 +56,7 @@
                     "CourseName": $scope.modCourseObj.CourseName
                 };
                 courseListService.updateCourse(postData).then(function (data) {
-                    angular.forEach($scope.filteredCourseData, function (v, k) {
-                        if (v.CourseId === cid) {
-                            $scope.filteredCourseData[k]['CourseCode'] = $scope.modCourseObj.CourseCode;
-                            $scope.filteredCourseData[k]['CourseName'] = $scope.modCourseObj.CourseName;
-                        }
-                    });
+                    $scope.pageLoad();
                     $scope.Modals.closeCourseContainer();
                 }, function (error) {
                     alert("Please try again");
@@ -78,7 +73,7 @@
                     "CourseName": $scope.modCourseObj.CourseName
                 };
                 courseListService.addCourse(postData).then(function (data) {
-                    $scope.filteredCourseData.push(postData.batchInsertData[0]);
+                    $scope.pageLoad();
                     $scope.Modals.closeCourseContainer();
                 }, function (error) {
                     alert("Please try again");
@@ -100,22 +95,24 @@
 
         };
         
+        $scope.pageLoad = function () {
+            function startup() {
 
-        (function startup() {
-
-            $q.all([
-                courseListService.getCourseList()
-            ]).then(function (data) {
-                if (data != null) {
-                    $scope.courseData = data[0].results;
-                    $scope.adjustCourseList();
-                }
-            }, function (reason) {
-                errorHandler.logServiceError('courseListController', reason);
-            }, function (update) {
-                errorHandler.logServiceNotify('courseListController', update);
-            });
-        })();
+                $q.all([
+                    courseListService.getCourseList()
+                ]).then(function (data) {
+                    if (data != null) {
+                        $scope.courseData = data[0].results;
+                        $scope.adjustCourseList();
+                    }
+                }, function (reason) {
+                    errorHandler.logServiceError('courseListController', reason);
+                }, function (update) {
+                    errorHandler.logServiceNotify('courseListController', update);
+                });
+            }
+        }
+        
 
         
 
@@ -148,8 +145,7 @@
         };
 
 
-
+        $scope.pageLoad();
 
     };
-})
-    ();
+})();

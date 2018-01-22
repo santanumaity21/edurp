@@ -1,5 +1,5 @@
 
-﻿var localhost = false;
+﻿var localhost = true;
 var apiPrefix = 'http://localhost:50381/';
 var urlService =
     {
