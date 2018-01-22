@@ -9,8 +9,8 @@
 
     function GlobalController($scope, $location, AuthService, $cookieStore) {
         $cookieStore.put('UniversityId', '1');
-        $cookieStore.put('UserId', '2');
-        $cookieStore.put('TokenId', '3');
+        $cookieStore.put('UserId', '1');
+        $cookieStore.put('TokenId', '311488F6-2CE5-42D1-A2A0-319EB788E9CA');
         $scope.$on('$viewContentLoaded', onLoaded);
         $scope.$on('viewContentLoadComplete', onLoadComplete);
 

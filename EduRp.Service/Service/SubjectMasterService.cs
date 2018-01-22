@@ -23,7 +23,7 @@ namespace EduRp.Service.Service
         //{
         //    return db.GetSubjectByCourseId(id, CourseId).ToList();
         //}
-   
+
         public bool InsUpdSubjectMaster(SubjectMaster subjectMaster)
         {
             try
@@ -37,6 +37,7 @@ namespace EduRp.Service.Service
                        SKS = subjectMaster.SKS,
                        UserId = subjectMaster.UserId,
                        TokenId = subjectMaster.TokenId,
+                       UniversityId = subjectMaster.UniversityId,
                    });
 
 
