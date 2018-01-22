@@ -118,18 +118,7 @@
                     backdrop: 'static'
                 });
 
-                $scope.modalInstance.result.then(
-                    function (task) {
-                        if (task.SubjectId != null) {
-                            $scope.Commands.updatesubject(task);
-                        }
-                        else {
-                            $scope.Commands.savesubject(task);
-                        }
-                    },
-                    function (event) {
-
-                    });
+               
             },
             closeTaskContainer: function () {
                 $scope.modalInstance.dismiss();

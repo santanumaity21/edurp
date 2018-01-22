@@ -389,14 +389,7 @@
                         $scope.filteredProgramStudyData = data[0].results;
                     } else if (data[0].results.length > 5) {
                         $scope.filteredProgramStudyData = angular.copy(data[0].results.slice(0, 5));
-                        $scope.filteredProgramStudyData.push({
-                            "id": null,
-                            "degreeCode": "Other",
-                            "degreeName": "Other",
-                            "academic_term": null,
-                            "sks": null,
-                            "active": null
-                        });
+                       
                     }
                    
                 }
