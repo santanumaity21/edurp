@@ -28,7 +28,6 @@
         $scope.showPerPageDataOptions = [10, 25, 50, 100];
 
         $scope.modtaskObj = {};
-        $scope.pp = '90';
         $scope.modalType = '';
         $scope.filterPanel = false;
 
@@ -36,7 +35,7 @@
             $scope.filterPanel = !$scope.filterPanel;
         };
         //Get PageLoad
-        (function startup() {
+        function startup() {
 
             $q.all([
                 taskListService.getTaskList()
@@ -51,7 +50,7 @@
             }, function (update) {
                 errorHandler.logServiceNotify('taskListController', update);
             });
-        })();
+        }
 
 
         $scope.addTaskContainer = function () {
@@ -60,7 +59,6 @@
         };
         //Add
         $scope.addTaskDetails = function (form) {
-            debugger
             if (form.$valid) {
                 $q.when([taskListService.addTask($scope.modtaskObj)]).then(function (data) {
                     $scope.filteredtaskData.push($scope.modtaskObj);
@@ -91,46 +89,7 @@
 
             }
         };
-        //delete 
-
-        //$scope.deleteSubject = function () {
-        //    if (confirm('Are you sure you want to delete this subject?')) {
-        //        angular.forEach($scope.filteredCourseData, function (v, key) {
-        //            if ($scope.filteredCourseData[key].Selected == $scope.filteredCourseData[key].id) {
-        //                coursesSelected.push($scope.filteredCourseData[key].Selected);
-        //            }
-        //        });
-        //    }
-        //    $q.when(programStudyService.removeSelectedCourses(coursesSelected)).then(function (success) {
-        //        $scope.Modals.close();
-        //        $scope.filteredProgramStudyData.push($scope.addPSFormObj);
-        //    }, function (error) {
-
-        //    });
-        //};
-        //$scope.deleteSubject = function (id) {
-        //    if (confirm('Are you sure you want to delete this subject?')) {
-        //        $q.when(subjectListService.deleteSubject(id)).then(
-        //            function (success) {
-        //                removeSubject(data);
-        //            },
-        //            function (response) {
-        //                console.log(response);
-        //            });
-        //    }
-        //    else {
-        //        console.log('delete cancelled');
-        //    }
-        //}
-
-        //function removesubject(data) {
-        //    for (var i = 0; i < $scope.subjectData.length; i++) {
-        //        if ($scope.subjectData[i].id === data) {
-        //            $scope.subjectData.splice(i, 1);
-        //            break;
-        //        }
-        //    }
-        //}   
+        
 
 
         $scope.Modals = {
@@ -157,28 +116,7 @@
 
                     });
             },
-            //openSubjectManagePopUp: function () {
-            //    $scope.modalInstance = $modal.open({
-            //        animation: true,
-            //        templateUrl: '/App/Templates/Subject/managePopup.html',
-            //        size: 'lg',
-            //        scope: $scope,
-            //        backdrop: 'static'
-            //    });
-
-            //    $scope.modalInstance.result.then(
-            //        function (subject) {
-            //            if (subject.SubjectId !== null) {
-            //                $scope.Commands.updatesubject(subject);
-            //            }
-            //            else {
-            //                $scope.Commands.savesubject(subject);
-            //            }
-            //        },
-            //        function (event) {
-
-            //        });
-            //},
+           
             closeTaskContainer: function () {
                 $scope.modalInstance.dismiss();
             }

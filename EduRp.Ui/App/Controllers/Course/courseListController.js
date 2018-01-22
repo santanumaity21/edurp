@@ -92,12 +92,9 @@
                 });
             }
             
-
         };
         
         $scope.pageLoad = function () {
-            function startup() {
-
                 $q.all([
                     courseListService.getCourseList()
                 ]).then(function (data) {
@@ -110,7 +107,7 @@
                 }, function (update) {
                     errorHandler.logServiceNotify('courseListController', update);
                 });
-            }
+           
         }
         
 
