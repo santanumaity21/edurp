@@ -55,8 +55,12 @@
                     "TaskDescription": $scope.modTaskObj.TaskDescription
                 };
 
-                $scope.pageLoad();
-                $scope.Modals.closeCourseContainer();
+                taskListService.updateTask(postData).then(function (data) {
+                    $scope.pageLoad();
+                    $scope.Modals.closeCourseContainer();
+                }, function (error) {
+                    alert("Please try again");
+                });
             }
         };
         
@@ -66,9 +70,13 @@
                     "TaskName": $scope.modTaskObj.TaskName,
                     "TaskDescription": $scope.modTaskObj.TaskDescription
                 };
-
-                $scope.pageLoad();
-                $scope.Modals.closeCourseContainer();
+                taskListService.addTask(postData).then(function (data) {
+                    $scope.pageLoad();
+                    $scope.Modals.closeCourseContainer();
+                }, function (error) {
+                    alert("Please try again");
+                });
+                
             }
 
         };
