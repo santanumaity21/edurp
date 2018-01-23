@@ -14,12 +14,12 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = feeService.GetList(id,userid,tokenid) });
         }
 
-        public IHttpActionResult GetFeeByPrgmStdy(int? id, int? userid, string tokenid, int? pid)
+        public IHttpActionResult GetProgramStudyFeesList(int? id, int? userid, string tokenid, int? pid)
         {
             return Ok(new { results = feeService.GetByPrgmStdy(id, userid, tokenid, pid) });
         }
 
-        public IHttpActionResult GetFeeByBatch(int? id, int? userid, string tokenid, int? batchid)
+        public IHttpActionResult GetBatchFeesList(int? id, int? userid, string tokenid, int? batchid)
         {
             return Ok(new { results = feeService.GetByBatch(id, userid, tokenid, batchid) });
         }

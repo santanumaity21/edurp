@@ -19,7 +19,7 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = programStudyService.GetList(id,userid,tokenid) });
         }
 
-        public IHttpActionResult GetProgmByBatch(int? id, int? userid, string tokenid, int? batchid)
+        public IHttpActionResult GetBatchProgramStudyList(int? id, int? userid, string tokenid, int? batchid)
         {
             return Ok(new { results = programStudyService.GetProgmByBatchId(id, userid, tokenid, batchid) });
         }

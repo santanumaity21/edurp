@@ -18,6 +18,10 @@ namespace EduRp.WebApi.Controllers
         {
             return Ok(new { results = employeeService.GetList(id, userid, tokenid) });
         }
+        public IHttpActionResult GetTaskStaffList(int? id, int? userid, string tokenid, int? taskid)
+        {
+            return Ok(new { results = employeeService.GetById(id, userid, tokenid,taskid) });
+        }
 
         [HttpPut]
         [HttpPost]

@@ -18,7 +18,7 @@ namespace EduRp.WebApi.Controllers
 
         [HttpGet]
         //[Route("GetByCourse/{id:int?}/{CourseId:int?}")]
-        public IHttpActionResult GetSubjByCourse(int? id,int? userid,string tokenid, int? CourseId)
+        public IHttpActionResult GetCourseSubjectList(int? id,int? userid,string tokenid, int? CourseId)
         {
             return Ok(new { results = subjectMasterService.GetByCourse(id,userid,tokenid, CourseId) });
         }

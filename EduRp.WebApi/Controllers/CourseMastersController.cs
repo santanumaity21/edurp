@@ -16,7 +16,7 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = courseMasterService.GetList(id, userid, tokenid) });
         }
 
-        public IHttpActionResult  GetCourseByPrgm(int? id, int? userid, string tokenid, int? psid)
+        public IHttpActionResult GetProgramStudyCourseList(int? id, int? userid, string tokenid, int? psid)
         {
             return Ok(new { results = courseMasterService.GetByPsid(id, userid, tokenid, psid) });
         }

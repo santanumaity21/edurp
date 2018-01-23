@@ -105,5 +105,10 @@ namespace EduRp.Service.Service
                 return false;
             }
         }
+
+        public List<GetTaskStaffList_Result> GetById(int? id, int? userid, string tokenid, int? taskid)
+        {
+            return db.GetTaskStaffList(id, userid, tokenid, taskid).ToList();
+        }
     }
 }

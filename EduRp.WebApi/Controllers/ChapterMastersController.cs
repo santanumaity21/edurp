@@ -14,7 +14,7 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = chapterMasterService.GetList(id, userid, tokenid) });
         }
 
-        public IHttpActionResult GetChptrBySubj(int? id, int? userid, string tokenid,int? sbjid)
+        public IHttpActionResult GetSubjectChapterList(int? id, int? userid, string tokenid,int? sbjid)
         {
             return Ok(new { results = chapterMasterService.GetBySubj(id, userid, tokenid, sbjid) });
         }
