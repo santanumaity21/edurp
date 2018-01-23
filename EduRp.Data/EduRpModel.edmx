@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="edurp_devModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="edurp_devModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApplicationForm">
           <Key>
             <PropertyRef Name="ApplicationFormId" />
@@ -468,7 +468,9 @@
         </Function>
         <Function Name="GetAdmissionNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
-          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
+          <Parameter Name="apptemplateid" Type="int" Mode="In" />
         </Function>
         <Function Name="GetAppFormTemplateDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -895,8 +897,7 @@
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserUniversityAssociation" EntityType="Self.UserUniversityAssociation" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="edurp_devModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1391,7 +1392,9 @@
           <EntitySet Name="UserUniversityAssociations" EntityType="Self.UserUniversityAssociation" />
           <FunctionImport Name="GetAdmissionNumber" ReturnType="Collection(edurp_devModel.GetAdmissionNumber_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
-            <Parameter Name="jsontext" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
+            <Parameter Name="apptemplateid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetAppFormTemplateDetail" ReturnType="Collection(edurp_devModel.GetAppFormTemplateDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1402,7 +1405,7 @@
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetApplicationFormList">
-            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          <Parameter Name="universityid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBatchApplicationFormList">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1453,10 +1456,10 @@
             <Parameter Name="batchid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBulkData">
-            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          <Parameter Name="universityid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBulkLoadDetail">
-            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          <Parameter Name="universityid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBulkLoadDetailById">
             <Parameter Name="universityid" Mode="In" Type="Int32" />

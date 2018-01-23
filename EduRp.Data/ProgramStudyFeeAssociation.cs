@@ -9,10 +9,11 @@
 
 namespace EduRp.Data
 {
+    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class ProgramStudyFeeAssociation
+    public partial class ProgramStudyFeeAssociation : BaseEntity
     {
         public int ProgramStudyFeeId { get; set; }
         public int ProgramStudyId { get; set; }

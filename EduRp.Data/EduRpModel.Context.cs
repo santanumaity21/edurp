@@ -60,17 +60,25 @@ namespace EduRp.Data
         public virtual DbSet<UserMaster> UserMasters { get; set; }
         public virtual DbSet<UserUniversityAssociation> UserUniversityAssociations { get; set; }
     
-        public virtual ObjectResult<GetAdmissionNumber_Result> GetAdmissionNumber(Nullable<int> universityid, string jsontext)
+        public virtual ObjectResult<GetAdmissionNumber_Result> GetAdmissionNumber(Nullable<int> universityid, Nullable<int> userid, string token, Nullable<int> apptemplateid)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var jsontextParameter = jsontext != null ?
-                new ObjectParameter("jsontext", jsontext) :
-                new ObjectParameter("jsontext", typeof(string));
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAdmissionNumber_Result>("GetAdmissionNumber", universityidParameter, jsontextParameter);
+            var tokenParameter = token != null ?
+                new ObjectParameter("token", token) :
+                new ObjectParameter("token", typeof(string));
+    
+            var apptemplateidParameter = apptemplateid.HasValue ?
+                new ObjectParameter("apptemplateid", apptemplateid) :
+                new ObjectParameter("apptemplateid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAdmissionNumber_Result>("GetAdmissionNumber", universityidParameter, useridParameter, tokenParameter, apptemplateidParameter);
         }
     
         public virtual ObjectResult<GetAppFormTemplateDetail_Result> GetAppFormTemplateDetail(Nullable<int> universityid, string jsontext)
