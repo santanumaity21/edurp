@@ -19,12 +19,8 @@ namespace EduRp.Service.Service
         {
             return db.GetSubjectList(id, userid, tokenid).ToList();
         }
-        //public List<GetSubjectByCourseId_Result> GetByCourse(int id, int CourseId)
-        //{
-        //    return db.GetSubjectByCourseId(id, CourseId).ToList();
-        //}
 
-        public bool InsUpdSubjectMaster(SubjectMaster subjectMaster)
+        public bool InsUpdSubjectMaster(int? id, SubjectMaster subjectMaster)
         {
             try
             {
@@ -37,13 +33,12 @@ namespace EduRp.Service.Service
                        SKS = subjectMaster.SKS,
                        UserId = subjectMaster.UserId,
                        TokenId = subjectMaster.TokenId,
-                       UniversityId = subjectMaster.UniversityId,
                    });
 
 
                 var SubjObj = obj.ToString();
 
-                var JsonObj = db.UpdateSubject(SubjObj);
+                var JsonObj = db.UpdateSubject(id,SubjObj);
 
                 return true;
 
@@ -66,7 +61,8 @@ namespace EduRp.Service.Service
                   (new SubjectMaster
                   {
                       SubjectId = subjectMaster.SubjectId,
-                      UserId = subjectMaster.UserId
+                      UserId = subjectMaster.UserId,
+                      TokenId = subjectMaster.TokenId,
                   });
 
 
@@ -82,6 +78,11 @@ namespace EduRp.Service.Service
                 return false;
             }
             throw new NotImplementedException();
+        }
+
+        public List<GetCourseSubjectList_Result> GetByCourse(int? id, int? userid, string tokenid, int? courseid)
+        {
+            return db.GetCourseSubjectList(id, userid, tokenid, courseid).ToList();
         }
     }
 }

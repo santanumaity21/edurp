@@ -14,28 +14,29 @@ namespace EduRp.WebApi.Controllers
     {
         private IProgramStudyService programStudyService = new ProgramStudyService();
         // GET api/<controller>
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = programStudyService.GetList(id) });
+            return Ok(new { results = programStudyService.GetList(id,userid,tokenid) });
         }
 
-        public List<GetProgramStudyCourseList_Result>GetByPid(int uid,string pid)
+        public IHttpActionResult GetBatchProgramStudyList(int? id, int? userid, string tokenid, int? batchid)
         {
-            return programStudyService.GetByUid(uid,pid);
+            return Ok(new { results = programStudyService.GetProgmByBatchId(id, userid, tokenid, batchid) });
         }
+
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,ProgramStudy programStudy)
+        public IHttpActionResult Save(ProgramStudy programStudy)
         {
-            var isUpdate = programStudyService.InsUpdProgramStudy(id, programStudy);
+            var isUpdate = programStudyService.InsUpdProgramStudy(programStudy.UniversityId, programStudy);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, ProgramStudy programStudy)
+        public IHttpActionResult Delete(ProgramStudy programStudy)
         {
-            var isDeleted = programStudyService.DeleteProgramStudy(id,programStudy);
+            var isDeleted = programStudyService.DeleteProgramStudy(programStudy.UniversityId, programStudy);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

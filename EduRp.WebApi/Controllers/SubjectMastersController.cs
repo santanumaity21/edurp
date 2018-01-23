@@ -7,7 +7,6 @@ using System.Web.Http;
 namespace EduRp.WebApi.Controllers
 {
 
-    [Route("api/SubjectMasters")]
     public class SubjectMastersController : ApiController
     {
         private ISubjectMasterService subjectMasterService = new SubjectMasterService();
@@ -16,18 +15,19 @@ namespace EduRp.WebApi.Controllers
         {
             return Ok(new { results = subjectMasterService.GetList(id, userid, tokenid) });
         }
-        //[HttpGet]
+
+        [HttpGet]
         //[Route("GetByCourse/{id:int?}/{CourseId:int?}")]
-        //public IHttpActionResult GetByCourse(int id, int CourseId)
-        //{
-        //    return Ok(new { results = subjectMasterService.GetByCourse(id, CourseId)});
-        //}
-       
+        public IHttpActionResult GetCourseSubjectList(int? id,int? userid,string tokenid, int? CourseId)
+        {
+            return Ok(new { results = subjectMasterService.GetByCourse(id,userid,tokenid, CourseId) });
+        }
+
         [HttpPut]
         [HttpPost]     
         public IHttpActionResult Save(SubjectMaster subjectMaster)
         {
-            var isUpdate = subjectMasterService.InsUpdSubjectMaster(subjectMaster);
+            var isUpdate = subjectMasterService.InsUpdSubjectMaster(subjectMaster.UniversityId, subjectMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
@@ -36,7 +36,7 @@ namespace EduRp.WebApi.Controllers
         [HttpDelete]
         public IHttpActionResult Delete(int? id, SubjectMaster subjectMaster)
         {
-            var isDeleted = subjectMasterService.DeleteSubjectMaster(id, subjectMaster);
+            var isDeleted = subjectMasterService.DeleteSubjectMaster(subjectMaster.UniversityId, subjectMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

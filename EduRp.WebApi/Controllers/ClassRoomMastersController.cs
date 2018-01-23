@@ -11,23 +11,23 @@ namespace EduRp.WebApi.Controllers
 
         private IClassRoomMasterService classRoomMasterService = new ClassRoomMasterService();
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = classRoomMasterService.GetList(id) });
+            return Ok(new { results = classRoomMasterService.GetList(id, userid, tokenid) });
         }
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,ClassRoomMaster classRoomMaster)
+        public IHttpActionResult Save(ClassRoomMaster classRoomMaster)
         {
-            var isUpdate = classRoomMasterService.InsUpdClassRoomMaster(id, classRoomMaster);
+            var isUpdate = classRoomMasterService.InsUpdClassRoomMaster(classRoomMaster.UniversityId, classRoomMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, ClassRoomMaster classRoomMaster)
+        public IHttpActionResult Delete(ClassRoomMaster classRoomMaster)
         {
-            var isDeleted = classRoomMasterService.DeleteClassRoomMaster(id, classRoomMaster);
+            var isDeleted = classRoomMasterService.DeleteClassRoomMaster(classRoomMaster.UniversityId, classRoomMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

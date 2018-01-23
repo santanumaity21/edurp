@@ -14,17 +14,11 @@ namespace EduRp.Service.Service
         private edurp_devEntities db = new edurp_devEntities();
 
       
-        public List<GetProgramStudyCourseList_Result> GetByUid(int uid, string pid)
+        public List<GetProgramStudyList_Result> GetList(int? id, int? userid, string tokenid)
         {
-            return db.GetProgramStudyCourseList(uid, pid).ToList();
+            return db.GetProgramStudyList(id, userid,tokenid).ToList();
         }
 
-        public List<GetProgramStudyID_Result> GetList(int id)
-        {    
-                return db.GetProgramStudyID(id).ToList(); 
-        }
-
-       
         public bool InsUpdProgramStudy(int? id, ProgramStudy programStudy)
         {
             try
@@ -39,6 +33,7 @@ namespace EduRp.Service.Service
                       AcademicTerm = programStudy.AcademicTerm,
                       Status= programStudy.Status,
                       UserId = programStudy.UserId,
+                      TokenId = programStudy.TokenId,
                   });
 
 
@@ -64,12 +59,13 @@ namespace EduRp.Service.Service
                   {
                       ProgramStudyId = programStudy.ProgramStudyId,
                       UserId = programStudy.UserId,
+                      TokenId = programStudy.TokenId,
                   });
 
 
                 var PrgmObj = obj.ToString();
 
-                var JsonObj = db.UpdateProgramStudy(id, PrgmObj);
+                var JsonObj = db.RemoveProgramStudy(id, PrgmObj);
 
                 return true;
             }
@@ -79,5 +75,9 @@ namespace EduRp.Service.Service
             }
         }
 
+        public List<GetBatchProgramStudyList_Result> GetProgmByBatchId(int? id, int? userid, string tokenid, int? batchid)
+        {
+            return db.GetBatchProgramStudyList(id, userid, tokenid, batchid).ToList();
+        }
     }
 }

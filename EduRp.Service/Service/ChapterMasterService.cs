@@ -11,9 +11,9 @@ namespace EduRp.Service.Service
     public class ChapterMasterService : IChapterMasterService
     {
         private edurp_devEntities db = new edurp_devEntities();
-        public List<GetChapterList_Result> GetList(int id)
+        public List<GetChapterList_Result> GetList(int? id, int? userid, string tokenid)
         {
-            return db.GetChapterList(id).ToList();
+            return db.GetChapterList(id,userid,tokenid).ToList();
         }
 
         public bool InsUpdChapterMaster(int? id, ChapterMaster chapterMaster)
@@ -50,15 +50,30 @@ namespace EduRp.Service.Service
             throw new NotImplementedException();
         }
 
-        public bool DeleteChaptertMaster(int id)
+        public bool DeleteChaptertMaster(int? id ,ChapterMaster chapterMaster)
         {
             try
             {
-                var chapter = db.ChapterMasters.Where(x => x.ChapterId == id).FirstOrDefault();
-                if (chapter == null) return false;
-                db.Entry(chapter).State = System.Data.Entity.EntityState.Deleted;
-                db.SaveChanges();
+                var obj = JsonConvert.SerializeObject
+                (new ChapterMaster
+                {
+                    ChapterId = chapterMaster.ChapterId,
+                    UserId = chapterMaster.UserId,
+                    TokenId = chapterMaster.TokenId,
+
+                });
+
+                var ChptrObj = obj.ToString();
+
+                var JsonObj = db.RemoveClassRoom(id, ChptrObj);
+
                 return true;
+
+                //var chapter = db.ChapterMasters.Where(x => x.ChapterId == id).FirstOrDefault();
+                //if (chapter == null) return false;
+                //db.Entry(chapter).State = System.Data.Entity.EntityState.Deleted;
+                //db.SaveChanges();
+                //return true;
             }
             catch (Exception ex)
             {
@@ -66,5 +81,9 @@ namespace EduRp.Service.Service
             }
         }
 
+        public List<GetSubjectChapterList_Result> GetBySubj(int? id, int? userid, string tokenid, int? sbjid)
+        {
+            return db.GetSubjectChapterList(id, userid, tokenid, sbjid).ToList();
+        }
     }
 }

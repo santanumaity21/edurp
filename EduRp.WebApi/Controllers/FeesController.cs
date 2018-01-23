@@ -9,23 +9,34 @@ namespace EduRp.WebApi.Controllers
     {
         private IFeeService feeService = new FeeService();
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = feeService.GetList(id) });
+            return Ok(new { results = feeService.GetList(id,userid,tokenid) });
         }
+
+        public IHttpActionResult GetProgramStudyFeesList(int? id, int? userid, string tokenid, int? pid)
+        {
+            return Ok(new { results = feeService.GetByPrgmStdy(id, userid, tokenid, pid) });
+        }
+
+        public IHttpActionResult GetBatchFeesList(int? id, int? userid, string tokenid, int? batchid)
+        {
+            return Ok(new { results = feeService.GetByBatch(id, userid, tokenid, batchid) });
+        }
+
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,Fee fee)
+        public IHttpActionResult Save(Fee fee)
         {
-            var isUpdate = feeService.InsUpdFee(id,fee);
+            var isUpdate = feeService.InsUpdFee(fee.UniversityId, fee);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id,Fee fee)
+        public IHttpActionResult Delete(Fee fee)
         {
-            var isDeleted = feeService.DeleteFee(id,fee);
+            var isDeleted = feeService.DeleteFee(fee.UniversityId, fee);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

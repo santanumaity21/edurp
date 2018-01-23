@@ -4,9 +4,9 @@ var apiPrefix = 'http://localhost:50381/';
 var urlService =
     {
         getCourseList: localhost ? '/sampleData/Course/list.json' : apiPrefix + 'api/CourseMasters/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
-        addCourse: localhost ? '/sampleData/Course/add.json' : apiPrefix + '/api/CourseMasters/Post/',
-        updateCourse: localhost ? '/sampleData/Course/edit.json' : apiPrefix + 'api/CourseMasters/Put/',
-        deleteCourse: localhost ? '/sampleData/Course/delete.json' : apiPrefix + 'api/CourseMasters/Delete/{{id}}',
+        addCourse: localhost ? '/sampleData/Course/add.json' : apiPrefix + '/api/CourseMasters/Save/',
+        updateCourse: localhost ? '/sampleData/Course/edit.json' : apiPrefix + 'api/CourseMasters/Save/',
+        deleteCourse: localhost ? '/sampleData/Course/delete.json' : apiPrefix + 'api/CourseMasters/Save',
 
 
         getFeesList: localhost ? '/sampleData/feesList.json' : apiPrefix + 'api/Fees/Get',
@@ -16,8 +16,8 @@ var urlService =
 
         getSubjectList: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/SubjectMasters/?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
         addSubject: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/Subjectmasters/Save/',
-        updateSubject: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/SubjectMasters/Put/',
-        deleteSubject: localhost ? '/sampledata/subjectlist.json' : apiPrefix + 'api/SubjectMasters/Delete/',
+        updateSubject: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/SubjectMasters/Save/',
+        deleteSubject: localhost ? '/sampledata/subjectlist.json' : apiPrefix + 'api/SubjectMasters/Save/',
 
         getClassRoomList: localhost ? '/sampleData/classRoomList.json' : apiPrefix + 'api/ClassRoomMasters/Get/1',
         //addClassRoom: localhost ? ' ' : apiPrefix + 'api/ClassRoomMasters/Post/',

@@ -11,23 +11,29 @@ namespace EduRp.WebApi.Controllers
 
         private ICourseMasterService courseMasterService = new CourseMasterService();
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = courseMasterService.GetList(id) });
+            return Ok(new { results = courseMasterService.GetList(id, userid, tokenid) });
         }
+
+        public IHttpActionResult GetProgramStudyCourseList(int? id, int? userid, string tokenid, int? psid)
+        {
+            return Ok(new { results = courseMasterService.GetByPsid(id, userid, tokenid, psid) });
+        }
+
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,CourseMaster courseMaster)
+        public IHttpActionResult Save(CourseMaster courseMaster)
         {
-            var isUpdate = courseMasterService.InsUpdCourseMaster(id, courseMaster);
+            var isUpdate = courseMasterService.InsUpdCourseMaster(courseMaster.UniversityId, courseMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, CourseMaster courseMaster)
+        public IHttpActionResult Delete(CourseMaster courseMaster)
         {
-            var isDeleted = courseMasterService.DeleteCourseMaster(id, courseMaster);
+            var isDeleted = courseMasterService.DeleteCourseMaster(courseMaster.UniversityId, courseMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

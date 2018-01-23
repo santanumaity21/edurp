@@ -9,7 +9,11 @@ namespace EduRp.Service.IService
 {
     public interface IBatchMasterService
     {
-        List<BatchMaster> GetList();
+        List<GetBatchList_Result> GetList(int? id, int? userid, string tokenid);
+
+        List<GetBatchFeesList_Result> GetBatchListByFee(int? id, int? userid, string tokenid,int? batchid);
+
+        List<GetBatchProgramStudyList_Result> GetBatchListByPrgm(int? id, int? userid, string tokenid,int? pid);
 
         bool InsUpdBatchMaster(int? id, BatchMaster batchMaster);
 

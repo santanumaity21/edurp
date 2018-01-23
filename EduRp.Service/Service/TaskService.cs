@@ -12,7 +12,7 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
-        public List<GetTaskList_Result> GetList(int id) => db.GetTaskList(id).ToList();
+        public List<GetTaskList_Result> GetList(int? id, int? userid, string tokenid) => db.GetTaskList(id, userid, tokenid).ToList();
 
         public bool InsUpdTask(int? id, Task task)
         {
@@ -26,6 +26,7 @@ namespace EduRp.Service.Service
                       TaskDescription = task.TaskDescription,
                       TaskDuration = task.TaskDuration,
                       UserId = task.UserId,
+                      TokenId = task.TokenId,
                   });
 
                 var TaskObj = obj.ToString();
@@ -51,6 +52,7 @@ namespace EduRp.Service.Service
                  {
                      TaskId = task.TaskId,
                      UserId = task.UserId,
+                     TokenId = task.TokenId,
                  });
 
                 var TaskObj = obj.ToString();

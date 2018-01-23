@@ -13,7 +13,9 @@ namespace EduRp.Data
     
     public partial class GetApplicationFormDetail_Result
     {
-        public int ApplicationFormId { get; set; }
-        public string ApplicationFormName { get; set; }
+        public string AdmissionNumber { get; set; }
+        public string AppFormGroupLabel { get; set; }
+        public string FieldName { get; set; }
+        public string Value { get; set; }
     }
 }

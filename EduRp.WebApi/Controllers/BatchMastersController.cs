@@ -10,23 +10,23 @@ namespace EduRp.WebApi.Controllers
     {
         private IBatchMasterService batchMasterService = new BatchMasterService();
         [HttpGet]
-        public IHttpActionResult Get()
+        public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = batchMasterService.GetList() });
+            return Ok(new { results = batchMasterService.GetList(id, userid, tokenid) });
         }
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,BatchMaster batchMaster)
+        public IHttpActionResult Save(BatchMaster batchMaster)
         {
-            var isUpdate = batchMasterService.InsUpdBatchMaster(id, batchMaster);
+            var isUpdate = batchMasterService.InsUpdBatchMaster(batchMaster.UniversityId, batchMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, BatchMaster batchMaster)
+        public IHttpActionResult Delete(BatchMaster batchMaster)
         {
-            var isDeleted = batchMasterService.DeleteBatchMaster(id, batchMaster);
+            var isDeleted = batchMasterService.DeleteBatchMaster(batchMaster.UniversityId, batchMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

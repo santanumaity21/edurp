@@ -16,6 +16,7 @@ namespace EduRp.Data
     {
         public int AppFormGroupId { get; set; }
         public string AppFormGroupName { get; set; }
+        public string AppFormGroupLabel { get; set; }
         public string EnableToUser { get; set; }
         public Nullable<int> AppFormTemplateId { get; set; }
         public Nullable<int> UniversityId { get; set; }

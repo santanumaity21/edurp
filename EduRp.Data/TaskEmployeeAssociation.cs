@@ -9,10 +9,11 @@
 
 namespace EduRp.Data
 {
+    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class TaskEmployeeAssociation
+    public partial class TaskEmployeeAssociation : BaseEntity
     {
         public int TaskEmployeeId { get; set; }
         public Nullable<int> TaskId { get; set; }

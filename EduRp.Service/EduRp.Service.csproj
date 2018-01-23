@@ -87,17 +87,28 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IService\IBatchFeeAssociationService.cs" />
+    <Compile Include="IService\IBatchProgramStudyAssociationService.cs" />
     <Compile Include="IService\IClassRoomMasterService.cs" />
     <Compile Include="IService\ICourseMasterService.cs" />
     <Compile Include="IService\IBatchMasterService.cs" />
+    <Compile Include="IService\ICourseSubjectAssociationService.cs" />
     <Compile Include="IService\IEmployeeMasterService.cs" />
     <Compile Include="IService\IFeeService.cs" />
+    <Compile Include="IService\IProgramStudyCourseAssociationService.cs" />
+    <Compile Include="IService\IProgramStudyFeeAssociationService.cs" />
+    <Compile Include="IService\IStudentAdmissionFormService.cs" />
+    <Compile Include="IService\ISubjectChapterAssociationService.cs" />
     <Compile Include="IService\ITaskService.cs" />
+    <Compile Include="IService\ITaskStaffAssociationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BatchFeeAssociationService.cs" />
     <Compile Include="Service\BatchMasterService.cs" />
+    <Compile Include="Service\BatchProgramStudyAssociationService.cs" />
     <Compile Include="Service\ChapterMasterService.cs" />
     <Compile Include="Service\ClassRoomMasterService.cs" />
     <Compile Include="Service\CourseMasterService.cs" />
+    <Compile Include="Service\CourseSubjectAssociationService.cs" />
     <Compile Include="Service\EmployeeMasterService.cs" />
     <Compile Include="Service\ExaminationTypeService.cs" />
     <Compile Include="IService\IChapterMasterService.cs" />
@@ -105,9 +116,14 @@
     <Compile Include="IService\IProgramStudyService .cs" />
     <Compile Include="IService\ISubjectMasterService.cs" />
     <Compile Include="Service\FeeService.cs" />
+    <Compile Include="Service\ProgramStudyCourseAssociationService.cs" />
+    <Compile Include="Service\ProgramStudyFeeAssociationService.cs" />
     <Compile Include="Service\ProgramStudyService.cs" />
+    <Compile Include="Service\StudentAdmissionFormService.cs" />
+    <Compile Include="Service\SubjectChapterAssociationService.cs" />
     <Compile Include="Service\SubjectMasterService.cs" />
     <Compile Include="Service\TaskService.cs" />
+    <Compile Include="Service\TaskStaffAssociationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EduRp.Data\EduRp.Data.csproj">

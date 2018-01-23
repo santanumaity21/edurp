@@ -9,7 +9,7 @@ namespace EduRp.Service.IService
 {
     public interface ITaskService
     {
-        List<GetTaskList_Result> GetList(int id);
+        List<GetTaskList_Result> GetList(int? id, int? userid, string tokenid);
 
         bool InsUpdTask(int? id,Task task);
 

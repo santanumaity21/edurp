@@ -14,24 +14,28 @@ namespace EduRp.WebApi.Controllers
     {
         private IEmployeeMasterService employeeService = new EmployeeMasterService();
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = employeeService.GetList(id) });
+            return Ok(new { results = employeeService.GetList(id, userid, tokenid) });
+        }
+        public IHttpActionResult GetTaskStaffList(int? id, int? userid, string tokenid, int? taskid)
+        {
+            return Ok(new { results = employeeService.GetById(id, userid, tokenid,taskid) });
         }
 
         [HttpPut]
         [HttpPost]
-        public IHttpActionResult Save(int? id, EmployeeMaster employeeMaster)
+        public IHttpActionResult Save(EmployeeMaster employeeMaster)
         {
-            var isUpdate = employeeService.InsUpdEmployeeMaster(id, employeeMaster);
+            var isUpdate = employeeService.InsUpdEmployeeMaster(employeeMaster.UniversityId, employeeMaster);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, EmployeeMaster employeeMaster)
+        public IHttpActionResult Delete(EmployeeMaster employeeMaster)
         {
-            var isDeleted = employeeService.DeleteEmployeeMaster(id,employeeMaster);
+            var isDeleted = employeeService.DeleteEmployeeMaster(employeeMaster.UniversityId, employeeMaster);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

@@ -9,7 +9,7 @@ namespace EduRp.Service.IService
 {
     public interface IClassRoomMasterService
     {
-        List<GetClassRoomList_Result> GetList(int id);
+        List<GetClassRoomList_Result> GetList(int? id, int? userid, string tokenid);
 
         bool InsUpdClassRoomMaster(int? id, ClassRoomMaster classRoomMaster);
 

@@ -14,23 +14,23 @@ namespace EduRp.WebApi.Controllers
     {
         private IExaminationTypeService examinationTypeService = new ExaminationTypeService();
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = examinationTypeService.GetList(id) });
+            return Ok(new { results = examinationTypeService.GetList(id,userid,tokenid) });
         }
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,ExaminationType examinationType)
+        public IHttpActionResult Save(ExaminationType examinationType)
         {
-            var isUpdate = examinationTypeService.InsUpdExaminationType(id, examinationType);
+            var isUpdate = examinationTypeService.InsUpdExaminationType(examinationType.UniversityId, examinationType);
             if (isUpdate == true)
                 return Ok();
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id,ExaminationType examinationType)
+        public IHttpActionResult Delete(ExaminationType examinationType)
         {
-            var isDeleted = examinationTypeService.DeleteExaminationType(id,examinationType);
+            var isDeleted = examinationTypeService.DeleteExaminationType(examinationType.UniversityId, examinationType);
             if (isDeleted == true)
                 return Ok();
             return BadRequest();

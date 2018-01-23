@@ -9,10 +9,12 @@ namespace EduRp.Service.IService
 {
     public interface IChapterMasterService
     {
-        List<GetChapterList_Result> GetList(int id);
+        List<GetChapterList_Result> GetList(int? id, int? userid, string tokenid);
+
+        List<GetSubjectChapterList_Result> GetBySubj(int? id, int? userid, string tokenid, int? sbjid);
 
         bool InsUpdChapterMaster(int? id, ChapterMaster chapterMaster);
 
-        bool DeleteChaptertMaster(int id);
+        bool DeleteChaptertMaster(int? id, ChapterMaster chapterMaster);
     }
 }
