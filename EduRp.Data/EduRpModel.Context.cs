@@ -273,6 +273,37 @@ namespace EduRp.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBatchProgramStudyNotLinkedList_Result>("GetBatchProgramStudyNotLinkedList", universityidParameter, useridParameter, tokenParameter, batchidParameter);
         }
     
+        public virtual int GetBulkData(Nullable<int> universityid)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetBulkData", universityidParameter);
+        }
+    
+        public virtual int GetBulkLoadDetail(Nullable<int> universityid)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetBulkLoadDetail", universityidParameter);
+        }
+    
+        public virtual int GetBulkLoadDetailById(Nullable<int> universityid, Nullable<int> bulkLoadMasterId)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var bulkLoadMasterIdParameter = bulkLoadMasterId.HasValue ?
+                new ObjectParameter("BulkLoadMasterId", bulkLoadMasterId) :
+                new ObjectParameter("BulkLoadMasterId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetBulkLoadDetailById", universityidParameter, bulkLoadMasterIdParameter);
+        }
+    
         public virtual ObjectResult<GetChapterDetail_Result> GetChapterDetail(Nullable<int> universityid, Nullable<int> userid, string token, Nullable<int> chapterid)
         {
             var universityidParameter = universityid.HasValue ?

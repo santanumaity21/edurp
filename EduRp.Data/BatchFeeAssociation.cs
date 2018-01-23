@@ -9,11 +9,12 @@
 
 namespace EduRp.Data
 {
-    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
-    
-    public partial class BatchFeeAssociation : BaseEntity
+    using EduRp.Data.Core.Foundation;
+
+
+    public partial class BatchFeeAssociation:BaseEntity
     {
         public int BatchFeeId { get; set; }
         public int BatchId { get; set; }

@@ -529,6 +529,16 @@
           <Parameter Name="token" Type="varchar" Mode="In" />
           <Parameter Name="batchid" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetBulkData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetBulkLoadDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetBulkLoadDetailById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="BulkLoadMasterId" Type="int" Mode="In" />
+        </Function>
         <Function Name="GetChapterDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="userid" Type="int" Mode="In" />
@@ -1441,6 +1451,16 @@
             <Parameter Name="userid" Mode="In" Type="Int32" />
             <Parameter Name="token" Mode="In" Type="String" />
             <Parameter Name="batchid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetBulkData">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetBulkLoadDetail">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetBulkLoadDetailById">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="BulkLoadMasterId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetChapterDetail" ReturnType="Collection(edurp_devModel.GetChapterDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -2645,6 +2665,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBulkData" FunctionName="edurp_devModel.Store.GetBulkData" />
+          <FunctionImportMapping FunctionImportName="GetBulkLoadDetail" FunctionName="edurp_devModel.Store.GetBulkLoadDetail" />
+          <FunctionImportMapping FunctionImportName="GetBulkLoadDetailById" FunctionName="edurp_devModel.Store.GetBulkLoadDetailById" />
           <FunctionImportMapping FunctionImportName="GetChapterDetail" FunctionName="edurp_devModel.Store.GetChapterDetail">
             <ResultMapping>
               <ComplexTypeMapping TypeName="edurp_devModel.GetChapterDetail_Result">

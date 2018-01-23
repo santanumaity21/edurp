@@ -9,10 +9,11 @@
 
 namespace EduRp.Data
 {
+    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class RoleMaster
+    public partial class RoleMaster : BaseEntity
     {
         public int RoleId { get; set; }
         public string RoleCode { get; set; }

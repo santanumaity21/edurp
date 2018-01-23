@@ -340,7 +340,6 @@
     <Compile Include="UserUniversityAssociation.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\ProgramFeeAssociationModel.cs" />
     <Compile Include="ViewModel\StudentApplicationForm.cs" />
   </ItemGroup>
   <ItemGroup>
