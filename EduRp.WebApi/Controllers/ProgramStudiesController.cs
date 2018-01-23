@@ -19,13 +19,14 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = programStudyService.GetList(id,userid,tokenid) });
         }
 
-        //public List<GetProgramStudyCourseList_Result>GetByPid(int uid,string pid)
-        //{
-        //    return programStudyService.GetByUid(uid,pid);
-        //}
+        public IHttpActionResult GetProgmByBatch(int? id, int? userid, string tokenid, int? batchid)
+        {
+            return Ok(new { results = programStudyService.GetProgmByBatchId(id, userid, tokenid, batchid) });
+        }
+
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,ProgramStudy programStudy)
+        public IHttpActionResult Save(ProgramStudy programStudy)
         {
             var isUpdate = programStudyService.InsUpdProgramStudy(programStudy.UniversityId, programStudy);
             if (isUpdate == true)
@@ -33,7 +34,7 @@ namespace EduRp.WebApi.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, ProgramStudy programStudy)
+        public IHttpActionResult Delete(ProgramStudy programStudy)
         {
             var isDeleted = programStudyService.DeleteProgramStudy(programStudy.UniversityId, programStudy);
             if (isDeleted == true)

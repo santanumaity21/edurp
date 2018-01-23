@@ -21,7 +21,7 @@ namespace EduRp.WebApi.Controllers
 
         [HttpPut]
         [HttpPost]
-        public IHttpActionResult Save(int? id, EmployeeMaster employeeMaster)
+        public IHttpActionResult Save(EmployeeMaster employeeMaster)
         {
             var isUpdate = employeeService.InsUpdEmployeeMaster(employeeMaster.UniversityId, employeeMaster);
             if (isUpdate == true)
@@ -29,7 +29,7 @@ namespace EduRp.WebApi.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, EmployeeMaster employeeMaster)
+        public IHttpActionResult Delete(EmployeeMaster employeeMaster)
         {
             var isDeleted = employeeService.DeleteEmployeeMaster(employeeMaster.UniversityId, employeeMaster);
             if (isDeleted == true)

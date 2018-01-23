@@ -11,6 +11,8 @@ namespace EduRp.Service.IService
     {
         List<GetCourseList_Result> GetList(int? id, int? userid, string tokenid);
 
+        List<GetProgramStudyCourseList_Result> GetByPsid(int? id, int? userid, string tokenid, int? psid);
+
         bool InsUpdCourseMaster(int? id, CourseMaster courseMaster);
 
         bool DeleteCourseMaster(int? id, CourseMaster courseMaster);

@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class BatchMaster:BaseEntity
+    public partial class BatchMaster : BaseEntity
     {
         public int BatchId { get; set; }
         public string BatchName { get; set; }

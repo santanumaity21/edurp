@@ -13,9 +13,20 @@ namespace EduRp.WebApi.Controllers
         {
             return Ok(new { results = feeService.GetList(id,userid,tokenid) });
         }
+
+        public IHttpActionResult GetFeeByPrgmStdy(int? id, int? userid, string tokenid, int? pid)
+        {
+            return Ok(new { results = feeService.GetByPrgmStdy(id, userid, tokenid, pid) });
+        }
+
+        public IHttpActionResult GetFeeByBatch(int? id, int? userid, string tokenid, int? batchid)
+        {
+            return Ok(new { results = feeService.GetByBatch(id, userid, tokenid, batchid) });
+        }
+
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,Fee fee)
+        public IHttpActionResult Save(Fee fee)
         {
             var isUpdate = feeService.InsUpdFee(fee.UniversityId, fee);
             if (isUpdate == true)
@@ -23,7 +34,7 @@ namespace EduRp.WebApi.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id,Fee fee)
+        public IHttpActionResult Delete(Fee fee)
         {
             var isDeleted = feeService.DeleteFee(fee.UniversityId, fee);
             if (isDeleted == true)

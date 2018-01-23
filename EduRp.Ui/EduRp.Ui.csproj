@@ -259,6 +259,7 @@
     <Content Include="App\Controllers\AcademicBatch\academicBatchController.js" />
     <Content Include="App\Controllers\Account\loginController.js" />
     <Content Include="App\Controllers\Account\registerController.js" />
+    <Content Include="App\Controllers\BulkUpload\bulkUploadModuleController.js" />
     <Content Include="App\Controllers\Chapters\chaptersListContoller.js" />
     <Content Include="App\Controllers\ClassRoom\classRoomListContoller.js" />
     <Content Include="App\Controllers\Contact\contactController.js" />
@@ -273,14 +274,17 @@
     <Content Include="App\Controllers\Master\masterController.js" />
     <Content Include="App\Controllers\NotificationType\notificationTypeController.js" />
     <Content Include="App\Controllers\ProgramStudy\programStudyController.js" />
-    <Content Include="App\Controllers\StudentAdmissionForm\studentadmissionformController.js" />
+    <Content Include="App\Controllers\ScheduleExamination\scheduleExaminationCntrl.js" />
+    <Content Include="App\Controllers\StudentAdmissionForm\studentAdmissionFormController.js" />
     <Content Include="App\Controllers\Subject\subjectListContoller.js" />
     <Content Include="App\Controllers\Task\taskListController.js" />
+    <Content Include="App\Directives\common.js" />
     <Content Include="App\Route\routeConfig.js" />
     <Content Include="App\Services\AcademicBatch\academicBatchService.js" />
     <Content Include="App\Services\Account\authService.js" />
     <Content Include="App\Services\Account\storageHandler.js" />
     <Content Include="App\Services\Account\tokenHandler.js" />
+    <Content Include="App\Services\BulkUpload\bulkUploadService.js" />
     <Content Include="App\Services\Chapters\chaptersListService.js" />
     <Content Include="App\Services\ClassRoom\classRoomListService.js" />
     <Content Include="App\Services\Common\services.js" />
@@ -295,6 +299,7 @@
     <Content Include="App\Services\Interceptors\xmlHttpInterceptor.js" />
     <Content Include="App\Services\NotificationType\notificationTypeService.js" />
     <Content Include="App\Services\ProgramStudy\programStudyService.js" />
+    <Content Include="App\Services\StudentAdmissionForm\studentAdmissionFormService.js" />
     <Content Include="App\Services\Subject\subjectListService.js" />
     <Content Include="App\Services\Task\taskListService.js" />
     <Content Include="App\Services\urlService\urlService.js" />
@@ -302,8 +307,10 @@
     <Content Include="App\Templates\AcademicBatch\managePopup.html" />
     <Content Include="App\Templates\Account\Login.html" />
     <Content Include="App\Templates\Account\Register.html" />
+    <Content Include="App\Templates\BulkUpload\Bulkupload.html" />
     <Content Include="App\Templates\Chapters\Chapters.html" />
     <Content Include="App\Templates\ClassRoom\classroom.html" />
+    <Content Include="App\Templates\Common\loading.html" />
     <Content Include="App\Templates\Contact\AddContact.html" />
     <Content Include="App\Templates\Contact\ContactFormModal.html" />
     <Content Include="App\Templates\Contact\Index.html" />
@@ -322,6 +329,7 @@
     <Content Include="App\Templates\NotificationType\addEditModalPopup.html" />
     <Content Include="App\Templates\NotificationType\notificationtype.html" />
     <Content Include="App\Templates\ProgramStudy\programStudy.html" />
+    <Content Include="App\Templates\ScheduleExamination\scheduleExamination.html" />
     <Content Include="App\Templates\Shared\_404.html" />
     <Content Include="App\Templates\StudentAdmissionForm\StudentAdmissionForm.html" />
     <Content Include="App\Templates\Subject\managePopup.html" />

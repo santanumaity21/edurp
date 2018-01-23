@@ -9,10 +9,11 @@
 
 namespace EduRp.Data
 {
+    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class CourseSubjectAssociation
+    public partial class CourseSubjectAssociation : BaseEntity
     {
         public int CourseSubjectId { get; set; }
         public int CourseId { get; set; }

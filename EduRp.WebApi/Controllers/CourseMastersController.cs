@@ -15,9 +15,15 @@ namespace EduRp.WebApi.Controllers
         {
             return Ok(new { results = courseMasterService.GetList(id, userid, tokenid) });
         }
+
+        public IHttpActionResult  GetCourseByPrgm(int? id, int? userid, string tokenid, int? psid)
+        {
+            return Ok(new { results = courseMasterService.GetByPsid(id, userid, tokenid, psid) });
+        }
+
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,CourseMaster courseMaster)
+        public IHttpActionResult Save(CourseMaster courseMaster)
         {
             var isUpdate = courseMasterService.InsUpdCourseMaster(courseMaster.UniversityId, courseMaster);
             if (isUpdate == true)
@@ -25,7 +31,7 @@ namespace EduRp.WebApi.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, CourseMaster courseMaster)
+        public IHttpActionResult Delete(CourseMaster courseMaster)
         {
             var isDeleted = courseMasterService.DeleteCourseMaster(courseMaster.UniversityId, courseMaster);
             if (isDeleted == true)

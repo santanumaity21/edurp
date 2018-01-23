@@ -81,5 +81,9 @@ namespace EduRp.Service.Service
             }
         }
 
+        public List<GetSubjectChapterList_Result> GetBySubj(int? id, int? userid, string tokenid, int? sbjid)
+        {
+            return db.GetSubjectChapterList(id, userid, tokenid, sbjid).ToList();
+        }
     }
 }

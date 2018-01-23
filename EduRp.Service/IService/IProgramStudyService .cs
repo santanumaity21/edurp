@@ -9,7 +9,7 @@ namespace EduRp.Service.IService
     public interface IProgramStudyService
     {
         List<GetProgramStudyList_Result> GetList(int? id, int? userid, string tokenid);
-        //List<GetProgramStudyCourseList_Result> GetByUid(int uid, string pid);
+        List<GetBatchProgramStudyList_Result> GetProgmByBatchId(int? id,int? userid,string tokeid,int? batchid);
         bool InsUpdProgramStudy(int? id, ProgramStudy programStudy);
         bool DeleteProgramStudy(int? id, ProgramStudy programStudy);
     }

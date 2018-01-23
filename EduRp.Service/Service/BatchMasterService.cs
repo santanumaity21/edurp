@@ -16,6 +16,15 @@ namespace EduRp.Service.Service
         {
             return db.GetBatchList(id,userid,tokenid).ToList();
         }
+        public List<GetBatchFeesList_Result> GetBatchListByFee(int? id, int? userid, string tokenid,int? batchid)
+        {
+            return db.GetBatchFeesList(id, userid, tokenid,batchid).ToList();
+        }
+
+        public List<GetBatchProgramStudyList_Result> GetBatchListByPrgm(int? id, int? userid, string tokenid,int? pid)
+        {
+            return db.GetBatchProgramStudyList(id, userid, tokenid,pid).ToList();
+        }
 
         public bool InsUpdBatchMaster(int? id, BatchMaster batchMaster)
         {
@@ -77,6 +86,5 @@ namespace EduRp.Service.Service
                 return false;
             }
         }
-
     }
 }

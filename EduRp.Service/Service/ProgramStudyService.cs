@@ -19,12 +19,6 @@ namespace EduRp.Service.Service
             return db.GetProgramStudyList(id, userid,tokenid).ToList();
         }
 
-        //public List<GetProgramStudyID_Result> GetList(int id)
-        //{    
-        //        return db.GetProgramStudyID(id).ToList(); 
-        //}
-
-       
         public bool InsUpdProgramStudy(int? id, ProgramStudy programStudy)
         {
             try
@@ -81,5 +75,9 @@ namespace EduRp.Service.Service
             }
         }
 
+        public List<GetBatchProgramStudyList_Result> GetProgmByBatchId(int? id, int? userid, string tokenid, int? batchid)
+        {
+            return db.GetBatchProgramStudyList(id, userid, tokenid, batchid).ToList();
+        }
     }
 }

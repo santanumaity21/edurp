@@ -34,6 +34,7 @@
         $scope.toggleFilterPanel = function () {
             $scope.filterPanel = !$scope.filterPanel;
         };
+
 //Get PageLoad
         (function startup() {
 

@@ -177,7 +177,13 @@
     <Compile Include="Fee.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetAdmissionNumber_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetAppFormTemplateDetail_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetApplicationFormDetail_Result.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBatchDetail_Result.cs">
@@ -334,6 +340,8 @@
     <Compile Include="UserUniversityAssociation.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ProgramFeeAssociationModel.cs" />
+    <Compile Include="ViewModel\StudentApplicationForm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

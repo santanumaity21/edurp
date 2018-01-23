@@ -19,11 +19,7 @@ namespace EduRp.Service.Service
         {
             return db.GetSubjectList(id, userid, tokenid).ToList();
         }
-        //public List<GetSubjectByCourseId_Result> GetByCourse(int id, int CourseId)
-        //{
-        //    return db.GetSubjectByCourseId(id, CourseId).ToList();
-        //}
-   
+
         public bool InsUpdSubjectMaster(int? id, SubjectMaster subjectMaster)
         {
             try
@@ -82,6 +78,11 @@ namespace EduRp.Service.Service
                 return false;
             }
             throw new NotImplementedException();
+        }
+
+        public List<GetCourseSubjectList_Result> GetByCourse(int? id, int? userid, string tokenid, int? courseid)
+        {
+            return db.GetCourseSubjectList(id, userid, tokenid, courseid).ToList();
         }
     }
 }

@@ -9,10 +9,11 @@
 
 namespace EduRp.Data
 {
+    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class SubjectChapterAssociation
+    public partial class SubjectChapterAssociation : BaseEntity
     {
         public int SubjectChapterid { get; set; }
         public int SubjectId { get; set; }

@@ -74,5 +74,14 @@ namespace EduRp.Service.Service
             }
         }
 
+        public List<GetProgramStudyFeesList_Result> GetByPrgmStdy(int? id, int? userid, string tokenid, int? psid)
+        {
+            return db.GetProgramStudyFeesList(id, userid, tokenid, psid).ToList();
+        }
+
+        public List<GetBatchFeesList_Result> GetByBatch(int? id, int? userid, string tokenid, int? batchid)
+        {
+            return db.GetBatchFeesList(id, userid, tokenid, batchid).ToList();
+        }
     }
 }

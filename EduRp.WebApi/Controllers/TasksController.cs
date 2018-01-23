@@ -15,7 +15,7 @@ namespace EduRp.WebApi.Controllers
         }
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,Task task)
+        public IHttpActionResult Save(Task task)
         {
             var isUpdate = taskService.InsUpdTask(task.UniversityId, task);
             if (isUpdate == true)
@@ -23,7 +23,7 @@ namespace EduRp.WebApi.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, Task task)
+        public IHttpActionResult Delete(Task task)
         {
             var isDeleted = taskService.DeleteTask(task.UniversityId, task);
             if (isDeleted == true)

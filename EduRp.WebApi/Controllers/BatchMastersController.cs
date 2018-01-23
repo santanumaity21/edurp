@@ -14,9 +14,17 @@ namespace EduRp.WebApi.Controllers
         {
             return Ok(new { results = batchMasterService.GetList(id, userid, tokenid) });
         }
+        public IHttpActionResult GetBatchByFee(int? id, int? userid, string tokenid,int? batchid)
+        {
+            return Ok(new { results = batchMasterService.GetBatchListByFee(id, userid, tokenid,batchid) });
+        }
+        public IHttpActionResult GetBatchByPrgmStdy(int? id, int? userid, string tokenid,int? pid)
+        {
+            return Ok(new { results = batchMasterService.GetBatchListByPrgm(id, userid, tokenid,pid) });
+        }
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,BatchMaster batchMaster)
+        public IHttpActionResult Save(BatchMaster batchMaster)
         {
             var isUpdate = batchMasterService.InsUpdBatchMaster(batchMaster.UniversityId, batchMaster);
             if (isUpdate == true)
@@ -24,7 +32,7 @@ namespace EduRp.WebApi.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, BatchMaster batchMaster)
+        public IHttpActionResult Delete(BatchMaster batchMaster)
         {
             var isDeleted = batchMasterService.DeleteBatchMaster(batchMaster.UniversityId, batchMaster);
             if (isDeleted == true)

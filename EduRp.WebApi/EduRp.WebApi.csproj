@@ -238,17 +238,24 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BatchFeeAssociationsController.cs" />
     <Compile Include="Controllers\BatchMastersController.cs" />
+    <Compile Include="Controllers\BatchProgramStudyAssociationsController.cs" />
     <Compile Include="Controllers\ChapterMastersController.cs" />
     <Compile Include="Controllers\ClassRoomMastersController.cs" />
     <Compile Include="Controllers\CourseMastersController.cs" />
+    <Compile Include="Controllers\CourseSubjectAssociationsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\ExaminationTypesController.cs" />
     <Compile Include="Controllers\FeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProgramStudiesController.cs" />
+    <Compile Include="Controllers\ProgramStudyCourseAssociationsController.cs" />
+    <Compile Include="Controllers\ProgramStudyFeesAssociationsController.cs" />
+    <Compile Include="Controllers\SubjectChapterAssociationsController.cs" />
     <Compile Include="Controllers\SubjectMastersController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
+    <Compile Include="Controllers\TaskStaffAssociationsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -20,7 +20,7 @@ namespace EduRp.WebApi.Controllers
         }
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,ExaminationType examinationType)
+        public IHttpActionResult Save(ExaminationType examinationType)
         {
             var isUpdate = examinationTypeService.InsUpdExaminationType(examinationType.UniversityId, examinationType);
             if (isUpdate == true)
@@ -28,7 +28,7 @@ namespace EduRp.WebApi.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id,ExaminationType examinationType)
+        public IHttpActionResult Delete(ExaminationType examinationType)
         {
             var isDeleted = examinationTypeService.DeleteExaminationType(examinationType.UniversityId, examinationType);
             if (isDeleted == true)

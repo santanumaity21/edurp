@@ -17,7 +17,7 @@ namespace EduRp.WebApi.Controllers
         }
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id,ClassRoomMaster classRoomMaster)
+        public IHttpActionResult Save(ClassRoomMaster classRoomMaster)
         {
             var isUpdate = classRoomMasterService.InsUpdClassRoomMaster(classRoomMaster.UniversityId, classRoomMaster);
             if (isUpdate == true)
@@ -25,7 +25,7 @@ namespace EduRp.WebApi.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, ClassRoomMaster classRoomMaster)
+        public IHttpActionResult Delete(ClassRoomMaster classRoomMaster)
         {
             var isDeleted = classRoomMasterService.DeleteClassRoomMaster(classRoomMaster.UniversityId, classRoomMaster);
             if (isDeleted == true)

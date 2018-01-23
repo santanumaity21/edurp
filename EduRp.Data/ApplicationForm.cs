@@ -32,5 +32,6 @@ namespace EduRp.Data
         public Nullable<byte> Active { get; set; }
         public Nullable<System.DateTime> lastupdateddt { get; set; }
         public Nullable<int> lastupdatedby { get; set; }
+        public Nullable<int> UserId { get; set; }
     }
 }

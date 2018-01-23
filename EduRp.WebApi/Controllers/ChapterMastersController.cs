@@ -13,9 +13,14 @@ namespace EduRp.WebApi.Controllers
         {
             return Ok(new { results = chapterMasterService.GetList(id, userid, tokenid) });
         }
+
+        public IHttpActionResult GetChptrBySubj(int? id, int? userid, string tokenid,int? sbjid)
+        {
+            return Ok(new { results = chapterMasterService.GetBySubj(id, userid, tokenid, sbjid) });
+        }
         [HttpPost]
         [HttpPut]
-        public IHttpActionResult Save(int? id, ChapterMaster chapterMaster)
+        public IHttpActionResult Save(ChapterMaster chapterMaster)
         {
             var isUpdate = chapterMasterService.InsUpdChapterMaster(chapterMaster.UniversityId, chapterMaster);
             if (isUpdate == true)
@@ -23,7 +28,7 @@ namespace EduRp.WebApi.Controllers
             return BadRequest();
         }
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, ChapterMaster chapterMaster)
+        public IHttpActionResult Delete(ChapterMaster chapterMaster)
         {
             var isDeleted = chapterMasterService.DeleteChaptertMaster(chapterMaster.UniversityId, chapterMaster);
             if (isDeleted == true)

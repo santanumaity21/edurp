@@ -72,13 +72,10 @@
                 }).when('/Admin/BulkUpload', {
                     templateUrl: '/App/Templates/BulkUpload/Bulkupload.html',
                     controller: 'bulkUploadCntrl'
-                }).when('/StudentAdmissionForm', {
-                    templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
-                    controller: 'studentadmissionformController'
                 })
           .when('/StudentAdmissionForm', {
               templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
-              controller: 'studentadmissionformController'
+              controller: 'studentAdmissionFormController'
            })
           .otherwise({
               templateUrl: '/App/Templates/Shared/_404.html'

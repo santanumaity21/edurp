@@ -15,13 +15,14 @@ namespace EduRp.WebApi.Controllers
         {
             return Ok(new { results = subjectMasterService.GetList(id, userid, tokenid) });
         }
-        //[HttpGet]
+
+        [HttpGet]
         //[Route("GetByCourse/{id:int?}/{CourseId:int?}")]
-        //public IHttpActionResult GetByCourse(int id, int CourseId)
-        //{
-        //    return Ok(new { results = subjectMasterService.GetByCourse(id, CourseId)});
-        //}
-       
+        public IHttpActionResult GetSubjByCourse(int? id,int? userid,string tokenid, int? CourseId)
+        {
+            return Ok(new { results = subjectMasterService.GetByCourse(id,userid,tokenid, CourseId) });
+        }
+
         [HttpPut]
         [HttpPost]     
         public IHttpActionResult Save(SubjectMaster subjectMaster)

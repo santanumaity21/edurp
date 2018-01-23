@@ -16,6 +16,10 @@ namespace EduRp.Service.Service
         {
             return db.GetCourseList(id, userid, tokenid).ToList();
         }
+        public List<GetProgramStudyCourseList_Result> GetByPsid(int? id, int? userid, string tokenid, int? psid)
+        {
+            return db.GetProgramStudyCourseList(id, userid, tokenid, psid).ToList();
+        }
 
         public bool InsUpdCourseMaster(int? id, CourseMaster courseMaster)
         {
