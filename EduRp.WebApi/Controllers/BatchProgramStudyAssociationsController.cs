@@ -13,6 +13,11 @@ namespace EduRp.WebApi.Controllers
     public class BatchProgramStudyAssociationsController : ApiController
     {
         private IBatchProgramStudyAssociationService batchPrgmAssociation = new BatchProgramStudyAssociationService();
+        [HttpGet]
+        public IHttpActionResult GetBatchProgramStudyNotLinkedList(int? id, int? userid, string tokenid, int? batchid)
+        {
+            return Ok(new { results = batchPrgmAssociation.GetNotLinked(id, userid, tokenid, batchid) });
+        }
         [HttpPost]
         public IHttpActionResult Link([FromBody]List<BatchProgramStudyAssociation> batchprgmassociation)
         {

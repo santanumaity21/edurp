@@ -12,6 +12,11 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
+        public List<GetProgramStudyFeesNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? pid)
+        {
+            return db.GetProgramStudyFeesNotLinkedList(id, userid, tokenid, pid).ToList();
+        }
+
         public bool LinkPrgmFee(int? id, List<ProgramStudyFeeAssociation> prgmfeeassociation)
         {
             try

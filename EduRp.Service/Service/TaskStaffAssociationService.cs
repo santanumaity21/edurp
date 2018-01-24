@@ -12,6 +12,11 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
+        public List<GetTaskStaffNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? taskid)
+        {
+            return db.GetTaskStaffNotLinkedList(id, userid, tokenid, taskid).ToList();
+        }
+
         public bool LinkTaskStaff(int? id, List<TaskEmployeeAssociation> taskempassociation)
         {
             try

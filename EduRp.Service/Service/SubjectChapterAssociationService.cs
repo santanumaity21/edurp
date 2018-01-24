@@ -12,6 +12,11 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
+        public List<GetSubjectChapterNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? subjid)
+        {
+            return db.GetSubjectChapterNotLinkedList(id, userid, tokenid, subjid).ToList();
+        }
+
         public bool LinkSubjectChapter(int? id, List<SubjectChapterAssociation> subchaptrassociation)
         {
             try

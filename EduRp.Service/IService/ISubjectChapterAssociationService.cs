@@ -11,5 +11,6 @@ namespace EduRp.Service.IService
     {
         bool LinkSubjectChapter(int? id, List<SubjectChapterAssociation> subchaptrassociation);
         bool UnLinkSubjectChapter(int? id, List<SubjectChapterAssociation> subchaptrassociation);
+        List<GetSubjectChapterNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? subjid);
     }
 }

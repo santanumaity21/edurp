@@ -12,11 +12,16 @@ namespace EduRp.WebApi.Controllers
 {
     public class TaskStaffAssociationsController : ApiController
     {
-        private ITaskStaffAssociationService subjChapterAssociation = new TaskStaffAssociationService();
+        private ITaskStaffAssociationService taskStaffAssociation = new TaskStaffAssociationService();
+        [HttpGet]
+        public IHttpActionResult GetTaskStaffNotLinkedList(int? id, int? userid, string tokenid, int? taskid)
+        {
+            return Ok(new { results = taskStaffAssociation.GetNotLinked(id, userid, tokenid, taskid) });
+        }
         [HttpPost]
         public IHttpActionResult Link([FromBody]List<TaskEmployeeAssociation> taskempassociation)
         {
-                var isUpdate = subjChapterAssociation.LinkTaskStaff(taskempassociation[0].UniversityId, taskempassociation);
+                var isUpdate = taskStaffAssociation.LinkTaskStaff(taskempassociation[0].UniversityId, taskempassociation);
                 if (isUpdate == true)
                     return Ok();
 
@@ -26,7 +31,7 @@ namespace EduRp.WebApi.Controllers
         [HttpDelete]
         public IHttpActionResult UnLink([FromBody]List<TaskEmployeeAssociation> taskempassociation)
         {
-                var isDeleted = subjChapterAssociation.UnLinkTaskStaff(taskempassociation[0].UniversityId, taskempassociation);
+                var isDeleted = taskStaffAssociation.UnLinkTaskStaff(taskempassociation[0].UniversityId, taskempassociation);
                 if (isDeleted == true)
                     return Ok();
 

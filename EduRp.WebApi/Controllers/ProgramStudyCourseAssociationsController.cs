@@ -13,6 +13,11 @@ namespace EduRp.WebApi.Controllers
     public class ProgramStudyCourseAssociationsController : ApiController
     {
         private IProgramStudyCourseAssociationService programCourseAssociationService = new ProgramStudyCourseAssociationService();
+        [HttpGet]
+        public IHttpActionResult GetProgramStudyCourseNotLinkedList(int? id, int? userid, string tokenid, int? pid)
+        {
+            return Ok(new { results = programCourseAssociationService.GetNotLinked(id, userid, tokenid, pid) });
+        }
         [HttpPost]
         public IHttpActionResult Link([FromBody]List<ProgramStudyCourseAssociation> prgmcourseassociation)
         {

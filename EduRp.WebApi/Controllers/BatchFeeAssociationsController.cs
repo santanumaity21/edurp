@@ -11,11 +11,17 @@ namespace EduRp.WebApi.Controllers
 {
     public class BatchFeeAssociationsController : ApiController
     {
-        private IBatchFeeAssociationService prgmFeeAssociation = new BatchFeeAssociationService();
+        private IBatchFeeAssociationService batchFeeAssociation = new BatchFeeAssociationService();
+
+        [HttpGet]
+        public IHttpActionResult GetBatchFeeNotLinkedList(int? id, int? userid, string tokenid, int? batchid)
+        {
+            return Ok(new { results = batchFeeAssociation.GetNotLinked(id,userid,tokenid,batchid) });
+        }
         [HttpPost]
         public IHttpActionResult Link([FromBody]List<BatchFeeAssociation> batchfeeassociation)
         {
-                var isUpdate = prgmFeeAssociation.LinkBatchFee(batchfeeassociation[0].UniversityId, batchfeeassociation);
+                var isUpdate = batchFeeAssociation.LinkBatchFee(batchfeeassociation[0].UniversityId, batchfeeassociation);
                 if (isUpdate == true)
                     return Ok();
 
@@ -25,7 +31,7 @@ namespace EduRp.WebApi.Controllers
         [HttpDelete]
         public IHttpActionResult UnLink([FromBody]List<BatchFeeAssociation> batchfeeassociation)
         {
-                var isDeleted = prgmFeeAssociation.UnLinkBatchFee(batchfeeassociation[0].UniversityId, batchfeeassociation);
+                var isDeleted = batchFeeAssociation.UnLinkBatchFee(batchfeeassociation[0].UniversityId, batchfeeassociation);
                 if (isDeleted == true)
                     return Ok();
 

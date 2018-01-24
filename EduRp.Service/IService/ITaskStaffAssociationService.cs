@@ -11,5 +11,6 @@ namespace EduRp.Service.IService
     {
         bool LinkTaskStaff(int? id, List<TaskEmployeeAssociation> taskempassociation);
         bool UnLinkTaskStaff(int? id, List<TaskEmployeeAssociation> taskempassociation);
+        List<GetTaskStaffNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? taskid);
     }
 }
