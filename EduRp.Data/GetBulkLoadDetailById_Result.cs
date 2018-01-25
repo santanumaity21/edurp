@@ -11,12 +11,12 @@ namespace EduRp.Data
 {
     using System;
     
-    public partial class GetApplicationFormDetail_Result
+    public partial class GetBulkLoadDetailById_Result
     {
-        public int AppFormGroupId { get; set; }
-        public string AppFormGroupLabel { get; set; }
-        public int AppFormFieldId { get; set; }
-        public string FieldName { get; set; }
-        public string Value { get; set; }
+        public int BulkLoadMasterId { get; set; }
+        public Nullable<int> UnivercityID { get; set; }
+        public string ModuleName { get; set; }
+        public string FileName { get; set; }
+        public string SQLLoaderJobName { get; set; }
     }
 }

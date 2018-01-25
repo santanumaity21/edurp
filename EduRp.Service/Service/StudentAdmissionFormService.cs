@@ -13,25 +13,15 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
-        public List<GetApplicationFormDetail_Result> GetList(int? id, int? userid, string tokenid, int? admissionid)
+        public List<GetAdmissionNumber_Result> GetAdmissionNum(int? id, int? userid, string tokenid, int? templtid)
         {
-            throw new NotImplementedException();
+            return db.GetAdmissionNumber(id, userid, tokenid, templtid).ToList();
         }
 
-        //public List<GetAdmissionNumber_Result> GetAdmissionNum(int? id, int? userid, string tokenid, int? templateid)
-        //{
-        //    return db.GetAdmissionNumber(id, userid,tokenid,templateid).ToList();
-        //}
-
-        //public List<GetApplicationFormDetail_Result> GetList(int? id, int? userid, string tokenid, int? admissionid)
-        //{
-        //    return db.GetApplicationFormDetail(id, userid, tokenid, admissionid).ToList();
-        //}
-
-        //public List<GetApplicationFormDetail_Result> GetList(int? id, StudentApplicationForm applicationForm)
-        //{
-        //    return db.GetApplicationFormDetail(id, applicationForm).ToList();
-        //}
+        public List<GetApplicationFormDetail_Result> GetList(int? id, int? userid, string tokenid, int? templtid)
+        {
+            return db.GetApplicationFormDetail(id, userid, tokenid, templtid).ToList();
+        }
     }
     
 }

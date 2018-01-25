@@ -11,12 +11,10 @@ namespace EduRp.Data
 {
     using System;
     
-    public partial class GetApplicationFormDetail_Result
+    public partial class GetApplicationFormDocumentDetail_Result
     {
-        public int AppFormGroupId { get; set; }
-        public string AppFormGroupLabel { get; set; }
-        public int AppFormFieldId { get; set; }
-        public string FieldName { get; set; }
-        public string Value { get; set; }
+        public string AdmissionNumber { get; set; }
+        public string DocumentName { get; set; }
+        public string DocumentLink { get; set; }
     }
 }

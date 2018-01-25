@@ -46,6 +46,8 @@ var urlService =
         //updateBatch: localhost ? ' ' : apiPrefix + 'api/BatchMasters/Save/',
         //deleteTask: localhost ? ' ' : apiPrefix + 'api/Tasks/Delete/',
 
+        getAdmissionList: localhost ? '' : apiPrefix + 'api/StudentAdmissionForms/GetApplicationFormDetail?id={{UniversityId}}&userid=6&tokenid={{TokenId}}&taskid=1',
+
         
         getProgramStudyList: localhost ? '/sampleData/programStudy/programStudyList.json' : apiPrefix +'/api/ProgramStudies/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
         addProgramStudy: localhost ? '/sampleData/programStudy/addProgramStudy.json' : apiPrefix + '/api/ProgramStudy/Add',

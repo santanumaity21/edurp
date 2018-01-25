@@ -14,7 +14,6 @@ namespace EduRp.Data
     public partial class GetAdmissionNumber_Result
     {
         public string AdmissionNumber { get; set; }
-        public string AppFormGroupLabel { get; set; }
-        public string AppFormGroupName { get; set; }
+        public Nullable<int> UserId { get; set; }
     }
 }

@@ -252,6 +252,7 @@
     <Compile Include="Controllers\ProgramStudiesController.cs" />
     <Compile Include="Controllers\ProgramStudyCourseAssociationsController.cs" />
     <Compile Include="Controllers\ProgramStudyFeesAssociationsController.cs" />
+    <Compile Include="Controllers\StudentAdmissionFormsController.cs" />
     <Compile Include="Controllers\SubjectChapterAssociationsController.cs" />
     <Compile Include="Controllers\SubjectMastersController.cs" />
     <Compile Include="Controllers\TasksController.cs" />

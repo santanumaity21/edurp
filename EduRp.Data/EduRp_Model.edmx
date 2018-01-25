@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="edurp_devModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="edurp_devModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApplicationForm">
           <Key>
             <PropertyRef Name="ApplicationFormId" />
@@ -162,6 +162,16 @@
           <Property Name="BatchId" Type="int" Nullable="false" />
           <Property Name="ProgramStudyId" Type="int" Nullable="false" />
           <Property Name="UniversityId" Type="int" />
+        </EntityType>
+        <EntityType Name="BulkLoadMaster">
+          <Key>
+            <PropertyRef Name="BulkLoadMasterId" />
+          </Key>
+          <Property Name="BulkLoadMasterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnivercityID" Type="int" />
+          <Property Name="ModuleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SQLLoaderJobName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ChapterMaster">
           <Key>
@@ -394,6 +404,22 @@
           <Property Name="EmployeeId" Type="int" />
           <Property Name="UniversityId" Type="int" />
         </EntityType>
+        <EntityType Name="tblFileBulkUploadRequest">
+          <Key>
+            <PropertyRef Name="BulkLoadRequestId" />
+          </Key>
+          <Property Name="BulkLoadRequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnivesityId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="FilePath" Type="nvarchar(max)" />
+          <Property Name="FileName" Type="nvarchar(max)" />
+          <Property Name="FileExtension" Type="nvarchar(max)" />
+          <Property Name="FileUploadtoFolderStatus" Type="bit" Nullable="false" />
+          <Property Name="FileUploadtoDBStatus" Type="bit" Nullable="false" />
+          <Property Name="FileUploadedtoFolderOn" Type="datetime" Nullable="false" />
+          <Property Name="FileUploadedtoDBOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="Token">
           <Key>
             <PropertyRef Name="TokenId" />
@@ -478,7 +504,15 @@
         </Function>
         <Function Name="GetApplicationFormDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
-          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
+          <Parameter Name="apptemplateid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetApplicationFormDocumentDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
+          <Parameter Name="apptemplateid" Type="int" Mode="In" />
         </Function>
         <Function Name="GetApplicationFormList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
@@ -823,6 +857,10 @@
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="UpdateApplicationFormDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="UpdateBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="jsontext" Type="varchar(max)" Mode="In" />
@@ -876,6 +914,7 @@
           <EntitySet Name="BatchFeeAssociation" EntityType="Self.BatchFeeAssociation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BatchMaster" EntityType="Self.BatchMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BatchProgramStudyAssociation" EntityType="Self.BatchProgramStudyAssociation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BulkLoadMaster" EntityType="Self.BulkLoadMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChapterMaster" EntityType="Self.ChapterMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClassRoomMaster" EntityType="Self.ClassRoomMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CourseMaster" EntityType="Self.CourseMaster" Schema="dbo" store:Type="Tables" />
@@ -892,12 +931,14 @@
           <EntitySet Name="SubjectMaster" EntityType="Self.SubjectMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaskEmployeeAssociation" EntityType="Self.TaskEmployeeAssociation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFileBulkUploadRequest" EntityType="Self.tblFileBulkUploadRequest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UniversityMaster" EntityType="Self.UniversityMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserUniversityAssociation" EntityType="Self.UserUniversityAssociation" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="edurp_devModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1058,6 +1099,16 @@
           <Property Name="BatchId" Type="Int32" Nullable="false" />
           <Property Name="ProgramStudyId" Type="Int32" Nullable="false" />
           <Property Name="UniversityId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BulkLoadMaster">
+          <Key>
+            <PropertyRef Name="BulkLoadMasterId" />
+          </Key>
+          <Property Name="BulkLoadMasterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnivercityID" Type="Int32" />
+          <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SQLLoaderJobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ChapterMaster">
           <Key>
@@ -1290,6 +1341,22 @@
           <Property Name="EmployeeId" Type="Int32" />
           <Property Name="UniversityId" Type="Int32" />
         </EntityType>
+        <EntityType Name="tblFileBulkUploadRequest">
+          <Key>
+            <PropertyRef Name="BulkLoadRequestId" />
+          </Key>
+          <Property Name="BulkLoadRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnivesityId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileExtension" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileUploadtoFolderStatus" Type="Boolean" Nullable="false" />
+          <Property Name="FileUploadtoDBStatus" Type="Boolean" Nullable="false" />
+          <Property Name="FileUploadedtoFolderOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FileUploadedtoDBOn" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="Token">
           <Key>
             <PropertyRef Name="TokenId" />
@@ -1370,6 +1437,7 @@
           <EntitySet Name="BatchFeeAssociations" EntityType="Self.BatchFeeAssociation" />
           <EntitySet Name="BatchMasters" EntityType="Self.BatchMaster" />
           <EntitySet Name="BatchProgramStudyAssociations" EntityType="Self.BatchProgramStudyAssociation" />
+          <EntitySet Name="BulkLoadMasters" EntityType="Self.BulkLoadMaster" />
           <EntitySet Name="ChapterMasters" EntityType="Self.ChapterMaster" />
           <EntitySet Name="ClassRoomMasters" EntityType="Self.ClassRoomMaster" />
           <EntitySet Name="CourseMasters" EntityType="Self.CourseMaster" />
@@ -1386,6 +1454,7 @@
           <EntitySet Name="SubjectMasters" EntityType="Self.SubjectMaster" />
           <EntitySet Name="Tasks" EntityType="Self.Task" />
           <EntitySet Name="TaskEmployeeAssociations" EntityType="Self.TaskEmployeeAssociation" />
+          <EntitySet Name="tblFileBulkUploadRequests" EntityType="Self.tblFileBulkUploadRequest" />
           <EntitySet Name="Tokens" EntityType="Self.Token" />
           <EntitySet Name="UniversityMasters" EntityType="Self.UniversityMaster" />
           <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
@@ -1402,10 +1471,18 @@
           </FunctionImport>
           <FunctionImport Name="GetApplicationFormDetail" ReturnType="Collection(edurp_devModel.GetApplicationFormDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
-            <Parameter Name="jsontext" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
+            <Parameter Name="apptemplateid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetApplicationFormDocumentDetail" ReturnType="Collection(edurp_devModel.GetApplicationFormDocumentDetail_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
+            <Parameter Name="apptemplateid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetApplicationFormList">
-          <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBatchApplicationFormList">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -1455,13 +1532,13 @@
             <Parameter Name="token" Mode="In" Type="String" />
             <Parameter Name="batchid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetBulkData">
-          <Parameter Name="universityid" Mode="In" Type="Int32" />
+          <FunctionImport Name="GetBulkData" ReturnType="Collection(edurp_devModel.GetBulkData_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetBulkLoadDetail">
-          <Parameter Name="universityid" Mode="In" Type="Int32" />
+          <FunctionImport Name="GetBulkLoadDetail" ReturnType="Collection(edurp_devModel.GetBulkLoadDetail_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetBulkLoadDetailById">
+          <FunctionImport Name="GetBulkLoadDetailById" ReturnType="Collection(edurp_devModel.GetBulkLoadDetailById_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="BulkLoadMasterId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1747,6 +1824,10 @@
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="UpdateApplicationFormDocument">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="jsontext" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="UpdateBatch">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="jsontext" Mode="In" Type="String" />
@@ -1790,8 +1871,7 @@
         </EntityContainer>
         <ComplexType Name="GetAdmissionNumber_Result">
           <Property Type="String" Name="AdmissionNumber" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="AppFormGroupLabel" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="AppFormGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="UserId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetAppFormTemplateDetail_Result">
           <Property Type="Int32" Name="AppFormTemplateId" Nullable="false" />
@@ -1803,10 +1883,16 @@
           <Property Type="Byte" Name="FieldOrder" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetApplicationFormDetail_Result">
-          <Property Type="String" Name="AdmissionNumber" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="AppFormGroupId" Nullable="false" />
           <Property Type="String" Name="AppFormGroupLabel" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="AppFormFieldId" Nullable="false" />
           <Property Type="String" Name="FieldName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Value" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="GetApplicationFormDocumentDetail_Result">
+          <Property Type="String" Name="AdmissionNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DocumentName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DocumentLink" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="GetBatchDetail_Result">
           <Property Type="Int32" Name="BatchId" Nullable="false" />
@@ -1850,6 +1936,33 @@
           <Property Type="String" Name="ProgramStudyCode" Nullable="true" MaxLength="10" />
           <Property Type="String" Name="ProgramStudyName" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="SKS" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetBulkData_Result">
+          <Property Type="Int32" Name="BulkLoadRequestId" Nullable="false" />
+          <Property Type="Int32" Name="UnivesityId" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Comments" Nullable="true" />
+          <Property Type="String" Name="FilePath" Nullable="true" />
+          <Property Type="String" Name="FileName" Nullable="true" />
+          <Property Type="String" Name="FileExtension" Nullable="true" />
+          <Property Type="Boolean" Name="FileUploadtoFolderStatus" Nullable="false" />
+          <Property Type="Boolean" Name="FileUploadtoDBStatus" Nullable="false" />
+          <Property Type="DateTime" Name="FileUploadedtoFolderOn" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FileUploadedtoDBOn" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="GetBulkLoadDetail_Result">
+          <Property Type="Int32" Name="BulkLoadMasterId" Nullable="false" />
+          <Property Type="Int32" Name="UnivercityID" Nullable="true" />
+          <Property Type="String" Name="ModuleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FileName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SQLLoaderJobName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetBulkLoadDetailById_Result">
+          <Property Type="Int32" Name="BulkLoadMasterId" Nullable="false" />
+          <Property Type="Int32" Name="UnivercityID" Nullable="true" />
+          <Property Type="String" Name="ModuleName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FileName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SQLLoaderJobName" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="GetChapterDetail_Result">
           <Property Type="Int32" Name="ChapterId" Nullable="false" />
@@ -2244,6 +2357,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="BulkLoadMasters">
+            <EntityTypeMapping TypeName="edurp_devModel.BulkLoadMaster">
+              <MappingFragment StoreEntitySet="BulkLoadMaster">
+                <ScalarProperty Name="BulkLoadMasterId" ColumnName="BulkLoadMasterId" />
+                <ScalarProperty Name="UnivercityID" ColumnName="UnivercityID" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="SQLLoaderJobName" ColumnName="SQLLoaderJobName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ChapterMasters">
             <EntityTypeMapping TypeName="edurp_devModel.ChapterMaster">
               <MappingFragment StoreEntitySet="ChapterMaster">
@@ -2491,6 +2615,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblFileBulkUploadRequests">
+            <EntityTypeMapping TypeName="edurp_devModel.tblFileBulkUploadRequest">
+              <MappingFragment StoreEntitySet="tblFileBulkUploadRequest">
+                <ScalarProperty Name="BulkLoadRequestId" ColumnName="BulkLoadRequestId" />
+                <ScalarProperty Name="UnivesityId" ColumnName="UnivesityId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+                <ScalarProperty Name="FileUploadtoFolderStatus" ColumnName="FileUploadtoFolderStatus" />
+                <ScalarProperty Name="FileUploadtoDBStatus" ColumnName="FileUploadtoDBStatus" />
+                <ScalarProperty Name="FileUploadedtoFolderOn" ColumnName="FileUploadedtoFolderOn" />
+                <ScalarProperty Name="FileUploadedtoDBOn" ColumnName="FileUploadedtoDBOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tokens">
             <EntityTypeMapping TypeName="edurp_devModel.Token">
               <MappingFragment StoreEntitySet="Token">
@@ -2566,8 +2707,7 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="edurp_devModel.GetAdmissionNumber_Result">
                 <ScalarProperty Name="AdmissionNumber" ColumnName="AdmissionNumber" />
-                <ScalarProperty Name="AppFormGroupLabel" ColumnName="AppFormGroupLabel" />
-                <ScalarProperty Name="AppFormGroupName" ColumnName="AppFormGroupName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2587,10 +2727,20 @@
           <FunctionImportMapping FunctionImportName="GetApplicationFormDetail" FunctionName="edurp_devModel.Store.GetApplicationFormDetail">
             <ResultMapping>
               <ComplexTypeMapping TypeName="edurp_devModel.GetApplicationFormDetail_Result">
-                <ScalarProperty Name="AdmissionNumber" ColumnName="AdmissionNumber" />
+                <ScalarProperty Name="AppFormGroupId" ColumnName="AppFormGroupId" />
                 <ScalarProperty Name="AppFormGroupLabel" ColumnName="AppFormGroupLabel" />
+                <ScalarProperty Name="AppFormFieldId" ColumnName="AppFormFieldId" />
                 <ScalarProperty Name="FieldName" ColumnName="FieldName" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetApplicationFormDocumentDetail" FunctionName="edurp_devModel.Store.GetApplicationFormDocumentDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetApplicationFormDocumentDetail_Result">
+                <ScalarProperty Name="AdmissionNumber" ColumnName="AdmissionNumber" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="DocumentLink" ColumnName="DocumentLink" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2668,9 +2818,45 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetBulkData" FunctionName="edurp_devModel.Store.GetBulkData" />
-          <FunctionImportMapping FunctionImportName="GetBulkLoadDetail" FunctionName="edurp_devModel.Store.GetBulkLoadDetail" />
-          <FunctionImportMapping FunctionImportName="GetBulkLoadDetailById" FunctionName="edurp_devModel.Store.GetBulkLoadDetailById" />
+          <FunctionImportMapping FunctionImportName="GetBulkData" FunctionName="edurp_devModel.Store.GetBulkData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBulkData_Result">
+                <ScalarProperty Name="BulkLoadRequestId" ColumnName="BulkLoadRequestId" />
+                <ScalarProperty Name="UnivesityId" ColumnName="UnivesityId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileExtension" ColumnName="FileExtension" />
+                <ScalarProperty Name="FileUploadtoFolderStatus" ColumnName="FileUploadtoFolderStatus" />
+                <ScalarProperty Name="FileUploadtoDBStatus" ColumnName="FileUploadtoDBStatus" />
+                <ScalarProperty Name="FileUploadedtoFolderOn" ColumnName="FileUploadedtoFolderOn" />
+                <ScalarProperty Name="FileUploadedtoDBOn" ColumnName="FileUploadedtoDBOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBulkLoadDetail" FunctionName="edurp_devModel.Store.GetBulkLoadDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBulkLoadDetail_Result">
+                <ScalarProperty Name="BulkLoadMasterId" ColumnName="BulkLoadMasterId" />
+                <ScalarProperty Name="UnivercityID" ColumnName="UnivercityID" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="SQLLoaderJobName" ColumnName="SQLLoaderJobName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetBulkLoadDetailById" FunctionName="edurp_devModel.Store.GetBulkLoadDetailById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetBulkLoadDetailById_Result">
+                <ScalarProperty Name="BulkLoadMasterId" ColumnName="BulkLoadMasterId" />
+                <ScalarProperty Name="UnivercityID" ColumnName="UnivercityID" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="SQLLoaderJobName" ColumnName="SQLLoaderJobName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetChapterDetail" FunctionName="edurp_devModel.Store.GetChapterDetail">
             <ResultMapping>
               <ComplexTypeMapping TypeName="edurp_devModel.GetChapterDetail_Result">
@@ -3040,6 +3226,7 @@
           <FunctionImportMapping FunctionImportName="UnLinkSubjectChapter" FunctionName="edurp_devModel.Store.UnLinkSubjectChapter" />
           <FunctionImportMapping FunctionImportName="UnLinkTaskStaff" FunctionName="edurp_devModel.Store.UnLinkTaskStaff" />
           <FunctionImportMapping FunctionImportName="UpdateApplicationForm" FunctionName="edurp_devModel.Store.UpdateApplicationForm" />
+          <FunctionImportMapping FunctionImportName="UpdateApplicationFormDocument" FunctionName="edurp_devModel.Store.UpdateApplicationFormDocument" />
           <FunctionImportMapping FunctionImportName="UpdateBatch" FunctionName="edurp_devModel.Store.UpdateBatch" />
           <FunctionImportMapping FunctionImportName="UpdateChapter" FunctionName="edurp_devModel.Store.UpdateChapter" />
           <FunctionImportMapping FunctionImportName="UpdateClassRoom" FunctionName="edurp_devModel.Store.UpdateClassRoom" />

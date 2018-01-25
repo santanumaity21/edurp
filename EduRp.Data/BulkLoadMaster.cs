@@ -13,15 +13,12 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class ApplicationFormDetail : BaseEntity
+    public partial class BulkLoadMaster : BaseEntity
     {
-        public int AppFormDetailId { get; set; }
-        public Nullable<int> ApplicationFormId { get; set; }
-        public Nullable<int> AppFormFieldId { get; set; }
-        public string Value { get; set; }
-        public Nullable<int> UniversityId { get; set; }
-        public Nullable<byte> Active { get; set; }
-        public Nullable<System.DateTime> lastupdateddt { get; set; }
-        public Nullable<int> lastupdatedby { get; set; }
+        public int BulkLoadMasterId { get; set; }
+        public Nullable<int> UnivercityID { get; set; }
+        public string ModuleName { get; set; }
+        public string FileName { get; set; }
+        public string SQLLoaderJobName { get; set; }
     }
 }

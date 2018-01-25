@@ -12,6 +12,10 @@
                 return commonService.executeAPICall(url, method, data);
             };
 
+            var _getAdmissionList = function () {
+                return execute('getAdmissionList','get', null);
+            };
+
             var _addStudentAdmissionForm = function (postData) {
                 debugger;
                 return execute('addStudentAdmissionForm', 'post', postData);
@@ -22,7 +26,8 @@
 
             return {
 
-                addStudentAdmissionForm: _addStudentAdmissionForm
+                getAdmissionList : _getAdmissionList,
+                addStudentAdmissionForm : _addStudentAdmissionForm
 
             };
         }

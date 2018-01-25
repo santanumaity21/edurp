@@ -34,7 +34,7 @@ namespace EduRp.WebApi.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete(int? id, SubjectMaster subjectMaster)
+        public IHttpActionResult Delete(SubjectMaster subjectMaster)
         {
             var isDeleted = subjectMasterService.DeleteSubjectMaster(subjectMaster.UniversityId, subjectMaster);
             if (isDeleted == true)

@@ -74,12 +74,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="EduRpModel.edmx">
+    <EntityDeploy Include="EduRp_Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EduRpModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>EduRp_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="EduRpModel.edmx.diagram">
-      <DependentUpon>EduRpModel.edmx</DependentUpon>
+    <Content Include="EduRp_Model.edmx.diagram">
+      <DependentUpon>EduRp_Model.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -90,255 +90,273 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EduRpModel.Context.tt">
+    <Content Include="EduRp_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EduRpModel.edmx</DependentUpon>
-      <LastGenOutput>EduRpModel.Context.cs</LastGenOutput>
+      <DependentUpon>EduRp_Model.edmx</DependentUpon>
+      <LastGenOutput>EduRp_Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="EduRpModel.tt">
+    <Content Include="EduRp_Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EduRpModel.edmx</DependentUpon>
-      <LastGenOutput>EduRpModel.cs</LastGenOutput>
+      <DependentUpon>EduRp_Model.edmx</DependentUpon>
+      <LastGenOutput>EduRp_Model.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationForm.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ApplicationFormDetail.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ApplicationFormDocument.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ApplicationFormExamResult.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ApplicationFormFeeAssociation.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ApplicationFormField.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ApplicationFormGroup.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ApplicationFormTemplate.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="BatchApplicationFormAssociation.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="BatchFeeAssociation.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="BatchMaster.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="BatchProgramStudyAssociation.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BulkLoadMaster.cs">
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ChapterMaster.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ClassRoomMaster.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Core\Foundation\BaseEntity.cs" />
     <Compile Include="Core\Foundation\IEntity.cs" />
     <Compile Include="CourseMaster.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="CourseSubjectAssociation.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="EduRpModel.Context.cs">
+    <Compile Include="EduRp_Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EduRpModel.Context.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EduRpModel.cs">
+    <Compile Include="EduRp_Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="EduRpModel.Designer.cs">
+    <Compile Include="EduRp_Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EduRpModel.edmx</DependentUpon>
+      <DependentUpon>EduRp_Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="EmployeeMaster.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ExaminationType.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Fee.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetAdmissionNumber_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetAppFormTemplateDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetApplicationFormDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetApplicationFormDocumentDetail_Result.cs">
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBatchDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBatchFeeNotLinkedList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBatchFeesList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBatchID_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBatchList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBatchProgramStudyList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBatchProgramStudyNotLinkedList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBulkData_Result.cs">
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBulkLoadDetailById_Result.cs">
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetBulkLoadDetail_Result.cs">
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetChapterDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetChapterID_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetChapterList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetClassRoomDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetClassRoomList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCourseDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCourseID_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCourseList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCourseSubjectList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetCourseSubjectNotLinkedList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetExaminationDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetExaminationList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetFeeDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetFeeList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetProgramStudyCourseList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetProgramStudyCourseNotLinkedList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetProgramStudyDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetProgramStudyFeesList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetProgramStudyFeesNotLinkedList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetProgramStudyID_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetProgramStudyList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetSubjectChapterList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetSubjectChapterNotLinkedList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetSubjectDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetSubjectID_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetSubjectList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetTaskDetail_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetTaskID_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetTaskList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetTaskStaffList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="GetTaskStaffNotLinkedList_Result.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ProgramStudy.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ProgramStudyCourseAssociation.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ProgramStudyFeeAssociation.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleMaster.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ScreenMaster.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="SubjectChapterAssociation.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="SubjectMaster.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Task.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="TaskEmployeeAssociation.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFileBulkUploadRequest.cs">
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Token.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="UniversityMaster.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="UserMaster.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="UserUniversityAssociation.cs">
-      <DependentUpon>EduRpModel.tt</DependentUpon>
+      <DependentUpon>EduRp_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\StudentApplicationForm.cs" />
   </ItemGroup>

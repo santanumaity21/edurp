@@ -39,6 +39,7 @@ namespace EduRp.Data
         public virtual DbSet<BatchFeeAssociation> BatchFeeAssociations { get; set; }
         public virtual DbSet<BatchMaster> BatchMasters { get; set; }
         public virtual DbSet<BatchProgramStudyAssociation> BatchProgramStudyAssociations { get; set; }
+        public virtual DbSet<BulkLoadMaster> BulkLoadMasters { get; set; }
         public virtual DbSet<ChapterMaster> ChapterMasters { get; set; }
         public virtual DbSet<ClassRoomMaster> ClassRoomMasters { get; set; }
         public virtual DbSet<CourseMaster> CourseMasters { get; set; }
@@ -55,6 +56,7 @@ namespace EduRp.Data
         public virtual DbSet<SubjectMaster> SubjectMasters { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<TaskEmployeeAssociation> TaskEmployeeAssociations { get; set; }
+        public virtual DbSet<tblFileBulkUploadRequest> tblFileBulkUploadRequests { get; set; }
         public virtual DbSet<Token> Tokens { get; set; }
         public virtual DbSet<UniversityMaster> UniversityMasters { get; set; }
         public virtual DbSet<UserMaster> UserMasters { get; set; }
@@ -94,17 +96,46 @@ namespace EduRp.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAppFormTemplateDetail_Result>("GetAppFormTemplateDetail", universityidParameter, jsontextParameter);
         }
     
-        public virtual ObjectResult<GetApplicationFormDetail_Result> GetApplicationFormDetail(Nullable<int> universityid, string jsontext)
+        public virtual ObjectResult<GetApplicationFormDetail_Result> GetApplicationFormDetail(Nullable<int> universityid, Nullable<int> userid, string token, Nullable<int> apptemplateid)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            var jsontextParameter = jsontext != null ?
-                new ObjectParameter("jsontext", jsontext) :
-                new ObjectParameter("jsontext", typeof(string));
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationFormDetail_Result>("GetApplicationFormDetail", universityidParameter, jsontextParameter);
+            var tokenParameter = token != null ?
+                new ObjectParameter("token", token) :
+                new ObjectParameter("token", typeof(string));
+    
+            var apptemplateidParameter = apptemplateid.HasValue ?
+                new ObjectParameter("apptemplateid", apptemplateid) :
+                new ObjectParameter("apptemplateid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationFormDetail_Result>("GetApplicationFormDetail", universityidParameter, useridParameter, tokenParameter, apptemplateidParameter);
+        }
+    
+        public virtual ObjectResult<GetApplicationFormDocumentDetail_Result> GetApplicationFormDocumentDetail(Nullable<int> universityid, Nullable<int> userid, string token, Nullable<int> apptemplateid)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var tokenParameter = token != null ?
+                new ObjectParameter("token", token) :
+                new ObjectParameter("token", typeof(string));
+    
+            var apptemplateidParameter = apptemplateid.HasValue ?
+                new ObjectParameter("apptemplateid", apptemplateid) :
+                new ObjectParameter("apptemplateid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationFormDocumentDetail_Result>("GetApplicationFormDocumentDetail", universityidParameter, useridParameter, tokenParameter, apptemplateidParameter);
         }
     
         public virtual int GetApplicationFormList(Nullable<int> universityid)
@@ -281,25 +312,25 @@ namespace EduRp.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBatchProgramStudyNotLinkedList_Result>("GetBatchProgramStudyNotLinkedList", universityidParameter, useridParameter, tokenParameter, batchidParameter);
         }
     
-        public virtual int GetBulkData(Nullable<int> universityid)
+        public virtual ObjectResult<GetBulkData_Result> GetBulkData(Nullable<int> universityid)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetBulkData", universityidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBulkData_Result>("GetBulkData", universityidParameter);
         }
     
-        public virtual int GetBulkLoadDetail(Nullable<int> universityid)
+        public virtual ObjectResult<GetBulkLoadDetail_Result> GetBulkLoadDetail(Nullable<int> universityid)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
                 new ObjectParameter("universityid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetBulkLoadDetail", universityidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBulkLoadDetail_Result>("GetBulkLoadDetail", universityidParameter);
         }
     
-        public virtual int GetBulkLoadDetailById(Nullable<int> universityid, Nullable<int> bulkLoadMasterId)
+        public virtual ObjectResult<GetBulkLoadDetailById_Result> GetBulkLoadDetailById(Nullable<int> universityid, Nullable<int> bulkLoadMasterId)
         {
             var universityidParameter = universityid.HasValue ?
                 new ObjectParameter("universityid", universityid) :
@@ -309,7 +340,7 @@ namespace EduRp.Data
                 new ObjectParameter("BulkLoadMasterId", bulkLoadMasterId) :
                 new ObjectParameter("BulkLoadMasterId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetBulkLoadDetailById", universityidParameter, bulkLoadMasterIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBulkLoadDetailById_Result>("GetBulkLoadDetailById", universityidParameter, bulkLoadMasterIdParameter);
         }
     
         public virtual ObjectResult<GetChapterDetail_Result> GetChapterDetail(Nullable<int> universityid, Nullable<int> userid, string token, Nullable<int> chapterid)
@@ -1265,6 +1296,19 @@ namespace EduRp.Data
                 new ObjectParameter("jsontext", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateApplicationForm", universityidParameter, jsontextParameter);
+        }
+    
+        public virtual int UpdateApplicationFormDocument(Nullable<int> universityid, string jsontext)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var jsontextParameter = jsontext != null ?
+                new ObjectParameter("jsontext", jsontext) :
+                new ObjectParameter("jsontext", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateApplicationFormDocument", universityidParameter, jsontextParameter);
         }
     
         public virtual int UpdateBatch(Nullable<int> universityid, string jsontext)

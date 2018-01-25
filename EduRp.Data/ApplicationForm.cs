@@ -9,10 +9,11 @@
 
 namespace EduRp.Data
 {
+    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class ApplicationForm
+    public partial class ApplicationForm:BaseEntity
     {
         public int ApplicationFormId { get; set; }
         public Nullable<int> AppFormTemplateId { get; set; }

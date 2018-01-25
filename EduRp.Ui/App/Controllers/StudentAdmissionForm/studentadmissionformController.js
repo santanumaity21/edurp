@@ -7,11 +7,13 @@
 
     studentAdmissionFormController.$inject = ['$scope','$q','errorHandler','studentAdmissionFormService','commonService','$modal'];
 
-    function studentAdmissionFormController($scope, $q, studentAdmissionFormService, errorHandler, commonService,$modal,) {
+    function studentAdmissionFormController($scope, $q, errorHandler, studentAdmissionFormService, commonService, $modal,) {
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'studentAdmissionFormController';
         $scope.oneAtATime = true;
+        $scope.admissionFormData = [];
+
 
 
         $scope.OrginalAdmissionObj = {
@@ -43,7 +45,7 @@
             console.log(index, $scope.currentAccordionState);
             $scope.currentAccordionState = $scope.currentAccordionState === index ? !index : index;
         };
-        activate();
+        //activate();
 
         $scope.addAdmissionFormDetails = function (form) {
                 $q.when([studentAdmissionFormService.addStudentAdmissionForm($scope.modAdmissionObj)]).then(function (data) {
@@ -57,7 +59,22 @@
         };
 
 
-        function activate() { }
+        //function activate() { }
+        (function startup() {
+
+            $q.all([
+                studentAdmissionFormService.getAdmissionList()
+            ]).then(function (data) {
+                if (data !== null) {
+                    $scope.admissionFormData = data[0].results;
+                    console.log(admissionFormData);
+                }
+            }, function (reason) {
+                errorHandler.logServiceError('studentAdmissionFormController', reason);
+            }, function (update) {
+                errorHandler.logServiceNotify('studentAdmissionFormController', update);
+            });
+        })();
 
         $scope.resetForm = function () {
             $scope.student = angular.copy($scope.OrginalAdmissionObj);
