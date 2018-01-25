@@ -56,7 +56,7 @@
                         finalData = [angular.extend(v, parentThis)];
                     });
                 } else {
-                    finalData = data;
+                    finalData = angular.extend(data, parentThis);
                 }
                 
             } 
