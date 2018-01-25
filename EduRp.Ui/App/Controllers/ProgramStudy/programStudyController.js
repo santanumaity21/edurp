@@ -77,7 +77,7 @@
             $scope.Modals.open('App/Templates/ProgramStudy/addProgramStudy.html');
         };
         $scope.assignCoursesContainer = function () {
-            $q.all([programStudyService.getUnlinkedCoursesOfProgramStudy()]).then(function (data) {
+            $q.all([programStudyService.getUnlinkedCoursesOfProgramStudy($scope.selectedProgramStudy)]).then(function (data) {
                 $scope.unlinkedCoursesOfPSList = data[0].results;
             }, function () {
 
@@ -86,7 +86,7 @@
             $scope.Modals.open('App/Templates/ProgramStudy/assignCourses.html');
         };
         $scope.assignFeesContainer = function () {
-            $q.all([programStudyService.getUnlinkedFeesOfProgramStudy()]).then(function (data) {
+            $q.all([programStudyService.getUnlinkedFeesOfProgramStudy($scope.selectedProgramStudy)]).then(function (data) {
                 $scope.unlinkedFeesOfPSList = data[0].results;
             }, function () {
 
@@ -98,7 +98,10 @@
             if ($scope.linkedCoursesAllSelected) {
                 var tt = $scope.filteredCourseData;
                 for (var i = 0; i < tt.length; i++) {
-                    $scope.linkedCoursesSelectedArr.push(tt[i].id);
+                    var eachRow = tt[i];
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedCoursesSelectedArr.push(eachRow);
                     $scope.filteredCourseData[i].Selected = 'true';
                 }
             } else {
@@ -112,7 +115,10 @@
             if ($scope.unlinkedCoursesAllSelected) {
                 var tt = $scope.unlinkedCoursesOfPSList;
                 for (var i = 0; i < tt.length; i++) {
-                    $scope.unlinkedCoursesSelectedArr.push(tt[i].id);
+                    var eachRow = tt[i];
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedCoursesSelectedArr.push(eachRow);
                     $scope.unlinkedCoursesOfPSList[i].Selected = 'true';
                 }
             } else {
@@ -126,7 +132,10 @@
             if ($scope.unlinkedFeesAllSelected) {
                 var tt = $scope.unlinkedFeesOfPSList;
                 for (var i = 0; i < tt.length; i++) {
-                    $scope.unlinkedFeesSelectedArr.push(tt[i].id);
+                    var eachRow = tt[i];
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedFeesSelectedArr.push(eachRow);
                     $scope.unlinkedFeesOfPSList[i].Selected = 'true';
                 }
             } else {
@@ -140,7 +149,10 @@
             if ($scope.linkedFeesAllSelected) {
                 var tt = $scope.filteredFeesData;
                 for (var i = 0; i < tt.length; i++) {
-                    $scope.linkedFeesSelectedArr.push(tt[i].id);
+                    var eachRow = tt[i];
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedFeesSelectedArr.push(eachRow);
                     $scope.filteredFeesData[i].Selected = 'true';
                 }
             } else {
@@ -153,10 +165,13 @@
         $scope.isThisLinkedCourseSelected = function (that) {
             if ($scope.linkedCoursesAllSelected) {
                 if (that.Selected === 'true') {
-                    $scope.linkedCoursesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedCoursesSelectedArr.push(eachRow);
                    
                 } else {
-                    $scope.linkedCoursesSelectedArr = commonService.removeItemFromArray($scope.linkedCoursesSelectedArr, that.id);
+                    $scope.linkedCoursesSelectedArr = commonService.removeItemFromArray($scope.linkedCoursesSelectedArr, that);
                     if ($scope.linkedCoursesSelectedArr.length === 0) {
                         $scope.linkedCoursesAllSelected = false;
                     }
@@ -164,12 +179,15 @@
                 }
             } else {
                 if (that.Selected) {
-                    $scope.linkedCoursesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedCoursesSelectedArr.push(eachRow);
                     if ($scope.filteredCourseData.length === $scope.linkedCoursesSelectedArr.length) {
                         $scope.linkedCoursesAllSelected = true;
                     }
                 } else {
-                    $scope.linkedCoursesSelectedArr = commonService.removeItemFromArray($scope.linkedCoursesSelectedArr, that.id);
+                    $scope.linkedCoursesSelectedArr = commonService.removeItemFromArray($scope.linkedCoursesSelectedArr, that);
                     if ($scope.linkedCoursesSelectedArr.length === 0) {
                         $scope.linkedCoursesAllSelected = false;
                     }
@@ -180,9 +198,12 @@
         $scope.isThisUnlinkedCourseSelected = function (that) {
             if ($scope.unlinkedCoursesAllSelected) {
                 if (that.Selected === 'true') {
-                    $scope.unlinkedCoursesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedCoursesSelectedArr.push(eachRow);
                 } else {
-                    $scope.unlinkedCoursesSelectedArr = commonService.removeItemFromArray($scope.unlinkedCoursesSelectedArr, that.id);
+                    $scope.unlinkedCoursesSelectedArr = commonService.removeItemFromArray($scope.unlinkedCoursesSelectedArr, that);
                     if ($scope.unlinkedCoursesSelectedArr.length === 0) {
                         $scope.unlinkedCoursesAllSelected = false;
                     }
@@ -190,12 +211,15 @@
                 }
             } else {
                 if (that.Selected) {
-                    $scope.unlinkedCoursesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedCoursesSelectedArr.push(eachRow);
                     if ($scope.unlinkedCoursesOfPSList.length === $scope.unlinkedCoursesSelectedArr.length) {
                         $scope.unlinkedCoursesAllSelected = true;
                     }
                 } else {
-                    $scope.unlinkedCoursesSelectedArr = commonService.removeItemFromArray($scope.unlinkedCoursesSelectedArr, that.id);
+                    $scope.unlinkedCoursesSelectedArr = commonService.removeItemFromArray($scope.unlinkedCoursesSelectedArr, that);
                     if ($scope.unlinkedCoursesSelectedArr.length === 0) {
                         $scope.unlinkedCoursesAllSelected = false;
                     }
@@ -206,7 +230,10 @@
         $scope.isThisUnlinkedFeeSelected = function (that) {
             if ($scope.unlinkedFeesAllSelected) {
                 if (that.Selected === 'true') {
-                    $scope.unlinkedFeesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedFeesSelectedArr.push(eachRow);
                 } else {
                     $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that.id);
                     if ($scope.unlinkedFeesSelectedArr.length === 0) {
@@ -216,12 +243,15 @@
                 }
             } else {
                 if (that.Selected) {
-                    $scope.unlinkedFeesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedFeesSelectedArr.push(eachRow);
                     if ($scope.unlinkedFeesOfPSList.length === $scope.unlinkedFeesSelectedArr.length) {
                         $scope.unlinkedFeesAllSelected = true;
                     }
                 } else {
-                    $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that.id);
+                    $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that);
                     if ($scope.unlinkedFeesSelectedArr.length === 0) {
                         $scope.unlinkedFeesAllSelected = false;
                     }
@@ -232,10 +262,13 @@
         $scope.isThisLinkedFeeSelected = function (that) {
             if ($scope.linkedFeesAllSelected) {
                 if (that.Selected === 'true') {
-                    $scope.linkedFeesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedFeesSelectedArr.push(eachRow);
 
                 } else {
-                    $scope.linkedFeesSelectedArr = commonService.removeItemFromArray($scope.linkedFeesSelectedArr, that.id);
+                    $scope.linkedFeesSelectedArr = commonService.removeItemFromArray($scope.linkedFeesSelectedArr, that);
                     if ($scope.linkedFeesSelectedArr.length === 0) {
                         $scope.linkedFeesAllSelected = false;
                     }
@@ -243,12 +276,15 @@
                 }
             } else {
                 if (that.Selected) {
-                    $scope.linkedFeesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedFeesSelectedArr.push(eachRow);
                     if ($scope.filteredFeesData.length === $scope.linkedFeesSelectedArr.length) {
                         $scope.linkedFeesAllSelected = true;
                     }
                 } else {
-                    $scope.linkedFeesSelectedArr = commonService.removeItemFromArray($scope.linkedFeesSelectedArr, that.id);
+                    $scope.linkedFeesSelectedArr = commonService.removeItemFromArray($scope.linkedFeesSelectedArr, that);
                     if ($scope.linkedFeesSelectedArr.length === 0) {
                         $scope.linkedFeesAllSelected = false;
                     }
@@ -260,10 +296,9 @@
             if (form.$valid) {
                 $q.when(programStudyService.addProgramStudy($scope.addPSFormObj)).then(function (success) {
                     $scope.Modals.close();
-                    $scope.programStudyData.push($scope.addPSFormObj);
-                    $scope.filteredProgramStudyData.push($scope.addPSFormObj);
+                    $scope.pageLoad();
                 }, function (error) {
-
+                    alert("Please try again");
                 });
             }
         };
@@ -322,6 +357,7 @@
                     $scope.adjustCourseList();
                     $scope.unlinkedCoursesSelectedArr = [];
                     $scope.unlinkedCoursesAllSelected = false;
+                    $scope.fetchRelatedDataOfPS();
                 }, function (error) {
                     alert("Please try again.");
                 });
@@ -339,6 +375,7 @@
                     $scope.adjustFeesList();
                     $scope.unlinkedFeesSelectedArr = [];
                     $scope.unlinkedCoursesAllSelected = false;
+                    $scope.fetchRelatedDataOfPS();
                 }, function (error) {
                     alert("Please try again.");
                 });
@@ -377,7 +414,7 @@
         };
         
 
-        (function startup() {
+        $scope.pageLoad = function() {
 
             $q.all([
                 programStudyService.getProgramStudyList()
@@ -389,9 +426,9 @@
                         $scope.filteredProgramStudyData = data[0].results;
                     } else if (data[0].results.length > 5) {
                         $scope.filteredProgramStudyData = angular.copy(data[0].results.slice(0, 5));
-                       
+
                     }
-                   
+
                 }
             }, function (reason) {
                 console.log("reason" + reason);
@@ -400,7 +437,7 @@
                 console.log("update" + update);
                 errorHandler.logServiceNotify('programStudyController', update);
             });
-        })();
+        };
 
         function removeContact(contactId) {
             for (var i = 0; i < $scope.contacts.length; i++) {
@@ -471,7 +508,7 @@
             }
         };
 
-
+        $scope.pageLoad();
 
 
     };

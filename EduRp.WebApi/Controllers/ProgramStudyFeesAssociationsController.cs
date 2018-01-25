@@ -14,9 +14,9 @@ namespace EduRp.WebApi.Controllers
     {
         private IProgramStudyFeeAssociationService prgmFeeAssociation = new ProgramStudyFeeAssociationService();
         [HttpGet]
-        public IHttpActionResult GetProgramStudyFeesNotLinkedList(int? id, int? userid, string tokenid, int? pid)
+        public IHttpActionResult GetProgramStudyFeesNotLinkedList(int? id, int? userid, string tokenid, int? psid)
         {
-            return Ok(new { results = prgmFeeAssociation.GetNotLinked(id, userid, tokenid, pid) });
+            return Ok(new { results = prgmFeeAssociation.GetNotLinked(id, userid, tokenid, psid) });
         }
         [HttpPost]
         public IHttpActionResult Link([FromBody]List<ProgramStudyFeeAssociation> prgmfeeassociation)

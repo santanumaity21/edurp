@@ -21,9 +21,9 @@ namespace EduRp.Service.Service
             return db.GetBatchFeesList(id, userid, tokenid,batchid).ToList();
         }
 
-        public List<GetBatchProgramStudyList_Result> GetBatchListByPrgm(int? id, int? userid, string tokenid,int? pid)
+        public List<GetBatchProgramStudyList_Result> GetBatchListByPrgm(int? id, int? userid, string tokenid,int? psid)
         {
-            return db.GetBatchProgramStudyList(id, userid, tokenid,pid).ToList();
+            return db.GetBatchProgramStudyList(id, userid, tokenid,psid).ToList();
         }
 
         public bool InsUpdBatchMaster(int? id, BatchMaster batchMaster)

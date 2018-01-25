@@ -13,14 +13,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="course_code">{{'fieldDegreeCode'|translate}}<span class="text-danger">*</span></label>
-                                <input type="text" name="course_code" required placeholder="Enter Course Code" class="form-control" data-ng-model="$parent.addPSFormObj.degreeCode" />
+                                <label for="course_code">{{'fieldProgramStudyCode'|translate}}<span class="text-danger">*</span></label>
+                                <input type="text" name="course_code" required placeholder="Enter Course Code" class="form-control" data-ng-model="$parent.addPSFormObj.ProgramStudyCode" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="course_name">{{'fieldDegreeName'|translate}}<span class="text-danger">*</span></label>
-                                <input type="text" name="course_name"  required placeholder="Enter Course Name" class="form-control" data-ng-model="$parent.addPSFormObj.degreeName" />
+                                <label for="course_name">{{'fieldProgramStudyName'|translate}}<span class="text-danger">*</span></label>
+                                <input type="text" name="course_name"  required placeholder="Enter Course Name" class="form-control" data-ng-model="$parent.addPSFormObj.ProgramStudyName" />
                             </div>
                         </div>
                     </div>
@@ -29,14 +29,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="heard">{{'fieldAcademicTerm'|translate}}</label>
-                                <input type="text" name="academic_term"  required placeholder="Enter Academic Term" class="form-control" data-ng-model="$parent.addPSFormObj.academicTerm" />
+                                <input type="text" name="academic_term"  required placeholder="Enter Academic Term" class="form-control" data-ng-model="$parent.addPSFormObj.AcademicTerm" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
 
                                 <label for="course_sks">{{'fieldSKS'|translate}}<span class="text-danger">*</span></label>
-                                <input type="text" name="course_sks" parsley-trigger="change" required placeholder="Enter SKS" class="form-control" data-ng-model="$parent.addPSFormObj.sks" />
+                                <input type="text" name="course_sks" parsley-trigger="change" required placeholder="Enter SKS" class="form-control" data-ng-model="$parent.addPSFormObj.SKS" />
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="activeStatus">
-                                    <input type="radio" name="status"  value="Active" data-ng-model="$parent.addPSFormObj.status" data-ng-value="Active"/>
+                                    <input type="radio" data-ng-model="$parent.addPSFormObj.status" value="1"/>
                                     {{'fieldActive'|translate}}
                                 </label>
                             </div>
@@ -54,7 +54,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inactiveStatus">
-                                    <input type="radio" name="status"  value="Inactive" data-ng-model="$parent.addPSFormObj.status" data-ng-value="Inactive" />
+                                    <input type="radio" data-ng-model="$parent.addPSFormObj.status" value="0" />
                                     {{'fieldInActive'|translate}}
                                 </label>
 

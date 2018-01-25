@@ -33,12 +33,12 @@
         var _removeSelectedFeesFromProgramStudy = function (postData) {
             return execute('removeSelectedFeesFromProgramStudy', 'post', postData);
         };
-        var _getUnlinkedCoursesOfProgramStudy = function () {
-            return execute('getUnlinkedCoursesOfProgramStudy', 'get', null);
+        var _getUnlinkedCoursesOfProgramStudy = function (selPS) {
+            return execute('getUnlinkedCoursesOfProgramStudy', 'get', selPS);
         };
 
-        var _getUnlinkedFeesOfProgramStudy = function () {
-            return execute('getUnlinkedFeesOfProgramStudy', 'get', null);
+        var _getUnlinkedFeesOfProgramStudy = function (selPS) {
+            return execute('getUnlinkedFeesOfProgramStudy', 'get', selPS);
         };
         var _assignUnlinkedCoursesToProgramStudy = function (postData) {
             return execute('assignUnlinkedCoursesToProgramStudy', 'post', postData);

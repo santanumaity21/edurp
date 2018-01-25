@@ -29,7 +29,7 @@
         };
         var _processAllParamsVal = function (url, method, data) {
             
-            if (url === 'getLinkedCoursesOfProgramStudy') {
+            if (['getLinkedCoursesOfProgramStudy', 'getLinkedFeesOfProgramStudy', 'getUnlinkedCoursesOfProgramStudy', 'getUnlinkedFeesOfProgramStudy'].indexOf(url) !== -1) {
                 var cd = this.fetchMainCookieData();
                 cd.PsId = data.ProgramStudyId;
                 return cd;
@@ -44,11 +44,21 @@
             var manDatoryCookies = this.processAllParamsVal(url, method, data);
             var apiURL = (method === 'get') ? $interpolate(urlService[url])(manDatoryCookies) : urlService[url];
             var finalData = null;
+            var parentThis = this.fetchMainCookieData();
             if (method !== 'get') {
-                finalData = this.fetchMainCookieData();
-                angular.forEach(data, function (v, k) {
-                    finalData[k] = v;
-                });
+                if (angular.isArray(data) && data.length > 1) {
+                    angular.forEach(data, function (v, k) {
+                        data[k] = angular.extend(v, parentThis);
+                    });
+                    finalData = data;
+                } else if (angular.isArray(data) && data.length === 1) {
+                    angular.forEach(data, function (v, k) {
+                        finalData = [angular.extend(v, parentThis)];
+                    });
+                } else {
+                    finalData = data;
+                }
+                
             } 
             console.log(finalData);
            $http({

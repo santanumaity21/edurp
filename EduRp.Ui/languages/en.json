@@ -50,6 +50,8 @@
   "fieldInActive": "Inactive",
   "fieldTaskName": "Task Name",
   "fieldTaskDescription": "Task Description",
+  "fieldProgramStudyCode": "ProgramStudy Code",
+  "fieldProgramStudyName": "ProgramStudy Name",
   "addNewCreateBatchBtn": "Add New Create Batch",
   "addNewCreateBatchHeader": "Add New Create Batch",
   "assignedCoursesHeader": "Assigned Courses",
@@ -83,5 +85,6 @@
   "feeAmountColumn": "Amount",
   "feeTypeColumn": "Fee Type",
   "feeDescriptionColumn": "Description",
+  "noDataUnderGrid": "No Data Available",
   "footerHeadLine": "Developed and Designed by Computude Technolo"
 }
