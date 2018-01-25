@@ -11,7 +11,7 @@ namespace EduRp.Service.Service
     public class BatchProgramStudyAssociationService : IBatchProgramStudyAssociationService
     {
         private edurp_devEntities db = new edurp_devEntities();
-
+ 
         public bool LinkBatchProgramStudy(int? id, List<BatchProgramStudyAssociation> batchprgmassociation)
         {
             try
@@ -44,6 +44,11 @@ namespace EduRp.Service.Service
             {
                 return false;
             }
+        }
+
+        List<GetBatchProgramStudyNotLinkedList_Result> IBatchProgramStudyAssociationService.GetNotLinked(int? id, int? userid, string tokenid, int? batchid)
+        {
+            return db.GetBatchProgramStudyNotLinkedList(id, userid, tokenid, batchid).ToList();
         }
     }
 }

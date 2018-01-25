@@ -5,37 +5,19 @@
         .module('EduRpApp')
         .factory('programStudyService', programStudyService);
 
-    programStudyService.$inject = ['$q', '$http', '$interpolate'];
+    programStudyService.$inject = ['$q', '$http', '$interpolate', 'commonService'];
 
-    function programStudyService($q, $http, $interpolate) {
+    function programStudyService($q, $http, $interpolate, commonService) {
 
-        var execute = function (url, method, data, ip) {
-            var deferred = $q.defer();
-
-            $http({
-
-                url: $interpolate(urlService[url])(ip),
-                method: method,
-                dataType : 'json',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                data: data
-            }
-
-            ).then(function (data) {
-                deferred.resolve(data.data);
-            }, function (error) { deferred.reject(error); }
-                );
-            return deferred.promise;
-
+        var execute = function (url, method, data) {
+            return commonService.executeAPICall(url, method, data);
         }
 
         var _getProgramStudyList = function () {
             return execute('getProgramStudyList', 'get', null);
         };
         var _getLinkedCoursesOfProgramStudy = function (selPS) {
-            return execute('getLinkedCoursesOfProgramStudy', 'get', null, selPS);
+            return execute('getLinkedCoursesOfProgramStudy', 'get', selPS);
         };
         var _getLinkedFeesOfProgramStudy = function (selPS) {
             return execute('getLinkedFeesOfProgramStudy', 'get', null, selPS);

@@ -10,5 +10,6 @@ namespace EduRp.Service.IService
     {
         bool LinkBatchFee(int? id, List<BatchFeeAssociation> batchfeeassociation);
         bool UnLinkBatchFee(int? id, List<BatchFeeAssociation> batchfeeassociation);
+        List<GetBatchFeeNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? batchid);
     }
 }

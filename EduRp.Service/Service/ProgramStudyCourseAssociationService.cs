@@ -12,6 +12,12 @@ namespace EduRp.Service.Service
     public class ProgramStudyCourseAssociationService : IProgramStudyCourseAssociationService
     {
         private edurp_devEntities db = new edurp_devEntities();
+
+        public List<GetProgramStudyCourseNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? pid)
+        {
+                return db.GetProgramStudyCourseNotLinkedList(id, userid, tokenid, pid).ToList();
+        }
+
         public bool LinkPrgmCourse(int? id, List<ProgramStudyCourseAssociation> prgmcourseassociation)
         {
             try

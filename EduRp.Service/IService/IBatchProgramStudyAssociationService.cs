@@ -11,5 +11,6 @@ namespace EduRp.Service.IService
     {
         bool LinkBatchProgramStudy(int? id, List<BatchProgramStudyAssociation> batchprgmassociation);
         bool UnLinkBatchProgramStudy(int? id, List<BatchProgramStudyAssociation> batchprgmassociation);
+        List<GetBatchProgramStudyNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? batchid);
     }
 }

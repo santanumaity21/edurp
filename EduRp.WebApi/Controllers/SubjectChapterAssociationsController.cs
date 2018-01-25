@@ -13,6 +13,11 @@ namespace EduRp.WebApi.Controllers
     public class SubjectChapterAssociationsController : ApiController
     {
         private ISubjectChapterAssociationService subjChapterAssociation = new SubjectChapterAssociationService();
+        [HttpGet]
+        public IHttpActionResult GetSubjectChapterNotLinkedList(int? id, int? userid, string tokenid, int? subjid)
+        {
+            return Ok(new { results = subjChapterAssociation.GetNotLinked(id, userid, tokenid, subjid) });
+        }
         [HttpPost]
         public IHttpActionResult Link([FromBody]List<SubjectChapterAssociation> subjchptrassociation)
         {

@@ -11,5 +11,6 @@ namespace EduRp.Service.IService
     {
         bool LinkCourseSubject(int? id, List<CourseSubjectAssociation> coursesubassociation);
         bool UnLinkCourseSubject(int? id, List<CourseSubjectAssociation> coursesubassociation);
+        List<GetCourseSubjectNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? courseid);
     }
 }

@@ -27,11 +27,22 @@
             var TokenId = $cookieStore.get('TokenId');
             return { UniversityId: UniversityId, UserId: UserId, TokenId: TokenId };
         };
-
+        var _processAllParamsVal = function (url, method, data) {
+            
+            if (url === 'getLinkedCoursesOfProgramStudy') {
+                var cd = this.fetchMainCookieData();
+                cd.PsId = data.ProgramStudyId;
+                return cd;
+            } else {
+                return this.fetchMainCookieData();
+            }
+            
+        };
 
         var _executeAPICall = function (url, method, data) {
             var deferred = $q.defer();
-            var apiURL = (method === 'get') ? $interpolate(urlService[url])(this.fetchMainCookieData()) : urlService[url];
+            var manDatoryCookies = this.processAllParamsVal(url, method, data);
+            var apiURL = (method === 'get') ? $interpolate(urlService[url])(manDatoryCookies) : urlService[url];
             var finalData = null;
             if (method !== 'get') {
                 finalData = this.fetchMainCookieData();
@@ -60,7 +71,8 @@
             getFilteredOptions: _getFilteredOptions,
             removeItemFromArray: _removeItemFromArray,
             fetchMainCookieData: _fetchMainCookieData,
-            executeAPICall: _executeAPICall
+            executeAPICall: _executeAPICall,
+            processAllParamsVal: _processAllParamsVal
         };
 
     }
