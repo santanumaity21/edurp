@@ -12,6 +12,6 @@ namespace EduRp.Service.IService
     {
         bool LinkPrgmFee(int? id, List<ProgramStudyFeeAssociation> prgmfeeassociation);
         bool UnLinkPrgmFee(int? id, List<ProgramStudyFeeAssociation> prgmfeeassociation);
-        List<GetProgramStudyFeesNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? pid);
+        List<GetProgramStudyFeesNotLinkedList_Result> GetNotLinked(int? id, int? userid, string tokenid, int? psid);
     }
 }

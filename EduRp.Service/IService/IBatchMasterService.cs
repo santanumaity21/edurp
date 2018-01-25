@@ -13,7 +13,7 @@ namespace EduRp.Service.IService
 
         List<GetBatchFeesList_Result> GetBatchListByFee(int? id, int? userid, string tokenid,int? batchid);
 
-        List<GetBatchProgramStudyList_Result> GetBatchListByPrgm(int? id, int? userid, string tokenid,int? pid);
+        List<GetBatchProgramStudyList_Result> GetBatchListByPrgm(int? id, int? userid, string tokenid,int? psid);
 
         bool InsUpdBatchMaster(int? id, BatchMaster batchMaster);
 
