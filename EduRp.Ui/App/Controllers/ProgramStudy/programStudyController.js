@@ -41,9 +41,9 @@
         $scope.feesCurrentPage = 1;
         $scope.feesNumPerPage = 10;
         $scope.feesMaxSize = 5;
-        $scope.assignedFeesOrderByField = 'feesName';
+        $scope.assignedFeesOrderByField = 'FeeLabel';
         $scope.assignedFeesReverseSort = false;
-        $scope.nonAssignedFeesOrderByField = 'feesName';
+        $scope.nonAssignedFeesOrderByField = 'FeeLabel';
         $scope.nonAssignedFeesReverseSort = false;
         $scope.linkedFeesSelectedArr = [];
         $scope.unlinkedFeesSelectedArr = [];

@@ -10,7 +10,7 @@ namespace EduRp.Service.IService
 {
     public interface IStudentAdmissionFormService
     {
-        List<GetApplicationFormDetail_Result> GetList(int? id,int? userid,string tokenid,int? admissionid);
-        //List<GetAdmissionNumber_Result> GetAdmissionNum(int? id, int? userid, string tokenid, int? templateid);
+        List<GetApplicationFormDetail_Result> GetList(int? id,int? userid,string tokenid,int? templtid);
+        List<GetAdmissionNumber_Result> GetAdmissionNum(int? id, int? userid, string tokenid, int? templtid);
     }
 }

@@ -79,7 +79,9 @@
   "assignFeesHeader": "Assign Fees",
   "assignFeesBtn": "Assign Fees",
   "removeFeesBtn": "Remove Fees",
-  "feesCodeColumn": "Fees Code",
-  "feesColumn": "Fees",
+  "feeLabelColumn": "Fee Label",
+  "feeAmountColumn": "Amount",
+  "feeTypeColumn": "Fee Type",
+  "feeDescriptionColumn": "Description",
   "footerHeadLine": "Developed and Designed by Computude Technolo"
 }

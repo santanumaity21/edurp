@@ -14,9 +14,9 @@ namespace EduRp.WebApi.Controllers
             return Ok(new { results = feeService.GetList(id,userid,tokenid) });
         }
 
-        public IHttpActionResult GetProgramStudyFeesList(int? id, int? userid, string tokenid, int? pid)
+        public IHttpActionResult GetProgramStudyFeesList(int? id, int? userid, string tokenid, int? psid)
         {
-            return Ok(new { results = feeService.GetByPrgmStdy(id, userid, tokenid, pid) });
+            return Ok(new { results = feeService.GetByPrgmStdy(id, userid, tokenid, psid) });
         }
 
         public IHttpActionResult GetBatchFeesList(int? id, int? userid, string tokenid, int? batchid)

@@ -20,7 +20,7 @@
             return execute('getLinkedCoursesOfProgramStudy', 'get', selPS);
         };
         var _getLinkedFeesOfProgramStudy = function (selPS) {
-            return execute('getLinkedFeesOfProgramStudy', 'get', null, selPS);
+            return execute('getLinkedFeesOfProgramStudy', 'get', selPS);
         };
 
         var _addProgramStudy = function (postData) {
