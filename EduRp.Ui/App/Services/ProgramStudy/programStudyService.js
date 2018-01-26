@@ -11,7 +11,7 @@
 
         var execute = function (url, method, data) {
             return commonService.executeAPICall(url, method, data);
-        }
+        };
 
         var _getProgramStudyList = function () {
             return execute('getProgramStudyList', 'get', null);

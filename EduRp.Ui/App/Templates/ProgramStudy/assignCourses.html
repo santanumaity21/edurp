@@ -24,24 +24,13 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="userName">{{'courseCodeColumn'| translate}}</label>
-                                                        <select id="heard" class="form-control" multiple>
-                                                            <option value="0001">0001</option>
-                                                            <option value="0002">0002</option>
-                                                            <option value="003">0003</option>
-                                                            <option value="other">Other..</option>
-                                                        </select>
+                                                       <textarea></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="userName">{{'courseNameColumn'| translate}}</label>
-                                                        <select id="heard" class="form-control" multiple>
-                                                            <option value="">Choose..</option>
-                                                            <option value="Free">Training</option>
-                                                            <option value="Sponsered">Sponsered</option>
-                                                            <option value="Funded">Funded</option>
-                                                            <option value="other">Other..</option>
-                                                        </select>
+                                                        <input type="text" />
 
                                                     </div>
                                                 </div>
@@ -88,6 +77,20 @@
                                                 <span ng-show="nonAssignedCoursesReverseSort">v</span>
                                             </span>
                                         </th>
+                                        <th ng-click="nonAssignedCoursesOrderByField='CourseType'; nonAssignedCoursesReverseSort = !nonAssignedCoursesReverseSort">
+                                            {{'courseTypeColumn'| translate}}
+                                            <span ng-show="nonAssignedCoursesOrderByField == 'CourseType'">
+                                                <span ng-show="!nonAssignedCoursesReverseSort">^</span>
+                                                <span ng-show="nonAssignedCoursesReverseSort">v</span>
+                                            </span>
+                                        </th>
+                                        <th ng-click="nonAssignedCoursesOrderByField='CourseGroup'; nonAssignedCoursesReverseSort = !nonAssignedCoursesReverseSort">
+                                            {{'courseGroupColumn'| translate}}
+                                            <span ng-show="nonAssignedCoursesOrderByField == 'CourseGroup'">
+                                                <span ng-show="!nonAssignedCoursesReverseSort">^</span>
+                                                <span ng-show="nonAssignedCoursesReverseSort">v</span>
+                                            </span>
+                                        </th>
                                         <th class="check">
                                         <label>
                                             <input type="checkbox" id="flowcheckallco" value="" data-ng-model="$parent.unlinkedCoursesAllSelected" ng-change="isUnlinkedCoursesAllSelected();" />
@@ -103,6 +106,9 @@
 
                                         <td>{{uc.CourseCode}}</td>
                                         <td>{{uc.CourseName}} </td>
+                                        <td>{{ uc.CourseType}}</td>
+                                        <td>{{ uc.CourseGroup}}</td>
+
                                         <td><input  type="checkbox" data-ng-model="uc.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="unlinkedCoursesAllSelected" ng-click="isThisUnlinkedCourseSelected(uc)" /></td>
 
                                     </tr>

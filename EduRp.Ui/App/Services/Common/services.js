@@ -28,15 +28,16 @@
             return { UniversityId: UniversityId, UserId: UserId, TokenId: TokenId };
         };
         var _processAllParamsVal = function (url, method, data) {
-            
-            if (['getLinkedCoursesOfProgramStudy', 'getLinkedFeesOfProgramStudy', 'getUnlinkedCoursesOfProgramStudy', 'getUnlinkedFeesOfProgramStudy'].indexOf(url) !== -1) {
+            if (['getLinkedCoursesOfProgramStudy',
+                'getLinkedFeesOfProgramStudy',
+                'getUnlinkedCoursesOfProgramStudy',
+                'getUnlinkedFeesOfProgramStudy'].indexOf(url) !== -1) {
                 var cd = this.fetchMainCookieData();
                 cd.PsId = data.ProgramStudyId;
                 return cd;
             } else {
                 return this.fetchMainCookieData();
             }
-            
         };
 
         var _executeAPICall = function (url, method, data) {

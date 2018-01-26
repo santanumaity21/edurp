@@ -260,14 +260,12 @@
             if (form.$valid) {
                 $q.when(createBatchService.addBatch($scope.addBatchFormObj)).then(function (success) {
                     $scope.Modals.close();
-                    $scope.batchData.push($scope.addBatchFormObj);
-                    $scope.filteredBatchData.push($scope.addBatchFormObj);
+                    $scope.pageLoad();
                 }, function (error) {
-
+                    alert('Please try again');
                 });
             }
         };
-
 
         $scope.removeSelectedCourses = function () {
             if ($scope.linkedCoursesSelectedArr.length > 0) {
@@ -313,7 +311,6 @@
             }
 
         };
-
         $scope.assignUnlinkedCourses = function () {
             if ($scope.unlinkedCoursesSelectedArr.length > 0) {
                 $q.when(createBatchService.assignUnlinkedCoursesToBatch($scope.unlinkedCoursesSelectedArr)).then(function (success) {
@@ -352,7 +349,6 @@
             $scope.modCourseObj = data;
             $scope.Modals.open();
         };
-
         $scope.fetchRelatedDataOfBatch = function () {
             var selPS = angular.copy($scope.selectedBatch);
             if (selPS) {
@@ -377,8 +373,7 @@
         };
 
 
-        (function startup() {
-
+        $scope.pageLoad = function () {
             $q.all([
                 createBatchService.getBatchList()
             ]).then(function (data) {
@@ -407,7 +402,7 @@
                 console.log("update" + update);
                 errorHandler.logServiceNotify('createBatchController', update);
             });
-        })();
+        };
 
         function removeContact(contactId) {
             for (var i = 0; i < $scope.contacts.length; i++) {
@@ -478,9 +473,8 @@
             }
         };
 
-
+        $scope.pageLoad();
 
 
     };
-})
-    ();
+})();

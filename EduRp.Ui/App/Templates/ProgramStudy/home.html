@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <select class="form-control" data-ng-model="selectedProgramStudy" data-ng-options="fps.ProgramStudyCode for fps in filteredProgramStudyData">
-                                    <option value="">--Select a Program--</option>
+                                    <option value="">{{ 'selectAProgram'| translate}}</option>
                                 </select>
                             </div>
 
@@ -135,6 +135,20 @@
                                                                     <span ng-show="assignedCoursesReverseSort">v</span>
                                                                 </span>
                                                             </th>
+                                                            <th ng-click="assignedCoursesOrderByField='CourseType'; assignedCoursesReverseSort = !assignedCoursesReverseSort">
+                                                                {{'courseTypeColumn'| translate}}
+                                                                <span ng-show="assignedCoursesOrderByField == 'CourseType'">
+                                                                    <span ng-show="!assignedCoursesReverseSort">^</span>
+                                                                    <span ng-show="assignedCoursesReverseSort">v</span>
+                                                                </span>
+                                                            </th>
+                                                            <th ng-click="assignedCoursesOrderByField='CourseGroup'; assignedCoursesReverseSort = !assignedCoursesReverseSort">
+                                                                {{'courseGroupColumn'| translate}}
+                                                                <span ng-show="assignedCoursesOrderByField == 'CourseGroup'">
+                                                                    <span ng-show="!assignedCoursesReverseSort">^</span>
+                                                                    <span ng-show="assignedCoursesReverseSort">v</span>
+                                                                </span>
+                                                            </th>
                                                             <th><label><input type="checkbox" data-ng-model="linkedCoursesAllSelected" ng-change="isLinkedCoursesAllSelected();"/>&nbsp;{{'selectAll' | translate}}</label></th>
                                                         </tr>
                                                     </thead>
@@ -142,6 +156,8 @@
                                                         <tr data-ng-repeat="cd in filteredCourseData|orderBy:assignedCoursesOrderByField:assignedCoursesReverseSort">
                                                             <td>{{ cd.CourseCode}}</td>
                                                             <td>{{ cd.CourseName}}</td>
+                                                            <td>{{ cd.CourseType}}</td>
+                                                            <td>{{ cd.CourseGroup}}</td>
                                                             <td><input type="checkbox" data-ng-model="cd.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="linkedCoursesAllSelected" ng-click="isThisLinkedCourseSelected(cd)" /></td>
                                                         </tr>
                                                     </tbody>
@@ -236,7 +252,6 @@
                                             <div id="collapseThreef" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                                 <div class="panel-body">
                                                     <form action="#" data-parsley-validate="">
-
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <div class="form-group">
@@ -248,14 +263,9 @@
                                                                 <div class="form-group">
                                                                     <label for="userName">{{'feeDescriptionColumn'| translate}}</label>
                                                                     <input type="text" />
-
                                                                 </div>
                                                             </div>
-
                                                         </div>
-
-
-
                                                         <div class="form-group text-right m-b-0">
                                                             <button class="btn btn-teal btn-bordered waves-light waves-effect w-xs  m-b-2" type="submit">
                                                                 {{'goBtn'|translate}}

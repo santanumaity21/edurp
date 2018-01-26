@@ -5,40 +5,22 @@
         .module('EduRpApp')
         .factory('createBatchService', createBatchService);
 
-    createBatchService.$inject = ['$q', '$http', '$interpolate'];
+    createBatchService.$inject = ['$q', '$http', '$interpolate', 'commonService'];
 
-    function createBatchService($q, $http, $interpolate) {
+    function createBatchService($q, $http, $interpolate, commonService) {
 
-        var execute = function (url, method, data, ip) {
-            var deferred = $q.defer();
-
-            $http({
-
-                url: $interpolate(urlService[url])(ip),
-                method: method,
-                dataType: 'json',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                data: data
-            }
-
-            ).then(function (data) {
-                deferred.resolve(data.data);
-            }, function (error) { deferred.reject(error); }
-                );
-            return deferred.promise;
-
-        }
+        var execute = function (url, method, data) {
+            return commonService.executeAPICall(url, method, data);
+        };
 
         var _getBatchList = function () {
             return execute('getBatchList', 'get', null);
         };
         var _getLinkedCoursesOfBatch = function (selPS) {
-            return execute('getLinkedCoursesOfBatch', 'get', null, selPS);
+            return execute('getLinkedCoursesOfBatch', 'get', selPS);
         };
         var _getLinkedFeesOfBatch = function (selPS) {
-            return execute('getLinkedFeesOfBatch', 'get', null, selPS);
+            return execute('getLinkedFeesOfBatch', 'get', selPS);
         };
 
         var _addBatch = function (postData) {

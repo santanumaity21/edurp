@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <select class="form-control" data-ng-model="selectedBatch" data-ng-options="fps.degreeName for fps in filteredBatchData">
-                                    <option value="">--Select a Batch--</option>
+                                    <option value="">{{ 'selectABatch' | translate}}</option>
                                 </select>
                             </div>
 
@@ -135,6 +135,20 @@
                                                                     <span ng-show="assignedCoursesReverseSort">v</span>
                                                                 </span>
                                                             </th>
+                                                            <th ng-click="assignedCoursesOrderByField='CourseType'; assignedCoursesReverseSort = !assignedCoursesReverseSort">
+                                                                {{'courseTypeColumn'| translate}}
+                                                                <span ng-show="assignedCoursesOrderByField == 'CourseType'">
+                                                                    <span ng-show="!assignedCoursesReverseSort">^</span>
+                                                                    <span ng-show="assignedCoursesReverseSort">v</span>
+                                                                </span>
+                                                            </th>
+                                                            <th ng-click="assignedCoursesOrderByField='CourseGroup'; assignedCoursesReverseSort = !assignedCoursesReverseSort">
+                                                                {{'courseGroupColumn'| translate}}
+                                                                <span ng-show="assignedCoursesOrderByField == 'CourseGroup'">
+                                                                    <span ng-show="!assignedCoursesReverseSort">^</span>
+                                                                    <span ng-show="assignedCoursesReverseSort">v</span>
+                                                                </span>
+                                                            </th>
                                                             <th><label><input type="checkbox" data-ng-model="linkedCoursesAllSelected" ng-change="isLinkedCoursesAllSelected();"/>&nbsp;{{'selectAll' | translate}}</label></th>
                                                         </tr>
                                                     </thead>
@@ -142,6 +156,8 @@
                                                         <tr data-ng-repeat="cd in filteredCourseData|orderBy:assignedCoursesOrderByField:assignedCoursesReverseSort">
                                                             <td>{{ cd.CourseCode}}</td>
                                                             <td>{{ cd.CourseName}}</td>
+                                                            <td>{{ cd.CourseType}}</td>
+                                                            <td>{{ cd.CourseGroup}}</td>
                                                             <td><input type="checkbox" data-ng-model="cd.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="linkedCoursesAllSelected" ng-click="isThisLinkedCourseSelected(cd)" /></td>
                                                         </tr>
                                                     </tbody>
@@ -208,9 +224,7 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <h4 class="panel-title">
-
                                                 {{'assignedFeesHeader' | translate}}
-
                                             </h4>
                                         </div>
                                         <div class="col-lg-4 pull-right">
@@ -240,13 +254,13 @@
                                                         <div class="row">
                                                             <div class="col-md-3">
                                                                 <div class="form-group">
-                                                                    <label for="userName">{{'feesCodeColumn'| translate}}</label>
+                                                                    <label for="userName">{{'feeLabelColumn'| translate}}</label>
                                                                     <textarea></textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <div class="form-group">
-                                                                    <label for="userName">{{'feesColumn'| translate}}</label>
+                                                                    <label for="userName">{{'feeDescriptionColumn'| translate}}</label>
                                                                     <input type="text" />
 
                                                                 </div>
@@ -283,29 +297,46 @@
                                                 <table id="datatablef" class="table table-striped table-bordered table-colored table-inverse">
                                                     <thead>
                                                         <tr>
-                                                            <th ng-click="assignedFeesOrderByField='feesCode'; assignedFeesReverseSort = !assignedFeesReverseSort">
-                                                            {{'feesCodeColumn'|translate}}
-                                                                <span ng-show="assignedFeesOrderByField == 'feesCode'">
+                                                            <th ng-click="assignedFeesOrderByField='FeeLabel'; assignedFeesReverseSort = !assignedFeesReverseSort">
+                                                                {{'feeLabelColumn'|translate}}
+                                                                <span ng-show="assignedFeesOrderByField == 'FeeLabel'">
                                                                     <span ng-show="!assignedFeesReverseSort">^</span>
                                                                     <span ng-show="assignedFeesReverseSort">v</span>
                                                                 </span>
                                                             </th>
-                                                            <th ng-click="assignedFeesOrderByField='feesName'; assignedFeesReverseSort = !assignedFeesReverseSort">
-                                                            {{'feesColumn'|translate}}
-                                                                <span ng-show="assignedFeesOrderByField == 'feesName'">
+                                                            <th ng-click="assignedFeesOrderByField='Amount'; assignedFeesReverseSort = !assignedFeesReverseSort">
+                                                                {{'feeAmountColumn'|translate}}
+                                                                <span ng-show="assignedFeesOrderByField == 'Amount'">
                                                                     <span ng-show="!assignedFeesReverseSort">^</span>
                                                                     <span ng-show="assignedFeesReverseSort">v</span>
                                                                 </span>
                                                             </th>
-                                                            <th><label><input type="checkbox"  data-ng-model="linkedFeesAllSelected" ng-change="isLinkedFeesAllSelected();" />&nbsp;{{'selectAll' | translate}}</label></th>
+                                                            <th ng-click="assignedFeesOrderByField='FeeType'; assignedFeesReverseSort = !assignedFeesReverseSort">
+                                                                {{'feeTypeColumn'|translate}}
+                                                                <span ng-show="assignedFeesOrderByField == 'FeeType'">
+                                                                    <span ng-show="!assignedFeesReverseSort">^</span>
+                                                                    <span ng-show="assignedFeesReverseSort">v</span>
+                                                                </span>
+                                                            </th>
+                                                            <th ng-click="assignedFeesOrderByField='Description'; assignedFeesReverseSort = !assignedFeesReverseSort">
+                                                                {{'feeDescriptionColumn'|translate}}
+                                                                <span ng-show="assignedFeesOrderByField == 'Description'">
+                                                                    <span ng-show="!assignedFeesReverseSort">^</span>
+                                                                    <span ng-show="assignedFeesReverseSort">v</span>
+                                                                </span>
+                                                            </th>
+
+                                                            <th><label><input type="checkbox" data-ng-model="linkedFeesAllSelected" ng-change="isLinkedFeesAllSelected();" />&nbsp;{{'selectAll' | translate}}</label></th>
 
                                                         </tr>
                                                     </thead>
 
                                                     <tbody>
                                                         <tr data-ng-repeat="f in filteredFeesData|orderBy:assignedFeesOrderByField:assignedFeesReverseSort">
-                                                            <td>{{ f.feesCode}}</td>
-                                                            <td>{{ f.feesName}}</td>
+                                                            <td>{{ f.FeeLabel}}</td>
+                                                            <td>{{ f.Amount}}</td>
+                                                            <td>{{ f.FeeType}}</td>
+                                                            <td>{{ f.Description}}</td>
                                                             <td><input type="checkbox" data-ng-model="f.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="linkedFeesAllSelected" ng-click="isThisLinkedFeeSelected(f)" /></td>
                                                         </tr>
                                                     </tbody>
