@@ -13,7 +13,7 @@
         $scope.filteredCourseData = [];
         $scope.programStudyCurrentPage = 1;
         $scope.programStudyNumPerPage = 10;
-        $scope.courseMaxSize = 5;
+        $scope.programStudyMaxSize = 5;
         $scope.assignedProgramStudyCodeByField = 'ProgramStudyCode';
         $scope.assignedProgramStudyReverseSort = false;
         $scope.nonAssignedProgramStudyOrderByField = 'ProgramStudyCode';
@@ -24,8 +24,8 @@
         $scope.linkedProgramStudySelectedArr = [];
         $scope.unlinkedProgramStudySelectedArr = [];
         $scope.adjustProgramStudyList = function () {
-            var begin = (($scope.courseCurrentPage - 1) * $scope.courseNumPerPage)
-                , end = begin + $scope.courseNumPerPage;
+            var begin = (($scope.programStudyCurrentPage - 1) * $scope.programStudyNumPerPage)
+                , end = begin + $scope.programStudyNumPerPage;
 
             $scope.filteredCourseData = angular.copy($scope.programStudyData.slice(begin, end));
         };
@@ -285,7 +285,7 @@
                     alert("Please try again.");
                 });
             } else {
-                alert("Please select courses before removing it.");
+                alert("Please select program study before removing it.");
             }
 
         };
@@ -323,7 +323,7 @@
                     alert("Please try again.");
                 });
             } else {
-                alert("Please select courses before assigning it.");
+                alert("Please select program study before assigning it.");
             }
 
         };
