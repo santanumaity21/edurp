@@ -424,9 +424,9 @@
                     $scope.programStudyData = data[0].results;
                     if (data[0].results.length < 5 && data[0].results.length > 0) {
                         $scope.filteredProgramStudyData = data[0].results;
-                    } else if (data[0].results.length > 5) {
-                        $scope.filteredProgramStudyData = angular.copy(data[0].results.slice(0, 5));
-
+                    } else if (data[0].results.length >= 5) {
+                        //$scope.filteredProgramStudyData = angular.copy(data[0].results.slice(0, 5));
+                        $scope.filteredProgramStudyData = data[0].results;
                     }
 
                 }

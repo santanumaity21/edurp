@@ -14,13 +14,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="course_code">{{'fieldBatchName'|translate}}<span class="text-danger">*</span></label>
-                                <input type="text" name="course_code" required placeholder="Enter Course Code" class="form-control" data-ng-model="$parent.addBatchFormObj.degreeCode" />
+                                <input type="text" name="course_code" required placeholder="Enter Course Code" class="form-control" data-ng-model="$parent.addBatchFormObj.BatchName" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="course_name">{{'fieldResultType'|translate}}<span class="text-danger">*</span></label>
-                                <input type="text" name="course_name" required placeholder="Enter Course Name" class="form-control" data-ng-model="$parent.addBatchFormObj.degreeName" />
+                                <input type="text" name="course_name" required placeholder="Enter Course Name" class="form-control" data-ng-model="$parent.addBatchFormObj.ResultType" />
                             </div>
                         </div>
                     </div>
@@ -29,14 +29,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="heard">{{'fieldAcademicTerm'|translate}}</label>
-                                <input type="text" name="academic_term" required placeholder="Enter Academic Term" class="form-control" data-ng-model="$parent.addBatchFormObj.academicTerm" />
+                                <input type="text" name="academic_term" required placeholder="Enter Academic Term" class="form-control" data-ng-model="$parent.addBatchFormObj.AcademicTerm" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
 
-                                <label for="course_sks">{{'fieldStatus'|translate}}<span class="text-danger">*</span></label>
-                                <input type="text" name="course_sks" parsley-trigger="change" required placeholder="Enter SKS" class="form-control" data-ng-model="$parent.addBatchFormObj.sks" />
+                               
                             </div>
                         </div>
                     </div>
@@ -46,7 +45,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="activeStatus">
-                                    <input type="radio" name="status" value="Active" data-ng-model="$parent.addBatchFormObj.status" data-ng-value="Active" />
+                                    <input type="radio" name="status" value="1" data-ng-model="$parent.addBatchFormObj.Active"/>
                                     {{'fieldActive'|translate}}
                                 </label>
                             </div>
@@ -54,7 +53,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="inactiveStatus">
-                                    <input type="radio" name="status" value="Inactive" data-ng-model="$parent.addBatchFormObj.status" data-ng-value="Inactive" />
+                                    <input type="radio" name="status" value="0" data-ng-model="$parent.addBatchFormObj.Active" />
                                     {{'fieldInActive'|translate}}
                                 </label>
 

@@ -382,16 +382,8 @@
                     $scope.batchData = data[0].results;
                     if (data[0].results.length < 5 && data[0].results.length > 0) {
                         $scope.filteredBatchData = data[0].results;
-                    } else if (data[0].results.length > 5) {
-                        $scope.filteredBatchData = angular.copy(data[0].results.slice(0, 5));
-                        $scope.filteredBatchData.push({
-                            "id": null,
-                            "degreeCode": "Other",
-                            "degreeName": "Other",
-                            "academic_term": null,
-                            "sks": null,
-                            "active": null
-                        });
+                    } else if (data[0].results.length >= 5) {
+                        $scope.filteredBatchData = data[0].results;
                     }
 
                 }
