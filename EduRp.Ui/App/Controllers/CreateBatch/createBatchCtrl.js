@@ -350,11 +350,11 @@
             $scope.Modals.open();
         };
         $scope.fetchRelatedDataOfBatch = function () {
-            var selPS = angular.copy($scope.selectedBatch);
-            if (selPS) {
+            var selBatch = angular.copy($scope.selectedBatch);
+            if (selBatch) {
                 $q.all([
-                    createBatchService.getLinkedProgramStudyOfBatch(selPS),
-                    createBatchService.getLinkedFeesOfBatch(selPS)
+                    createBatchService.getLinkedProgramStudyOfBatch(selBatch),
+                    createBatchService.getLinkedFeesOfBatch(selBatch)
                 ]).then(function (data) {
                     $scope.mainContentSubPart = true;
                     if (data != null) {
@@ -368,7 +368,7 @@
                     errorHandler.logServiceError('createBatchController', reason);
                 });
             } else {
-                alert("Please select a program study");
+                alert("Please select a batch");
             }
         };
 

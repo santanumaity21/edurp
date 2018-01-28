@@ -16,11 +16,11 @@
         var _getBatchList = function () {
             return execute('getBatchList', 'get', null);
         };
-        var _getLinkedProgramStudyOfBatch = function (selPS) {
-            return execute('getLinkedProgramStudyOfBatch', 'get', selPS);
+        var _getLinkedProgramStudyOfBatch = function (selBatch) {
+            return execute('getLinkedProgramStudyOfBatch', 'get', selBatch);
         };
-        var _getLinkedFeesOfBatch = function (selPS) {
-            return execute('getLinkedFeesOfBatch', 'get', selPS);
+        var _getLinkedFeesOfBatch = function (selBatch) {
+            return execute('getLinkedFeesOfBatch', 'get', selBatch);
         };
 
         var _addBatch = function (postData) {

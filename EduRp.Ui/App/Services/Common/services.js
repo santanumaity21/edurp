@@ -35,6 +35,13 @@
                 var cd = this.fetchMainCookieData();
                 cd.PsId = data.ProgramStudyId;
                 return cd;
+            } else if (['getLinkedProgramStudyOfBatch',
+                'getLinkedFeesOfBatch',
+                'getUnlinkedProgramStudyOfBatch',
+                'getUnlinkedFeesOfBatch'].indexOf(url) !== -1) {
+                var cd = this.fetchMainCookieData();
+                cd.bId = data.BatchId;
+                return cd;
             } else {
                 return this.fetchMainCookieData();
             }
