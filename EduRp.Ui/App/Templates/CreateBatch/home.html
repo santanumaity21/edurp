@@ -166,7 +166,7 @@
                                                             <td>{{ ps.AcademicTerm}}</td>
                                                             <td>{{ ps.SKS}}</td>
                                                             <td>{{ ps.Status}}</td>
-                                                            <td><input type="checkbox" data-ng-model="cd.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="linkedCoursesAllSelected" ng-click="isThisLinkedCourseSelected(cd)" /></td>
+                                                            <td><input type="checkbox" data-ng-model="ps.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="linkedProgramStudyAllSelected" ng-click="isThisLinkedCourseSelected(ps)" /></td>
                                                         </tr>
                                                     </tbody>
 
@@ -193,21 +193,21 @@
                                         <div class="col-sm-4">
                                             <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
                                                 {{'showing'|translate}} 
-                                                {{courseCurrentPage*courseNumPerPage - courseNumPerPage  + 1}} 
+                                                {{programStudyCurrentPage*programStudyNumPerPage - programStudyNumPerPage  + 1}} 
                                                 {{'to'| translate}}
-                                                {{courseData.length > courseCurrentPage*courseNumPerPage ? courseCurrentPage*courseNumPerPage : courseData.length}} 
+                                                {{programStudyData.length > programStudyCurrentPage*programStudyNumPerPage ? programStudyCurrentPage*programStudyNumPerPage : programStudyData.length}} 
                                                 {{'of'| translate}}
-                                                {{courseData.length}} 
+                                                {{programStudyData.length}} 
                                                 {{'entries'| translate}}
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
-                                                <pagination ng-model="courseCurrentPage"
-                                                            total-items="courseData.length"
-                                                            max-size="courseMaxSize"
+                                                <pagination ng-model="programStudyCurrentPage"
+                                                            total-items="programStudyData.length"
+                                                            max-size="programStudyMaxSize"
                                                             boundary-links="true"
-                                                            items-per-page="courseNumPerPage">
+                                                            items-per-page="programStudyNumPerPage">
                                                 </pagination>
                                             </div>
                                         </div>

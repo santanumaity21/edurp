@@ -23,7 +23,7 @@
         $scope.mainContentSubPart = false;
         $scope.linkedProgramStudySelectedArr = [];
         $scope.unlinkedProgramStudySelectedArr = [];
-        $scope.adjustCourseList = function () {
+        $scope.adjustProgramStudyList = function () {
             var begin = (($scope.courseCurrentPage - 1) * $scope.courseNumPerPage)
                 , end = begin + $scope.courseNumPerPage;
 
