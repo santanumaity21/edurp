@@ -32,7 +32,7 @@
                     <div class="card-box">
                         <div class="row">
                             <div class="col-lg-4">
-                                <h4 class="m-t-0 header-title"><b>{{'manageCreateBatch'|translate}}</b></h4>
+                                <h4 class="m-t-0 header-title"><b>{{'manageBatch'|translate}}</b></h4>
                             </div>
 
                         </div>
@@ -62,7 +62,7 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <h4 class="panel-title">
-                                                {{'assignedCoursesHeader'|translate}}
+                                                {{'assignedProgramStudyHeader'|translate}}
                                             </h4>
                                         </div>
                                         <div class="col-lg-4 pull-right">
@@ -121,43 +121,51 @@
                                                 <table id="datatable" class="table table-striped table-bordered table-colored table-inverse">
                                                     <thead>
                                                         <tr>
-                                                            <th ng-click="assignedCoursesOrderByField='CourseCode'; assignedCoursesReverseSort = !assignedCoursesReverseSort">
-                                                            {{'courseCodeColumn'| translate}}
-                                                                <span ng-show="assignedCoursesOrderByField == 'CourseCode'">
-                                                                    <span ng-show="!assignedCoursesReverseSort">^</span>
-                                                                    <span ng-show="assignedCoursesReverseSort">v</span>
+                                                            <th ng-click="assignedProgramStudyCodeByField='ProgramStudyCode'; assignedProgramStudyReverseSort = !assignedProgramStudyReverseSort">
+                                                            {{'programStudyCodeColumn'| translate}}
+                                                                <span ng-show="assignedProgramStudyCodeByField == 'ProgramStudyCode'">
+                                                                    <span ng-show="!assignedProgramStudyReverseSort">^</span>
+                                                                    <span ng-show="assignedProgramStudyReverseSort">v</span>
                                                                 </span>
                                                             </th>
-                                                            <th ng-click="assignedCoursesOrderByField='CourseName'; assignedCoursesReverseSort = !assignedCoursesReverseSort">
-                                                            {{'courseNameColumn'| translate}}
-                                                                <span ng-show="assignedCoursesOrderByField == 'CourseName'">
-                                                                    <span ng-show="!assignedCoursesReverseSort">^</span>
-                                                                    <span ng-show="assignedCoursesReverseSort">v</span>
+                                                            <th ng-click="assignedProgramStudyCodeByField='ProgramStudyName'; assignedProgramStudyReverseSort = !assignedProgramStudyReverseSort">
+                                                            {{'programStudyNameColumn'| translate}}
+                                                                <span ng-show="assignedProgramStudyCodeByField == 'ProgramStudyName'">
+                                                                    <span ng-show="!assignedProgramStudyReverseSort">^</span>
+                                                                    <span ng-show="assignedProgramStudyReverseSort">v</span>
                                                                 </span>
                                                             </th>
-                                                            <th ng-click="assignedCoursesOrderByField='CourseType'; assignedCoursesReverseSort = !assignedCoursesReverseSort">
-                                                                {{'courseTypeColumn'| translate}}
-                                                                <span ng-show="assignedCoursesOrderByField == 'CourseType'">
-                                                                    <span ng-show="!assignedCoursesReverseSort">^</span>
-                                                                    <span ng-show="assignedCoursesReverseSort">v</span>
+                                                            <th ng-click="assignedProgramStudyCodeByField='AcademicTerm'; assignedProgramStudyReverseSort = !assignedProgramStudyReverseSort">
+                                                                {{'programStudyAcademicTermColumn'| translate}}
+                                                                <span ng-show="assignedProgramStudyCodeByField == 'AcademicTerm'">
+                                                                    <span ng-show="!assignedProgramStudyReverseSort">^</span>
+                                                                    <span ng-show="assignedProgramStudyReverseSort">v</span>
                                                                 </span>
                                                             </th>
-                                                            <th ng-click="assignedCoursesOrderByField='CourseGroup'; assignedCoursesReverseSort = !assignedCoursesReverseSort">
-                                                                {{'courseGroupColumn'| translate}}
-                                                                <span ng-show="assignedCoursesOrderByField == 'CourseGroup'">
-                                                                    <span ng-show="!assignedCoursesReverseSort">^</span>
-                                                                    <span ng-show="assignedCoursesReverseSort">v</span>
+                                                            <th ng-click="assignedProgramStudyCodeByField='SKS'; assignedProgramStudyReverseSort = !assignedProgramStudyReverseSort">
+                                                                {{'programStudySKSColumn'| translate}}
+                                                                <span ng-show="assignedProgramStudyCodeByField == 'SKS'">
+                                                                    <span ng-show="!assignedProgramStudyReverseSort">^</span>
+                                                                    <span ng-show="assignedProgramStudyReverseSort">v</span>
                                                                 </span>
                                                             </th>
-                                                            <th><label><input type="checkbox" data-ng-model="linkedCoursesAllSelected" ng-change="isLinkedCoursesAllSelected();"/>&nbsp;{{'selectAll' | translate}}</label></th>
+                                                            <th ng-click="assignedProgramStudyCodeByField='Status'; assignedProgramStudyReverseSort = !assignedProgramStudyReverseSort">
+                                                                {{'programStudyStatusColumn'| translate}}
+                                                                <span ng-show="assignedProgramStudyCodeByField == 'Status'">
+                                                                    <span ng-show="!assignedProgramStudyReverseSort">^</span>
+                                                                    <span ng-show="assignedProgramStudyReverseSort">v</span>
+                                                                </span>
+                                                            </th>
+                                                            <th><label><input type="checkbox" data-ng-model="linkedCoursesAllSelected" ng-change="isLinkedProgramStudyAllSelected();"/>&nbsp;{{'selectAll' | translate}}</label></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr data-ng-repeat="cd in filteredCourseData|orderBy:assignedCoursesOrderByField:assignedCoursesReverseSort">
-                                                            <td>{{ cd.CourseCode}}</td>
-                                                            <td>{{ cd.CourseName}}</td>
-                                                            <td>{{ cd.CourseType}}</td>
-                                                            <td>{{ cd.CourseGroup}}</td>
+                                                        <tr data-ng-repeat="ps in filteredCourseData|orderBy:assignedProgramStudyCodeByField:assignedProgramStudyReverseSort">
+                                                            <td>{{ ps.ProgramStudyCode}}</td>
+                                                            <td>{{ ps.ProgramStudyName}}</td>
+                                                            <td>{{ ps.AcademicTerm}}</td>
+                                                            <td>{{ ps.SKS}}</td>
+                                                            <td>{{ ps.Status}}</td>
                                                             <td><input type="checkbox" data-ng-model="cd.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="linkedCoursesAllSelected" ng-click="isThisLinkedCourseSelected(cd)" /></td>
                                                         </tr>
                                                     </tbody>

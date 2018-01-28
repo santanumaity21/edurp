@@ -57,14 +57,14 @@ var urlService =
         assignUnlinkedFeesToProgramStudy: localhost ? '/sampleData/programStudy/assignUnlinkedFees.json' : apiPrefix + '/api/ProgramStudyFeesAssociations/Link/',
 
         getBatchList: localhost ? '/sampleData/createBatch/batchList.json' : apiPrefix + '/api/BatchMasters/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
-        addBatch: localhost ? '/sampleData/createBatch/addBatch.json' : apiPrefix + '/api/createBatch/Add',
-        getLinkedCoursesOfBatch: localhost ? '/sampleData/createBatch/courseList.json' : apiPrefix + '/api/createBatch/GetAll/{{id}}',
-        getLinkedFeesOfBatch: localhost ? '/sampleData/createBatch/feesList.json' : apiPrefix + '/api/Fees/createBatch/{{id}}',
-        getUnlinkedCoursesOfBatch: localhost ? '/sampleData/createBatch/getUnlinkedCoursesOfBatch.json' : apiPrefix + '/api/NewCourseMasters/GetAll/{{id}}',
+        addBatch: localhost ? '/sampleData/createBatch/addBatch.json' : apiPrefix + '/api/BatchMasters/Save/',
+        getLinkedProgramStudyOfBatch: localhost ? '/sampleData/createBatch/ProgramStudyList.json' : apiPrefix + '/api/ProgramStudies/GetBatchProgramStudyList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&batchid={{bId}}',
+        getLinkedFeesOfBatch: localhost ? '/sampleData/createBatch/feesList.json' : apiPrefix + '/api/Fees/GetBatchFeesList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&batchid={{bId}}',
+        getUnlinkedProgramStudyOfBatch: localhost ? '/sampleData/createBatch/getUnlinkedProgramStudyOfBatch.json' : apiPrefix + '/api/BatchProgramStudyAssociations/GetBatchProgramStudyNotLinkedList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&batchid={{bId}}',
         getUnlinkedFeesOfBatch: localhost ? '/sampleData/createBatch/getUnlinkedFeesOfBatch.json' : apiPrefix + '/api/NewCourseMasters/GetAll/{{id}}',
-        removeSelectedCoursesFromBatch: localhost ? '/sampleData/createBatch/removeSelectedCourses.json' : apiPrefix + '/api/NewCourseMasters/GetAll/',
+        removeSelectedProgramStudyFromBatch: localhost ? '/sampleData/createBatch/removeSelectedProgramStudy.json' : apiPrefix + '/api/BatchProgramStudyAssociations/UnLink/',
         removeSelectedFeesFromBatch: localhost ? '/sampleData/createBatch/removeSelectedFees.json' : apiPrefix + '/api/NewCourseMasters/GetAll/',
-        assignUnlinkedCoursesToBatch: localhost ? '/sampleData/createBatch/assignUnlinkedCourses.json' : apiPrefix + '/api/programStudy/post',
+        assignUnlinkedProgramStudyToBatch: localhost ? '/sampleData/createBatch/assignUnlinkedProgramStudy.json' : apiPrefix + '/api/BatchProgramStudyAssociations/Link/',
         assignUnlinkedFeesToBatch: localhost ? '/sampleData/createBatch/assignUnlinkedFees.json' : apiPrefix + '/api/programStudy/post',
         
         getBulkModule: localhost ? '/sampleData/bulkUpload.json' : apiPrefix + '/api/BulkLoadMaster/Get/1'

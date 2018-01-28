@@ -9,28 +9,28 @@
 
     function createBatchController($scope, $q, createBatchService, errorHandler, $modal, $translate, commonService) {
 
-        $scope.courseData = [];
+        $scope.programStudyData = [];
         $scope.filteredCourseData = [];
-        $scope.courseCurrentPage = 1;
-        $scope.courseNumPerPage = 10;
+        $scope.programStudyCurrentPage = 1;
+        $scope.programStudyNumPerPage = 10;
         $scope.courseMaxSize = 5;
-        $scope.assignedCoursesOrderByField = 'CourseName';
-        $scope.assignedCoursesReverseSort = false;
-        $scope.nonAssignedCoursesOrderByField = 'CourseName';
-        $scope.nonAssignedCoursesReverseSort = false;
+        $scope.assignedProgramStudyCodeByField = 'ProgramStudyCode';
+        $scope.assignedProgramStudyReverseSort = false;
+        $scope.nonAssignedProgramStudyOrderByField = 'ProgramStudyCode';
+        $scope.nonAssignedProgramStudyReverseSort = false;
         $scope.selectedBatch = null;
         $scope.mainContent = false;
         $scope.mainContentSubPart = false;
-        $scope.linkedCoursesSelectedArr = [];
-        $scope.unlinkedCoursesSelectedArr = [];
+        $scope.linkedProgramStudySelectedArr = [];
+        $scope.unlinkedProgramStudySelectedArr = [];
         $scope.adjustCourseList = function () {
             var begin = (($scope.courseCurrentPage - 1) * $scope.courseNumPerPage)
                 , end = begin + $scope.courseNumPerPage;
 
-            $scope.filteredCourseData = angular.copy($scope.courseData.slice(begin, end));
+            $scope.filteredCourseData = angular.copy($scope.programStudyData.slice(begin, end));
         };
-        $scope.$watch('courseCurrentPage + courseNumPerPage', function () {
-            $scope.adjustCourseList();
+        $scope.$watch('programStudyCurrentPage + programStudyNumPerPage', function () {
+            $scope.adjustProgramStudyList();
         });
         $scope.changeLanguage = function (langKey) {
             $translate.use(langKey);
@@ -66,7 +66,7 @@
         $scope.modalType = '';
         $scope.filterPanel = false;
 
-        $scope.unlinkedCoursesOfPSList = null;
+        $scope.unlinkedProgramStudyOfPSList = null;
         $scope.unlinkedFeesOfPSList = null;
 
         $scope.toggleFilterPanel = function () {
@@ -76,7 +76,7 @@
         $scope.addBatchContainer = function () {
             $scope.Modals.open('App/Templates/CreateBatch/addBatch.html');
         };
-        $scope.assignCoursesContainer = function () {
+        $scope.assignProgramStudyContainer = function () {
             $q.all([createBatchService.getUnlinkedCoursesOfBatch()]).then(function (data) {
                 $scope.unlinkedCoursesOfPSList = data[0].results;
             }, function () {
@@ -94,30 +94,30 @@
             $scope.Modals.open('App/Templates/CreateBatch/assignFees.html');
         };
 
-        $scope.isLinkedCoursesAllSelected = function () {
-            if ($scope.linkedCoursesAllSelected) {
+        $scope.isLinkedProgramStudyAllSelected = function () {
+            if ($scope.linkedProgramStudyAllSelected) {
                 var tt = $scope.filteredCourseData;
                 for (var i = 0; i < tt.length; i++) {
-                    $scope.linkedCoursesSelectedArr.push(tt[i].id);
-                    $scope.filteredCourseData[i].Selected = 'true';
+                    $scope.linkedProgramStudySelectedArr.push(tt[i].id);
+                    $scope.filteredProgramStudyData[i].Selected = 'true';
                 }
             } else {
-                angular.forEach($scope.filteredCourseData, function (item) {
-                    $scope.linkedCoursesSelectedArr = [];
+                angular.forEach($scope.filteredProgramStudyData, function (item) {
+                    $scope.linkedProgramStudySelectedArr = [];
                     item.Selected = 'false';
                 });
             }
         };
-        $scope.isUnlinkedCoursesAllSelected = function () {
-            if ($scope.unlinkedCoursesAllSelected) {
-                var tt = $scope.unlinkedCoursesOfPSList;
+        $scope.isUnlinkedProgramStudyAllSelected = function () {
+            if ($scope.unlinkedProgramStudyAllSelected) {
+                var tt = $scope.unlinkedProgramStudyOfPSList;
                 for (var i = 0; i < tt.length; i++) {
-                    $scope.unlinkedCoursesSelectedArr.push(tt[i].id);
-                    $scope.unlinkedCoursesOfPSList[i].Selected = 'true';
+                    $scope.unlinkedProgramStudySelectedArr.push(tt[i].id);
+                    $scope.unlinkedProgramStudyOfPSList[i].Selected = 'true';
                 }
             } else {
-                angular.forEach($scope.unlinkedCoursesOfPSList, function (item) {
-                    $scope.unlinkedCoursesSelectedArr = [];
+                angular.forEach($scope.unlinkedProgramStudyOfPSList, function (item) {
+                    $scope.unlinkedProgramStudySelectedArr = [];
                     item.Selected = 'false';
                 });
             }
@@ -150,7 +150,7 @@
                 });
             }
         };
-        $scope.isThisLinkedCourseSelected = function (that) {
+        $scope.isThisLinkedProgramStudySelected = function (that) {
             if ($scope.linkedCoursesAllSelected) {
                 if (that.Selected === 'true') {
                     $scope.linkedCoursesSelectedArr.push(that.id);
@@ -177,7 +177,7 @@
 
             }
         };
-        $scope.isThisUnlinkedCourseSelected = function (that) {
+        $scope.isThisUnlinkedProgramStudySelected = function (that) {
             if ($scope.unlinkedCoursesAllSelected) {
                 if (that.Selected === 'true') {
                     $scope.unlinkedCoursesSelectedArr.push(that.id);
@@ -268,19 +268,19 @@
         };
 
         $scope.removeSelectedCourses = function () {
-            if ($scope.linkedCoursesSelectedArr.length > 0) {
-                $q.when(createBatchService.removeSelectedCoursesFromBatch($scope.linkedCoursesSelectedArr)).then(function (success) {
+            if ($scope.linkedProgramStudySelectedArr.length > 0) {
+                $q.when(createBatchService.removeSelectedCoursesFromBatch($scope.linkedProgramStudySelectedArr)).then(function (success) {
                     $scope.Modals.close();
                     var tempCD = [];
-                    angular.forEach($scope.courseData, function (tcd, key) {
-                        if ($scope.linkedCoursesSelectedArr.indexOf(tcd.id) === -1) {
+                    angular.forEach($scope.programStudyData, function (tcd, key) {
+                        if ($scope.linkedProgramStudySelectedArr.indexOf(tcd.id) === -1) {
                             tempCD.push(tcd);
                         }
                     });
-                    $scope.courseData = tempCD;
-                    $scope.adjustCourseList();
-                    $scope.linkedCoursesSelectedArr = [];
-                    $scope.linkedCoursesAllSelected = false;
+                    $scope.programStudyData = tempCD;
+                    $scope.adjustProgramStudyList();
+                    $scope.linkedProgramStudySelectedArr = [];
+                    $scope.linkedProgramStudyAllSelected = false;
                 }, function (error) {
                     alert("Please try again.");
                 });
@@ -312,13 +312,13 @@
 
         };
         $scope.assignUnlinkedCourses = function () {
-            if ($scope.unlinkedCoursesSelectedArr.length > 0) {
-                $q.when(createBatchService.assignUnlinkedCoursesToBatch($scope.unlinkedCoursesSelectedArr)).then(function (success) {
+            if ($scope.unlinkedProgramStudySelectedArr.length > 0) {
+                $q.when(createBatchService.assignUnlinkedCoursesToBatch($scope.unlinkedProgramStudySelectedArr)).then(function (success) {
                     $scope.Modals.close();
-                    $scope.courseData.push($scope.unlinkedCoursesSelectedArr);
-                    $scope.adjustCourseList();
-                    $scope.unlinkedCoursesSelectedArr = [];
-                    $scope.unlinkedCoursesAllSelected = false;
+                    $scope.programStudyData.push($scope.unlinkedProgramStudySelectedArr);
+                    $scope.adjustProgramStudyList();
+                    $scope.unlinkedProgramStudySelectedArr = [];
+                    $scope.unlinkedProgramStudyAllSelected = false;
                 }, function (error) {
                     alert("Please try again.");
                 });
@@ -344,22 +344,22 @@
             }
 
         };
-        $scope.addCourseContainer = function (data) {
+        $scope.addProgramStudyContainer = function (data) {
             $scope.modalType = 'add';
-            $scope.modCourseObj = data;
+            $scope.modProgramStudyObj = data;
             $scope.Modals.open();
         };
         $scope.fetchRelatedDataOfBatch = function () {
             var selPS = angular.copy($scope.selectedBatch);
             if (selPS) {
                 $q.all([
-                    createBatchService.getLinkedCoursesOfBatch(selPS),
+                    createBatchService.getLinkedProgramStudyOfBatch(selPS),
                     createBatchService.getLinkedFeesOfBatch(selPS)
                 ]).then(function (data) {
                     $scope.mainContentSubPart = true;
                     if (data != null) {
-                        $scope.courseData = data[0].results;
-                        $scope.adjustCourseList();
+                        $scope.programStudyData = data[0].results;
+                        $scope.adjustProgramStudyList();
 
                         $scope.feesData = data[1].results;
                         $scope.adjustFeesList();

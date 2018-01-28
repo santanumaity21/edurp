@@ -16,8 +16,8 @@
         var _getBatchList = function () {
             return execute('getBatchList', 'get', null);
         };
-        var _getLinkedCoursesOfBatch = function (selPS) {
-            return execute('getLinkedCoursesOfBatch', 'get', selPS);
+        var _getLinkedProgramStudyOfBatch = function (selPS) {
+            return execute('getLinkedProgramStudyOfBatch', 'get', selPS);
         };
         var _getLinkedFeesOfBatch = function (selPS) {
             return execute('getLinkedFeesOfBatch', 'get', selPS);
@@ -27,21 +27,21 @@
             return execute('addBatch', 'post', postData);
         };
 
-        var _removeSelectedCoursesFromBatch = function (postData) {
-            return execute('removeSelectedCoursesFromBatch', 'post', postData);
+        var _removeSelectedProgramStudyFromBatch = function (postData) {
+            return execute('removeSelectedProgramStudyFromBatch', 'post', postData);
         };
         var _removeSelectedFeesFromBatch = function (postData) {
             return execute('removeSelectedFeesFromBatch', 'post', postData);
         };
-        var _getUnlinkedCoursesOfBatch = function () {
-            return execute('getUnlinkedCoursesOfBatch', 'get', null);
+        var _getUnlinkedProgramStudyOfBatch = function () {
+            return execute('getUnlinkedProgramStudyOfBatch', 'get', null);
         };
 
         var _getUnlinkedFeesOfBatch = function () {
             return execute('getUnlinkedFeesOfBatch', 'get', null);
         };
-        var _assignUnlinkedCoursesToBatch = function (postData) {
-            return execute('assignUnlinkedCoursesToBatch', 'post', postData);
+        var _assignUnlinkedProgramStudyToBatch = function (postData) {
+            return execute('assignUnlinkedProgramStudyToBatch', 'post', postData);
         };
         var _assignUnlinkedFeesToBatch = function (postData) {
             return execute('assignUnlinkedFeesToBatch', 'post', postData);
@@ -49,14 +49,14 @@
 
         return {
             getBatchList: _getBatchList,
-            getLinkedCoursesOfBatch: _getLinkedCoursesOfBatch,
+            getLinkedProgramStudyOfBatch: _getLinkedProgramStudyOfBatch,
             getLinkedFeesOfBatch: _getLinkedFeesOfBatch,
             addBatch: _addBatch,
-            getUnlinkedCoursesOfBatch: _getUnlinkedCoursesOfBatch,
+            getUnlinkedProgramStudyOfBatch: _getUnlinkedProgramStudyOfBatch,
             getUnlinkedFeesOfBatch: _getUnlinkedFeesOfBatch,
-            removeSelectedCoursesFromBatch: _removeSelectedCoursesFromBatch,
+            removeSelectedProgramStudyFromBatch: _removeSelectedProgramStudyFromBatch,
             removeSelectedFeesFromBatch: _removeSelectedFeesFromBatch,
-            assignUnlinkedCoursesToBatch: _assignUnlinkedCoursesToBatch,
+            assignUnlinkedProgramStudyToBatch: _assignUnlinkedProgramStudyToBatch,
             assignUnlinkedFeesToBatch: _assignUnlinkedFeesToBatch
         };
 
