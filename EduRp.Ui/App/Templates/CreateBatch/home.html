@@ -53,11 +53,12 @@
                         </div>
                         <div data-ng-show="mainContentSubPart">
                             <hr>
-                            <div class="row" style="background-color:#E4FAF8;">
-                                <div class="col-lg-12" style="margin-top:10px;">
+                            <div class="row" style="background-color:#E4FAF8;" data-ng-show="filteredProgramStudyData.length === 0">
+                                <div>
+                                    {{ 'noDataUnderGrid' | translate }}
                                 </div>
                             </div>
-                            <div class="row" style="background-color:#E4FAF8;">
+                            <div class="row" style="background-color:#E4FAF8;" data-ng-show="filteredProgramStudyData.length > 0">
                                 <div class="col-lg-12">
                                     <div class="row">
                                         <div class="col-lg-4">
@@ -66,10 +67,10 @@
                                             </h4>
                                         </div>
                                         <div class="col-lg-4 pull-right">
-                                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-toggle="modal" data-ng-click="removeSelectedCourses()">{{'removeCoursesBtn'|translate}}</button>
+                                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-toggle="modal" data-ng-click="removeSelectedCourses()">{{'removeProgramStudyBtn'|translate}}</button>
                                         </div>
                                         <div class="col-lg-4 pull-right">
-                                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-ng-click="assignCoursesContainer()">{{'assignCoursesBtn'|translate}}</button>
+                                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-ng-click="assignProgramStudyContainer()">{{'assignProgramStudyBtn'|translate}}</button>
                                         </div>
                                     </div>
                                     <br>
@@ -114,7 +115,7 @@
                                     </div>
                                 </div>
                                 <!-- end col -->
-                                <div class="col-lg-12">
+                                <div class="col-lg-12" >
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="table-responsive" style="margin-top: -10px;">
@@ -156,11 +157,11 @@
                                                                     <span ng-show="assignedProgramStudyReverseSort">v</span>
                                                                 </span>
                                                             </th>
-                                                            <th><label><input type="checkbox" data-ng-model="linkedCoursesAllSelected" ng-change="isLinkedProgramStudyAllSelected();"/>&nbsp;{{'selectAll' | translate}}</label></th>
+                                                            <th><label><input type="checkbox" data-ng-model="linkedProgramStudyAllSelected" ng-change="isLinkedProgramStudyAllSelected();"/>&nbsp;{{'selectAll' | translate}}</label></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr data-ng-repeat="ps in filteredCourseData|orderBy:assignedProgramStudyCodeByField:assignedProgramStudyReverseSort">
+                                                        <tr data-ng-repeat="ps in filteredProgramStudyData|orderBy:assignedProgramStudyCodeByField:assignedProgramStudyReverseSort">
                                                             <td>{{ ps.ProgramStudyCode}}</td>
                                                             <td>{{ ps.ProgramStudyName}}</td>
                                                             <td>{{ ps.AcademicTerm}}</td>
@@ -184,7 +185,7 @@
                                                     <select name="datatable_length"
                                                             aria-controls="datatable"
                                                             class="form-control input-sm"
-                                                            data-ng-model="courseNumPerPage"
+                                                            data-ng-model="programStudyNumPerPage"
                                                             data-ng-options="x for x in showPerPageDataOptions"></select>
                                                     {{'entries'|translate}}
                                                 </label>
@@ -222,11 +223,12 @@
                             <hr>
 
 
-                            <div class="row" style="background-color:#F5F6E2;">
-                                <div class="col-lg-12" style="margin-top:10px;">
+                            <div class="row" style="background-color:#F5F6E2;" data-ng-show="filteredFeesData.length === 0">
+                                <div>
+                                    {{'noDataUnderGrid' | translate}}
                                 </div>
                             </div>
-                            <div class="row" style="background-color:#F5F6E2;">
+                            <div class="row" style="background-color:#F5F6E2;" data-ng-show="filteredFeesData.length > 0">
                                 <div class="col-lg-12">
 
                                     <div class="row">

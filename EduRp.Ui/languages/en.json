@@ -66,6 +66,8 @@
   "updateTaskHeader": "Update Task",
   "assignCoursesBtn": "Assign Courses",
   "removeCoursesBtn": "Remove Courses",
+  "assignProgramStudyBtn": "Assign Program Study",
+  "removeProgramStudyBtn": "Remove Program Study",
   "courseCodeColumn": "Course Code",
   "courseNameColumn": "Course Name",
   "courseTypeColumn": "Course Type",

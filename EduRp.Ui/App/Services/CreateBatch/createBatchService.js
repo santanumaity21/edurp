@@ -33,12 +33,12 @@
         var _removeSelectedFeesFromBatch = function (postData) {
             return execute('removeSelectedFeesFromBatch', 'post', postData);
         };
-        var _getUnlinkedProgramStudyOfBatch = function () {
-            return execute('getUnlinkedProgramStudyOfBatch', 'get', null);
+        var _getUnlinkedProgramStudyOfBatch = function (selBatch) {
+            return execute('getUnlinkedProgramStudyOfBatch', 'get', selBatch);
         };
 
-        var _getUnlinkedFeesOfBatch = function () {
-            return execute('getUnlinkedFeesOfBatch', 'get', null);
+        var _getUnlinkedFeesOfBatch = function (selBatch) {
+            return execute('getUnlinkedFeesOfBatch', 'get', selBatch);
         };
         var _assignUnlinkedProgramStudyToBatch = function (postData) {
             return execute('assignUnlinkedProgramStudyToBatch', 'post', postData);

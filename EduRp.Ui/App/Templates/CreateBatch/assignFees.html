@@ -60,16 +60,30 @@
                                 <thead>
                                     <tr>
 
-                                        <th ng-click="nonAssignedFeesOrderByField='feesCode'; nonAssignedFeesReverseSort = !nonAssignedFeesReverseSort">
-                                            {{'feesCodeColumn'| translate}}
-                                            <span ng-show="nonAssignedFeesOrderByField == 'feesCode'">
+                                        <th ng-click="nonAssignedFeesOrderByField='FeeLabel'; nonAssignedFeesReverseSort = !nonAssignedFeesReverseSort">
+                                            {{'feeLabelColumn'| translate}}
+                                            <span ng-show="nonAssignedFeesOrderByField == 'FeeLabel'">
                                                 <span ng-show="!nonAssignedFeesReverseSort">^</span>
                                                 <span ng-show="nonAssignedFeesReverseSort">v</span>
                                             </span>
                                         </th>
-                                        <th ng-click="nonAssignedFeesOrderByField='feesName'; nonAssignedFeesReverseSort = !nonAssignedFeesReverseSort">
-                                            {{'feesColumn'| translate}}
-                                            <span ng-show="nonAssignedFeesOrderByField == 'feesName'">
+                                        <th ng-click="nonAssignedFeesOrderByField='Amount'; nonAssignedFeesReverseSort = !nonAssignedFeesReverseSort">
+                                            {{'feeAmountColumn'| translate}}
+                                            <span ng-show="nonAssignedFeesOrderByField == 'Amount'">
+                                                <span ng-show="!nonAssignedFeesReverseSort">^</span>
+                                                <span ng-show="nonAssignedFeesReverseSort">v</span>
+                                            </span>
+                                        </th>
+                                        <th ng-click="nonAssignedFeesOrderByField='FeeType'; nonAssignedFeesReverseSort = !nonAssignedFeesReverseSort">
+                                            {{'feeTypeColumn'| translate}}
+                                            <span ng-show="nonAssignedFeesOrderByField == 'FeeType'">
+                                                <span ng-show="!nonAssignedFeesReverseSort">^</span>
+                                                <span ng-show="nonAssignedFeesReverseSort">v</span>
+                                            </span>
+                                        </th>
+                                        <th ng-click="nonAssignedFeesOrderByField='Description'; nonAssignedFeesReverseSort = !nonAssignedFeesReverseSort">
+                                            {{'feeDescriptionColumn'| translate}}
+                                            <span ng-show="nonAssignedFeesOrderByField == 'Description'">
                                                 <span ng-show="!nonAssignedFeesReverseSort">^</span>
                                                 <span ng-show="nonAssignedFeesReverseSort">v</span>
                                             </span>
@@ -84,10 +98,12 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr data-ng-repeat="uf in $parent.unlinkedFeesOfPSList | orderBy:nonAssignedFeesOrderByField:nonAssignedFeesReverseSort">
+                                    <tr data-ng-repeat="uf in $parent.unlinkedFeesOfBatchList | orderBy:nonAssignedFeesOrderByField:nonAssignedFeesReverseSort">
 
-                                        <td>{{uf.feesCode}}</td>
-                                        <td>{{uf.feesName}}  </td>
+                                        <td>{{ uf.FeeLabel}}</td>
+                                        <td>{{ uf.Amount}}</td>
+                                        <td>{{ uf.FeeType}}</td>
+                                        <td>{{ uf.Description}}</td>
                                         <td>
                                             <input type="checkbox" data-ng-model="uf.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="unlinkedFeesAllSelected" ng-click="isThisUnlinkedFeeSelected(uf)" />
                                         </td>
