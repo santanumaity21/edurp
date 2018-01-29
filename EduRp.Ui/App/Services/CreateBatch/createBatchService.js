@@ -28,10 +28,10 @@
         };
 
         var _removeSelectedProgramStudyFromBatch = function (postData) {
-            return execute('removeSelectedProgramStudyFromBatch', 'post', postData);
+            return execute('removeSelectedProgramStudyFromBatch', 'delete', postData);
         };
         var _removeSelectedFeesFromBatch = function (postData) {
-            return execute('removeSelectedFeesFromBatch', 'post', postData);
+            return execute('removeSelectedFeesFromBatch', 'delete', postData);
         };
         var _getUnlinkedProgramStudyOfBatch = function (selBatch) {
             return execute('getUnlinkedProgramStudyOfBatch', 'get', selBatch);

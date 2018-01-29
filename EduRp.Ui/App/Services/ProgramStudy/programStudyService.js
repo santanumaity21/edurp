@@ -28,10 +28,10 @@
         };
 
         var _removeSelectedCoursesFromProgramStudy = function (postData) {
-            return execute('removeSelectedCoursesFromProgramStudy', 'post', postData);
+            return execute('removeSelectedCoursesFromProgramStudy', 'delete', postData);
         };
         var _removeSelectedFeesFromProgramStudy = function (postData) {
-            return execute('removeSelectedFeesFromProgramStudy', 'post', postData);
+            return execute('removeSelectedFeesFromProgramStudy', 'delete', postData);
         };
         var _getUnlinkedCoursesOfProgramStudy = function (selPS) {
             return execute('getUnlinkedCoursesOfProgramStudy', 'get', selPS);

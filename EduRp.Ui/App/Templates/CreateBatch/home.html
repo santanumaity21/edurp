@@ -67,7 +67,7 @@
                                             </h4>
                                         </div>
                                         <div class="col-lg-4 pull-right">
-                                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-toggle="modal" data-ng-click="removeSelectedCourses()">{{'removeProgramStudyBtn'|translate}}</button>
+                                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-toggle="modal" data-ng-click="removeSelectedProgramStudy()">{{'removeProgramStudyBtn'|translate}}</button>
                                         </div>
                                         <div class="col-lg-4 pull-right">
                                             <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-ng-click="assignProgramStudyContainer()">{{'assignProgramStudyBtn'|translate}}</button>
@@ -167,7 +167,7 @@
                                                             <td>{{ ps.AcademicTerm}}</td>
                                                             <td>{{ ps.SKS}}</td>
                                                             <td>{{ ps.Status}}</td>
-                                                            <td><input type="checkbox" data-ng-model="ps.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="linkedProgramStudyAllSelected" ng-click="isThisLinkedCourseSelected(ps)" /></td>
+                                                            <td><input type="checkbox" data-ng-model="ps.Selected" ng-true-value="'true'" ng-false-value="'false'" ng-checked="linkedProgramStudyAllSelected" ng-click="isThisLinkedProgramStudySelected(ps)" /></td>
                                                         </tr>
                                                     </tbody>
 
