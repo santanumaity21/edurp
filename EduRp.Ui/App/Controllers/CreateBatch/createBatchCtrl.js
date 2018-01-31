@@ -310,8 +310,12 @@
                 $q.when(createBatchService.removeSelectedProgramStudyFromBatch($scope.linkedProgramStudySelectedArr)).then(function (success) {
                    
                     var tempCD = [];
+                    var tempProgramStudyIds = [];
+                    angular.forEach($scope.linkedProgramStudySelectedArr, function (tcd, key) {
+                        tempProgramStudyIds.push(tcd.ProgramStudyId);
+                    });
                     angular.forEach($scope.programStudyData, function (tcd, key) {
-                        if ($scope.linkedProgramStudySelectedArr.indexOf(tcd.ProgramStudyId) === -1) {
+                        if (tempProgramStudyIds.indexOf(tcd.ProgramStudyId) === -1) {
                             tempCD.push(tcd);
                         }
                     });
@@ -332,8 +336,12 @@
                 $q.when(createBatchService.removeSelectedFeesFromBatch($scope.linkedFeesSelectedArr)).then(function (success) {
                     
                     var tempCD = [];
+                    var tempFeeIds = [];
+                    angular.forEach($scope.linkedFeesSelectedArr, function (tcd, key) {
+                        tempFeeIds.push(tcd.FeeId);
+                    });
                     angular.forEach($scope.feesData, function (tcd, key) {
-                        if ($scope.filteredFeesData.indexOf(tcd.FeeId) === -1) {
+                        if (tempFeeIds.indexOf(tcd.FeeId) === -1) {
                             tempCD.push(tcd);
                         }
                     });

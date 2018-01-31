@@ -310,8 +310,12 @@
                 $q.when(programStudyService.removeSelectedCoursesFromProgramStudy($scope.linkedCoursesSelectedArr)).then(function (success) {
                    
                     var tempCD = [];
+                    var tempCourseIds = [];
+                    angular.forEach($scope.linkedCoursesSelectedArr, function (tcd, key) {
+                        tempCourseIds.push(tcd.CourseId);
+                    });
                     angular.forEach($scope.courseData, function (tcd, key) {
-                        if ($scope.linkedCoursesSelectedArr.indexOf(tcd) === -1) {
+                        if (tempCourseIds.indexOf(tcd.CourseId) === -1) {
                             tempCD.push(tcd);
                         } 
                     });
@@ -332,11 +336,16 @@
                 $q.when(programStudyService.removeSelectedFeesFromProgramStudy($scope.linkedFeesSelectedArr)).then(function (success) {
                     
                     var tempCD = [];
+                    var tempFeeIds = [];
+                    angular.forEach($scope.linkedFeesSelectedArr, function (tcd, key) {
+                        tempFeeIds.push(tcd.FeeId);
+                    });
                     angular.forEach($scope.feesData, function (tcd, key) {
-                        if ($scope.filteredFeesData.indexOf(tcd) === -1) {
+                        if (tempFeeIds.indexOf(tcd.FeeId) === -1) {
                             tempCD.push(tcd);
                         }
                     });
+                    
                     $scope.feesData = tempCD;
                     $scope.adjustFeesList();
                     $scope.linkedFeesSelectedArr = [];
