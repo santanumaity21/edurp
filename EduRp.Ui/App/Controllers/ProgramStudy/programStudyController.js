@@ -354,7 +354,10 @@
             if ($scope.unlinkedCoursesSelectedArr.length > 0) {
                 $q.when(programStudyService.assignUnlinkedCoursesToProgramStudy($scope.unlinkedCoursesSelectedArr)).then(function (success) {
                     $scope.Modals.close();
-                    $scope.courseData.push($scope.unlinkedCoursesSelectedArr);
+                    angular.forEach($scope.unlinkedCoursesSelectedArr, function (r, k) {
+                        $scope.courseData.push(r);
+                    });
+                    
                     $scope.adjustCourseList();
                     $scope.unlinkedCoursesSelectedArr = [];
                     $scope.unlinkedCoursesAllSelected = false;
@@ -372,7 +375,9 @@
             if ($scope.unlinkedFeesSelectedArr.length > 0) {
                 $q.when(programStudyService.assignUnlinkedFeesToProgramStudy($scope.unlinkedFeesSelectedArr)).then(function (success) {
                     $scope.Modals.close();
-                    $scope.feesData.push($scope.unlinkedFeesSelectedArr);
+                    angular.forEach($scope.unlinkedFeesSelectedArr, function (r, k) {
+                        $scope.feesData.push(r);
+                    });
                     $scope.adjustFeesList();
                     $scope.unlinkedFeesSelectedArr = [];
                     $scope.unlinkedCoursesAllSelected = false;
