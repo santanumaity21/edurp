@@ -263,7 +263,7 @@
             if ($scope.linkedFeesAllSelected) {
                 if (that.Selected === 'true') {
                     var eachRow = that;
-                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
                     eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
                     $scope.linkedFeesSelectedArr.push(eachRow);
 
@@ -277,7 +277,7 @@
             } else {
                 if (that.Selected) {
                     var eachRow = that;
-                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
                     eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
                     $scope.linkedFeesSelectedArr.push(eachRow);
                     if ($scope.filteredFeesData.length === $scope.linkedFeesSelectedArr.length) {
@@ -308,7 +308,7 @@
         $scope.removeSelectedProgramStudy = function () {
             if ($scope.linkedProgramStudySelectedArr.length > 0) {
                 $q.when(createBatchService.removeSelectedProgramStudyFromBatch($scope.linkedProgramStudySelectedArr)).then(function (success) {
-                    $scope.Modals.close();
+                   
                     var tempCD = [];
                     angular.forEach($scope.programStudyData, function (tcd, key) {
                         if ($scope.linkedProgramStudySelectedArr.indexOf(tcd.ProgramStudyId) === -1) {
@@ -330,7 +330,7 @@
         $scope.removeSelectedFees = function () {
             if ($scope.linkedFeesSelectedArr.length > 0) {
                 $q.when(createBatchService.removeSelectedFeesFromBatch($scope.linkedFeesSelectedArr)).then(function (success) {
-                    $scope.Modals.close();
+                    
                     var tempCD = [];
                     angular.forEach($scope.feesData, function (tcd, key) {
                         if ($scope.filteredFeesData.indexOf(tcd.FeeId) === -1) {
