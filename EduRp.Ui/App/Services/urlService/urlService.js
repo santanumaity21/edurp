@@ -66,7 +66,13 @@ var urlService =
         removeSelectedFeesFromBatch: localhost ? '/sampleData/createBatch/removeSelectedFees.json' : apiPrefix + '/api/BatchFeeAssociations/UnLink/',
         assignUnlinkedProgramStudyToBatch: localhost ? '/sampleData/createBatch/assignUnlinkedProgramStudy.json' : apiPrefix + '/api/BatchProgramStudyAssociations/Link/',
         assignUnlinkedFeesToBatch: localhost ? '/sampleData/createBatch/assignUnlinkedFees.json' : apiPrefix + '/api/BatchFeeAssociations/Link/',
-        
+
+        getCourseSubject: localhost ? '' : apiPrefix + 'api/SubjectMasters/GetCourseSubjectList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&CourseId={{cId}}',
+        getNotLinkedCourseList : localhost ? '' : apiPrefix + 'api/CourseSubjectAssociations/GetCourseSubjectNotLinkedList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&CourseId={{cId}}',
+        removeSubjectfromList : localhost ? '' : apiPrefix + 'api/CourseSubjectAssociations/UnLink/',
+        addSubjectInList : localhost ? '' : apiPrefix + 'api/CourseSubjectAssociations/Link/',
+
+
         getBulkModule: localhost ? '/sampleData/bulkUpload.json' : apiPrefix + '/api/BulkLoadMaster/Get/1'
         
 		
