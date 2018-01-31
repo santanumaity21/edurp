@@ -235,7 +235,7 @@
                     eachRow = angular.extend({},commonService.fetchMainCookieData(), eachRow);
                     $scope.unlinkedFeesSelectedArr.push(eachRow);
                 } else {
-                    $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that.id);
+                    $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that.FeeId);
                     if ($scope.unlinkedFeesSelectedArr.length === 0) {
                         $scope.unlinkedFeesAllSelected = false;
                     }
@@ -292,6 +292,7 @@
 
             }
         };
+
         $scope.addProgramStudy = function (form) {
             if (form.$valid) {
                 $q.when(programStudyService.addProgramStudy($scope.addPSFormObj)).then(function (success) {
@@ -307,10 +308,10 @@
         $scope.removeSelectedCourses = function () {
             if ($scope.linkedCoursesSelectedArr.length > 0) {
                 $q.when(programStudyService.removeSelectedCoursesFromProgramStudy($scope.linkedCoursesSelectedArr)).then(function (success) {
-                    $scope.Modals.close();
+                   
                     var tempCD = [];
                     angular.forEach($scope.courseData, function (tcd, key) {
-                        if ($scope.linkedCoursesSelectedArr.indexOf(tcd.id) === -1) {
+                        if ($scope.linkedCoursesSelectedArr.indexOf(tcd) === -1) {
                             tempCD.push(tcd);
                         } 
                     });
@@ -329,10 +330,10 @@
         $scope.removeSelectedFees = function () {
             if ($scope.linkedFeesSelectedArr.length > 0) {
                 $q.when(programStudyService.removeSelectedFeesFromProgramStudy($scope.linkedFeesSelectedArr)).then(function (success) {
-                    $scope.Modals.close();
+                    
                     var tempCD = [];
                     angular.forEach($scope.feesData, function (tcd, key) {
-                        if ($scope.filteredFeesData.indexOf(tcd.id) === -1) {
+                        if ($scope.filteredFeesData.indexOf(tcd) === -1) {
                             tempCD.push(tcd);
                         }
                     });

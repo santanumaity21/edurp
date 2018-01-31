@@ -98,7 +98,10 @@
             if ($scope.linkedProgramStudyAllSelected) {
                 var tt = $scope.filteredProgramStudyData;
                 for (var i = 0; i < tt.length; i++) {
-                    $scope.linkedProgramStudySelectedArr.push(tt[i].id);
+                    var eachRow = tt[i];
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedProgramStudySelectedArr.push(eachRow);
                     $scope.filteredProgramStudyData[i].Selected = 'true';
                 }
             } else {
@@ -112,7 +115,10 @@
             if ($scope.unlinkedProgramStudyAllSelected) {
                 var tt = $scope.unlinkedProgramStudyOfBatchList;
                 for (var i = 0; i < tt.length; i++) {
-                    $scope.unlinkedProgramStudySelectedArr.push(tt[i].id);
+                    var eachRow = tt[i];
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedProgramStudySelectedArr.push(eachRow);
                     $scope.unlinkedProgramStudyOfBatchList[i].Selected = 'true';
                 }
             } else {
@@ -126,7 +132,10 @@
             if ($scope.unlinkedFeesAllSelected) {
                 var tt = $scope.unlinkedFeesOfBatchList;
                 for (var i = 0; i < tt.length; i++) {
-                    $scope.unlinkedFeesSelectedArr.push(tt[i].id);
+                    var eachRow = tt[i];
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedFeesSelectedArr.push(eachRow);
                     $scope.unlinkedFeesOfBatchList[i].Selected = 'true';
                 }
             } else {
@@ -140,7 +149,10 @@
             if ($scope.linkedFeesAllSelected) {
                 var tt = $scope.filteredFeesData;
                 for (var i = 0; i < tt.length; i++) {
-                    $scope.linkedFeesSelectedArr.push(tt[i].id);
+                    var eachRow = tt[i];
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedFeesSelectedArr.push(eachRow);
                     $scope.filteredFeesData[i].Selected = 'true';
                 }
             } else {
@@ -153,10 +165,13 @@
         $scope.isThisLinkedProgramStudySelected = function (that) {
             if ($scope.linkedProgramStudyAllSelected) {
                 if (that.Selected === 'true') {
-                    $scope.linkedProgramStudySelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedProgramStudySelectedArr.push(eachRow);
 
                 } else {
-                    $scope.linkedProgramStudySelectedArr = commonService.removeItemFromArray($scope.linkedProgramStudySelectedArr, that.id);
+                    $scope.linkedProgramStudySelectedArr = commonService.removeItemFromArray($scope.linkedProgramStudySelectedArr, that);
                     if ($scope.linkedProgramStudySelectedArr.length === 0) {
                         $scope.linkedProgramStudyAllSelected = false;
                     }
@@ -164,12 +179,15 @@
                 }
             } else {
                 if (that.Selected) {
-                    $scope.linkedProgramStudySelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedProgramStudySelectedArr.push(eachRow);
                     if ($scope.filteredProgramStudyData.length === $scope.linkedProgramStudySelectedArr.length) {
                         $scope.linkedProgramStudyAllSelected = true;
                     }
                 } else {
-                    $scope.linkedProgramStudySelectedArr = commonService.removeItemFromArray($scope.linkedProgramStudySelectedArr, that.id);
+                    $scope.linkedProgramStudySelectedArr = commonService.removeItemFromArray($scope.linkedProgramStudySelectedArr, that);
                     if ($scope.linkedProgramStudySelectedArr.length === 0) {
                         $scope.linkedProgramStudyAllSelected = false;
                     }
@@ -180,9 +198,12 @@
         $scope.isThisUnlinkedProgramStudySelected = function (that) {
             if ($scope.unlinkedProgramStudyAllSelected) {
                 if (that.Selected === 'true') {
-                    $scope.unlinkedProgramStudySelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedProgramStudySelectedArr.push(eachRow);
                 } else {
-                    $scope.unlinkedProgramStudySelectedArr = commonService.removeItemFromArray($scope.unlinkedProgramStudySelectedArr, that.id);
+                    $scope.unlinkedProgramStudySelectedArr = commonService.removeItemFromArray($scope.unlinkedProgramStudySelectedArr, that);
                     if ($scope.unlinkedProgramStudySelectedArr.length === 0) {
                         $scope.unlinkedProgramStudyAllSelected = false;
                     }
@@ -190,12 +211,15 @@
                 }
             } else {
                 if (that.Selected) {
-                    $scope.unlinkedProgramStudySelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedProgramStudySelectedArr.push(eachRow);
                     if ($scope.unlinkedProgramStudyOfBatchList.length === $scope.unlinkedProgramStudySelectedArr.length) {
                         $scope.unlinkedProgramStudyAllSelected = true;
                     }
                 } else {
-                    $scope.unlinkedProgramStudySelectedArr = commonService.removeItemFromArray($scope.unlinkedProgramStudySelectedArr, that.id);
+                    $scope.unlinkedProgramStudySelectedArr = commonService.removeItemFromArray($scope.unlinkedProgramStudySelectedArr, that);
                     if ($scope.unlinkedProgramStudySelectedArr.length === 0) {
                         $scope.unlinkedProgramStudyAllSelected = false;
                     }
@@ -206,9 +230,12 @@
         $scope.isThisUnlinkedFeeSelected = function (that) {
             if ($scope.unlinkedFeesAllSelected) {
                 if (that.Selected === 'true') {
-                    $scope.unlinkedFeesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedFeesSelectedArr.push(eachRow);
                 } else {
-                    $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that.id);
+                    $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that.FeeId);
                     if ($scope.unlinkedFeesSelectedArr.length === 0) {
                         $scope.unlinkedFeesAllSelected = false;
                     }
@@ -216,12 +243,15 @@
                 }
             } else {
                 if (that.Selected) {
-                    $scope.unlinkedFeesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.BatchId = $scope.selectedBatch.BatchId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.unlinkedFeesSelectedArr.push(eachRow);
                     if ($scope.unlinkedFeesOfBatchList.length === $scope.unlinkedFeesSelectedArr.length) {
                         $scope.unlinkedFeesAllSelected = true;
                     }
                 } else {
-                    $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that.id);
+                    $scope.unlinkedFeesSelectedArr = commonService.removeItemFromArray($scope.unlinkedFeesSelectedArr, that);
                     if ($scope.unlinkedFeesSelectedArr.length === 0) {
                         $scope.unlinkedFeesAllSelected = false;
                     }
@@ -232,10 +262,13 @@
         $scope.isThisLinkedFeeSelected = function (that) {
             if ($scope.linkedFeesAllSelected) {
                 if (that.Selected === 'true') {
-                    $scope.linkedFeesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedFeesSelectedArr.push(eachRow);
 
                 } else {
-                    $scope.linkedFeesSelectedArr = commonService.removeItemFromArray($scope.linkedFeesSelectedArr, that.id);
+                    $scope.linkedFeesSelectedArr = commonService.removeItemFromArray($scope.linkedFeesSelectedArr, that);
                     if ($scope.linkedFeesSelectedArr.length === 0) {
                         $scope.linkedFeesAllSelected = false;
                     }
@@ -243,12 +276,15 @@
                 }
             } else {
                 if (that.Selected) {
-                    $scope.linkedFeesSelectedArr.push(that.id);
+                    var eachRow = that;
+                    eachRow.ProgramStudyId = $scope.selectedProgramStudy.ProgramStudyId;
+                    eachRow = angular.extend({}, commonService.fetchMainCookieData(), eachRow);
+                    $scope.linkedFeesSelectedArr.push(eachRow);
                     if ($scope.filteredFeesData.length === $scope.linkedFeesSelectedArr.length) {
                         $scope.linkedFeesAllSelected = true;
                     }
                 } else {
-                    $scope.linkedFeesSelectedArr = commonService.removeItemFromArray($scope.linkedFeesSelectedArr, that.id);
+                    $scope.linkedFeesSelectedArr = commonService.removeItemFromArray($scope.linkedFeesSelectedArr, that);
                     if ($scope.linkedFeesSelectedArr.length === 0) {
                         $scope.linkedFeesAllSelected = false;
                     }
@@ -256,6 +292,8 @@
 
             }
         };
+
+
         $scope.addBatch = function (form) {
             if (form.$valid) {
                 $q.when(createBatchService.addBatch($scope.addBatchFormObj)).then(function (success) {
@@ -273,7 +311,7 @@
                     $scope.Modals.close();
                     var tempCD = [];
                     angular.forEach($scope.programStudyData, function (tcd, key) {
-                        if ($scope.linkedProgramStudySelectedArr.indexOf(tcd.id) === -1) {
+                        if ($scope.linkedProgramStudySelectedArr.indexOf(tcd.ProgramStudyId) === -1) {
                             tempCD.push(tcd);
                         }
                     });
@@ -295,7 +333,7 @@
                     $scope.Modals.close();
                     var tempCD = [];
                     angular.forEach($scope.feesData, function (tcd, key) {
-                        if ($scope.filteredFeesData.indexOf(tcd.id) === -1) {
+                        if ($scope.filteredFeesData.indexOf(tcd.FeeId) === -1) {
                             tempCD.push(tcd);
                         }
                     });
