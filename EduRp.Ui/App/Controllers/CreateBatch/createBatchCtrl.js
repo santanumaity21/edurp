@@ -351,9 +351,12 @@
         };
         $scope.assignUnlinkedProgramStudy = function () {
             if ($scope.unlinkedProgramStudySelectedArr.length > 0) {
+                
                 $q.when(createBatchService.assignUnlinkedProgramStudyToBatch($scope.unlinkedProgramStudySelectedArr)).then(function (success) {
                     $scope.Modals.close();
-                    $scope.programStudyData.push($scope.unlinkedProgramStudySelectedArr);
+                    angular.forEach($scope.unlinkedProgramStudySelectedArr, function (r, k) {
+                        $scope.programStudyData.push(r);
+                    });
                     $scope.adjustProgramStudyList();
                     $scope.unlinkedProgramStudySelectedArr = [];
                     $scope.unlinkedProgramStudyAllSelected = false;
@@ -370,7 +373,10 @@
             if ($scope.unlinkedFeesSelectedArr.length > 0) {
                 $q.when(createBatchService.assignUnlinkedFeesToBatch($scope.unlinkedFeesSelectedArr)).then(function (success) {
                     $scope.Modals.close();
-                    $scope.feesData.push($scope.unlinkedFeesSelectedArr);
+                    angular.forEach($scope.unlinkedFeesSelectedArr, function (r, k) {
+                        $scope.feesData.push(r);
+                    });
+                   
                     $scope.adjustFeesList();
                     $scope.unlinkedFeesSelectedArr = [];
                     $scope.unlinkedProgramStudyAllSelected = false;
