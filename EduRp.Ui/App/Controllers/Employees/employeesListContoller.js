@@ -5,15 +5,15 @@
         .module('EduRpApp')
         .controller('employeesListController', employeesListController);
 
-    employeesListController.$inject = ['$scope', '$q', 'employeesListService', 'errorHandler', '$modal'];
+    employeesListController.$inject = ['$scope', '$q', 'employeesListService', 'errorHandler', '$modal', 'commonService'];
 
-    function employeesListController($scope, $q, employeesListService, errorHandler, $modal) {
+    function employeesListController($scope, $q, employeesListService, errorHandler, $modal, commonService) {
         $scope.employeesData = [];
         $scope.filteredemployeesData = [];
         $scope.currentPage = 1
             , $scope.numPerPage = 10
             , $scope.maxSize = 5;
-        $scope.orderByField = 'StaffName';
+        $scope.orderByField = 'EmployeeName';
         $scope.reverseSort = false;
         $scope.adjustemployeesList = function () {
             var begin = (($scope.currentPage - 1) * $scope.numPerPage)
@@ -28,7 +28,6 @@
         $scope.showPerPageDataOptions = [10, 25, 50, 100];
 
         $scope.modEmployeesObj = {};
-        $scope.pp = '90';
         $scope.modalType = '';
         $scope.filterPanel = false;
 
@@ -36,100 +35,13 @@
             $scope.filterPanel = !$scope.filterPanel;
         };
 
-
-
-
-        $scope.editEmployeesContainer = function (data) {
-            $scope.modalType = 'update';
-            $scope.modEmployeesObj = data;
-            $scope.Modals.openEmployeesContainer();
-        };
-
-        $scope.addEmployeesContainer = function (data) {
-            $scope.modalType = 'add';
-            $scope.modEmployeesObj = data;
-            $scope.Modals.openEmployeesContainer();
-        };
-
-
-
-
-        $scope.updateEmployeesDetails = function () {
-            console.log($scope.modEmployeesObj);
-            var postData = {
-                "batchUpdateData":
-                [{
-           
-                    "id": $scope.modEmployeesObj,
-                    "StaffName": $scope.modEmployeesObj,
-                    "NIDN": $scope.modEmployeesObj,
-                    "NIP": $scope.modEmployeesObj,
-                    "Religion": $scope.modEmployeesObj,
-                    "DateofBirth": $scope.modEmployeesObj,
-                    "HomePhone": $scope.modEmployeesObj,
-                    "Status": $scope.modEmployeesObj,
-                    "Homebase": $scope.modEmployeesObj,
-                    "Gender": $scope.modEmployeesObj,
-                    "IsActive": $scope.modEmployeesObj,
-                    "Program Study": $scope.modEmployeesObj,
-                    "AcademicYear": $scope.modEmployeesObj,
-                    "DateofAssignmentLetter": $scope.modEmployeesObj,
-                    "Address": $scope.modEmployeesObj,
-                    "Designation": $scope.modEmployeesObj
-                }]
-            };
-
-        };
-        $scope.addSubjectDetailsSuccess = function (data) {
-            $('#subject-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addSubjectDetailsError = function (data) {
-            $('#subject-modal-popup').modal({
-                show: 'false'
-            });
-        };
-        $scope.addSubjectDetails = function (form) {
-            if (form.$valid) {
-
-                var postData = {
-                    "batchInsertData":
-                    [{
-                        "id": $scope.modEmployeesObj,
-                        "StaffName": $scope.modEmployeesObj,
-                        "NIDN": $scope.modEmployeesObj,
-                        "NIP": $scope.modEmployeesObj,
-                        "Religion": $scope.modEmployeesObj,
-                        "DateofBirth": $scope.modEmployeesObj,
-                        "HomePhone": $scope.modEmployeesObj,
-                        "Status": $scope.modEmployeesObj,
-                        "Homebase": $scope.modEmployeesObj,
-                        "Gender": $scope.modEmployeesObj,
-                        "IsActive": $scope.modEmployeesObj,
-                        "Program Study": $scope.modEmployeesObj,
-                        "AcademicYear": $scope.modEmployeesObj,
-                        "DateofAssignmentLetter": $scope.modEmployeesObj,
-                        "Address": $scope.modEmployeesObj,
-                        "Designation": $scope.modEmployeesObj
-                    }]
-                };
-
-                $scope.filteredemployeesData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeEmployeesContainer();
-            }
-
-        };
-
-
+        //Get PageLoad
         (function startup() {
 
             $q.all([
                 employeesListService.getEmployeesList()
             ]).then(function (data) {
-                if (data != null) {
-                    console.log(data[0].results);
+                if (data !== null) {
                     $scope.employeesData = data[0].results;
                     $scope.adjustemployeesList();
                 }
@@ -140,55 +52,140 @@
             });
         })();
 
-        function removeEmployees(employeesId) {
-            for (var i = 0; i < $scope.employees.length; i++) {
-                if ($scope.employees[i].id == employeesId) {
-                    $scope.employees.splice(i, 1);
-                    break;
-                }
+
+        $scope.addEmployeesContainer = function () {
+            $scope.modalType = 'add';
+            $scope.Modals.openEmployeesContainer();
+        };
+        //Add
+        $scope.addEmployeesDetails = function (form) {
+            if (form.$valid) {
+                $q.when([employeesListService.addEmployee($scope.modEmployeesObj)]).then(function (data) {
+                    $scope.filteredemployeesData.push($scope.modEmployeesObj);
+                    $scope.Modals.closeEmployeesContainer();
+                }, function (error) {
+                    alert("please try later");
+                });
+
+            }
+
+        };
+
+        //update
+        $scope.editEmployeesContainer = function (data) {
+            $scope.modalType = 'update';
+            $scope.modEmployeesObj = data;
+            $scope.Modals.openEmployeesContainer();
+        };
+
+        $scope.updateEmployeesDetails = function (form, eid) {
+
+            if (form.$valid) {
+                var postData = {
+                    "EmployeeNumber": $scope.modEmployeesObj.EmployeeNumber,
+                    "FullName": $scope.modEmployeesObj.FullName,
+                    "NIDN": $scope.modEmployeesObj.NIDN,
+                    "NIP": $scope.modEmployeesObj.NIP,
+                    "StatusId": $scope.modEmployeesObj.StatusId,
+                    "DateofBirth": $scope.modEmployeesObj.DateofBirth,
+                    "GenderId": $scope.modEmployeesObj.GenderId,
+                    "BloodGroupId": $scope.modEmployeesObj.BloodGroupId,
+                    "ReligionId": $scope.modEmployeesObj.ReligionId,
+                    "MaritalStatusId": $scope.modEmployeesObj.MaritalStatusId,
+                    "NationalityId": $scope.modEmployeesObj.NationalityId,
+                    "PhoneNumber": $scope.modEmployeesObj.PhoneNumber,
+                    "LandLineNumber": $scope.modEmployeesObj.LandLineNumber,
+                    "DateofJoining": $scope.modEmployeesObj.DateofJoining,
+                    "NoOfYearsOfService": $scope.modEmployeesObj.NoOfYearsOfService,
+                    "IncludeInPayroll": $scope.modEmployeesObj.IncludeInPayroll,
+                    "DepartmentId": $scope.modEmployeesObj.DepartmentId,
+                    "IsActive": $scope.modEmployeesObj.IsActive,
+                    "DocumentMasterId": $scope.modEmployeesObj.DocumentMasterId,
+                    "Achievements": $scope.modEmployeesObj.Achievements,
+                    "PANNumber": $scope.modEmployeesObj.PANNumber,
+                    "PFNumber": $scope.modEmployeesObj.PFNumber,
+                    "EmployeeLastDate": $scope.modEmployeesObj.EmployeeLastDate,
+                    "IsEmploymentConfirmed": $scope.modEmployeesObj.IsEmploymentConfirmed,
+                    "IsUnderProbation": $scope.modEmployeesObj.IsUnderProbation,
+                    "ProbationEndDate": $scope.modEmployeesObj.ProbationEndDate,
+                    "ReportingManagerId": $scope.modEmployeesObj.ReportingManagerId,
+                    "ApplyTax": $scope.modEmployeesObj.ApplyTax,
+                    "InvitationSent": $scope.modEmployeesObj.InvitationSent,
+                    "EmailId": $scope.modEmployeesObj.EmailId
+                };
+                employeesListService.updateEmployee($scope.modEmployeesObj).then(function (data) {
+                    angular.forEach($scope.filteredemployeesData, function (v, k) {
+                        if (v.EmployeeId === eid) {
+                            $scope.filteredemployeesData[k]['EmployeeNumber'] = $scope.modEmployeesObj.EmployeeNumber;
+                            $scope.filteredemployeesData[k]['FullName'] = $scope.modEmployeesObj.FullName;
+                            $scope.filteredemployeesData[k]['NIDN'] = $scope.modEmployeesObj.FeeType;
+                            $scope.filteredemployeesData[k]['NIP'] = $scope.modEmployeesObj.NIP;
+                            $scope.filteredemployeesData[k]['StatusId'] = $scope.modEmployeesObj.Description;
+                            $scope.filteredemployeesData[k]['DateofBirth'] = $scope.modEmployeesObj.DateofBirth;
+                            $scope.filteredemployeesData[k]['GenderId'] = $scope.modEmployeesObj.GenderId;
+                            $scope.filteredemployeesData[k]['BloodGroupId'] = $scope.modEmployeesObj.BloodGroupId;
+                            $scope.filteredemployeesData[k]['ReligionId'] = $scope.modEmployeesObj.ReligionId;
+                            $scope.filteredemployeesData[k]['MaritalStatusId'] = $scope.modEmployeesObj.MaritalStatusId;
+                            $scope.filteredemployeesData[k]['NationalityId'] = $scope.modEmployeesObj.NationalityId;
+                            $scope.filteredemployeesData[k]['PhoneNumber'] = $scope.modEmployeesObj.PhoneNumber;
+                            $scope.filteredemployeesData[k]['LandLineNumber'] = $scope.modEmployeesObj.LandLineNumber;
+                            $scope.filteredemployeesData[k]['DateofJoining'] = $scope.modEmployeesObj.DateofJoining;
+                            $scope.filteredemployeesData[k]['NoOfYearsOfService'] = $scope.modEmployeesObj.NoOfYearsOfService;
+                            $scope.filteredemployeesData[k]['IncludeInPayroll'] = $scope.modEmployeesObj.IncludeInPayroll;
+                            $scope.filteredemployeesData[k]['DepartmentId'] = $scope.modEmployeesObj.DepartmentId;
+                            $scope.filteredemployeesData[k]['IsActive'] = $scope.modEmployeesObj.IsActive;
+                            $scope.filteredemployeesData[k]['DocumentMasterId'] = $scope.modEmployeesObj.DocumentMasterId;
+                            $scope.filteredemployeesData[k]['Achievements'] = $scope.modEmployeesObj.Achievements;
+                            $scope.filteredemployeesData[k]['PANNumber'] = $scope.modEmployeesObj.PANNumber;
+                            $scope.filteredemployeesData[k]['PFNumber'] = $scope.modEmployeesObj.PFNumber;
+                            $scope.filteredemployeesData[k]['EmployeeLastDate'] = $scope.modEmployeesObj.EmployeeLastDate;
+                            $scope.filteredemployeesData[k]['IsEmploymentConfirmed'] = $scope.modEmployeesObj.IsEmploymentConfirmed;
+                            $scope.filteredemployeesData[k]['IsUnderProbation'] = $scope.modEmployeesObj.IsUnderProbation;
+                            $scope.filteredemployeesData[k]['ProbationEndDate'] = $scope.modEmployeesObj.ProbationEndDate;
+                            $scope.filteredemployeesData[k]['ReportingManagerId'] = $scope.modEmployeesObj.ReportingManagerId;
+                            $scope.filteredemployeesData[k]['ApplyTax'] = $scope.modEmployeesObj.ApplyTax;
+                            $scope.filteredemployeesData[k]['InvitationSent'] = $scope.modEmployeesObj.InvitationSent;
+                            $scope.filteredemployeesData[k]['EmailId'] = $scope.modEmployeesObj.EmailId;
+
+
+
+                        }
+                    });
+                    $scope.Modals.closeEmployeesContainer();
+                }, function (error) {
+                    alert("Please try again");
+                });
+
             }
         };
+        //delete 
+
+        $scope.deleteEmployeesContainer = function (sd) {
+            if (confirm('Are you sure you want to delete this employee?')) {
+                employeesListService.deleteEmployee(ed).then(function (data) {
+                    $scope.filteredemployeesData = commonService.removeItemFromArray($scope.filteredemployeesData, ed);
+                }, function (error) {
+                    alert("Please try again");
+                });
+            }
+
+
+        };
+
 
         $scope.Modals = {
             openEmployeesContainer: function () {
                 $scope.modalInstance = $modal.open({
                     animation: true,
-                    templateUrl: '/App/Templates/Employees/managePopup.html',
+                    templateUrl: '/App/Templates/Employees/addEditModalPopup.html',
                     size: 'lg',
                     scope: $scope,
                     backdrop: 'static'
                 });
 
                 $scope.modalInstance.result.then(
-                    function (employees) {
-                        if (employees.id != null) {
-                            $scope.Commands.updateemployees(employees);
-                        }
-                        else {
-                            $scope.Commands.saveemployees(employees);
-                        }
-                    },
-                    function (event) {
+                    function (subject) {
 
-                    });
-            },
-            openEmployeesContainer: function () {
-                $scope.modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: '/App/Templates/Subject/managePopup.html',
-                    size: 'lg',
-                    scope: $scope,
-                    backdrop: 'static'
-                });
-
-                $scope.modalInstance.result.then(
-                    function (employees) {
-                        if (employees.id != null) {
-                            $scope.Commands.updateemployees(employees);
-                        }
-                        else {
-                            $scope.Commands.saveemployees(employees);
-                        }
                     },
                     function (event) {
 
@@ -201,4 +198,4 @@
 
     };
 })
-();
+    ();

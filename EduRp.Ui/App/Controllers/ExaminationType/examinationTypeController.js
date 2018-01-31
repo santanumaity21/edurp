@@ -5,9 +5,9 @@
         .module('EduRpApp')
         .controller('examinationTypeController', examinationTypeController);
 
-    examinationTypeController.$inject = ['$scope', '$q', 'examinationTypeService', 'errorHandler', '$modal'];
+    examinationTypeController.$inject = ['$scope', '$q', 'examinationTypeService', 'errorHandler', '$modal', 'commonService'];
 
-    function examinationTypeController($scope, $q, examinationTypeService, errorHandler, $modal) {
+    function examinationTypeController($scope, $q, examinationTypeService, errorHandler, $modal, commonService) {
         $scope.examinationTypeData = [];
         $scope.filteredExaminationTypeData = [];
         $scope.currentPage = 1
@@ -28,7 +28,6 @@
         $scope.showPerPageDataOptions = [10, 25, 50, 100];
 
         $scope.modExaminationTypeObj = {};
-        $scope.pp = '90';
         $scope.modalType = '';
         $scope.filterPanel = false;
 
@@ -36,81 +35,13 @@
             $scope.filterPanel = !$scope.filterPanel;
         };
 
-
-
-
-        $scope.editExaminationTypeContainer = function (data) {
-            $scope.modalType = 'update';
-            $scope.modExaminationTypeObj = data;
-            $scope.Modals.openExaminationTypeContainer();
-        };
-
-        $scope.addExaminationTypeContainer = function (data) {
-            $scope.modalType = 'add';
-            $scope.modExaminationTypeObj = data;
-            $scope.Modals.openExaminationTypeContainer();
-        };
-
-
-
-
-        $scope.updateExaminationTypeDetails = function () {
-            console.log($scope.modExaminationTypeObj);
-            var postData = {
-                "batchUpdateData":
-                [{
-                    "ExaminationTypeId": $scope.modExaminationTypeObj,
-                    "ExamGroup": $scope.modExaminationTypeObj,
-                    "ExamName": $scope.modExaminationTypeObj,
-                    "MinMarks": $scope.modExaminationTypeObj,
-                    "MaxMarks": $scope.modExaminationTypeObj,
-                    "FeeLabel": $scope.modExaminationTypeObj,
-                    "Amount": $scope.modExaminationTypeObj
-
-                }]
-            };
-
-        };
-        $scope.addExaminationTypeDetailsSuccess = function (data) {
-            $('#examintaionType-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addExaminationTypeDetailsError = function (data) {
-            $('#examintaionType-modal-popup').modal({
-                show: 'false'
-            });
-        };
-        $scope.addExaminationTypeDetails = function (form) {
-            if (form.$valid) {
-
-                var postData = {
-                    "batchInsertData":
-                    [{
-                        "ExamGroup": $scope.modExaminationTypeObj,
-                        "ExamName": $scope.modExaminationTypeObj,
-                        "MinMarks": $scope.modExaminationTypeObj,
-                        "MaxMarks": $scope.modExaminationTypeObj,
-                        "FeeLabel": $scope.modExaminationTypeObj,
-                        "Amount": $scope.modExaminationTypeObj
-                    }]
-                };
-
-                $scope.filteredExaminationTypeData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeExaminationTypeContainer();
-            }
-
-        };
-
-
+        //Get PageLoad
         (function startup() {
 
             $q.all([
                 examinationTypeService.getExaminationTypeList()
             ]).then(function (data) {
-                if (data != null) {
-                    console.log(data[0].results);
+                if (data !== null) {
                     $scope.examinationTypeData = data[0].results;
                     $scope.adjustExaminationList();
                 }
@@ -121,14 +52,75 @@
             });
         })();
 
-        function removeContact(contactId) {
-            for (var i = 0; i < $scope.contacts.length; i++) {
-                if ($scope.contacts[i].id == contactId) {
-                    $scope.contacts.splice(i, 1);
-                    break;
-                }
+
+        $scope.addExaminationTypeContainer = function () {
+            $scope.modalType = 'add';
+            $scope.Modals.openExaminationTypeContainer();
+        };
+        //Add
+        $scope.addExaminationTypeDetails = function (form) {
+            if (form.$valid) {
+                $q.when([examinationTypeService.addExaminationType($scope.modExaminationTypeObj)]).then(function (data) {
+                    $scope.filteredExaminationTypeData.push($scope.modExaminationTypeObj);
+                    $scope.Modals.closeExaminationTypeContainer();
+                }, function (error) {
+                    alert("please try later");
+                });
+
+            }
+
+        };
+
+        //update
+        $scope.editExaminationTypeContainer = function (data) {
+            $scope.modalType = 'update';
+            $scope.modExaminationTypeObj = data;
+            $scope.Modals.openExaminationTypeContainer();
+        };
+
+        $scope.updateExaminationTypeDetails = function (form, eid) {
+
+            if (form.$valid) {
+                var postData = {
+                    "ExamGroup": $scope.modExaminationTypeObj.ExamGroup,
+                    "ExamName": $scope.modExaminationTypeObj.ExamName,
+                    "MinMarks": $scope.modExaminationTypeObj.MinMarks,
+                    "MaxMarks": $scope.modExaminationTypeObj.MaxMarks,
+                     "FeeLabel": $scope.modExaminationTypeObj.FeeLabel,
+                      "Amount": $scope.modExaminationTypeObj.Amount
+                };
+                feesListService.updateExaminationType($scope.modExaminationTypeObj).then(function (data) {
+                    angular.forEach($scope.filteredExaminationTypeData, function (v, k) {
+                        if (v.ExaminationTypeId === eid) {
+                            $scope.filteredExaminationTypeData[k]['ExamGroup'] = $scope.modExaminationTypeObj.ExamGroup;
+                            $scope.filteredExaminationTypeData[k]['ExamName'] = $scope.modExaminationTypeObj.ExamName;
+                            $scope.filteredExaminationTypeData[k]['MinMarks'] = $scope.modExaminationTypeObj.MinMarks;
+                            $scope.filteredExaminationTypeData[k]['MaxMarks'] = $scope.modExaminationTypeObj.MaxMarks;
+                            $scope.filteredExaminationTypeData[k]['FeeLabel'] = $scope.modExaminationTypeObj.FeeLabel;
+                            $scope.filteredExaminationTypeData[k]['Amount'] = $scope.modExaminationTypeObj.Amount;
+                        }
+                    });
+                    $scope.Modals.closeExaminationTypeContainer();
+                }, function (error) {
+                    alert("Please try again");
+                });
+
             }
         };
+        //delete 
+
+        $scope.deleteExaminationTypeContainer = function (ed) {
+            if (confirm('Are you sure you want to delete this ExaminationType?')) {
+                examinationTypeService.deleteExaminationType(ed).then(function (data) {
+                    $scope.filteredExaminationTypeData = commonService.removeItemFromArray($scope.filteredExaminationTypeData, ed);
+                }, function (error) {
+                    alert("Please try again");
+                });
+            }
+
+
+        };
+
 
         $scope.Modals = {
             openExaminationTypeContainer: function () {
@@ -141,48 +133,18 @@
                 });
 
                 $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
-                        }
-                        else {
-                            $scope.Commands.saveContact(contact);
-                        }
+                    function (subject) {
+
                     },
                     function (event) {
 
                     });
             },
-            openExaminationTypeContainer: function () {
-                $scope.modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: '/App/Templates/Subject/managePopup.html',
-                    size: 'lg',
-                    scope: $scope,
-                    backdrop: 'static'
-                });
-
-                $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
-                        }
-                        else {
-                            $scope.Commands.saveContact(contact);
-                        }
-                    },
-                    function (event) {
-
-                    });
-            },
-            closeSubjectContainer: function () {
-                $scope.modalInstance.dismiss();
-            },
-            closeSubjectContainer: function () {
+            closeExaminationTypeContainer: function () {
                 $scope.modalInstance.dismiss();
             }
         };
 
     };
 })
-();
+    ();

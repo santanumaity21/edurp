@@ -5,9 +5,9 @@
         .module('EduRpApp')
         .controller('chaptersListController', chaptersListController);
 
-    chaptersListController.$inject = ['$scope', '$q', 'chaptersListService', 'errorHandler', '$modal'];
+    chaptersListController.$inject = ['$scope', '$q', 'chaptersListService', 'errorHandler', '$modal', 'commonService'];
 
-    function chaptersListController($scope, $q, chaptersListService, errorHandler, $modal) {
+    function chaptersListController($scope, $q, chaptersListService, errorHandler, $modal, commonService) {
         $scope.chaptersData = [];
         $scope.filteredChaptersData = [];
         $scope.currentPage = 1
@@ -28,7 +28,6 @@
         $scope.showPerPageDataOptions = [10, 25, 50, 100];
 
         $scope.modChaptersObj = {};
-        $scope.pp = '90';
         $scope.modalType = '';
         $scope.filterPanel = false;
 
@@ -36,79 +35,13 @@
             $scope.filterPanel = !$scope.filterPanel;
         };
 
-
-
-
-        $scope.editChaptersContainer = function (data) {
-            $scope.modalType = 'update';
-            $scope.modChaptersObj = data;
-            $scope.Modals.openChaptersContainer();
-        };
-
-        $scope.addChaptersContainer = function (data) {
-            $scope.modalType = 'add';
-            $scope.modChaptersObj = data;
-            $scope.Modals.openChaptersContainer();
-        };
-
-
-
-
-        $scope.updateChaptersDetails = function () {
-            console.log($scope.modChaptersObj);
-            var postData = {
-                "batchUpdateData":
-                [{
-                    "ChaptersId": $scope.modChaptersObj,
-                    "ChapterNumber": $scope.modChaptersObj,
-                    "ChapterTitle": $scope.modChaptersObj,
-                    "ModeOfTeaching": $scope.modChaptersObj,
-                    "ChapterDetails": $scope.modChaptersObj,
-                    "SKS": $scope.modChaptersObj
-
-                }]
-            };
-
-        };
-        $scope.addChaptersDetailsSuccess = function (data) {
-            $('#chapters-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addChaptersDetailsError = function (data) {
-            $('#chapters-modal-popup').modal({
-                show: 'false'
-            });
-        };
-        $scope.addChaptersDetails = function (form) {
-            if (form.$valid) {
-
-                var postData = {
-                    "batchInsertData":
-                    [{
-                        "ChapterNumber": $scope.modChaptersObj,
-                        "ChapterTitle": $scope.modChaptersObj,
-                        "ModeOfTeaching": $scope.modChaptersObj,
-                        "ChapterDetails": $scope.modChaptersObj,
-                        "SKS": $scope.modChaptersObj
-                    }]
-                };
-
-                $scope.filteredChaptersData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeChaptersContainer();
-            }
-
-        };
-
-
+        //Get PageLoad
         (function startup() {
 
             $q.all([
                 chaptersListService.getChaptersList()
             ]).then(function (data) {
-                if (data != null) {
-                    console.log(data[0].results);
+                if (data !== null) {
                     $scope.chaptersData = data[0].results;
                     $scope.adjustChaptersList();
                 }
@@ -119,55 +52,86 @@
             });
         })();
 
-        function removeContact(contactId) {
-            for (var i = 0; i < $scope.contacts.length; i++) {
-                if ($scope.contacts[i].id == contactId) {
-                    $scope.contacts.splice(i, 1);
-                    break;
-                }
+
+        $scope.addChaptersContainer = function () {
+            $scope.modalType = 'add';
+            $scope.Modals.openChaptersContainer();
+        };
+        //Add
+        $scope.addChaptersDetails = function (form) {
+            if (form.$valid) {
+                $q.when([chaptersListService.addChapter($scope.modChaptersObj)]).then(function (data) {
+                    $scope.filteredChaptersData.push($scope.modChaptersObj);
+                    $scope.Modals.closeChaptersContainer();
+                }, function (error) {
+                    alert("please try later");
+                });
+
+            }
+
+        };
+
+        //update
+        $scope.editChaptersContainer = function (data) {
+            $scope.modalType = 'update';
+            $scope.modChaptersObj = data;
+            $scope.Modals.openChaptersContainer();
+        };
+
+        $scope.updateChaptersDetails = function (form, fid) {
+
+            if (form.$valid) {
+                var postData = {
+                    "ChapterNumber": $scope.modChaptersObj.ChapterNumber,
+                    "ChapterTitle": $scope.modChaptersObj.ChapterTitle,
+                    "ModeOfTeaching": $scope.modChaptersObj.ModeOfTeaching,
+                    "ChapterDetails": $scope.modChaptersObj.ChapterDetails,
+                    "SKS": $scope.modChaptersObj.SKS
+                };
+                chaptersListService.updateChapter($scope.modChaptersObj).then(function (data) {
+                    angular.forEach($scope.filteredChaptersData, function (v, k) {
+                        if (v.SubjectId === sid) {
+                            $scope.filteredChaptersData[k]['FeeLabel'] = $scope.modChaptersObj.FeeLabel;
+                            $scope.filteredChaptersData[k]['Amount'] = $scope.modChaptersObj.Amount;
+                            $scope.filteredChaptersData[k]['FeeType'] = $scope.modChaptersObj.FeeType;
+                            $scope.filteredChaptersData[k]['Description'] = $scope.modChaptersObj.Description;
+                        }
+                    });
+                    $scope.Modals.closeChaptersContainer();
+                }, function (error) {
+                    alert("Please try again");
+                });
+
             }
         };
+        //delete 
+
+        $scope.deleteChaptersContainer = function (sd) {
+            if (confirm('Are you sure you want to delete this Chapter?')) {
+                chaptersListService.deleteChapter(cd).then(function (data) {
+                    $scope.filteredChaptersData = commonService.removeItemFromArray($scope.filteredChaptersData, cd);
+                }, function (error) {
+                    alert("Please try again");
+                });
+            }
+
+
+        };
+
 
         $scope.Modals = {
             openChaptersContainer: function () {
                 $scope.modalInstance = $modal.open({
                     animation: true,
-                    templateUrl: '/App/Templates/Chapters/managePopup.html',
+                    templateUrl: '/App/Templates/Chapters/addEditModalPopup.html',
                     size: 'lg',
                     scope: $scope,
                     backdrop: 'static'
                 });
 
                 $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
-                        }
-                        else {
-                            $scope.Commands.saveContact(contact);
-                        }
-                    },
-                    function (event) {
+                    function (subject) {
 
-                    });
-            },
-            openChaptersContainer: function () {
-                $scope.modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: '/App/Templates/Chapters/managePopup.html',
-                    size: 'lg',
-                    scope: $scope,
-                    backdrop: 'static'
-                });
-
-                $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
-                        }
-                        else {
-                            $scope.Commands.saveContact(contact);
-                        }
                     },
                     function (event) {
 
@@ -180,4 +144,4 @@
 
     };
 })
-();
+    ();

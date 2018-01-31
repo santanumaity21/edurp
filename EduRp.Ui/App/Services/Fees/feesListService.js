@@ -5,46 +5,39 @@
         .module('EduRpApp')
         .factory('feesListService', feesListService);
 
-    feesListService.$inject = ['$q', '$http'];
+    feesListService.$inject = ['$q', '$http', 'commonService'];
 
-    function feesListService($q, $http) {
-
+    function feesListService($q, $http, commonService) {
         var execute = function (url, method, data) {
-            var deferred = $q.defer();
-
-            $http({
-
-                url: urlService[url],
-                method: method,
-                data: data,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                dataType: 'json'
-            }
-
-            ).then(function (data) {
-                deferred.resolve(data.data);
-            }, function (error) { deferred.reject(error); }
-
-
-                );
-            return deferred.promise;
-
-        }
+            return commonService.executeAPICall(url, method, data);
+        };
 
         var _getFeesList = function () {
             return execute('getFeesList', 'get', null);
 
+        };
+        var _addFee = function (postData) {
+            return execute('addFee', 'post', postData);
+
+        };
+        var _updateFee = function (postData) {
+            return execute('updateFee', 'put', postData);
 
         };
 
+        var _deleteFee = function (postData) {
+            return execute('deleteFee', 'delete', postData);
+
+        };
 
         return {
-            getFeesList: _getFeesList
+
+            getFeesList: _getFeesList,
+            addFee: _addFee,
+            updateFee: _updateFee,
+            deleteFee: _deleteFee
 
         };
 
     }
-
 })();

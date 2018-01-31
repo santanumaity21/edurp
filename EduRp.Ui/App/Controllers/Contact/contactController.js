@@ -5,13 +5,9 @@
         .module('EduRpApp')
         .controller('ContactController', ContactController);
 
-    ContactController.$inject = ['$scope', '$q', 'ContactService', 'errorHandler', '$modal', '$cookieStore'];
+    ContactController.$inject = ['$scope', '$q', 'ContactService', 'errorHandler', '$modal'];
 
-    function ContactController($scope, $q, ContactService, errorHandler, $modal, $cookieStore) {
-        $cookieStore.put('unversityId', '1');
-        $cookieStore.put('userId', '4');
-        $cookieStore.put('tokenId', 'D772FE17-07C8-4565-9D85-0F609A62A336');
-        
+    function ContactController($scope, $q, ContactService, errorHandler, $modal) {
         (function startup() {
             var contacts = ContactService.getContacts();
 

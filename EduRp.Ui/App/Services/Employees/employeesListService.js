@@ -5,46 +5,39 @@
         .module('EduRpApp')
         .factory('employeesListService', employeesListService);
 
-    employeesListService.$inject = ['$q', '$http'];
+    employeesListService.$inject = ['$q', '$http', 'commonService'];
 
-    function employeesListService($q, $http) {
-
+    function employeesListService($q, $http, commonService) {
         var execute = function (url, method, data) {
-            var deferred = $q.defer();
-
-            $http({
-
-                url: urlService[url],
-                method: method,
-                data: data,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                dataType: 'json'
-            }
-
-            ).then(function (data) {
-                deferred.resolve(data.data);
-            }, function (error) { deferred.reject(error); }
-
-
-                );
-            return deferred.promise;
-
-        }
+            return commonService.executeAPICall(url, method, data);
+        };
 
         var _getEmployeesList = function () {
             return execute('getEmployeesList', 'get', null);
 
+        };
+        var _addEmployee = function (postData) {
+            return execute('addEmployee', 'post', postData);
+
+        };
+        var _updateEmployee = function (postData) {
+            return execute('updateEmployee', 'put', postData);
 
         };
 
+        var _deleteEmployee = function (postData) {
+            return execute('deleteEmployee', 'delete', postData);
+
+        };
 
         return {
-            getEmployeesList: _getemployeesList
+
+            getEmployeesList: _getEmployeesList,
+            addEmployee: _addEmployee,
+            updateEmployee: _updateEmployee,
+            deleteEmployee: _deleteEmployee
 
         };
 
     }
-
 })();

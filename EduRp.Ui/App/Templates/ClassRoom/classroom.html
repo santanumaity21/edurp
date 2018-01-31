@@ -109,7 +109,7 @@
                                             <thead>
                                                 <tr>
                                                     <th ng-click="orderByField='BuildingCode'; reverseSort = !reverseSort">
-                                                        Exam Group
+                                                        Building Code
                                                         <span ng-show="orderByField == 'BuildingCode'">
                                                             <span ng-show="!reverseSort">^</span>
                                                             <span ng-show="reverseSort">v</span>
@@ -136,23 +136,24 @@
                                                             <span ng-show="reverseSort">v</span>
                                                         </span>
                                                     </th>
-                                                    <th ng-click="orderByField='CapasityofRoom'; reverseSort = !reverseSort">
-                                                        Capasity of Room
+                                                    <th ng-click="orderByField='CapacityOfRoom'; reverseSort = !reverseSort">
+                                                        Capacity Of Room
                                                         <span ng-show="orderByField == 'CapasityofRoom'">
                                                             <span ng-show="!reverseSort">^</span>
                                                             <span ng-show="reverseSort">v</span>
                                                         </span>
                                                     </th>
-                                                    <th ng-click="orderByField='LocationperLevel'; reverseSort = !reverseSort">
-                                                        Location / Level
-                                                        <span ng-show="orderByField == 'LocationperLevel'">
+                                                   
+                                                    <th ng-click="orderByField='Facility'; reverseSort = !reverseSort">
+                                                        Facility
+                                                        <span ng-show="orderByField == 'Facility'">
                                                             <span ng-show="!reverseSort">^</span>
                                                             <span ng-show="reverseSort">v</span>
                                                         </span>
                                                     </th>
-                                                    <th ng-click="orderByField='Fasility'; reverseSort = !reverseSort">
-                                                        Location / Level
-                                                        <span ng-show="orderByField == 'Fasility'">
+                                                    <th ng-click="orderByField='Location'; reverseSort = !reverseSort">
+                                                        Location
+                                                        <span ng-show="orderByField == 'LocationperLevel'">
                                                             <span ng-show="!reverseSort">^</span>
                                                             <span ng-show="reverseSort">v</span>
                                                         </span>
@@ -165,7 +166,6 @@
                                                         </span>
                                                     </th>
                                                     <th></th>
-
                                                 </tr>
                                             </thead>
 
@@ -175,9 +175,9 @@
                                                     <td>{{ ed.BuildingName}}</td>
                                                     <td>{{ ed.RoomCode}}</td>
                                                     <td>{{ ed.RoomName}}</td>
-                                                    <td>{{ ed.CapasityofRoom}}</td>
-                                                    <td>{{ ed.Fasility}}</td>
-                                                    <td>{{ ed.LocationperLevel}}</td>
+                                                    <td>{{ ed.CapacityOfRoom}}</td>
+                                                    <td>{{ ed.Facility}}</td>
+                                                    <td>{{ ed.Location}}</td>
                                                     <td>{{ ed.Status}}</td>
                                                     <td>
                                                         <i class="fa fa-pencil-square-o m-r-5" data-ng-click="editClassRoomContainer(ed)" style="cursor: pointer;"></i>

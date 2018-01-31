@@ -9,13 +9,13 @@
                     <div class="btn-group pull-left">
                         <ol class="breadcrumb hide-phone p-0 m-0">
                             <li>
-                                <a href="#">{{'breadcrumb1OfTask' | translate}}</a>
+                                <a href="#">EDuRP</a>
                             </li>
                             <li>
-                                <a href="#">{{'breadcrumb2OfTask' | translate}}</a>
+                                <a href="#">Dashboard</a>
                             </li>
                             <li class="active">
-                                {{'breadcrumb3OfTask' | translate}}
+                                Tasks
 
                             </li>
                         </ol>
@@ -33,10 +33,10 @@
                 <div class="card-box">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h4 class="m-t-0 header-title"><b>{{'taskHeader' | translate}}</b></h4>
+                            <h4 class="m-t-0 header-title"><b>Tasks</b></h4>
                         </div>
                         <div class="col-lg-4 pull-right">
-                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-ng-click="addTaskContainer()">{{'addNewTaskBtn'|translate}}</button>
+                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-ng-click="addTaskContainer()">Add New Task</button>
                         </div>
                     </div>
                     <div class="row">
@@ -54,7 +54,7 @@
                                     <div class="panel-heading" role="tab">
                                         <h4 class="panel-title" data-ng-click="toggleFilterPanel()">
                                             <a ng-class="!filterPanel ? 'collapsed': ''" aria-expanded="false" aria-controls="collapseThree">
-                                                {{'filters' | translate}}
+                                                Filters
                                             </a>
                                         </h4>
                                     </div>
@@ -65,18 +65,23 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="userName">{{'taskNameColumn' | translate}}</label>
+                                                            <label for="userName">Task Name</label>
                                                             <textarea cols="25" rows="5" name="course_code_tobe_filtered" data-ng-model="course_code_tobe_filtered">
                                                             </textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="userName">{{'taskDescColumn' | translate}}</label>
+                                                            <label for="userName">Task Description</label>
                                                             <input type="text" name="course_name_tobe_filtered" data-ng-model="course_name_tobe_filtered" />
                                                         </div>
                                                     </div>
-                                                    
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="userName">Task Duration</label>
+                                                            <input type="text" name="course_name_tobe_filtered" data-ng-model="course_name_tobe_filtered" />
+                                                        </div>
+                                                    </div>
 
                                                 </div>
 
@@ -84,10 +89,10 @@
 
                                                 <div class="form-group text-right m-b-0">
                                                     <button class="btn btn-teal btn-bordered waves-light waves-effect w-xs  m-b-2" type="button" data-ng-click="getFilteredData()">
-                                                        {{'goBtn' | translate}}
+                                                        GO
                                                     </button>
                                                     <button type="reset" data-ng-click="toggleFilterPanel()" class="btn btn-default waves-effect m-l-5">
-                                                        {{'clearBtn' | translate}}
+                                                        Clear
                                                     </button>
                                                 </div>
                                             </form>
@@ -110,22 +115,21 @@
                                             <thead>
                                                 <tr>
                                                     <th ng-click="orderByField='TaskName'; reverseSort = !reverseSort">
-                                                        {{'taskNameColumn' | translate}}
+                                                        Task Name
                                                         <span ng-show="orderByField == 'TaskName'">
                                                             <span ng-show="!reverseSort">^</span>
                                                             <span ng-show="reverseSort">v</span>
                                                         </span>
                                                     </th>
                                                     <th ng-click="orderByField='TaskDescription'; reverseSort = !reverseSort">
-                                                        {{'taskDescColumn' | translate}}
+                                                        Task Description
                                                         <span ng-show="orderByField == 'TaskDescription'">
                                                             <span ng-show="!reverseSort">^</span>
                                                             <span ng-show="reverseSort">v</span>
                                                         </span>
                                                     </th>
                                                     <th ng-click="orderByField='TaskDuration'; reverseSort = !reverseSort">
-                                                        
-                                                        {{'taskDurationColumn' | translate}}
+                                                        Task Duration
                                                         <span ng-show="orderByField == 'TaskDuration'">
                                                             <span ng-show="!reverseSort">^</span>
                                                             <span ng-show="reverseSort">v</span>
@@ -137,13 +141,13 @@
                                             </thead>
 
                                             <tbody>
-                                                <tr data-ng-repeat="td in filteredTaskData|orderBy:orderByField:reverseSort">
-                                                    <td>{{td.TaskName}}</td>
-                                                    <td>{{td.TaskDescription}}</td>
-                                                    <td>{{td.TaskDuration}}</td>
+                                                <tr data-ng-repeat="ed in filteredtaskData|orderBy:orderByField:reverseSort">
+                                                    <td>{{ed.TaskName}}</td>
+                                                    <td>{{ed.TaskDescription}}</td>
+                                                    <td>{{ed.TaskDuration}}</td>
                                                     <td>
-                                                        <i class="fa fa-pencil-square-o m-r-5" data-ng-click="editTaskContainer(td)" style="cursor: pointer;"></i>
-                                                        <i class="fa fa-trash-o fa-lg" data-ng-click="deleteTaskContainer(td)"></i>
+                                                        <i class="fa fa-pencil-square-o m-r-5" data-ng-click="editTaskContainer(ed)" style="cursor: pointer;"></i>
+                                                        <i class="fa fa-trash-o fa-lg" data-ng-click="deleteTaskContainer(cd)"></i>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -157,25 +161,19 @@
                                     <div class="dataTables_length" id="datatable_length">
 
                                         <label>
-                                            {{'show' | translate}}
+                                            Show
                                             <select name="datatable_length"
                                                     aria-controls="datatable"
                                                     class="form-control input-sm"
                                                     data-ng-model="numPerPage"
                                                     data-ng-options="x for x in showPerPageDataOptions"></select>
-                                            {{'entries' | translate}}
+                                            entries
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
-                                        {{'showing' | translate}} 
-                                        {{currentPage*numPerPage - numPerPage  + 1}} 
-                                        {{'to' | translate}}
-                                        {{taskData.length > currentPage*numPerPage ? currentPage*numPerPage : taskData.length}} 
-                                        {{'of' | translate}} 
-                                        {{taskData.length}} 
-                                        {{'entries' | translate}}
+                                        Showing {{currentPage*numPerPage - numPerPage  + 1}} to {{taskData.length > currentPage*numPerPage ? currentPage*numPerPage : taskData.length}} of {{taskData.length}} entries
                                     </div>
                                 </div>
                                 <div class="col-sm-6">

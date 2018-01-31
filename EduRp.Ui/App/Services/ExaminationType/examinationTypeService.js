@@ -5,46 +5,39 @@
         .module('EduRpApp')
         .factory('examinationTypeService', examinationTypeService);
 
-    examinationTypeService.$inject = ['$q', '$http'];
+    examinationTypeService.$inject = ['$q', '$http', 'commonService'];
 
-    function examinationTypeService($q, $http) {
-
+    function examinationTypeService($q, $http, commonService) {
         var execute = function (url, method, data) {
-            var deferred = $q.defer();
+            return commonService.executeAPICall(url, method, data);
+        };
 
-            $http({
+        var _getExaminationTypeList = function () {
+            return execute('getExaminationTypeList', 'get', null);
 
-                url: urlService[url],
-                method: method,
-                data: data,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                dataType: 'json'
-            }
+        };
+        var _addExaminationType = function (postData) {
+            return execute('addExaminationType', 'post', postData);
 
-            ).then(function (data) {
-                deferred.resolve(data.data);
-            }, function (error) { deferred.reject(error); }
-
-
-                );
-            return deferred.promise;
-
-        }
-
-        var _getexaminationTypeList = function () {
-            return execute('getexaminationTypeList', 'get', null);
-
+        };
+        var _updateExaminationType = function (postData) {
+            return execute('updateExaminationType', 'put', postData);
 
         };
 
+        var _deleteExaminationType = function (postData) {
+            return execute('deleteExaminationType', 'delete', postData);
+
+        };
 
         return {
-            getExaminationTypeList: _getexaminationTypeList
+
+            getExaminationTypeList: _getExaminationTypeList,
+            addExaminationType: _addExaminationType,
+            updateExaminationType: _updateExaminationType,
+            deleteExaminationType: _deleteExaminationType
 
         };
 
     }
-
 })();

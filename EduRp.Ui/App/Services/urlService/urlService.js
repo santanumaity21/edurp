@@ -9,34 +9,36 @@ var urlService =
         deleteCourse: localhost ? '/sampleData/Course/delete.json' : apiPrefix + 'api/CourseMasters/Save',
 
 
-        getFeesList: localhost ? '/sampleData/feesList.json' : apiPrefix + 'api/Fees/Get',
-        //addFee: localhost ? ' ' : apiPrefix + '/api/Fees/Post/',
-        //updateFee: localhost ? ' ' : apiPrefix + 'api/Fees/Put/',
-        //deleteFee: localhost ? ' ' : apiPrefix + 'api/Fees/Delete/',
+        getFeesList: localhost ? '/sampleData/feesList.json' : apiPrefix + 'api/Fees/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        addFee: localhost ? ' ' : apiPrefix + '/api/Fees/Save/',
+        updateFee: localhost ? ' ' : apiPrefix + 'api/Fees/Save/',
+        deleteFee: localhost ? ' ' : apiPrefix + 'api/Fees/Delete/',
 
         getSubjectList: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/SubjectMasters/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
         addSubject: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/Subjectmasters/Save/',
         updateSubject: localhost ? '/sampleData/subjectList.json' : apiPrefix + 'api/SubjectMasters/Save/',
-        deleteSubject: localhost ? '/sampledata/subjectlist.json' : apiPrefix + 'api/SubjectMasters/Save/',
+        deleteSubject: localhost ? '/sampledata/subjectlist.json' : apiPrefix + 'api/SubjectMasters/Delete/',
 
-        getClassRoomList: localhost ? '/sampleData/classRoomList.json' : apiPrefix + 'api/ClassRoomMasters/Get/1',
-        //addClassRoom: localhost ? ' ' : apiPrefix + 'api/ClassRoomMasters/Post/',
-        //updateClassRoom: localhost ? ' ' : apiPrefix + 'api/ClassRoomMasters/Put/',
-        //deletesubject: localhost ? ' ' : apiPrefix + 'api/ClassRoomMasters/Delete/',
+        getClassRoomList: localhost ? '/sampleData/classRoomList.json' : apiPrefix + 'api/ClassRoomMasters/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        addClassRoom: localhost ? ' ' : apiPrefix + 'api/ClassRoomMasters/Save/',
+        updateClassRoom: localhost ? ' ' : apiPrefix + 'api/ClassRoomMasters/Save/',
+        deletesubject: localhost ? ' ' : apiPrefix + 'api/ClassRoomMasters/Delete/',
 
-        getChaptersList: localhost ? '/sampleData/chapterList.json' : apiPrefix + 'api/ChapterMasters/Get/1',
-        //addClassRoom: localhost ? ' ' : apiPrefix + 'api/ChapterMasters/Post/',
-        //updateClassRoom: localhost ? ' ' : apiPrefix + 'api/ChapterMasters/Put/',
-        //deletesubject: localhost ? ' ' : apiPrefix + 'api/ChapterMasters/Delete/',
 
-        getExaminationTypeList: localhost ? '/sampleData/examinationtypeList.json' : apiPrefix +'api/ExaminationType/Get/1',
-        //addExaminationType: localhost ? ' ' : apiPrefix + 'api/ExaminationTypes/Post/',
-        //updateExaminationType: localhost ? ' ' : apiPrefix + 'api/ExaminationTypes/Put/',
-        //deleteExaminationType: localhost ? ' ' : apiPrefix + 'api/ExaminationTypes/Delete/',
+        getChaptersList: localhost ? '/sampleData/chapterList.json' : apiPrefix + 'api/ChapterMasters/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        
+		addChapter: localhost ? ' ' : apiPrefix + 'api/ChapterMasters/Save/',
+        updateChapter: localhost ? ' ' : apiPrefix + 'api/ChapterMasters/Save/',
+        deleteChapter: localhost ? ' ' : apiPrefix + 'api/ChapterMasters/Delete/',
+
+        getExaminationTypeList: localhost ? '/sampleData/examinationtypeList.json' : apiPrefix + 'api/ExaminationType/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        addExaminationType: localhost ? ' ' : apiPrefix + 'api/ExaminationTypes/Save/',
+        updateExaminationType: localhost ? ' ' : apiPrefix + 'api/ExaminationTypes/Save/',
+        deleteExaminationType: localhost ? ' ' : apiPrefix + 'api/ExaminationTypes/Delete/',
 
         getTaskList: localhost ? '/sampleData/tasksList.json' : apiPrefix + 'api/Tasks/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
-        addTask: localhost ? ' ' : apiPrefix + 'api/Tasks/Post/',
-        updateTask: localhost ? ' ' : apiPrefix + 'api/Tasks/Put/',
+        addTask: localhost ? ' ' : apiPrefix + 'api/Tasks/Save/',
+        updateTask: localhost ? ' ' : apiPrefix + 'api/Tasks/Save/',
         deleteTask: localhost ? ' ' : apiPrefix + 'api/Tasks/Delete/',
 
         getBatch: localhost ? ' ' : apiPrefix + 'api/BatchMasters/Get',

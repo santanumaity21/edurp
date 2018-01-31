@@ -2,8 +2,8 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="Modals.closeTaskContainer()">x</button>
 
     <h4 class="modal-title">
-        <span data-ng-if="modalType ==='add'">{{'addTaskHeader' | translate}}</span>
-        <span data-ng-if="modalType ==='update'">{{'updateTaskHeader' | translate}}</span>
+        <span data-ng-if="modalType ==='add'">Add New Task</span>
+        <span data-ng-if="modalType ==='update'">Update Task</span>
     </h4>
 </div>
 <div class="modal-body">
@@ -11,41 +11,29 @@
         <div class="col-md-12">
 
             <div class="p-20">
-                <form name="addEditTaskForm" novalidate>
+                <form name="addEditSubjectForm" novalidate>
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="task_name">{{'fieldTaskName'|translate}}<span class="text-danger">*</span></label>
-                                <input type="text" name="task_name" parsley-trigger="change" required placeholder="Enter task Name" class="form-control" data-ng-model="$parent.modTaskObj.TaskName">
+                                <label for="SubjectCode">Task Name<span class="text-danger">*</span></label>
+                                <input type="text" name="TaskName" parsley-trigger="change" required placeholder="Enter Task Code" class="form-control" data-ng-model="$parent.modSubjectObj.TaskName">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="task_description">{{'fieldTaskDescription'|translate}}<span class="text-danger">*</span></label>
-                                <input type="text" name="task_description" parsley-trigger="change" required placeholder="Enter description Name" class="form-control" data-ng-model="$parent.modTaskObj.TaskDescription">
+                                <label for="SubjectName">Task Desciption<span class="text-danger">*</span></label>
+                                <input type="text" name="TaskDesciption" parsley-trigger="change" required placeholder="Enter Task Name" class="form-control" data-ng-model="$parent.modSubjectObj.TaskDesciption">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="SKS">Task Duration<span class="text-danger">*</span></label>
+                                <input type="text" name="TaskDuration" parsley-trigger="change" required placeholder="Enter SKS " class="form-control" data-ng-model="$parent.modSubjectObj.TaskDuration">
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="activeStatus">
-                                    <input type="radio" name="status"  data-ng-model="$parent.modTaskObj.Active" data-ng-value="1" />
-                                    {{'fieldActive'|translate}}
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="inactiveStatus">
-                                    <input type="radio" name="status"  data-ng-model="$parent.modTaskObj.Active" data-ng-value="0" />
-                                    {{'fieldInActive'|translate}}
-                                </label>
 
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="modal-footer">
 
@@ -53,13 +41,13 @@
                     </div>
 
                     <div class="form-group m-b-0 text-right">
-                        <button class="btn btn-teal btn-bordered waves-light waves-effect w-sm m-b-5" data-ng-click="updateCourseDetails(addEditTaskForm)" data-ng-if="modalType ==='update'">
-                            {{'saveDetailsBtn'|translate}}
+                        <button class="btn btn-teal btn-bordered waves-light waves-effect w-sm m-b-5" data-ng-click="updateTaskDetails(addEditSubjectForm)" data-ng-if="modalType ==='update'">
+                            Save Details
                         </button>
-                        <button class="btn btn-teal btn-bordered waves-light waves-effect w-sm m-b-5" data-ng-click="addTaskDetails(addEditTaskForm)" data-ng-if="modalType ==='add'">
-                            {{'addDetailsBtn'|translate}}
+                        <button class="btn btn-teal btn-bordered waves-light waves-effect w-sm m-b-5" data-ng-click="addTaskDetails(addEditSubjectForm)" data-ng-if="modalType ==='add'">
+                            Add Details
                         </button>
-                        <button type="button" class="btn btn-default btn-bordered waves-effect w-md m-b-5" data-ng-click="Modals.closeTaskContainer()">{{'closeBtn'|translate}}</button>
+                        <button type="button" class="btn btn-default btn-bordered waves-effect w-md m-b-5" data-ng-click="Modals.closeTaskContainer()">Close</button>
                     </div>
                 </form>
             </div>

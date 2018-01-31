@@ -34,7 +34,10 @@
         $scope.toggleFilterPanel = function () {
             $scope.filterPanel = !$scope.filterPanel;
         };
-        $scope.pageLoad = function() {
+
+//Get PageLoad
+        (function startup() {
+
             $q.all([
                 subjectListService.getSubjectList()
             ]).then(function (data) {
@@ -47,7 +50,8 @@
             }, function (update) {
                 errorHandler.logServiceNotify('subjectListController', update);
             });
-        };
+        })();
+
 
         $scope.addSubjectContainer = function () {
             $scope.modalType = 'add';
@@ -57,7 +61,8 @@
         $scope.addSubjectDetails = function (form) {
             if (form.$valid) {
                 $q.when([subjectListService.addSubject($scope.modSubjectObj)]).then(function (data) {
-                    $scope.pageLoad();
+                    $scope.filteredSubjectData.push($scope.modSubjectObj);
+                    $scope.Modals.closeSubjectContainer();
                 }, function (error) {
                     alert("please try later");
                 });
@@ -81,7 +86,12 @@
                     "SubjectName": $scope.modSubjectObj.SubjectName
                 };
                 subjectListService.updateSubject($scope.modSubjectObj).then(function (data) {
-                    $scope.pageLoad();
+                    angular.forEach($scope.filteredSubjectData, function (v, k) {
+                        if (v.SubjectId === sid) {
+                            $scope.filteredSubjectData[k]['SubjectCode'] = $scope.modSubjectObj.SubjectCode;
+                            $scope.filteredSubjectData[k]['SubjectName'] = $scope.modSubjectObj.SubjectName;
+                        }
+                    });
                     $scope.Modals.closeSubjectContainer();
                 }, function (error) {
                     alert("Please try again");
@@ -126,8 +136,6 @@
                 $scope.modalInstance.dismiss();
             }
         };
-
-        $scope.pageLoad();
 
     };
 })

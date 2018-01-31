@@ -5,45 +5,39 @@
         .module('EduRpApp')
         .factory('chaptersListService', chaptersListService);
 
-    chaptersListService.$inject = ['$q', '$http'];
+    chaptersListService.$inject = ['$q', '$http', 'commonService'];
 
-    function chaptersListService($q, $http) {
-
+    function chaptersListService($q, $http, commonService) {
         var execute = function (url, method, data) {
-            var deferred = $q.defer();
-
-            $http({
-                url: urlService[url],
-                method: method,
-                data: data,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                dataType: 'json'
-            }
-
-            ).then(function (data) {
-                deferred.resolve(data.data);
-            }, function (error) { deferred.reject(error); }
-
-
-                );
-            return deferred.promise;
-
-        }
+            return commonService.executeAPICall(url, method, data);
+        };
 
         var _getChaptersList = function () {
             return execute('getChaptersList', 'get', null);
 
+        };
+        var _addChapter = function (postData) {
+            return execute('addChapter', 'post', postData);
+
+        };
+        var _updateChapter = function (postData) {
+            return execute('updateChapter', 'put', postData);
 
         };
 
+        var _deleteChapter = function (postData) {
+            return execute('deleteChapter', 'delete', postData);
+
+        };
 
         return {
-            getChaptersList: _getChaptersList
+
+            getChaptersList: _getChaptersList,
+            addChapter: _addChapter,
+            updateChapter: _updateChapter,
+            deleteChapter: _deleteChapter
 
         };
 
     }
-
 })();

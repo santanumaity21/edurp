@@ -5,9 +5,9 @@
         .module('EduRpApp')
         .controller('feesListController', feesListController);
 
-    feesListController.$inject = ['$scope', '$q', 'feesListService', 'errorHandler', '$modal'];
+    feesListController.$inject = ['$scope', '$q', 'feesListService', 'errorHandler', '$modal', 'commonService'];
 
-    function feesListController($scope, $q, feesListService, errorHandler, $modal) {
+    function feesListController($scope, $q, feesListService, errorHandler, $modal, commonService) {
         $scope.feesData = [];
         $scope.filteredFeesData = [];
         $scope.currentPage = 1
@@ -28,7 +28,6 @@
         $scope.showPerPageDataOptions = [10, 25, 50, 100];
 
         $scope.modFeesObj = {};
-        $scope.pp = '90';
         $scope.modalType = '';
         $scope.filterPanel = false;
 
@@ -36,76 +35,13 @@
             $scope.filterPanel = !$scope.filterPanel;
         };
 
-
-
-
-        $scope.editFeesContainer = function (data) {
-            $scope.modalType = 'update';
-            $scope.modFeesObj = data;
-            $scope.Modals.openFeesContainer();
-        };
-
-        $scope.addFeesContainer = function (data) {
-            $scope.modalType = 'add';
-            $scope.modFeesObj = data;
-            $scope.Modals.openFeesContainer();
-        };
-
-
-
-
-        $scope.updateFeesDetails = function () {
-            console.log($scope.modFeesObj);
-            var postData = {
-                "batchUpdateData":
-                [{
-           
-                    "SubjectId": $scope.modFeesObj,
-                    "SubjectCode": $scope.modFeesObj,
-                    "SubjectName": $scope.modFeesObj,
-                    "SKS": $scope.modFeesObj
-
-                }]
-            };
-
-        };
-        $scope.addFeesDetailsSuccess = function (data) {
-            $('#subject-modal-popup').modal({
-                show: 'false'
-            });
-        };
-
-        $scope.addFeesDetailsError = function (data) {
-            $('#subject-modal-popup').modal({
-                show: 'false'
-            });
-        };
-        $scope.addSubjectDetails = function (form) {
-            if (form.$valid) {
-
-                var postData = {
-                    "batchInsertData":
-                    [{
-                        "SubjectCode": $scope.modFeesObj,
-                        "SubjectName": $scope.modFeesObj,
-                        "SKS": $scope.modFeesObj
-                    }]
-                };
-
-                $scope.filteredFeesData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeFeesContainer();
-            }
-
-        };
-
-
+        //Get PageLoad
         (function startup() {
 
             $q.all([
                 feesListService.getFeesList()
             ]).then(function (data) {
-                if (data != null) {
-                    console.log(data[0].results);
+                if (data !== null) {
                     $scope.feesData = data[0].results;
                     $scope.adjustFeesList();
                 }
@@ -116,62 +52,89 @@
             });
         })();
 
-        function removeContact(contactId) {
-            for (var i = 0; i < $scope.contacts.length; i++) {
-                if ($scope.contacts[i].id == contactId) {
-                    $scope.contacts.splice(i, 1);
-                    break;
-                }
+
+        $scope.addFeesContainer = function () {
+            $scope.modalType = 'add';
+            $scope.Modals.openFeesContainer();
+        };
+        //Add
+        $scope.addFeesDetails = function (form) {
+            if (form.$valid) {
+                $q.when([feesListService.addFee($scope.modFeesObj)]).then(function (data) {
+                    $scope.filteredFeesData.push($scope.modFeesObj);
+                    $scope.Modals.closeFeesContainer();
+                }, function (error) {
+                    alert("please try later");
+                });
+
+            }
+
+        };
+
+        //update
+        $scope.editFeesContainer = function (data) {
+            $scope.modalType = 'update';
+            $scope.modFeesObj = data;
+            $scope.Modals.openFeesContainer();
+        };
+
+        $scope.updateFeesDetails = function (form, fid) {
+
+            if (form.$valid) {
+                var postData = {
+                    "FeeLabel": $scope.modFeesObj.FeeLabel,
+                    "Amount": $scope.modFeesObj.Amount,
+                    "FeeType": $scope.modFeesObj.FeeType,
+                    "Description": $scope.modFeesObj.Description
+                };
+                feesListService.updateFee($scope.modFeesObj).then(function (data) {
+                    angular.forEach($scope.filteredFeesData, function (v, k) {
+                        if (v.SubjectId === sid) {
+                            $scope.filteredFeesData[k]['FeeLabel'] = $scope.modFeesObj.FeeLabel;
+                            $scope.filteredFeesData[k]['Amount'] = $scope.modFeesObj.Amount;
+                            $scope.filteredFeesData[k]['FeeType'] = $scope.modFeesObj.FeeType;
+                            $scope.filteredFeesData[k]['Description'] = $scope.modFeesObj.Description;
+                        }
+                    });
+                    $scope.Modals.closeFeesContainer();
+                }, function (error) {
+                    alert("Please try again");
+                });
+
             }
         };
+        //delete 
+
+        $scope.deleteFeesContainer = function (sd) {
+            if (confirm('Are you sure you want to delete this fee?')) {
+                feesListService.deleteFees(sd).then(function (data) {
+                    $scope.filteredFeesData = commonService.removeItemFromArray($scope.filteredSubjectData, sd);
+                }, function (error) {
+                    alert("Please try again");
+                });
+            }
+
+
+        };
+
 
         $scope.Modals = {
             openFeesContainer: function () {
                 $scope.modalInstance = $modal.open({
                     animation: true,
-                    templateUrl: '/App/Templates/Fees/managePopup.html',
+                    templateUrl: '/App/Templates/Fees/addEditModalPopup.html',
                     size: 'lg',
                     scope: $scope,
                     backdrop: 'static'
                 });
 
                 $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
-                        }
-                        else {
-                            $scope.Commands.saveContact(contact);
-                        }
+                    function (subject) {
+
                     },
                     function (event) {
 
                     });
-            },
-            openFeesContainer: function () {
-                $scope.modalInstance = $modal.open({
-                    animation: true,
-                    templateUrl: '/App/Templates/Subject/managePopup.html',
-                    size: 'lg',
-                    scope: $scope,
-                    backdrop: 'static'
-                });
-
-                $scope.modalInstance.result.then(
-                    function (contact) {
-                        if (contact.id != null) {
-                            $scope.Commands.updateContact(contact);
-                        }
-                        else {
-                            $scope.Commands.saveContact(contact);
-                        }
-                    },
-                    function (event) {
-
-                    });
-            },
-            closeFeesContainer: function () {
-                $scope.modalInstance.dismiss();
             },
             closeFeesContainer: function () {
                 $scope.modalInstance.dismiss();
@@ -180,4 +143,4 @@
 
     };
 })
-();
+    ();

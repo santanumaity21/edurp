@@ -5,46 +5,39 @@
         .module('EduRpApp')
         .factory('classRoomListService', classRoomListService);
 
-    classRoomListService.$inject = ['$q', '$http'];
+    classRoomListService.$inject = ['$q', '$http', 'commonService'];
 
-    function classRoomListService($q, $http) {
-
+    function classRoomListService($q, $http, commonService) {
         var execute = function (url, method, data) {
-            var deferred = $q.defer();
+            return commonService.executeAPICall(url, method, data);
+        };
 
-            $http({
+        var _getClassRoomList = function () {
+            return execute('getClassRoomList', 'get', null);
 
-                url: urlService[url],
-                method: method,
-                data: data,
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                dataType: 'json'
-            }
+        };
+        var _addClassRoom = function (postData) {
+            return execute('addClassRoom', 'post', postData);
 
-            ).then(function (data) {
-                deferred.resolve(data.data);
-            }, function (error) { deferred.reject(error); }
-
-
-                );
-            return deferred.promise;
-
-        }
-
-        var _getclassRoomList = function () {
-            return execute('getclassRoomList', 'get', null);
-
+        };
+        var _updateClassRoom = function (postData) {
+            return execute('updateClassRoom', 'put', postData);
 
         };
 
+        var _deleteClassRoom = function (postData) {
+            return execute('deleteClassRoom', 'delete', postData);
+
+        };
 
         return {
-            getClassRoomList: _getclassRoomList
+
+            getClassRoomList: _getClassRoomList,
+            addClassRoom: _addClassRoom,
+            updateClassRoom: _updateClassRoom,
+            deleteClassRoom: _deleteClassRoom
 
         };
 
     }
-
 })();
