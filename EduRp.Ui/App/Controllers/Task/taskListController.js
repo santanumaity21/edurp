@@ -28,7 +28,6 @@
         $scope.showPerPageDataOptions = [10, 25, 50, 100];
 
         $scope.modtaskObj = {};
-        $scope.pp = '90';
         $scope.modalType = '';
         $scope.filterPanel = false;
 
@@ -57,38 +56,20 @@
         $scope.updateTaskDetails = function (form, tid) {
             if (form.$valid) {
                 var postData = {
-                    "id": $scope.modtaskObj,
-                    "TaskName": $scope.modtaskObj,
-                    "TaskDescription": $scope.modtaskObj,
-                    "TaskDuration": $scope.modtaskObj,
+                    "TaskId": tid,
+                    "TaskName": $scope.modtaskObj.TaskName,
+                    "TaskDescription": $scope.modtaskObj.TaskDescription,
+                    "TaskDuration": $scope.modtaskObj.TaskDuration,
 
                 };
                 taskListService.updateTask(postData).then(function (data) {
-                    angular.forEach($scope.filteredtaskData, function (v, k) {
-                        if (v.CourseId === cid) {
-                            $scope.filteredtaskData[k]['TaskName'] = $scope.modtaskObj.TaskName;
-                            $scope.filteredtaskData[k]['TaskDescription'] = $scope.modtaskObj.TaskDescription;
-                            $scope.filteredtaskData[k]['TaskDuration'] = $scope.modtaskObj.TaskDuration;
-                            
-                        }
-                    });
+                    $scope.pageLoad();
                     $scope.Modals.closeTaskContainer();
                 }, function (error) {
                     alert("Please try again");
                 });
-            //console.log($scope.modtaskObj);
-            //var postData = {
-            //    "batchUpdateData":
-            //    [{
-
-            //        "id": $scope.modtaskObj,
-            //        "TaskName": $scope.modtaskObj,
-            //        "TaskDescription": $scope.modtaskObj,
-            //        "TaskDuration": $scope.modtaskObj,
-                   
-
-            //    }]
-            };
+            
+            }
 
         };
         $scope.addTaskDetailsSuccess = function (data) {
@@ -105,23 +86,24 @@
         $scope.addTaskDetails = function (form) {
             if (form.$valid) {
                 var postData = {
-                    "batchInsertData":
-                    [{
-                        "id": $scope.modtaskObj,
-                        "TaskName": $scope.modtaskObj,
-                        "TaskDescription": $scope.modtaskObj,
-                        "TaskDuration": $scope.modtaskObj,
-                    }]
+                    "TaskName": $scope.modtaskObj,
+                    "TaskDescription": $scope.modtaskObj,
+                    "TaskDuration": $scope.modtaskObj,
                 };
-
-                $scope.filteredtaskData.push(postData.batchInsertData[0]);
-                $scope.Modals.closeTaskContainer();
+                taskListService.addTask(postData).then(function (data) {
+                    $scope.pageLoad();
+                    $scope.Modals.closeTaskContainer();
+                }, function (error) {
+                    alert("Please try again");
+                });
+                
+                
             }
 
         };
 
 
-        (function startup() {
+        $scope.pageLoad = function() {
 
             $q.all([
                 taskListService.getTaskList()
@@ -136,7 +118,9 @@
             }, function (update) {
                 errorHandler.logServiceNotify('taskListController', update);
             });
-        })();
+
+
+        };
 
         function removesubject(subjectId) {
             for (var i = 0; i < $scope.subjects.length; i++) {
@@ -174,6 +158,7 @@
                 $scope.modalInstance.dismiss();
             }
         };
+        $scope.pageLoad();
 
     };
 })
