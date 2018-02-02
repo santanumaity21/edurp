@@ -12,9 +12,9 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
-        public List<GetExaminationList_Result> GetList(int? id, int? userid, string tokenid)
+        public List<GetExaminationList_Result> GetList(int? id, int? userid, string token)
         {
-            return db.GetExaminationList(id,userid,tokenid).ToList();
+            return db.GetExaminationList(id, userid, token).ToList();
         }
 
         public bool InsUpdExaminationType(int? id, ExaminationType examinationType)
@@ -24,7 +24,7 @@ namespace EduRp.Service.Service
                 var obj = JsonConvert.SerializeObject
                    (new ExaminationType
                    {
-                       ExaminationId = examinationType.ExaminationId,
+                       ExaminationTypeId = examinationType.ExaminationTypeId,
                        ExamName = examinationType.ExamName,
                        ExamGroup = examinationType.ExamGroup,
                        MinMarks = examinationType.MinMarks,
@@ -62,7 +62,7 @@ namespace EduRp.Service.Service
                 var obj = JsonConvert.SerializeObject
                   (new ExaminationType
                   {
-                      ExaminationId = examinationType.ExaminationId,
+                      ExaminationTypeId = examinationType.ExaminationTypeId,
                       UserId = examinationType.UserId,
                       TokenId = examinationType.TokenId
 

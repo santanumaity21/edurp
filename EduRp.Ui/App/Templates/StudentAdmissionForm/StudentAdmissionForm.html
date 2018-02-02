@@ -3,23 +3,12 @@
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
-                <div class="page-title-box">
-                    <div class="btn-group pull-left">
-                        <ol class="breadcrumb hide-phone p-0 m-0">
-                            <li>
-                                <a href="#">EduRP</a>
-                            </li>
-                            <li>
-                                <a href="#">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                Student Admission Form
 
-                            </li>
-                        </ol>
-                    </div>
-
-                </div>
+                <ul class="breadcrumb">
+                    <li><a href="#">EduRP</a></li>
+                    <li><a href="#"></a>Dashboard</li>
+                    <li class="active">Student Admission Form</li>
+                </ul>
             </div>
         </div>
         <!-- end page title end breadcrumb -->
@@ -28,490 +17,220 @@
             <div class="col-lg-12">
                 <div class="card-box">
                     <accordion close-others="oneAtATime">
-                        <accordion-group is-open="status.isFirstOpen">
-                            <accordion-heading>
-                                Personal Information
-                            </accordion-heading>
-                            <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="panel-body">
+                        <accordion-group ng-repeat="jsondata in admissionFormData" heading="{{jsondata.AppFormGroupLabel}}" is-open="jsondata.open">
+                            <div class="panel">
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        <form id="form1" action="#" data-parsley-validate="">
+                                            <div class="row"> 
+                                                <div class="col-md-4" data-ng-repeat="fields in jsondata.fields">
 
-                                    <form id="form1" action="#" data-parsley-validate="">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group m-b-0">
-                                                    <label class="control-label">Upload Photo</label>
-                                                    <input type="file" class="filestyle" data-buttonname="btn-primary" id="filestyle-4" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);"><div class="bootstrap-filestyle input-group"><input type="text" class="form-control " placeholder="" disabled=""> <span class="group-span-filestyle input-group-btn" tabindex="0"><label for="filestyle-4" class="btn btn-primary "><span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span> <span class="buttonText">Choose file</span></label></span></div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group pull-right">
-                                                    <label for="userName">Admission Number</label>
-                                                    <h2> 098987</h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="userName">Title<span class="text-danger">*</span></label>
-                                                    <select id="heard" class="form-control" required data-ng-model="modAdmissionObj.fldtitle">
-                                                        <option value="">Choose..</option>
-                                                        <option value="Mr.">Mr</option>
-                                                        <option value="Mrs">Mrs</option>
-                                                        <option value="other">Other..</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <label for="heard">First Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="first_name" parsley-trigger="change" required placeholder="" class="form-control" id="first_name" data-ng-model="modAdmissionObj.fldfirstname">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <label for="heard">Last Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="last_name" parsley-trigger="change" required placeholder="" class="form-control" id="last_name" data-ng-model="modAdmissionObj.fldlastname">
-                                                </div>
-                                            </div>
-                                        </div>
+                                                    <div class="col-md-5">
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldtitle'">
+                                                            <label for="userName">Title<span class="text-danger">*</span></label>
+                                                            <select id="heard" class="form-control" required>
+                                                                <option value="">Choose..</option>
+                                                                <option value="Mr.">Mr.</option>
+                                                                <option value="Mrs">Mrs</option>
+                                                                <option value="other">Other..</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldfirstname'">
+                                                        <label for="heard">First Name<span class="text-danger">*</span></label>
+                                                        <input type="text" name="first_name" parsley-trigger="change" required placeholder="" class="form-control" id="first_name">
+                                                    </div>
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldlastname'">
+                                                        <label for="heard">LastName<span class="text-danger">*</span></label>
+                                                        <input type="text" name="first_name" parsley-trigger="change" required placeholder="" class="form-control" id="first_name">
+                                                    </div>
+
+                                                    <div class="col-md-2">
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldgender'">
+                                                            <label for="userName">Gender<span class="text-danger">*</span></label>
+                                                            <select id="heard" class="form-control">
+                                                                <option value="">Choose..</option>
+                                                                <option value="Male">M</option>
+                                                                <option value="Female">F</option>
+                                                                <option value="other">Other</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldgovernmentid'">
+                                                        <label for="heard">Government ID<span class="text-danger">*</span></label>
+                                                        <input type="text" name="government_id" parsley-trigger="change" required placeholder="" class="form-control" id="government_id" data-ng-model="modAdmissionObj.fldgovtid">
+                                                    </div>
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldplaceofbirth'">
+                                                        <label for="heard">Place of Birth<span class="text-danger">*</span></label>
+                                                        <input type="text" name="place_of_birth" parsley-trigger="change" required placeholder="" class="form-control" id="place_of_birth" data-ng-model="modAdmissionObj.fldplaceofbirth">
+                                                    </div>
 
 
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="userName">Gender<span class="text-danger">*</span></label>
-                                                    <select id="heard" class="form-control" data-ng-model="modAdmissionObj.fldgender">
-                                                        <option value="">Choose..</option>
-                                                        <option value="Male">M</option>
-                                                        <option value="Female">F</option>
-                                                        <option value="other">Other</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <label for="heard">Government ID<span class="text-danger">*</span></label>
-                                                    <input type="text" name="government_id" parsley-trigger="change" required placeholder="" class="form-control" id="government_id" data-ng-model="modAdmissionObj.fldgovtid">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <label for="heard">Place of Birth<span class="text-danger">*</span></label>
-                                                    <input type="text" name="place_of_birth" parsley-trigger="change" required placeholder="" class="form-control" id="place_of_birth" data-ng-model="modAdmissionObj.fldplaceofbirth">
-                                                </div>
-                                            </div>
-                                        </div>
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='flddateofbirth'">
+                                                        <label for="heard">Date of Birth<span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose" data-ng-model="modAdmissionObj.flddateofbirth">
+                                                    </div>
 
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="heard">Date of Birth<span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker-autoclose" data-ng-model="modAdmissionObj.flddateofbirth">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <label for="heard">Mobile Number<span class="text-danger">*</span></label>
-                                                    <input type="text" name="mobile" parsley-trigger="change" required placeholder="" class="form-control" id="mobile" data-ng-model="modAdmissionObj.fldmobileno">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <label for="heard">Telephone Number</label>
-                                                    <input type="text" name="telephone" parsley-trigger="change" required placeholder="" class="form-control" id="telephone" data-ng-model="modAdmissionObj.fldtelephoneno">
-                                                </div>
-                                            </div>
-                                        </div>
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldmobilenumber'">
+                                                        <label for="heard">Mobile Number<span class="text-danger">*</span></label>
+                                                        <input type="text" name="mobile" parsley-trigger="change" required placeholder="" class="form-control" id="mobile" data-ng-model="modAdmissionObj.fldmobileno">
+                                                    </div>
 
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <div class="form-group">
-                                                    <label for="course_code">Email Address<span class="text-danger">*</span></label>
-                                                    <input type="text" name="budget_name" parsley-trigger="change" required placeholder="" class="form-control" id="budget" data-ng-model="modAdmissionObj.fldemailaddress">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <label for="course_code">Permanent Address<span class="text-danger">*</span></label>
-                                                    <textarea id="message" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 character comment.." data-parsley-validation-threshold="10" data-ng-model="modAdmissionObj.fldpermanentaddress"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <div class="form-group">
-                                                    <label for="course_code">Correspondance Address<span class="text-danger">*</span></label>
-                                                    <textarea id="message" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 character comment.." data-parsley-validation-threshold="10" data-ng-model="modAdmissionObj.fldcorrespondanceaddress"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldtelephonenumber'">
+                                                        <label for="heard">Telephone Number</label>
+                                                        <input type="text" name="telephone" parsley-trigger="change" required placeholder="" class="form-control" id="telephone" data-ng-model="modAdmissionObj.fldtelephoneno">
+                                                    </div>
 
-                                    </form>
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldemailaddress'">
+                                                        <label for="heard">Email Address</label>
+                                                        <input type="text" name="telephone" parsley-trigger="change" required placeholder="" class="form-control" id="studentemailaddress">
+                                                    </div>
 
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldpermanentaddress'">
+                                                        <label for="course_code">Permanent Address<span class="text-danger">*</span></label>
+                                                        <textarea class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 character comment.." data-parsley-validation-threshold="10"></textarea>
+                                                    </div>
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldcorrespondanceaddress'">
+                                                        <label for="course_code">Correspondance Address<span class="text-danger">*</span></label>
+                                                        <textarea id="message" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 character comment.." data-parsley-validation-threshold="10"></textarea>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group pull-right" data-ng-if="fields.FieldName ==='fldadmissionnumber'">
+                                                            <label for="userName">Admission Number</label>
+                                                            <h2>098987</h2>
+                                                        </div>
+                                                    </div>
+                                                    <!--End of Accordion 1-->
+
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldfathername'">
+                                                        <label for="heard">Father's Name<span class="text-danger">*</span></label>
+                                                        <input type="text" name="father_name" parsley-trigger="change" required placeholder="" class="form-control" id="father_name">
+
+                                                    </div>
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldfatheroccupation'">
+                                                        <label for="heard">Father Occupation<span class="text-danger">*</span></label>
+                                                        <input type="text" name="father_occupation" parsley-trigger="change" required placeholder="" class="form-control" id="father_occupation">
+
+                                                    </div>
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldmothername'">
+                                                        <label for="heard">Mother Name<span class="text-danger">*</span></label>
+                                                        <input type="text" name="mother_name" parsley-trigger="change" required placeholder="" class="form-control" id="mother_name">
+
+                                                    </div>
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldmotheroccupation'">
+                                                        <label for="heard">Mother Occupation<span class="text-danger">*</span></label>
+                                                        <input type="text" name="mother_occupation" parsley-trigger="change" required placeholder="" class="form-control" id="mother_occupation">
+
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldparentaddress'">
+                                                            <label for="course_code">Parent Address<span class="text-danger">*</span></label>
+                                                            <textarea id="message" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 character comment.." data-parsley-validation-threshold="10"></textarea>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldparentmobilenumber'">
+
+                                                            <label for="heard">Mobile Number<span class="text-danger">*</span></label>
+                                                            <input type="text" name="mobile" parsley-trigger="change" required placeholder="" class="form-control" id="mobile">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldparentemailaddress'">
+                                                            <label for="course_code">Email Address<span class="text-danger">*</span></label>
+                                                            <input type="text" name="budget_name" parsley-trigger="change" required placeholder="" class="form-control" id="budget">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldparentgovernmentid'">
+                                                            <label for="heard">Government ID<span class="text-danger">*</span></label>
+                                                            <input type="text" name="government_id" parsley-trigger="change" required placeholder="" class="form-control" id="government_id">
+
+                                                        </div>
+                                                    </div>
+                                                    <!--End of Accordion 2-->
+
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldprogramstudyid'">
+                                                        <label for="userName">select Program Interested<span class="text-danger">*</span></label>
+                                                        <select id="heard" class="form-control" data-ng-model="selectedProgramStudy" data-ng-options="fps.ProgramStudyName for fps in programStudyData" ng-change="fetchRelatedDataOfPS(selectedProgramStudy)">
+                                                            <option value="" disabled="" selected="" class="ng-binding">Please select the value</option>
+                                                            <option value="">{{'selectAProgram'| translate}}</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldcourseid'">
+                                                        <label for="userName">Select Course Interested<span class="text-danger">*</span></label>
+                                                        <select id="heard" class="form-control" data-ng-model="selectedCourse" data-ng-options="fps.CourseName for fps in courseData" ng-change="fetchRelatedDataOfCourse(selectedCourse)">
+                                                            <option value="" disabled="" selected="" class="ng-binding">Please select the value</option>
+                                                            <option value="">{{'selectACourse'| translate}}</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group" data-ng-if="fields.FieldName ==='fldsubjectid'">
+                                                        <label for="userName">Select Subjects <span class="text-danger">*</span></label>
+                                                        <select id="heard" class="form-control" data-ng-model="selectedSubject" data-ng-options="fps.SubjectName for fps in subjectData">
+                                                            <option value="" disabled="" selected="" class="ng-binding">Please select the value</option>
+                                                            <option value="">{{'selectASubject'| translate}}</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <!--End Of Accordion 3-->
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldpaymentparticulars'">
+
+                                                            <label for="userName">Payment Particulars</label>
+                                                            <h4>Admissions and Registration Fees</h4>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldfeeamount'">
+                                                            <label class="control-label">Amount</label>
+                                                            <h2>$980</h2>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-md-4">
+
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldtotal'">
+                                                            <label class="control-label">Total</label>
+                                                            <h2>$1280</h2>
+                                                        </div>
+
+                                                    </div>
+                                                    <!--<div class="form-group" data-ng-if="fields.FieldName ==='fldfathername'">
+        <label for="heard">Father name<span class="text-danger">*</span></label>
+        <input type="text" name="first_name" parsley-trigger="change" required placeholder="" class="form-control" id="first_name">
+
+    </div>-->
+
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
                                 </div>
                             </div>
-                        </accordion-group>
-
-                        <accordion-group>
-                            <accordion-heading>
-                                Parent Information
-                            </accordion-heading>
-                            <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                                <div class="panel-body">
-
-                                    <form id="form1" action="#" data-parsley-validate="">
-
-                                        <div class="row">
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="heard">Father's Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="father_name" parsley-trigger="change" required placeholder="" class="form-control" id="father_name">
-
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="heard">Father Occupation<span class="text-danger">*</span></label>
-                                                    <input type="text" name="father_occupation" parsley-trigger="change" required placeholder="" class="form-control" id="father_occupation">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="heard">Mother Name<span class="text-danger">*</span></label>
-                                                    <input type="text" name="mother_name" parsley-trigger="change" required placeholder="" class="form-control" id="mother_name">
-
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="heard">Mother Occupation<span class="text-danger">*</span></label>
-                                                    <input type="text" name="mother_occupation" parsley-trigger="change" required placeholder="" class="form-control" id="mother_occupation">
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="row">
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="course_code">Paren Address<span class="text-danger">*</span></label>
-                                                    <textarea id="message" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 character comment.." data-parsley-validation-threshold="10"></textarea>
-
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-
-                                                    <label for="heard">Mobile Number<span class="text-danger">*</span></label>
-                                                    <input type="text" name="mobile" parsley-trigger="change" required placeholder="" class="form-control" id="mobile">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="course_code">Email Address<span class="text-danger">*</span></label>
-                                                    <input type="text" name="budget_name" parsley-trigger="change" required placeholder="" class="form-control" id="budget">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="heard">Government ID<span class="text-danger">*</span></label>
-                                                    <input type="text" name="government_id" parsley-trigger="change" required placeholder="" class="form-control" id="government_id">
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-
-                                    </form>
-
-                                </div>
-                            </div>
-                        </accordion-group>
-                        <accordion-group>
-                            <accordion-heading>
-                                Program Selection
-                            </accordion-heading>
-                            <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
-                                <div class="panel-body">
-
-
-                                    <div class="row">
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="userName">Select Course Interested<span class="text-danger">*</span></label>
-                                                <select id="heard" class="form-control">
-                                                    <option value="">Choose..</option>
-                                                    <option value="MBA">MBA</option>
-                                                    <option value="MCA">MCA</option>
-                                                    <option value="other">Other..</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="userName">Select Subjects<span class="text-danger">*</span></label>
-                                                <select id="heard" class="form-control">
-                                                    <option value="">Choose..</option>
-                                                    <option value="Subject1">Subject1</option>
-                                                    <option value="Subject2">Subject2</option>
-                                                    <option value="other">Other..</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="userName">Select Extra Curricular Activities<span class="text-danger">*</span></label>
-                                                <select id="heard" class="form-control">
-                                                    <option value="">Choose..</option>
-                                                    <option value="Cricket">Cricket</option>
-                                                    <option value="Swimming">Swimming</option>
-                                                    <option value="other">Other..</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-                        </accordion-group>
-                        <accordion-group>
-                            <accordion-heading>
-                                Documents
-                            </accordion-heading>
-                            <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
-                                <div class="panel-body">
-
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="userName">Document Type<span class="text-danger">*</span></label>
-                                                <select id="heard" class="form-control" required>
-                                                    <option value="">Choose..</option>
-                                                    <option value="Resume">Resume</option>
-                                                    <option value="Certificates">Certificates</option>
-                                                    <option value="other">Other..</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-
-                                            <div class="form-group m-b-0">
-                                                <label class="control-label">Upload Document</label>
-                                                <input type="file" class="filestyle" data-buttonname="btn-primary" id="filestyle-4" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);"><div class="bootstrap-filestyle input-group"><input type="text" class="form-control " placeholder="" disabled=""> <span class="group-span-filestyle input-group-btn" tabindex="0"><label for="filestyle-4" class="btn btn-primary "><span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span> <span class="buttonText">Choose file</span></label></span></div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </accordion-group>
-                        <accordion-group>
-                            <accordion-heading>
-                                Fee
-                            </accordion-heading>
-                            <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
-                                <div class="panel-body">
-
-                                    <div class="row">
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="userName">Payment Particulars</label>
-                                                <h4>Admissions and Registration Fees</h4>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-
-                                            <div class="form-group">
-                                                <label class="control-label">Amount</label>
-                                                <h2>$980</h2>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-md-4">
-
-                                            <div class="form-group">
-                                                <label class="control-label">Total</label>
-                                                <h2>$1280</h2>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-                        </accordion-group>
-                        <accordion-group>
-                            <accordion-heading>
-                                Payment Method
-                            </accordion-heading>
-                            <div class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSix">
-                                <div class="panel-body">
-
-
-                                    <div class="row">
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="userName">Cash By Self</label>
-                                                <h4>Fee Paid : Yes</h4>, <h4>Reference Number: 988585</h4>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="userName">Reference Number: </label>
-                                                <h4>988585</h4>
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-md-4">
-
-                                            <div class="form-group">
-                                                <label class="control-label">Credit / Debit Card</label>
-                                                <select id="heard" class="form-control">
-                                                    <option value="">Choose Bank..</option>
-                                                    <option value="ICICI">ICICI</option>
-                                                    <option value="Kotak">Kotak</option>
-                                                    <option value="HDFC">HDFC</option>
-                                                    <option value="other">Other..</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-
-                                            <div class="form-group">
-                                                <label class="control-label">Select Card Type (VISA/Master)</label>
-                                                <select id="heard" class="form-control">
-                                                    <option value="">Choose Bank..</option>
-                                                    <option value="VISA">VISA</option>
-                                                    <option value="MASTER">MASTER</option>
-                                                </select>
-
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="heard">Debit Card Number</label>
-                                                <input type="text" name="card_number" parsley-trigger="change" required placeholder="Enter Budget" class="form-control" id="card_number">
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-
-                                                <label for="course_sks">Debit Card Name<span class="text-danger">*</span></label>
-                                                <input type="text" name="card_name" parsley-trigger="change" required placeholder="Enter Budget" class="form-control" id="card_name">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-
-                                                <label for="course_sks">CVV<span class="text-danger">*</span></label>
-                                                <input type="text" name="cvv" parsley-trigger="change" required placeholder="Enter Budget" class="form-control" id="cvv">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-
-                                                <label for="course_sks">Expiry Date<span class="text-danger">*</span></label>
-                                                <input type="text" name="expiry" parsley-trigger="change" required placeholder="Enter Budget" class="form-control" id="expiry">
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="heard">Check / DD</label>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-
-                                                <label for="course_sks">Cheque/DD number<span class="text-danger">*</span></label>
-                                                <input type="text" name="cheque" parsley-trigger="change" required placeholder="Enter Budget" class="form-control" id="cheque">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-
-                                                <label for="course_sks">Cheque/DD Date<span class="text-danger">*</span></label>
-                                                <input type="text" name="cheque_date" parsley-trigger="change" required placeholder="Enter Budget" class="form-control" id="cheque_date">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-
-                                                <label for="course_sks">Cheque/ DD bank<span class="text-danger">*</span></label>
-                                                <input type="text" name="cheque_bank" parsley-trigger="change" required placeholder="Enter Budget" class="form-control" id="cheque_bank">
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-
-
-
-                                </div>
-                            </div>
+                            <!-- <div ng-bind-html="myText"></div>-->
 
                         </accordion-group>
                     </accordion>
@@ -523,9 +242,9 @@
                         <button type="button" class="btn btn-default btn-bordered waves-effect w-md m-b-5">Close</button>
                     </div>
                     <!--<div class="modal-footer">
-        <button type="button" class="btn btn-teal btn-bordered waves-light" id="btnUploadAdd">Save Details</button>
-        <button type="button" class="btn btn-default btn-bordered waves-effect w-md m-b-5" id="btnUploadCancel">Close</button>
-    </div>-->
+                    <button type="button" class="btn btn-teal btn-bordered waves-light" id="btnUploadAdd">Save Details</button>
+                    <button type="button" class="btn btn-default btn-bordered waves-effect w-md m-b-5" id="btnUploadCancel">Close</button>
+                </div>-->
                 </div>
             </div>
         </div>

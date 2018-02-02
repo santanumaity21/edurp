@@ -1,0 +1,33 @@
+﻿{
+  "results": [
+    {
+      "StudentId": "0001",
+      "StudentName": "Vivek",
+      "Fees":"2300" ,
+      "ModeofPayment": "Online",
+      "DateofPayment": "12/26/2017"
+    },
+    {
+      "StudentId": "0002",
+      "StudentName": "Rahul",
+      "Fees": "3200",
+      "ModeofPayment": "Online",
+      "DateofPayment": "12/26/2017"
+    },
+    {
+      "StudentId": "0003",
+      "StudentName": "Roy",
+      "Fees": "3300",
+      "ModeofPayment": "Online",
+      "DateofPayment": "12/26/2017"
+    },
+    {
+      "StudentId": "0004",
+      "StudentName": "Simon",
+      "Fees": "2500",
+      "ModeofPayment": "Online",
+      "DateofPayment": "12/26/2017"
+    }
+  ]
+}
+ 

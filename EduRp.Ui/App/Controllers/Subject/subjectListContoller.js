@@ -15,6 +15,7 @@
             , $scope.maxSize = 5;
         $scope.orderByField = 'SubjectName';
         $scope.reverseSort = false;
+
         $scope.adjustSubjectList = function () {
             var begin = (($scope.currentPage - 1) * $scope.numPerPage)
                 , end = begin + $scope.numPerPage;

@@ -13,12 +13,13 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
+
     public partial class CourseMaster : BaseEntity
     {
         public int CourseId { get; set; }
         public string CourseCode { get; set; }
         public string CourseName { get; set; }
-        public int SKS { get; set; }
+        public Nullable<int> SKS { get; set; }
         public string CourseType { get; set; }
         public string CourseGroup { get; set; }
         public Nullable<int> UniversityId { get; set; }

@@ -12,8 +12,12 @@
                 return commonService.executeAPICall(url, method, data);
             };
 
-            var _getAdmissionList = function () {
-                return execute('getAdmissionList','get', null);
+            var _getDynamicFormData = function () {
+                return execute('getDynamicFormData','get', null);
+            };
+
+            var _getAdmissionNumber = function () {
+                return execute('getDynamicFormData', 'get', null);
             };
 
             var _addStudentAdmissionForm = function (postData) {
@@ -26,7 +30,8 @@
 
             return {
 
-                getAdmissionList : _getAdmissionList,
+                getDynamicFormData: _getDynamicFormData,
+                getAdmissionNumber: _getAdmissionNumber,
                 addStudentAdmissionForm : _addStudentAdmissionForm
 
             };

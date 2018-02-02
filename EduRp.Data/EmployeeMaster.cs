@@ -24,18 +24,18 @@ namespace EduRp.Data
         public string HP { get; set; }
         public Nullable<int> StatusId { get; set; }
         public Nullable<System.DateTime> DateofBirth { get; set; }
-        public Nullable<int> GenderId { get; set; }
-        public Nullable<int> BloodGroupId { get; set; }
-        public Nullable<int> ReligionId { get; set; }
-        public Nullable<int> MaritalStatusId { get; set; }
-        public Nullable<int> NationalityId { get; set; }
+        public string Gender { get; set; }
+        public string BloodGroup { get; set; }
+        public string Religion { get; set; }
+        public string MaritalStatus { get; set; }
+        public string Nationality { get; set; }
         public string PhoneNumber { get; set; }
         public string LandLineNumber { get; set; }
         public Nullable<System.DateTime> DateofJoining { get; set; }
         public Nullable<int> NoOfYearsOfService { get; set; }
-        public Nullable<bool> IncludeInPayroll { get; set; }
+        public Nullable<byte> IncludeInPayroll { get; set; }
         public Nullable<int> DepartmentId { get; set; }
-        public Nullable<bool> IsActive { get; set; }
+        public Nullable<byte> Active { get; set; }
         public Nullable<int> DocumentMasterId { get; set; }
         public string Achievements { get; set; }
         public string PANNumber { get; set; }
@@ -46,7 +46,7 @@ namespace EduRp.Data
         public Nullable<System.DateTime> ProbationEndDate { get; set; }
         public Nullable<int> ReportingManagerId { get; set; }
         public Nullable<bool> ApplyTax { get; set; }
-        public Nullable<bool> InvitationSent { get; set; }
+        public Nullable<byte> InvitationSent { get; set; }
         public string EmailId { get; set; }
         public Nullable<System.DateTime> lastupdateddt { get; set; }
         public Nullable<int> lastupdatedby { get; set; }

@@ -12,8 +12,6 @@
         $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
         $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
 
-        
-
         $translateProvider.useStaticFilesLoader({
             prefix: '/languages/',
             suffix: '.json'

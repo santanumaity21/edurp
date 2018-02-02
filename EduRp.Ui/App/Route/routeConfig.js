@@ -30,11 +30,12 @@
                     templateUrl: '/App/Templates/ProgramStudy/home.html',
                     requiresLogin: true,
                     controller: 'programStudyController'
-                }).when('/Admin/CreateBatch', {
+           })
+          .when('/Admin/CreateBatch', {
                     templateUrl: '/App/Templates/CreateBatch/home.html',
                     requiresLogin: true,
                     controller: 'createBatchController'
-                })
+           })
           .when('/Admin/AcademicBatch', {
                     templateUrl: '/App/Templates/AcademicBatch/academicbatch.html',
                     requiresLogin: true,
@@ -64,22 +65,35 @@
           .when('/Admin/NotificationType', {
                     templateUrl: '/App/Templates/NotificationType/notificationtype.html',
                     controller: 'notificationTypeController'
-                })
+           })
           .when('/Admin/Chapters', {
                 templateUrl: '/App/Templates/Chapters/chapters.html',
                 controller: 'chaptersListController'
 
-                }).when('/Admin/BulkUpload', {
+                })
+                .when('/ManageCourse', {
+                    templateUrl: '/App/Templates/ManageCourses/ManageCourses.html',
+                    controller: 'manageCourseController'
+                })
+           .when('/Admin/BulkUpload', {
                     templateUrl: '/App/Templates/BulkUpload/Bulkupload.html',
                     controller: 'bulkUploadCntrl'
-                })
+           })
           .when('/StudentAdmissionForm', {
               templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
               controller: 'studentAdmissionFormController'
-           })
+                })
+                .when('/ManageStudentCounsellingDetail', {
+                templateUrl: '/App/Templates/ManageStudentCounsellingDetail/ManageStudentCounsellingDetail.html',
+                controller: 'manageStudentCounsellingDetailController'
+                })
+                .when('/StudentPortal', {
+                    templateUrl: '/App/Templates/StudentPortal/StudentPortal.html',
+                    controller: 'StudentPortalController'
+                })
           .otherwise({
               templateUrl: '/App/Templates/Shared/_404.html'
-          })
+                })
         }])
         .run(checkAuthentication);
 

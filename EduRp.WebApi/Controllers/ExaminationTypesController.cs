@@ -16,7 +16,7 @@ namespace EduRp.WebApi.Controllers
         [HttpGet]
         public IHttpActionResult Get(int? id, int? userid, string tokenid)
         {
-            return Ok(new { results = examinationTypeService.GetList(id,userid,tokenid) });
+            return Ok(new { results = examinationTypeService.GetList(id, userid, tokenid) });
         }
         [HttpPost]
         [HttpPut]

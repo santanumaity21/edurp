@@ -9,11 +9,10 @@
 
 namespace EduRp.Data
 {
-    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class ApplicationForm:BaseEntity
+    public partial class ApplicationForm
     {
         public int ApplicationFormId { get; set; }
         public Nullable<int> AppFormTemplateId { get; set; }
@@ -34,5 +33,6 @@ namespace EduRp.Data
         public Nullable<System.DateTime> lastupdateddt { get; set; }
         public Nullable<int> lastupdatedby { get; set; }
         public Nullable<int> UserId { get; set; }
+        public Nullable<System.DateTime> Createddt { get; set; }
     }
 }

@@ -98,9 +98,13 @@
                         <a class="btn" ng-click="goToPage('/Admin/NotificationType')">Notification Type</a>
                         <a class="btn" ng-click="goToPage('/Admin/Chapters')">Chapters</a>
                         <a class="btn" ng-click="goToPage('/Admin/BulkUpload')">BulkUpload</a>
-                        <a class="btn" ng-click="goToPage('/StudentAdmissionForm')">Student Admission Form</a>
+
                         <a class="btn" ng-click="goToPage('/ScheduleExamination')">Schedule Examination</a>
                         <a class="btn" ng-click="goToPage('/ManageExamination')">Manage Examination</a>
+                        <a class="btn" ng-click="goToPage('/ManageStudentCounsellingDetail')">Manage Student Counselling Detail</a>
+                        <a class="btn" ng-click="goToPage('/StudentPortal')">student Portal</a>
+                        <a class="btn" ng-click="goToPage('/ManageCourse')">Manage Course</a>
+
                     </li>
 
                 </ul>
@@ -108,7 +112,9 @@
         </div>
 
         <ng-view>
+
         </ng-view>
+
         <footer class="footer">
             <div class="row">
                 <div class="col-md-12">
@@ -171,7 +177,9 @@
     <script src="App/Services/NotificationType/notificationTypeService.js"></script>
     <script src="App/Services/Chapters/chaptersListService.js"></script>
     <script src="App/Services/Task/taskListService.js"></script>
-
+    <script src="App/Services/ManageStudentCounsellingDetail/manageStudentCounsellingDetailService.js"></script>
+    <script src="App/Services/StudentPortal/StudentPortalService.js"></script>
+    <script src="App/Services/ManageCourse/manageCourseService.js"></script>
     <script src="App/Directives/common.js"></script>
 
     <script src="App/Controllers/Global/globalController.js"></script>
@@ -191,8 +199,10 @@
     <script src="App/Controllers/NotificationType/notificationTypeController.js"></script>
     <script src="App/Controllers/AcademicBatch/academicBatchController.js"></script>
     <script src="App/Controllers/Chapters/chaptersListContoller.js"></script>
+    <script src="App/Controllers/ManageStudentCounsellingDetail/manageStudentCounsellingDetailController.js"></script>
     <script src="App/Controllers/BulkUpload/bulkUploadModuleController.js"></script>
-
+    <script src="App/Controllers/StudentPortal/StudentPortalController.js"></script>
+    <script src="App/Controllers/ManageCourse/manageCourseController.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {

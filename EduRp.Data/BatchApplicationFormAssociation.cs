@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class BatchApplicationFormAssociation : BaseEntity
+    public partial class BatchApplicationFormAssociation:BaseEntity
     {
         public int BatchApplicationFormId { get; set; }
         public int BatchId { get; set; }

@@ -12,9 +12,17 @@
   "breadcrumb2OfCourseGrade": "Dashboard",
   "breadcrumb3OfCourseGrade": "Course Grade",
 
-  "breadcrumb1OfSubject": "Home",
-  "breadcrumb2OfSubject": "Products",
-  "breadcrumb3OfSubject": "Accessories",
+  "breadcrumb1OfSubject": "EduRP",
+  "breadcrumb2OfSubject": "Dashboard",
+  "breadcrumb3OfSubject": "Subject",
+
+  "breadcrumb1OfManageStudent": "EduRP",
+  "breadcrumb2OfManageStudent": "Dashboard",
+  "breadcrumb3OfManageStudent": "Manage Student Counselling Detail",
+
+  "breadcrumb1OfStudentPortal": "EduRP",
+  "breadcrumb2OfStudentPortal": "Dashboard",
+  "breadcrumb3OfStudentPortal": "Student Portal",
 
 
   "manageProgramStudy": "Manage Program Study",
@@ -23,6 +31,8 @@
   "subjectHeader": "Subject",
   "subjectAddHeader": "Add New Subject",
   "subjectUpdateHeader": "Update Subject",
+  "manageStudentHeader": "Manage Students",
+  "StudentPortalHeader": "Student Portal",
 
   "CourseGradeAddBtn": "Add New Course / Grade",
   "subjectAddBtn": "Add New Subject",
@@ -53,7 +63,7 @@
   "courseNameColumn": "Course Name",
   "subjectCodeColumn": "Subject Code",
   "subjectNameColumn": "Subject Name",
-  "sksColumn":  "SKS",
+  "sksColumn": "SKS",
   "manageColumn": "Manage",
   "deleteColumn": "Delete",
   "filters": "Filters",
@@ -69,5 +79,21 @@
   "removeFeesBtn": "Remove Fees",
   "feesCodeColumn": "Fees Code",
   "feesColumn": "Fees",
-  "footerHeadLine": "Developed and Designed by Computude Technolo"
+
+  "studentIdColumn": "Student ID",
+  "studentNameColumn": "Student Name",
+  "studentfeesColumn": "Fees",
+  "modeofPaymentColumn": "Mode Of Payment",
+  "dateofPaymentColumn": "Date of Payment",
+  "SelectAllColumn": "Select All",
+
+  "FormNoColumn": "FormNo",
+  "BatchNoColumn": "BatchNo",
+  "ProgramStudyColumn": "ProgramStudy",
+  "CourseColumn": "Course",
+  "CreatedDateColumn": "CreatedDate",
+  "StatusColumn": "Status",
+
+
+  "footerHeadLine": "Developed and Designed by Computude Technology"
 }
