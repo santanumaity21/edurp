@@ -204,6 +204,12 @@
     <Compile Include="GetApplicationFormDocumentDetail_Result.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetApplicationFormFieldDetail_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetApplicationFormGroupDetail_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="GetApplicationFormHeader_Result.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>

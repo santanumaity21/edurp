@@ -33,5 +33,6 @@ namespace EduRp.Data
         public Nullable<int> lastupdatedby { get; set; }
         public Nullable<int> UserId { get; set; }
         public Nullable<System.DateTime> Createddt { get; set; }
+        public string ImageURL { get; set; }
     }
 }

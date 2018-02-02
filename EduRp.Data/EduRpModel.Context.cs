@@ -156,6 +156,48 @@ namespace EduRp.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationFormDocumentDetail_Result>("GetApplicationFormDocumentDetail", universityidParameter, useridParameter, tokenParameter, admissionnumberParameter);
         }
     
+        public virtual ObjectResult<GetApplicationFormFieldDetail_Result> GetApplicationFormFieldDetail(Nullable<int> universityid, Nullable<int> userid, string token, string admissionnumber)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var tokenParameter = token != null ?
+                new ObjectParameter("token", token) :
+                new ObjectParameter("token", typeof(string));
+    
+            var admissionnumberParameter = admissionnumber != null ?
+                new ObjectParameter("admissionnumber", admissionnumber) :
+                new ObjectParameter("admissionnumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationFormFieldDetail_Result>("GetApplicationFormFieldDetail", universityidParameter, useridParameter, tokenParameter, admissionnumberParameter);
+        }
+    
+        public virtual ObjectResult<GetApplicationFormGroupDetail_Result> GetApplicationFormGroupDetail(Nullable<int> universityid, Nullable<int> userid, string token, string admissionnumber)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var tokenParameter = token != null ?
+                new ObjectParameter("token", token) :
+                new ObjectParameter("token", typeof(string));
+    
+            var admissionnumberParameter = admissionnumber != null ?
+                new ObjectParameter("admissionnumber", admissionnumber) :
+                new ObjectParameter("admissionnumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationFormGroupDetail_Result>("GetApplicationFormGroupDetail", universityidParameter, useridParameter, tokenParameter, admissionnumberParameter);
+        }
+    
         public virtual ObjectResult<GetApplicationFormHeader_Result> GetApplicationFormHeader(Nullable<int> universityid, Nullable<int> userid, string token, string admissionnumber)
         {
             var universityidParameter = universityid.HasValue ?

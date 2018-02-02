@@ -13,7 +13,6 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-
     public partial class CourseMaster : BaseEntity
     {
         public int CourseId { get; set; }

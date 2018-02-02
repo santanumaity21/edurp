@@ -14,6 +14,10 @@ namespace EduRp.Service.IService
 
         List<GetApplicationFormDetail_Result> GetApplicationFormDetail(int? id, int? userid, string tokenid, string admissionnumber);
 
-        List<GetAdmissionNumber_Result> GetAdmissionNum(int? id, int? userid, string tokenid);       
+        List<GetAdmissionNumber_Result> GetAdmissionNum(int? id, int? userid, string tokenid);
+
+        List<GetApplicationFormGroupDetail_Result> GetApplicatonGroup(int? id, int? userid, string tokenid,string admissionnum);
+
+        List<GetApplicationFormFieldDetail_Result> GetApplicationField(int? id, int? userid, string tokenid, string admissionnum);
     }
 }

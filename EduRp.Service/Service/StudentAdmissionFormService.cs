@@ -39,6 +39,17 @@ namespace EduRp.Service.Service
         {
             return db.GetApplicationFormList(id, userid, tokenid, batchid, psid, courseid).ToList();
         }
+
+        public List<GetApplicationFormGroupDetail_Result> GetApplicatonGroup(int? id, int? userid, string tokenid,string admissionnum)
+        {
+            return db.GetApplicationFormGroupDetail(id, userid, tokenid, admissionnum).ToList();
+        }
+
+        public List<GetApplicationFormFieldDetail_Result> GetApplicationField(int? id, int? userid, string tokenid, string admissionnum)
+        {
+            return db.GetApplicationFormFieldDetail(id, userid, tokenid, admissionnum).ToList();
+        }
+
     }
-    
+
 }

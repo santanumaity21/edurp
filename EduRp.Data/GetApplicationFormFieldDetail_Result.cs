@@ -9,15 +9,13 @@
 
 namespace EduRp.Data
 {
-    using EduRp.Data.Core.Foundation;
     using System;
-    using System.Collections.Generic;
     
-    public partial class BatchFeeAssociation : BaseEntity
+    public partial class GetApplicationFormFieldDetail_Result
     {
-        public int BatchFeeId { get; set; }
-        public int BatchId { get; set; }
-        public int FeeId { get; set; }
-        public Nullable<int> UniversityId { get; set; }
+        public int AppFormGroupId { get; set; }
+        public int AppFormFieldId { get; set; }
+        public string FieldName { get; set; }
+        public string Value { get; set; }
     }
 }

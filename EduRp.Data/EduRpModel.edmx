@@ -29,6 +29,7 @@
           <Property Name="lastupdatedby" Type="int" />
           <Property Name="UserId" Type="int" />
           <Property Name="Createddt" Type="datetime" />
+          <Property Name="ImageURL" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ApplicationFormDetail">
           <Key>
@@ -341,7 +342,7 @@
           <Property Name="FeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FeeLabel" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="FeeType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FeeType" Type="char" MaxLength="2" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="UniversityId" Type="int" />
           <Property Name="active" Type="tinyint" />
@@ -722,6 +723,18 @@
           <Parameter Name="admissionnumber" Type="varchar" Mode="In" />
         </Function>
         <Function Name="GetApplicationFormDocumentDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
+          <Parameter Name="admissionnumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetApplicationFormFieldDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
+          <Parameter Name="admissionnumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetApplicationFormGroupDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="userid" Type="int" Mode="In" />
           <Parameter Name="token" Type="varchar" Mode="In" />
@@ -1299,6 +1312,7 @@
           <Property Name="lastupdatedby" Type="Int32" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="Createddt" Type="DateTime" Precision="3" />
+          <Property Name="ImageURL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ApplicationFormDetail">
           <Key>
@@ -1611,7 +1625,7 @@
           <Property Name="FeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FeeLabel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="FeeType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FeeType" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UniversityId" Type="Int32" />
           <Property Name="active" Type="Byte" />
@@ -2036,6 +2050,18 @@
             <Parameter Name="admissionnumber" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetApplicationFormDocumentDetail" ReturnType="Collection(edurp_devModel.GetApplicationFormDocumentDetail_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
+            <Parameter Name="admissionnumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetApplicationFormFieldDetail" ReturnType="Collection(edurp_devModel.GetApplicationFormFieldDetail_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
+            <Parameter Name="admissionnumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetApplicationFormGroupDetail" ReturnType="Collection(edurp_devModel.GetApplicationFormGroupDetail_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
             <Parameter Name="userid" Mode="In" Type="Int32" />
             <Parameter Name="token" Mode="In" Type="String" />
@@ -2555,6 +2581,16 @@
           <Property Type="String" Name="DocumentName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="DocumentLink" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="GetApplicationFormFieldDetail_Result">
+          <Property Type="Int32" Name="AppFormGroupId" Nullable="false" />
+          <Property Type="Int32" Name="AppFormFieldId" Nullable="false" />
+          <Property Type="String" Name="FieldName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="GetApplicationFormGroupDetail_Result">
+          <Property Type="Int32" Name="AppFormGroupId" Nullable="false" />
+          <Property Type="String" Name="AppFormGroupLabel" Nullable="true" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="GetApplicationFormHeader_Result">
           <Property Type="Int32" Name="ApplicationFormId" Nullable="false" />
           <Property Type="Int32" Name="AppFormTemplateId" Nullable="true" />
@@ -2576,6 +2612,7 @@
           <Property Type="Int32" Name="lastupdatedby" Nullable="true" />
           <Property Type="Int32" Name="UserId" Nullable="true" />
           <Property Type="DateTime" Name="Createddt" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ImageURL" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="GetApplicationFormList_Result">
           <Property Type="String" Name="AdmissionNumber" Nullable="true" MaxLength="20" />
@@ -2604,7 +2641,7 @@
           <Property Type="Int32" Name="FeeId" Nullable="false" />
           <Property Type="String" Name="FeeLabel" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
-          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="GetBatchFeesList_Result">
@@ -2612,7 +2649,7 @@
           <Property Type="Int32" Name="FeeId" Nullable="false" />
           <Property Type="String" Name="FeeLabel" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
-          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="GetBatchID_Result">
@@ -2834,14 +2871,14 @@
           <Property Type="Int32" Name="FeeId" Nullable="false" />
           <Property Type="String" Name="FeeLabel" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
-          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="GetFeeList_Result">
           <Property Type="Int32" Name="FeeId" Nullable="false" />
           <Property Type="String" Name="FeeLabel" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
-          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="GetMenuList_Result">
@@ -2884,14 +2921,14 @@
           <Property Type="Int32" Name="FeeId" Nullable="false" />
           <Property Type="String" Name="FeeLabel" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
-          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="GetProgramStudyFeesNotLinkedList_Result">
           <Property Type="Int32" Name="FeeId" Nullable="false" />
           <Property Type="String" Name="FeeLabel" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
-          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="FeeType" Nullable="false" MaxLength="2" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="GetProgramStudyID_Result">
@@ -3072,6 +3109,7 @@
                 <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Createddt" ColumnName="Createddt" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3827,6 +3865,24 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetApplicationFormFieldDetail" FunctionName="edurp_devModel.Store.GetApplicationFormFieldDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetApplicationFormFieldDetail_Result">
+                <ScalarProperty Name="AppFormGroupId" ColumnName="AppFormGroupId" />
+                <ScalarProperty Name="AppFormFieldId" ColumnName="AppFormFieldId" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetApplicationFormGroupDetail" FunctionName="edurp_devModel.Store.GetApplicationFormGroupDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetApplicationFormGroupDetail_Result">
+                <ScalarProperty Name="AppFormGroupId" ColumnName="AppFormGroupId" />
+                <ScalarProperty Name="AppFormGroupLabel" ColumnName="AppFormGroupLabel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetApplicationFormHeader" FunctionName="edurp_devModel.Store.GetApplicationFormHeader">
             <ResultMapping>
               <ComplexTypeMapping TypeName="edurp_devModel.GetApplicationFormHeader_Result">
@@ -3850,6 +3906,7 @@
                 <ScalarProperty Name="lastupdatedby" ColumnName="lastupdatedby" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Createddt" ColumnName="Createddt" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -23,12 +23,7 @@
         $scope.programStudyData = [];
         $scope.courseListDetails = undefined;
 
-        
-        $scope.OrginalAdmissionObj = {
-
-        };
-
-        $scope.modAdmissionObj = angular.copy($scope.OrginalAdmissionObj);
+        $scope.modAdmissionObj = {};
 
         $scope.$watch('admissionFormData[0].open', function (isOpen) {
             if (isOpen) {
@@ -90,9 +85,7 @@
 
         $scope.addAdmissionFormDetails = function (form) {
                 $q.when([studentAdmissionFormService.addStudentAdmissionForm($scope.modAdmissionObj)]).then(function (data) {
-                    $scope.modAdmissionObj.$setPristine();
-                    //$scope.filteredSubjectData.push($scope.modSubjectObj);
-                    //$scope.Modals.closeSubjectContainer();
+                    
                 }, function (error) {
 
                 });
@@ -101,9 +94,7 @@
 
         $scope.getAdmissionNumber = function (form) {
             $q.when([studentAdmissionFormService.getAdmissionNumber()]).then(function (data) {
-                $scope.modAdmissionObj.$setPristine();
-                //$scope.filteredSubjectData.push($scope.modSubjectObj);
-                //$scope.Modals.closeSubjectContainer();
+               
             }, function (error) {
 
             });

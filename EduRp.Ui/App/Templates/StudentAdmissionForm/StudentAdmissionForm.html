@@ -23,12 +23,12 @@
                                     <div class="panel-body">
                                         <form id="form1" action="#" data-parsley-validate="">
                                             <div class="row"> 
-                                                <div class="col-md-4" data-ng-repeat="fields in jsondata.fields">
+                                                <div class="col-md-4">
 
                                                     <div class="col-md-5">
                                                         <div class="form-group" data-ng-if="fields.FieldName ==='fldtitle'">
                                                             <label for="userName">Title<span class="text-danger">*</span></label>
-                                                            <select id="heard" class="form-control" required>
+                                                            <select id="heard" class="form-control" required data-ng-model="modAdmissionObj.fldtitle">
                                                                 <option value="">Choose..</option>
                                                                 <option value="Mr.">Mr.</option>
                                                                 <option value="Mrs">Mrs</option>
@@ -39,18 +39,18 @@
 
                                                     <div class="form-group" data-ng-if="fields.FieldName ==='fldfirstname'">
                                                         <label for="heard">First Name<span class="text-danger">*</span></label>
-                                                        <input type="text" name="first_name" parsley-trigger="change" required placeholder="" class="form-control" id="first_name">
+                                                        <input type="text" name="first_name" parsley-trigger="change" required placeholder="" class="form-control" id="first_name"  data-ng-model="modAdmissionObj.fldfirstname">
                                                     </div>
 
                                                     <div class="form-group" data-ng-if="fields.FieldName ==='fldlastname'">
                                                         <label for="heard">LastName<span class="text-danger">*</span></label>
-                                                        <input type="text" name="first_name" parsley-trigger="change" required placeholder="" class="form-control" id="first_name">
+                                                        <input type="text" name="first_name" parsley-trigger="change" required placeholder="" class="form-control" id="first_name" data-ng-model="modAdmissionObj.fldlastname">
                                                     </div>
 
                                                     <div class="col-md-2">
                                                         <div class="form-group" data-ng-if="fields.FieldName ==='fldgender'">
                                                             <label for="userName">Gender<span class="text-danger">*</span></label>
-                                                            <select id="heard" class="form-control">
+                                                            <select id="heard" class="form-control" data-ng-model="modAdmissionObj.fldgender">
                                                                 <option value="">Choose..</option>
                                                                 <option value="Male">M</option>
                                                                 <option value="Female">F</option>
