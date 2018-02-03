@@ -51,18 +51,21 @@
 
 
         $scope.deleteTaskContainer = function (data) {
-            $q.when(taskListService.deleteTask(data)).then(function (success) {
-                var tempData = [];
-                angular.forEach($scope.taskData, function (v, k) {
-                    if (v.TaskId !== data.TaskId) {
-                        tempData.push(v);
-                    }
+            if (confirm("Are you sure to delete it?")) {
+                $q.when(taskListService.deleteTask(data)).then(function (success) {
+                    var tempData = [];
+                    angular.forEach($scope.taskData, function (v, k) {
+                        if (v.TaskId !== data.TaskId) {
+                            tempData.push(v);
+                        }
+                    });
+                    $scope.taskData = tempData;
+                    $scope.adjusttaskList();
+                }, function (error) {
+                    alert("Please try again.");
                 });
-                $scope.taskData = tempData;
-                $scope.adjusttaskList();
-            }, function (error) {
-                alert("Please try again.");
-            });
+            }
+            
 
         };
 
