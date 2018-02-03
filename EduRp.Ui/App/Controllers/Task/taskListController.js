@@ -37,7 +37,6 @@
 
 
 
-
         $scope.editTaskContainer = function (data) {
             $scope.modalType = 'update';
             $scope.modtaskObj = data;
@@ -51,7 +50,21 @@
         };
 
 
+        $scope.deleteTaskContainer = function (data) {
+            $q.when(taskListService.deleteTask(data)).then(function (success) {
+                var tempData = [];
+                angular.forEach($scope.taskData, function (v, k) {
+                    if (v.TaskId !== data.TaskId) {
+                        tempData.push(v);
+                    }
+                });
+                $scope.taskData = tempData;
+                $scope.adjusttaskList();
+            }, function (error) {
+                alert("Please try again.");
+            });
 
+        };
 
         $scope.updateTaskDetails = function (form, tid) {
             if (form.$valid) {
