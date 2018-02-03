@@ -78,6 +78,9 @@
             }).when('/ManageCourses', {
                     templateUrl: '/App/Templates/ManageCourses/ManageCourses.html',
                     controller: 'managecourcesController'
+                }).when('/ManageTask', {
+                    templateUrl: '/App/Templates/ManageTask/manageTask.html',
+                    controller: 'manageTaskController'
                 })
                 .otherwise({
                     templateUrl: '/App/Templates/Shared/_404.html'
