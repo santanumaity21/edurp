@@ -44,9 +44,9 @@
             $scope.Modals.openTaskContainer();
         };
 
-        $scope.addTaskContainer = function (data) {
+        $scope.addTaskContainer = function () {
             $scope.modalType = 'add';
-            $scope.modtaskObj = data;
+            $scope.modtaskObj = null;
             $scope.Modals.openTaskContainer();
         };
 
@@ -56,10 +56,10 @@
         $scope.updateTaskDetails = function (form, tid) {
             if (form.$valid) {
                 var postData = {
-                    "TaskId": tid,
+                    "TaskId": $scope.modtaskObj.TaskId,
                     "TaskName": $scope.modtaskObj.TaskName,
                     "TaskDescription": $scope.modtaskObj.TaskDescription,
-                    "TaskDuration": $scope.modtaskObj.TaskDuration,
+                    "TaskDuration": $scope.modtaskObj.TaskDuration
 
                 };
                 taskListService.updateTask(postData).then(function (data) {
@@ -86,9 +86,9 @@
         $scope.addTaskDetails = function (form) {
             if (form.$valid) {
                 var postData = {
-                    "TaskName": $scope.modtaskObj,
-                    "TaskDescription": $scope.modtaskObj,
-                    "TaskDuration": $scope.modtaskObj,
+                    "TaskName": $scope.modtaskObj.TaskName,
+                    "TaskDescription": $scope.modtaskObj.TaskDescription,
+                    "TaskDuration": $scope.modtaskObj.TaskDuration
                 };
                 taskListService.addTask(postData).then(function (data) {
                     $scope.pageLoad();
