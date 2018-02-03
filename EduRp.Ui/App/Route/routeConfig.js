@@ -74,13 +74,8 @@
                 controller: 'bulkUploadCntrl'
             }).when('/StudentAdmissionForm', {
                 templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
-                controller: 'studentadmissionformController'
-            })
-                .when('/StudentAdmissionForm', {
-                    templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
-                    controller: 'studentadmissionformController'
-                })
-                .when('/ManageCourses', {
+                controller: 'studentAdmissionFormController'
+            }).when('/ManageCourses', {
                     templateUrl: '/App/Templates/ManageCourses/ManageCourses.html',
                     controller: 'managecourcesController'
                 })

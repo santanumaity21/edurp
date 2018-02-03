@@ -75,7 +75,9 @@ var urlService =
         addSubjectInList : localhost ? '' : apiPrefix + 'api/CourseSubjectAssociations/Link/',
 
 
-        getBulkModule: localhost ? '/sampleData/bulkUpload.json' : apiPrefix + '/api/BulkLoadMaster/Get/1'
+        getBulkModule: localhost ? '/sampleData/bulkUpload.json' : apiPrefix + '/api/BulkLoadMaster/Get/1',
+
+        getDynamicFormData: localhost ? '/sampleData/StudentPortal/stdapplicationformdetail.json' : '/sampleData/StudentPortal/stdapplicationformdetail.json'
         
 		
 

@@ -5,9 +5,9 @@
         .module('EduRpApp')
         .controller('studentAdmissionFormController', studentAdmissionFormController);
 
-    studentAdmissionFormController.$inject = ['$scope', '$q', '$log', 'errorHandler', 'studentAdmissionFormService', 'commonService', '$translate', 'programStudyService','manageCourseService'];
+    studentAdmissionFormController.$inject = ['$scope', '$q', '$log', 'errorHandler', 'studentAdmissionFormService', 'commonService', '$translate', 'programStudyService','managecourseService'];
 
-    function studentAdmissionFormController($scope, $q, $log, errorHandler, studentAdmissionFormService, commonService, $translate, programStudyService, manageCourseService) {
+    function studentAdmissionFormController($scope, $q, $log, errorHandler, studentAdmissionFormService, commonService, $translate, programStudyService, managecourseService) {
 
         /* jshint validthis:true */
         var vm = this;
@@ -145,7 +145,7 @@
             var selPS = angular.copy(psData);
             if (selPS) {
                 $q.all([
-                    manageCourseService.getCourseSubjectList(selPS)
+                    manageCourseService.getCourseList(selPS)
                 ]).then(function (data) {
                     // $scope.mainContentSubPart = true;
                     if (data != null) {
