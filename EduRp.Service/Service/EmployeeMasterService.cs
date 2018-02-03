@@ -32,18 +32,12 @@ namespace EduRp.Service.Service
                       HP = employeeMaster.HP,
                       StatusId = employeeMaster.StatusId,
                       DateofBirth = employeeMaster.DateofBirth,
-                      GenderId = employeeMaster.GenderId,
-                      BloodGroupId = employeeMaster.BloodGroupId,
-                      ReligionId = employeeMaster.ReligionId,
-                      MaritalStatusId = employeeMaster.MaritalStatusId,
-                      NationalityId = employeeMaster.NationalityId,
                       PhoneNumber = employeeMaster.PhoneNumber,
                       LandLineNumber = employeeMaster.LandLineNumber,
                       DateofJoining = employeeMaster.DateofJoining,
                       NoOfYearsOfService = employeeMaster.NoOfYearsOfService,
                       IncludeInPayroll = employeeMaster.IncludeInPayroll,
                       DepartmentId = employeeMaster.DepartmentId,
-                      IsActive = employeeMaster.IsActive,
                       DocumentMasterId = employeeMaster.DocumentMasterId,
                       Achievements = employeeMaster.Achievements,
                       PANNumber = employeeMaster.PANNumber,
@@ -102,6 +96,7 @@ namespace EduRp.Service.Service
             }
             catch (Exception ex)
             {
+                Console.WriteLine("NotImplementedException", ex);
                 return false;
             }
         }

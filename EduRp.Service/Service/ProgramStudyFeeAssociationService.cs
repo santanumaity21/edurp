@@ -29,6 +29,7 @@ namespace EduRp.Service.Service
             }
             catch (Exception ex)
             {
+                Console.WriteLine("NotImplementedException", ex);
                 return false;
             }
         }
@@ -45,6 +46,7 @@ namespace EduRp.Service.Service
             }
             catch (Exception ex)
             {
+                Console.WriteLine("NotImplementedException", ex);
                 return false;
             }
         }

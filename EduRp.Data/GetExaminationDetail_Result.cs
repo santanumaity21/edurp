@@ -13,7 +13,7 @@ namespace EduRp.Data
     
     public partial class GetExaminationDetail_Result
     {
-        public int ExaminationId { get; set; }
+        public int ExaminationTypeId { get; set; }
         public string ExamGroup { get; set; }
         public string ExamName { get; set; }
         public Nullable<int> MinMarks { get; set; }
