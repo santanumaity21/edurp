@@ -9,7 +9,7 @@
 
     function managecourcesCtrl($scope, $q, $log, managecourseService, commonService, $modal) {
 
-        $scope.courseListItem = undefined;
+        $scope.courseListItem = [];
         $scope.courseListDetails = undefined;
         $scope.showCourseDetailList = false;
         $scope.selectedCourse = undefined;
@@ -36,7 +36,8 @@
 
         function courseListSuccess(response) {
             $scope.courseListItem = response.results;
-            $scope.courseListItemValue = $scope.courseListItem[0];
+            console.log(response);
+            console.log($scope.courseListItem);
         }
 
         function courseListError(response) {
@@ -49,7 +50,7 @@
          * on selected subject from dropdrown
          */
         function getSelectedCourseDetails(){
-            managecourseService.getCourseListItem($scope.courseListItemValue).then(selectedCourseDetailSuccess, selectedCourseDetailError);
+            managecourseService.getCourseListItem($scope.selectedCourse.CourseId).then(selectedCourseDetailSuccess, selectedCourseDetailError);
         }
 
         function selectedCourseDetailSuccess(response){
@@ -111,7 +112,7 @@
         }
 
         function removeSubjectSuccess(response){
-            managecourseService.getCourseListItem().then(selectedCourseDetailSuccess, selectedCourseDetailError);
+            managecourseService.getCourseListItem($scope.selectedCourse.CourseId).then(selectedCourseDetailSuccess, selectedCourseDetailError);
         }
 
         function removeSubjectError(response){

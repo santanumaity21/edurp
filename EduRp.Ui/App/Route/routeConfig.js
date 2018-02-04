@@ -87,6 +87,10 @@
                     templateUrl: '/App/Templates/ManageTask/manageTask.html',
                     controller: 'manageTaskController'
                 })
+				.when('/ScheduleExamination', {
+                    templateUrl: '/App/Templates/ScheduleExamination/scheduleExamination.html',
+                    controller: 'scheduleExaminationController'
+                })
                 .otherwise({
                     templateUrl: '/App/Templates/Shared/_404.html'
                 })

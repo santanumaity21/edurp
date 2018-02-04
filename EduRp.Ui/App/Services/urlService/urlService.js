@@ -81,7 +81,9 @@ var urlService =
 
         getBulkModule: localhost ? '/sampleData/bulkUpload.json' : apiPrefix + '/api/BulkLoadMaster/Get/1',
 
-        getDynamicFormData: localhost ? '/sampleData/StudentPortal/stdapplicationformdetail.json' : '/sampleData/StudentPortal/stdapplicationformdetail.json'
+        getDynamicFormData: localhost ? '/sampleData/StudentPortal/stdapplicationformdetail.json' : '/sampleData/StudentPortal/stdapplicationformdetail.json',
+		
+		getScheduleDetails : localhost ? '/sampleData/scheduleExam/scheduledExam.json' : apiPrefix + ''
         
 		
 
