@@ -38,7 +38,7 @@
                 console.log('Second group was opened');
             }
         });
-// accordion 3 open 
+        // accordion 3 open 
         $scope.$watch('admissionFormData[2].open', function (isOpen) {
          
             if (isOpen) {

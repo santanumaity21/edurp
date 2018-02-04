@@ -23,7 +23,7 @@
                                     <div class="panel-body">
                                         <form id="form1" action="#" data-parsley-validate="">
                                             <div class="row"> 
-                                                <div class="col-md-4">
+                                                <div class="col-md-4" data-ng-repeat="fields in jsondata.fields" >
 
                                                     <div class="col-md-5">
                                                         <div class="form-group" data-ng-if="fields.FieldName ==='fldtitle'">
