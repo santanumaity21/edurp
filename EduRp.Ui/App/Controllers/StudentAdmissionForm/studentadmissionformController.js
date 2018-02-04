@@ -108,9 +108,12 @@
                 studentAdmissionFormService.getDynamicFormData()
             ]).then(function (data) {
                 if (data !== null) {
-                    console.log(data);
-                    $scope.admissionFormData = data[0].results;
-                    console.log($scope.admissionFormData)
+                    $scope.admissionFormData =[];
+                    angular.forEach(data[0].results, function (std,stk) {
+                        
+
+
+                    });
                 }
             }, function (reason) {
                 errorHandler.logServiceError('studentAdmissionFormController', reason);

@@ -89,12 +89,22 @@
                 );
             return deferred.promise;
         };
+
+        var _getMappedObjFromArray = function (arr, key, value) {
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i][key] === value) {
+                    return arr[i];
+                }
+            }
+        };
+
         return {
             getFilteredOptions: _getFilteredOptions,
             removeItemFromArray: _removeItemFromArray,
             fetchMainCookieData: _fetchMainCookieData,
             executeAPICall: _executeAPICall,
-            processAllParamsVal: _processAllParamsVal
+            processAllParamsVal: _processAllParamsVal,
+            getMappedObjFromArray: _getMappedObjFromArray
         };
 
     }
