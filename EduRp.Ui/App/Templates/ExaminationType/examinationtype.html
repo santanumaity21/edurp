@@ -9,13 +9,13 @@
                     <div class="btn-group pull-left">
                         <ol class="breadcrumb hide-phone p-0 m-0">
                             <li>
-                                <a href="#">EDuRP</a>
+                                <a href="#">{{'breadcrumbOfEdurp' | translate}}</a>
                             </li>
                             <li>
-                                <a href="#">Dashboard</a>
+                                <a href="#">{{'breadcrumbOfDashboard' | translate}}</a>
                             </li>
                             <li class="active">
-                                Examination Type
+                                {{'breadcrumb3OfExaminationType' | translate}}
 
                             </li>
                         </ol>
@@ -33,10 +33,10 @@
                 <div class="card-box">
                     <div class="row">
                         <div class="col-lg-8">
-                            <h4 class="m-t-0 header-title"><b>Examination Type</b></h4>
+                            <h4 class="m-t-0 header-title"><b>{{'breadcrumb3OfExaminationType' | translate}}</b></h4>
                         </div>
                         <div class="col-lg-4 pull-right">
-                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-ng-click="addExaminationTypeContainer()">Add Examination Type</button>
+                            <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-ng-click="addExaminationTypeContainer()">{{'examinationTypeAddBtn' | translate}}</button>
                         </div>
                     </div>
                     <div class="row">
@@ -54,7 +54,7 @@
                                     <div class="panel-heading" role="tab">
                                         <h4 class="panel-title" data-ng-click="toggleFilterPanel()">
                                             <a ng-class="!filterPanel ? 'collapsed': ''" aria-expanded="false" aria-controls="collapseThree">
-                                                Filters
+                                                {{'filters' | translate}}
                                             </a>
                                         </h4>
                                     </div>
