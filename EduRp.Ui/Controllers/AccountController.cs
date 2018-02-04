@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EduRp.Ui.Models;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace EduRp.Ui.Controllers
 {
@@ -77,29 +80,85 @@ namespace EduRp.Ui.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+     //   [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl, string UserName, string Password)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+            string ipaddress;
+            ipaddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (ipaddress == "" || ipaddress == null)
+                ipaddress = Request.ServerVariables["REMOTE_ADDR"];
+
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(model);
+            //}
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+
+            //var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+          //  edurp_devEntities context = new edurp_devEntities();
+            // var user = context.UserMasters.Where(log => log.UserName == UserName && log.Password == Password && log.IsActive == true);
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection1"].ConnectionString);
+            try
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("GetAuthenticationToken", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@emailid".Replace("\"", "'"), UserName.Replace("\"", "'"));
+                cmd.Parameters.AddWithValue("@password".Replace("\"", "'"), Password.Replace("\"", "'"));
+                cmd.Parameters.AddWithValue("@lastloginipaddress".Replace("\"", "'"), ipaddress.Replace("\"", "'"));
+                //"select EmailAddress,Password from UserMaster where EmailAddress='"+UserName+"' and Password='"+Password+ "'", con);
+                //cmd.Parameters.Add("EmailAddress", UserName);
+                //cmd.Parameters.Add("Password", Password);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+Session["UserName"] = reader["UserName"].ToString();
+
+                        Session["AuthenticationToken"] = reader["AuthenticationToken"].ToString();
+
+                        Session["UserId"] = reader["UserId"].ToString();
+
+
+
+                    }
+                }
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+
+
+
+
+                    con.Close();
+                    Response.Redirect("~/Index.html", false);
                     return View(model);
+
+                }
+                else
+                {
+
+                    TempData["Message"] = "In login credentials!";
+                    return RedirectToAction("Login");
+
+
+                    //  return Content("<script language='javascript' type='text/javascript'>alert('Invalid Users!');</script>");
+
+                    // return View(Content);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return View();
+
             }
         }
 

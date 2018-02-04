@@ -7,9 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/assets/css/core.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/assets/css/components.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/assets/css/pages.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/assets/css/menu.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/assets/css/responsive.css" rel="stylesheet" type="text/css" />
 </head>
 <body data-ng-app="EduRpApp">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,14 +43,14 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </div>*@
     <div class="container body-content">
         @RenderBody()
         @RenderSection("SPAViews", required: false)
-        <hr />
+        @*<hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        </footer>*@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
