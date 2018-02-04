@@ -24,6 +24,8 @@ var urlService =
         updateClassRoom: localhost ? ' ' : apiPrefix + 'api/ClassRoomMasters/Save/',
         deletesubject: localhost ? ' ' : apiPrefix + 'api/ClassRoomMasters/Delete/',
 
+        getEmployeesList: localhost ? '/sampleData/getEmployeesList.json' : apiPrefix + 'api/Employees/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        addEmployee: localhost ? '/sampleData/getEmployeesList.json' : apiPrefix + 'api/Employees/Save',
 
         getChaptersList: localhost ? '/sampleData/chapterList.json' : apiPrefix + 'api/ChapterMasters/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
         

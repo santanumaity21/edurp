@@ -30,11 +30,12 @@
                     templateUrl: '/App/Templates/ProgramStudy/home.html',
                     requiresLogin: true,
                     controller: 'programStudyController'
-                }).when('/Admin/CreateBatch', {
-                templateUrl: '/App/Templates/CreateBatch/home.html',
-                requiresLogin: true,
-                controller: 'createBatchController'
-            })
+                })
+                .when('/Admin/CreateBatch', {
+                    templateUrl: '/App/Templates/CreateBatch/home.html',
+                    requiresLogin: true,
+                    controller: 'createBatchController'
+                })
                 .when('/Admin/AcademicBatch', {
                     templateUrl: '/App/Templates/AcademicBatch/academicbatch.html',
                     requiresLogin: true,
@@ -69,16 +70,20 @@
                     templateUrl: '/App/Templates/Chapters/chapters.html',
                     controller: 'chaptersListController'
 
-                }).when('/Admin/BulkUpload', {
-                templateUrl: '/App/Templates/BulkUpload/Bulkupload.html',
-                controller: 'bulkUploadCntrl'
-            }).when('/StudentAdmissionForm', {
-                templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
-                controller: 'studentAdmissionFormController'
-            }).when('/ManageCourses', {
+                })
+                .when('/Admin/BulkUpload', {
+                    templateUrl: '/App/Templates/BulkUpload/Bulkupload.html',
+                    controller: 'bulkUploadCntrl'
+                })
+                .when('/StudentAdmissionForm', {
+                    templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
+                    controller: 'studentAdmissionFormController'
+                })
+                .when('/ManageCourses', {
                     templateUrl: '/App/Templates/ManageCourses/ManageCourses.html',
                     controller: 'managecourcesController'
-                }).when('/ManageTask', {
+                })
+                .when('/ManageTask', {
                     templateUrl: '/App/Templates/ManageTask/manageTask.html',
                     controller: 'manageTaskController'
                 })
