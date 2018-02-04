@@ -26,6 +26,8 @@ var urlService =
 
         getEmployeesList: localhost ? '/sampleData/getEmployeesList.json' : apiPrefix + 'api/Employees/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
         addEmployee: localhost ? '/sampleData/getEmployeesList.json' : apiPrefix + 'api/Employees/Save',
+        updateEmployee: localhost ? '/sampleData/getEmployeesList.json' : apiPrefix + 'api/Employees/Save',
+        deleteEmployee: localhost ? '/sampleData/getEmployeesList.json' : apiPrefix + 'api/Employees/Delete',
 
         getChaptersList: localhost ? '/sampleData/chapterList.json' : apiPrefix + 'api/ChapterMasters/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
         

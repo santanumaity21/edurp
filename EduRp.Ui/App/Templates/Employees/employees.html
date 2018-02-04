@@ -15,7 +15,6 @@
                             </li>
                             <li class="active">
                                 Fees
-
                             </li>
                         </ol>
                     </div>
@@ -377,13 +376,13 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
-                                        Showing {{currentPage*numPerPage - numPerPage  + 1}} to {{feesData.length > currentPage*numPerPage ? currentPage*numPerPage : feesData.length}} of {{feesData.length}} entries
+                                        Showing {{currentPage*numPerPage - numPerPage  + 1}} to {{employeesData.length > currentPage*numPerPage ? currentPage*numPerPage : employeesData.length}} of {{employeesData.length}} entries
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
                                         <pagination ng-model="currentPage"
-                                                    total-items="feesData.length"
+                                                    total-items="employeesData.length"
                                                     max-size="maxSize"
                                                     boundary-links="true"
                                                     items-per-page="numPerPage">
