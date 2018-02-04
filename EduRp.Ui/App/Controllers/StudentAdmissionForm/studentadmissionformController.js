@@ -5,9 +5,9 @@
         .module('EduRpApp')
         .controller('studentAdmissionFormController', studentAdmissionFormController);
 
-    studentAdmissionFormController.$inject = ['$scope', '$q', '$log', 'errorHandler', 'studentAdmissionFormService', 'commonService', '$translate', 'programStudyService','managecourseService'];
+    studentAdmissionFormController.$inject = ['$scope', '$q', '$log', 'errorHandler', 'studentAdmissionFormService', 'commonService', '$translate', 'programStudyService','manageCourseService'];
 
-    function studentAdmissionFormController($scope, $q, $log, errorHandler, studentAdmissionFormService, commonService, $translate, programStudyService, managecourseService) {
+    function studentAdmissionFormController($scope, $q, $log, errorHandler, studentAdmissionFormService, commonService, $translate, programStudyService, manageCourseService) {
 
         /* jshint validthis:true */
         var vm = this;
@@ -38,7 +38,7 @@
                 console.log('Second group was opened');
             }
         });
-// accordion 3 open 
+        // accordion 3 open 
         $scope.$watch('admissionFormData[2].open', function (isOpen) {
          
             if (isOpen) {
@@ -145,7 +145,7 @@
             var selPS = angular.copy(psData);
             if (selPS) {
                 $q.all([
-                    manageCourseService.getCourseList(selPS)
+                    manageCourseService.getCourseSubjectList(selPS)
                 ]).then(function (data) {
                     // $scope.mainContentSubPart = true;
                     if (data != null) {

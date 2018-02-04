@@ -31,7 +31,7 @@ var urlService =
         updateChapter: localhost ? ' ' : apiPrefix + 'api/ChapterMasters/Save/',
         deleteChapter: localhost ? ' ' : apiPrefix + 'api/ChapterMasters/Delete/',
 
-        getExaminationTypeList: localhost ? '/sampleData/examinationtypeList.json' : apiPrefix + 'api/ExaminationType/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        getExaminationTypeList: localhost ? '/sampleData/examinationtypeList.json' : apiPrefix + 'api/ExaminationTypes/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
         addExaminationType: localhost ? ' ' : apiPrefix + 'api/ExaminationTypes/Save/',
         updateExaminationType: localhost ? ' ' : apiPrefix + 'api/ExaminationTypes/Save/',
         deleteExaminationType: localhost ? ' ' : apiPrefix + 'api/ExaminationTypes/Delete/',
