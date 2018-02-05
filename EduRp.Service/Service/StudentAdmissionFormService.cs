@@ -14,16 +14,6 @@ namespace EduRp.Service.Service
     {
         private edurp_devEntities db = new edurp_devEntities();
 
-        public List<GetApplicationFormList_Result> GetApplicationFormList(int? id, int? userid, string tokenid, int? batchid, int? psid, int? courseid)
-        {
-            return db.GetApplicationFormList(id, userid, tokenid, batchid, psid, courseid).ToList();
-        }
-
-        public List<GetAdmissionNumber_Result> GetAdmissionNum(int? id, int? userid, string tokenid)
-        {
-            return db.GetAdmissionNumber(id, userid, tokenid).ToList();
-        }
-
         public List<GetApplicationFormDetail_Result> GetApplicationFormDetail(int? id, int? userid, string tokenid, string admissionnumber)
         {
             var result=  db.GetApplicationFormDetail(id, userid, tokenid, admissionnumber).ToList();
@@ -39,6 +29,11 @@ namespace EduRp.Service.Service
         public List<GetApplicationFormHeader_Result> GetApplicationHeader(int? id, int? userid, string tokenid, string admissionnum)
         {
             return db.GetApplicationFormHeader(id, userid, tokenid, admissionnum).ToList();
+        }
+
+        public List<GetApplicationFormFeeDetail_Result> GetApplicationFee(int? id, int? userid, string tokenid, string admissionnum)
+        {
+            throw new NotImplementedException();
         }
 
         public bool UpdateApplicationForm(int? id, GetApplicationFormDetail_Result applicationFormDetail)
@@ -168,7 +163,6 @@ namespace EduRp.Service.Service
             return db.GetApplicationFormFieldDetail(id, userid, tokenid, admissionnum).ToList();
         }
 
-   
     }
 
 }

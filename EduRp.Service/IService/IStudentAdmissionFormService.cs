@@ -10,12 +10,7 @@ namespace EduRp.Service.IService
 {
     public interface IStudentAdmissionFormService
     {
-        List<GetApplicationFormList_Result> GetApplicationFormList(int? id, int? userid, string tokenid, int? batchid, int? psid, int? courseid);
-
-
-
-        List<GetAdmissionNumber_Result> GetAdmissionNum(int? id, int? userid, string tokenid);
-
+      
         List<GetApplicationFormDetail_Result> GetApplicationFormDetail(int? id, int? userid, string tokenid, string admissionnumber);
 
         List<GetApplicationFormDocumentDetail_Result> GetDocumentAccordion(int? id,int? userid,string tokenid, string admissionnum);

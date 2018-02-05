@@ -13,18 +13,7 @@ namespace EduRp.WebApi.Controllers
     public class StudentAdmissionFormsController : ApiController
     {
         private IStudentAdmissionFormService stdadmfrmService = new StudentAdmissionFormService();
-
-        //StudentAdmissionportal
-        public IHttpActionResult GetApplicationFormList (int? id, int? userid, string tokenid, int? batchid, int? psid, int? courseid)
-        {
-            return Ok(new { results = stdadmfrmService.GetApplicationFormList(id, userid, tokenid, batchid, psid, courseid) });
-
-        }
-        //GetAdmissionnumber
-        public IHttpActionResult GetAdmissionNumber(int? id, int? userid, string tokenid)
-        {
-            return Ok(new { results = stdadmfrmService.GetAdmissionNum(id, userid, tokenid) });
-        }
+    
         //GetApplicationFormDetail
         public IHttpActionResult GetApplicationFormDetail(int? id, int? userid, string tokenid,string admissionnumber)
         {
