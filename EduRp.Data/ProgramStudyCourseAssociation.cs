@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class ProgramStudyCourseAssociation : BaseEntity
+    public partial class ProgramStudyCourseAssociation:BaseEntity
     {
         public int ProgramStudyCourseId { get; set; }
         public int ProgramStudyId { get; set; }

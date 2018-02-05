@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class ExaminationType : BaseEntity
+    public partial class ExaminationType:BaseEntity
     {
         public int ExaminationTypeId { get; set; }
         public string ExamGroup { get; set; }

@@ -12,9 +12,26 @@ namespace EduRp.Service.IService
     {
         List<GetApplicationFormList_Result> GetApplicationFormList(int? id, int? userid, string tokenid, int? batchid, int? psid, int? courseid);
 
-        List<GetApplicationFormDetail_Result> GetApplicationFormDetail(int? id, int? userid, string tokenid, string admissionnumber);
+
 
         List<GetAdmissionNumber_Result> GetAdmissionNum(int? id, int? userid, string tokenid);
+
+        List<GetApplicationFormDetail_Result> GetApplicationFormDetail(int? id, int? userid, string tokenid, string admissionnumber);
+
+        List<GetApplicationFormDocumentDetail_Result> GetDocumentAccordion(int? id,int? userid,string tokenid, string admissionnum);
+
+        List<GetApplicationFormFeeDetail_Result> GetApplicationFee(int? id, int? userid, string tokenid, string admissionnum);
+
+        List<GetApplicationFormHeader_Result> GetApplicationHeader(int? id, int? userid, string tokenid, string admissionnum);
+
+        bool UpdateApplicationForm(int? id, GetApplicationFormDetail_Result applicationFormDetail);
+
+        bool UpdateDocument(int? id, GetApplicationFormDocumentDetail_Result applicaitonFormDocument);
+
+        bool UpdateHeader(int? id, GetApplicationFormHeader_Result applicationFormHaeder);
+
+
+
 
         List<GetApplicationFormGroupDetail_Result> GetApplicatonGroup(int? id, int? userid, string tokenid,string admissionnum);
 

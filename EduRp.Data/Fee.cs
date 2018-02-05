@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Fee : BaseEntity
+    public partial class Fee:BaseEntity
     {
         public int FeeId { get; set; }
         public string FeeLabel { get; set; }

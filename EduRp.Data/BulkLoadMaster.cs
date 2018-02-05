@@ -9,11 +9,10 @@
 
 namespace EduRp.Data
 {
-    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class BulkLoadMaster : BaseEntity
+    public partial class BulkLoadMaster:BaseMasters
     {
         public int BulkLoadMasterId { get; set; }
         public Nullable<int> UnivercityID { get; set; }

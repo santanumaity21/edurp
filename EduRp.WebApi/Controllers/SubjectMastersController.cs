@@ -27,10 +27,15 @@ namespace EduRp.WebApi.Controllers
         [HttpPost]     
         public IHttpActionResult Save(SubjectMaster subjectMaster)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             var isUpdate = subjectMasterService.InsUpdSubjectMaster(subjectMaster.UniversityId, subjectMaster);
             if (isUpdate == true)
-                return Ok();
+                return Ok(subjectMaster.SubjectId);
             return BadRequest();
+            
         }
 
         [HttpDelete]

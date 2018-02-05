@@ -13,8 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-
-    public partial class Task : BaseEntity
+    public partial class Task:BaseEntity
     {
         public int TaskId { get; set; }
         public string TaskName { get; set; }

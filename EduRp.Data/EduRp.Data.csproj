@@ -127,6 +127,7 @@
     <Compile Include="ApplicationFormTemplate.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BaseMasters.cs" />
     <Compile Include="BatchApplicationFormAssociation.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
@@ -148,8 +149,10 @@
     <Compile Include="ClassRoomMaster.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Core\Entity.cs" />
     <Compile Include="Core\Foundation\BaseEntity.cs" />
     <Compile Include="Core\Foundation\IEntity.cs" />
+    <Compile Include="Core\IEntity.cs" />
     <Compile Include="CourseMaster.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
@@ -202,6 +205,9 @@
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetApplicationFormDocumentDetail_Result.cs">
+      <DependentUpon>EduRpModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetApplicationFormFeeDetail_Result.cs">
       <DependentUpon>EduRpModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetApplicationFormFieldDetail_Result.cs">
