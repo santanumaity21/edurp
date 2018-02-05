@@ -36,6 +36,7 @@
                 cd.PsId = data.ProgramStudyId;
                 return cd;
             } else if (['getLinkedProgramStudyOfBatch',
+                'getLinkedProgrmStudiesOfBatch',
                 'getLinkedFeesOfBatch',
                 'getUnlinkedProgramStudyOfBatch',
                 'getUnlinkedFeesOfBatch'].indexOf(url) !== -1) {
@@ -46,10 +47,19 @@
                 var cd = this.fetchMainCookieData();
                 cd.cId = data.CourseId;
                 return cd;
-            }else {
+            } else if (['getStdCounsellingDetail'].indexOf(url) !== -1) {
+                var cd = this.fetchMainCookieData();
+                cd.bId = data.BatchId;
+                cd.PsId = data.ProgramStudyId;
+                cd.cId = data.CourseId;
+                return cd;
+            }
+            else {
                 return this.fetchMainCookieData();
             }
         };
+
+        
 
         var _executeAPICall = function (url, method, data) {
             var deferred = $q.defer();

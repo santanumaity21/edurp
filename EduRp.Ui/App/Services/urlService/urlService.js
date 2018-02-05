@@ -3,10 +3,10 @@
 var apiPrefix = 'http://localhost:50381/';
 var urlService =
     {
-        getAdmissionList: localhost ? '/sampleData/StudentPortal/studentPortal.json' : '/sampleData/StudentPortal/studentPortal.json',
+        getAdmissionList: localhost ? '/sampleData/StudentPortal/studentPortal.json' : apiPrefix + 'api/StudentDashBoard/GetApplicationFormList?id=1&userid=3&tokenid=sdsadd&batchid=null&psid=null&courseid=null',
 
         addStudentAdmissionForm: localhost ? '' : apiPrefix + '',
-        getStdCounsellingDetail: localhost ? '/sampleData/ManageStudentCounsellingDetail/manageStudentCounsellingDetail.json' : apiPrefix + '',
+        getStdCounsellingDetail: localhost ? '/sampleData/StudentPortal/studentPortal.json' : apiPrefix + 'api/StudentDashBoard/GetApplicationFormList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&batchid={{bId}}&psid={{PsId}}&CourseId={{cId}}',
 
         getCourseList: localhost ? '/sampleData/Course/list.json' : apiPrefix + 'api/CourseMasters/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
         addCourse: localhost ? '/sampleData/Course/add.json' : apiPrefix + 'api/CourseMasters/Save/',
@@ -45,6 +45,7 @@ var urlService =
         //deleteTask: localhost ? ' ' : apiPrefix + 'api/Tasks/Delete/',
 
         getBatch: localhost ? ' ' : apiPrefix + 'api/BatchMasters/Get?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        getLinkedProgrmStudiesOfBatch: localhost ? ' ' : apiPrefix + 'api/ProgramStudies/GetBatchProgramStudyList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&batchid={{bId}}',
         //addBatch: localhost ? ' ' : apiPrefix + 'api/BatchMasters/Save/', 
         //updateBatch: localhost ? ' ' : apiPrefix + 'api/BatchMasters/Save/',
         //deleteTask: localhost ? ' ' : apiPrefix + 'api/Tasks/Delete/',

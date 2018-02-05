@@ -31,7 +31,7 @@ namespace EduRp.WebApi.Controllers
         [HttpDelete]
         public IHttpActionResult UnLink([FromBody]List<ProgramStudyCourseAssociation> prgmcourseassociation)
         {
-                var isDeleted = programCourseAssociationService.LinkPrgmCourse(prgmcourseassociation[0].UniversityId, prgmcourseassociation);
+                var isDeleted = programCourseAssociationService.UnLinkPrgmCourse(prgmcourseassociation[0].UniversityId, prgmcourseassociation);
                 if (isDeleted == true)
                     return Ok();
 

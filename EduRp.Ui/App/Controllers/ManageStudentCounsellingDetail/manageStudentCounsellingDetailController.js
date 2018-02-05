@@ -5,9 +5,9 @@
         .module('EduRpApp')
         .controller('manageStudentCounsellingDetailController', manageStudentCounsellingDetailController);
 
-    manageStudentCounsellingDetailController.$inject = ['$scope','$q', 'manageStudentCounsellingDetailService', 'errorHandler', 'commonService'];
+    manageStudentCounsellingDetailController.$inject = ['$scope', '$q', 'manageStudentCounsellingDetailService', 'errorHandler', 'commonService','programStudyService'];
 
-    function manageStudentCounsellingDetailController($scope, $q, manageStudentCounsellingDetailService, errorHandler, commonService) {
+    function manageStudentCounsellingDetailController($scope, $q, manageStudentCounsellingDetailService, errorHandler, commonService, programStudyService) {
         $scope.title = 'manageStudentCounsellingDetailController';
 
         activate();
@@ -16,6 +16,15 @@
 
         $scope.managestdcounsellingData = [];
         $scope.filteredData = [];
+        $scope.batchList = [];
+        $scope.programStudyData = [];
+        $scope.courseData = [];
+
+        $scope.selectedBatch = null;
+        $scope.selectedPS = null;
+        $scope.selectedCourse = null;
+
+        $scope.mainContentSubPart = false;
         $scope.currentPage = 1
             , $scope.numPerPage = 10
             , $scope.maxSize = 5;
@@ -41,18 +50,84 @@
         (function startup() {
 
             $q.all([
-                manageStudentCounsellingDetailService.getStdCounsellingDetail()
+                manageStudentCounsellingDetailService.selectBatch()
             ]).then(function (data) {
+                console.log(data);
                 if (data !== null) {
-                    $scope.managestdcounsellingData = data[0].results;
-                    $scope.adjustStdCouncellingList();
+                    $scope.batchList = data[0].results;
                 }
             }, function (reason) {
                 errorHandler.logServiceError('manageStudentCounsellingDetailController', reason);
             }, function (update) {
                 errorHandler.logServiceNotify('manageStudentCounsellingDetailController', update);
             });
+
+           
         })();
+
+
+        $scope.fetchProgramStudyByBatchId= function (batchData) {
+            var selBatch = angular.copy(batchData);
+            if (selBatch) {
+                $q.all([
+                    manageStudentCounsellingDetailService.getLinkedProgrmStudiesOfBatch(selBatch)
+                ]).then(function (data) {
+                    // $scope.mainContentSubPart = true;
+                    if (data != null) {
+                        $scope.programStudyData = data[0].results;
+
+                    }
+                }, function (reason) {
+                    errorHandler.logServiceError('programStudyController', reason);
+                });
+            } else {
+                alert("Please select a course");
+            }
+        };
+
+        $scope.fetchCourseByProgramStudyId = function (psData) {
+            var selPS = angular.copy(psData);
+            if (selPS) {
+                $q.all([
+                    programStudyService.getLinkedCoursesOfProgramStudy(selPS)
+                ]).then(function (data) {
+                    // $scope.mainContentSubPart = true;
+                    if (data != null) {
+                        $scope.courseData = data[0].results;
+
+                    }
+                }, function (reason) {
+                    errorHandler.logServiceError('programStudyController', reason);
+                });
+            } else {
+                alert("Please select a course");
+            }
+        };
+
+        $scope.fetchStudentDataByCriteria = function () {
+            var selBatch = angular.copy($scope.selectedBatch);
+            var selPS = angular.copy($scope.selectedPS);
+            var selCourse = angular.copy($scope.selectedCourse);
+
+            var mergedObject = angular.extend(selBatch, selPS, selCourse);
+
+            console.log(mergedObject);
+            if (mergedObject) {
+                $q.all([
+                    manageStudentCounsellingDetailService.getStdCounsellingDetail(mergedObject)
+                ]).then(function (data) {
+
+                    if (data !== null) {
+                        $scope.managestdcounsellingdata = data[0].results;
+                        $scope.mainContentSubPart = true;
+                    }
+                }, function (reason) {
+                    errorhandler.logserviceerror('managestudentcounsellingdetailcontroller', reason);
+                }, function (update) {
+                    errorhandler.logservicenotify('managestudentcounsellingdetailcontroller', update);
+                });
+            }
+        };
 
     }
 })();

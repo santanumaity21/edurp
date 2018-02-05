@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class TaskEmployeeAssociation:BaseEntity
+    public partial class TaskEmployeeAssociation : BaseEntity
     {
         public int TaskEmployeeId { get; set; }
         public Nullable<int> TaskId { get; set; }

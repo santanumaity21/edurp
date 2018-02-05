@@ -12,7 +12,7 @@ namespace EduRp.Data
     using EduRp.Data.Core.Foundation;
     using System;
     
-    public partial class GetApplicationFormHeader_Result:BaseEntity
+    public partial class GetApplicationFormHeader_Result : BaseEntity
     {
         public int ApplicationFormId { get; set; }
         public Nullable<int> AppFormTemplateId { get; set; }

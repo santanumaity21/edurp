@@ -13,13 +13,23 @@
             return commonService.executeAPICall(url, method, data);
         };
 
-        var _getStdCounsellingDetail = function () {
-            return execute('getStdCounsellingDetail','get', null);
+        var _getStdCounsellingDetail = function (mergedObject) {
+            return execute('getStdCounsellingDetail', 'get', mergedObject);
 
         };
 
+        var _selectBatch = function () {
+            return execute('getBatch', 'get', null);
+
+        };
+        var _getLinkedProgrmStudiesOfBatch = function (selBatch) {
+            return execute('getLinkedProgrmStudiesOfBatch', 'get', selBatch)
+        }
+
         return {
             getStdCounsellingDetail: _getStdCounsellingDetail,
+            selectBatch: _selectBatch,
+            getLinkedProgrmStudiesOfBatch: _getLinkedProgrmStudiesOfBatch
         };
 
     }
