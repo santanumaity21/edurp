@@ -1866,5 +1866,26 @@ namespace EduRp.Data
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<xappform_Result>("xappform");
         }
+    
+        public virtual ObjectResult<GetApplicationFormFeeDetail_Result> GetApplicationFormFeeDetail(Nullable<int> universityid, Nullable<int> userid, string token, string admissionnumber)
+        {
+            var universityidParameter = universityid.HasValue ?
+                new ObjectParameter("universityid", universityid) :
+                new ObjectParameter("universityid", typeof(int));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            var tokenParameter = token != null ?
+                new ObjectParameter("token", token) :
+                new ObjectParameter("token", typeof(string));
+    
+            var admissionnumberParameter = admissionnumber != null ?
+                new ObjectParameter("admissionnumber", admissionnumber) :
+                new ObjectParameter("admissionnumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetApplicationFormFeeDetail_Result>("GetApplicationFormFeeDetail", universityidParameter, useridParameter, tokenParameter, admissionnumberParameter);
+        }
     }
 }

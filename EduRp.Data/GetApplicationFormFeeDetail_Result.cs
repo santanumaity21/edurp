@@ -9,15 +9,12 @@
 
 namespace EduRp.Data
 {
-    using EduRp.Data.Core.Foundation;
     using System;
-    using System.Collections.Generic;
     
-    public partial class CourseSubjectAssociation:BaseEntity
+    public partial class GetApplicationFormFeeDetail_Result
     {
-        public int CourseSubjectId { get; set; }
-        public int CourseId { get; set; }
-        public int SubjectId { get; set; }
-        public Nullable<int> UniversityId { get; set; }
+        public string Fee { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public string Type { get; set; }
     }
 }

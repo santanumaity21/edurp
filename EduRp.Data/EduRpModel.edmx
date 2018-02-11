@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="edurp_devModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="edurp_devModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApplicationForm">
           <Key>
             <PropertyRef Name="ApplicationFormId" />
@@ -83,6 +83,7 @@
           <Property Name="AppFormTemplateId" Type="int" Nullable="false" />
           <Property Name="FeeId" Type="int" Nullable="false" />
           <Property Name="UniversityId" Type="int" />
+          <Property Name="Orderby" Type="tinyint" />
         </EntityType>
         <EntityType Name="ApplicationFormField">
           <Key>
@@ -728,6 +729,12 @@
           <Parameter Name="token" Type="varchar" Mode="In" />
           <Parameter Name="admissionnumber" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="GetApplicationFormFeeDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="universityid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="token" Type="varchar" Mode="In" />
+          <Parameter Name="admissionnumber" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="GetApplicationFormFieldDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="universityid" Type="int" Mode="In" />
           <Parameter Name="userid" Type="int" Mode="In" />
@@ -1283,8 +1290,7 @@
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserUniversityAssociation" EntityType="Self.UserUniversityAssociation" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="edurp_devModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1366,6 +1372,7 @@
           <Property Name="AppFormTemplateId" Type="Int32" Nullable="false" />
           <Property Name="FeeId" Type="Int32" Nullable="false" />
           <Property Name="UniversityId" Type="Int32" />
+          <Property Name="Orderby" Type="Byte" />
         </EntityType>
         <EntityType Name="ApplicationFormField">
           <Key>
@@ -2135,10 +2142,10 @@
             <Parameter Name="batchid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBulkData" ReturnType="Collection(edurp_devModel.GetBulkData_Result)">
-            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          <Parameter Name="universityid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBulkLoadDetail" ReturnType="Collection(edurp_devModel.GetBulkLoadDetail_Result)">
-            <Parameter Name="universityid" Mode="In" Type="Int32" />
+          <Parameter Name="universityid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GetBulkLoadDetailById" ReturnType="Collection(edurp_devModel.GetBulkLoadDetailById_Result)">
             <Parameter Name="universityid" Mode="In" Type="Int32" />
@@ -2391,7 +2398,7 @@
           </FunctionImport>
           <FunctionImport Name="pGetNotification" ReturnType="Collection(edurp_devModel.pGetNotification_Result)" />
           <FunctionImport Name="pGetTemplate" ReturnType="Collection(edurp_devModel.pGetTemplate_Result)">
-            <Parameter Name="template" Mode="In" Type="String" />
+          <Parameter Name="template" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pGetTemplateKeywords" ReturnType="Collection(edurp_devModel.pGetTemplateKeywords_Result)">
             <Parameter Name="csv" Mode="In" Type="String" />
@@ -2405,7 +2412,7 @@
             <Parameter Name="Status" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pNotificationUpd">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="pTemplateKeywords" ReturnType="Collection(edurp_devModel.pTemplateKeywords_Result)">
             <Parameter Name="csv" Mode="In" Type="String" />
@@ -2560,6 +2567,12 @@
             <Parameter Name="lastloginipaddress" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="xappform" ReturnType="Collection(edurp_devModel.xappform_Result)" />
+          <FunctionImport Name="GetApplicationFormFeeDetail" ReturnType="Collection(edurp_devModel.GetApplicationFormFeeDetail_Result)">
+            <Parameter Name="universityid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="token" Mode="In" Type="String" />
+            <Parameter Name="admissionnumber" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="GetAdmissionNumber_Result">
           <Property Type="String" Name="AdmissionNumber" Nullable="true" MaxLength="10" />
@@ -3080,6 +3093,11 @@
           <Property Type="String" Name="ProgramStudyId" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="CourseId" Nullable="true" MaxLength="500" />
         </ComplexType>
+        <ComplexType Name="GetApplicationFormFeeDetail_Result">
+          <Property Type="String" Name="Fee" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="14" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3163,6 +3181,7 @@
           <EntitySetMapping Name="ApplicationFormFeeAssociations">
             <EntityTypeMapping TypeName="edurp_devModel.ApplicationFormFeeAssociation">
               <MappingFragment StoreEntitySet="ApplicationFormFeeAssociation">
+                <ScalarProperty Name="Orderby" ColumnName="Orderby" />
                 <ScalarProperty Name="AppFormFeeId" ColumnName="AppFormFeeId" />
                 <ScalarProperty Name="AppFormTemplateId" ColumnName="AppFormTemplateId" />
                 <ScalarProperty Name="FeeId" ColumnName="FeeId" />
@@ -4642,6 +4661,15 @@
                 <ScalarProperty Name="BatchId" ColumnName="BatchId" />
                 <ScalarProperty Name="ProgramStudyId" ColumnName="ProgramStudyId" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetApplicationFormFeeDetail" FunctionName="edurp_devModel.Store.GetApplicationFormFeeDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="edurp_devModel.GetApplicationFormFeeDetail_Result">
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

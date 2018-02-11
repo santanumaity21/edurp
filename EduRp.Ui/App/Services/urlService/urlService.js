@@ -77,13 +77,16 @@ var urlService =
         getNotLinkedCourseList : localhost ? '' : apiPrefix + 'api/CourseSubjectAssociations/GetCourseSubjectNotLinkedList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&CourseId={{cId}}',
         removeSubjectfromList : localhost ? '' : apiPrefix + 'api/CourseSubjectAssociations/UnLink/',
         addSubjectInList : localhost ? '' : apiPrefix + 'api/CourseSubjectAssociations/Link/',
-
+        getCourseSubjectList: localhost ? '' : apiPrefix + 'api/SubjectMasters/GetCourseSubjectList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&CourseId={{cId}}',
 
         getBulkModule: localhost ? '/sampleData/bulkUpload.json' : apiPrefix + '/api/BulkLoadMaster/Get/1',
 
-        getDynamicFormData: localhost ? '/sampleData/StudentPortal/stdapplicationformdetail.json' : '/sampleData/StudentPortal/stdapplicationformdetail.json',
-		
-		getScheduleDetails : localhost ? '/sampleData/scheduleExam/scheduledExam.json' : apiPrefix + ''
+        getDynamicFormData: localhost ? '/sampleData/StudentPortal/stdapplicationformdetail.json' : apiPrefix + 'api/StudentAdmissionForms/GetApplicationFormDetail?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&admissionnumber=',
+        getApplicationFormFeeDetail: localhost ? '/sampleData/StudentPortal/stdapplicationformdetail.json' : apiPrefix + 'api/StudentAdmissionForms/GetApplicationFormFeeDetail?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&admissionnumber={{admissionnumber}}',
+        getApplicationFormHeader: localhost ? '' : apiPrefix + 'api/StudentAdmissionForms/GetApplicationFormHeader?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&admissionnumber={{admissionnumber}}',
+
+
+        getScheduleDetails: localhost ? '/sampleData/scheduleExam/scheduledExam.json' : apiPrefix + ''
         
 		
 

@@ -98,6 +98,7 @@
     <Compile Include="IService\IProgramStudyCourseAssociationService.cs" />
     <Compile Include="IService\IProgramStudyFeeAssociationService.cs" />
     <Compile Include="IService\IStudentAdmissionFormService.cs" />
+    <Compile Include="IService\IStudentDashBoardService.cs" />
     <Compile Include="IService\ISubjectChapterAssociationService.cs" />
     <Compile Include="IService\ITaskService.cs" />
     <Compile Include="IService\ITaskStaffAssociationService.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Service\ProgramStudyFeeAssociationService.cs" />
     <Compile Include="Service\ProgramStudyService.cs" />
     <Compile Include="Service\StudentAdmissionFormService.cs" />
+    <Compile Include="Service\StudentDashBoardService.cs" />
     <Compile Include="Service\SubjectChapterAssociationService.cs" />
     <Compile Include="Service\SubjectMasterService.cs" />
     <Compile Include="Service\TaskService.cs" />

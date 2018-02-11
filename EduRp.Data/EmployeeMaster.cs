@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class EmployeeMaster : BaseEntity
+    public partial class EmployeeMaster:BaseEntity
     {
         public int UniversityId { get; set; }
         public int EmployeeId { get; set; }

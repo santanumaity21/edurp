@@ -9,11 +9,10 @@
 
 namespace EduRp.Data
 {
-    using EduRp.Data.Core.Foundation;
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentMaster : BaseEntity
+    public partial class StudentMaster
     {
         public int StudentId { get; set; }
         public string Type { get; set; }

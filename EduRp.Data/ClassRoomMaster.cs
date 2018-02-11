@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class ClassRoomMaster : BaseEntity
+    public partial class ClassRoomMaster:BaseEntity
     {
         public int ClassRoomId { get; set; }
         public string BuildingCode { get; set; }

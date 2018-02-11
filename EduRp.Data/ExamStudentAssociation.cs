@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class ExamStudentAssociation : BaseEntity
+    public partial class ExamStudentAssociation:BaseEntity
     {
         public int ExamStudentAssociationId { get; set; }
         public Nullable<int> ExaminationScheduleDetailId { get; set; }

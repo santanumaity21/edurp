@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class BulkLoadMaster : BaseEntity
+    public partial class BulkLoadMaster:BaseEntity
     {
         public int BulkLoadMasterId { get; set; }
         public Nullable<int> UnivercityID { get; set; }

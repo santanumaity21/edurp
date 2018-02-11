@@ -13,7 +13,7 @@ namespace EduRp.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class BatchFeeAssociation : BaseEntity
+    public partial class BatchFeeAssociation:BaseEntity
     {
         public int BatchFeeId { get; set; }
         public int BatchId { get; set; }
