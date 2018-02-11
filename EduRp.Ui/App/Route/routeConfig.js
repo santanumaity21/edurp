@@ -90,6 +90,9 @@
 				.when('/ScheduleExamination', {
                     templateUrl: '/App/Templates/ScheduleExamination/scheduleExamination.html',
                     controller: 'scheduleExaminationController'
+                }).when('/StudentPortal', {
+                    templateUrl: '/App/Templates/StudentPortal/StudentPortal.html',
+                    controller: 'StudentPortalController'
                 })
                 .otherwise({
                     templateUrl: '/App/Templates/Shared/_404.html'

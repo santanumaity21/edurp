@@ -86,7 +86,8 @@ var urlService =
         getApplicationFormHeader: localhost ? '' : apiPrefix + 'api/StudentAdmissionForms/GetApplicationFormHeader?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&admissionnumber={{admissionnumber}}',
 
 
-        getScheduleDetails: localhost ? '/sampleData/scheduleExam/scheduledExam.json' : apiPrefix + ''
+        getScheduleDetails: localhost ? '/sampleData/scheduleExam/scheduledExam.json' : apiPrefix + '',
+        getAdmissionList: localhost ? '/sampleData/StudentPortal/studentPortal.json' : apiPrefix + 'api/StudentDashBoard/GetApplicationFormList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&batchid=null&psid=null&courseid=null'
         
 		
 
