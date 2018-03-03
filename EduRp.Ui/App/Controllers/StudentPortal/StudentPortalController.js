@@ -45,6 +45,10 @@
 
         $rootScope.$broadcast('topic', 'message');
 
+        $scope.addNewAdmissionForm = function () {
+            $location.path('/StudentAdmissionForm/');
+        };
+
         (function startup() {
 
             $q.all([

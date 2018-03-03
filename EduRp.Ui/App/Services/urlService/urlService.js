@@ -68,6 +68,10 @@ var urlService =
         getApplicationFormHeader: localhost ? '' : apiPrefix + '/api/StudentAdmissionForms/GetApplicationFormHeader?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&admissionnumber={{admissionnumber}}',
         getAdmissionList: localhost ? '/sampleData/StudentPortal/studentPortal.json' : apiPrefix + '/api/StudentDashBoard/GetApplicationFormList?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}&batchid=null&psid=null&courseid=null',
         addStudentAdmissionForm: localhost ? '' : apiPrefix + '',
+        getAdmissionNumber: localhost ? '' : apiPrefix + '/api/StudentDashBoard/GetAdmissionNumber?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        saveStudentAdmissionForm: localhost ? '' : apiPrefix + '/api/StudentAdmissionForms/UpdateApplicationForm',
+        addStudentAdmissionForm: localhost ? '' : apiPrefix + '/api/StudentAdmissionForms/UpdateApplicationForm',
+
 
         //StudentCounselingPage & ReviewandApproveDetail
 
