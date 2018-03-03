@@ -26,6 +26,41 @@
                                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                         <div class="panel-body">
                                                 <div class="row">
+                                                    <div  class="col-md-12" data-ng-if="jsondata.AppFormGroupLabel ==='grppersonalinfo'">
+                                                        <div class="form-group m-b-0">
+                                                            <label class="control-label">Upload Photo</label>
+                                                            <input type="file" class="filestyle" data-buttonname="btn-primary" id="filestyle-4" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
+                                                            <div class="bootstrap-filestyle input-group"><input type="text" class="form-control" data-ng-model="personalImage" placeholder="" disabled=""> 
+                                                            <span class="group-span-filestyle input-group-btn" tabindex="0"><label for="filestyle-4" class="btn btn-primary ">
+                                                                <span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span> <span class="buttonText">Choose file</span></label></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12" data-ng-if="jsondata.AppFormGroupLabel ==='grpdocumentinfo'">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="userName">Document Type<span class="text-danger">*</span></label>
+                                                                <select id="heard" class="form-control" required="">
+                                                                    <option value="">Choose..</option>
+                                                                    <option value="Resume">Resume</option>
+                                                                    <option value="Certificates">Certificates</option>
+                                                                    <option value="other">Other..</option>
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+
+
+                                                            <div class="form-group m-b-0">
+                                                                <label class="control-label">Upload Document</label>
+                                                                <input type="file" class="filestyle" data-buttonname="btn-primary" id="filestyle-4" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);"><div class="bootstrap-filestyle input-group"><input type="text" class="form-control " placeholder="" disabled=""> <span class="group-span-filestyle input-group-btn" tabindex="0"><label for="filestyle-4" class="btn btn-primary "><span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span> <span class="buttonText">Choose file</span></label></span></div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-4" data-ng-repeat="fields in jsondata.fields">
                                                             <div class="form-group" data-ng-if="fields.FieldName ==='fldName'">
                                                                 <label for="userName">Name<span class="text-danger">*</span></label>
@@ -445,6 +480,30 @@
                                                                 <label class="control-label">Total</label>
                                                                 <h2>$1280</h2>
                                                             </div>
+
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldprogramstudyid'">
+                                                            <label for="userName">select Program Interested<span class="text-danger">*</span></label>
+                                                            <select id="heard" class="form-control" data-ng-model="modAdmissionObj[fields.FieldName]" data-ng-options="fps.ProgramStudyName for fps in programStudyData" ng-change="fetchRelatedDataOfPS(modAdmissionObj[fields.FieldName])">
+                                                                <option value="" disabled="" selected="" class="ng-binding">Please select the value</option>
+                                                                <option value="">{{'selectAProgram'| translate}}</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldcourseid'">
+                                                            <label for="userName">Select Course Interested<span class="text-danger">*</span></label>
+                                                            <select id="heard" class="form-control" data-ng-model="modAdmissionObj[fields.FieldName]" data-ng-options="fps.CourseName for fps in courseData" ng-change="fetchRelatedDataOfCourse(modAdmissionObj[fields.FieldName])">
+                                                                <option value="" disabled="" selected="" class="ng-binding">Please select the value</option>
+                                                                <option value="">{{'selectACourse'| translate}}</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group" data-ng-if="fields.FieldName ==='fldsubjectid'">
+                                                            <label for="userName">Select Subjects<span class="text-danger">*</span></label>
+                                                            <select id="heard" class="form-control" data-ng-model="modAdmissionObj[fields.FieldName]" data-ng-options="fps.SubjectName for fps in subjectData">
+                                                                <option value="" disabled="" selected="" class="ng-binding">Please select the value</option>
+                                                                <option value="">{{'selectASubject'| translate}}</option>
+                                                            </select>
+                                                        </div>
                                                        
                                                         <!--<div class="form-group" data-ng-if="fields.FieldName ==='fldfathername'">
                                         <label for="heard">Father name<span class="text-danger">*</span></label>

@@ -51,7 +51,7 @@
                     }
                     if (eov.AppFormGroupLabel === 'grpfee') {
                         $q.all([
-                            studentAdmissionFormService.getApplicationFormFeeDetail()
+                            studentAdmissionFormService.getApplicationFormFeeDetail({ admissionnumber: $scope.admissionNumber })
                         ]).then(function (data) {
                             $scope.mainContent = true;
                             if (data != null) {
@@ -67,7 +67,7 @@
                     }
                     if (eov.AppFormGroupLabel === 'grpprevedudetails') {
                         $q.all([
-                            studentAdmissionFormService.getApplicationFormHeader()
+                            studentAdmissionFormService.getApplicationFormHeader({ admissionnumber: $scope.admissionNumber })
                         ]).then(function (data) {
                             $scope.mainContent = true;
                             if (data != null) {
