@@ -21,6 +21,10 @@
                     requiresLogin: true,
                     controller: 'courseListController'
                 })
+                .when('/Admin/ProgramStudy', {
+                    templateUrl: '/App/Templates/ProgramStudyMaster/prgmstudymaster.html',
+                    controller: 'prgmStudyMasterController'
+                })
                 .when('/Admin/Subject', {
                     templateUrl: '/App/Templates/Subject/subject.html',
                     requiresLogin: true,
@@ -36,6 +40,11 @@
                     requiresLogin: true,
                     controller: 'createBatchController'
                 })
+                .when('/Admin/BatchMaster', {
+                    templateUrl: '/App/Templates/BatchMaster/batchMaster.html',
+                    requiresLogin: true,
+                    controller: 'batchMasterController'
+                })
                 .when('/Admin/AcademicBatch', {
                     templateUrl: '/App/Templates/AcademicBatch/academicbatch.html',
                     requiresLogin: true,
@@ -47,11 +56,13 @@
                     controller: 'taskListController'
                 })
                 .when('/Admin/ClassRoom', {
-                    templateUrl: '/App/Templates/Classroom/classroom.html',
+                    templateUrl: '/App/Templates/ClassRoom/classroom.html',
+                    requiresLogin: true,
                     controller: 'classRoomListController'
                 })
                 .when('/Admin/Employees', {
                     templateUrl: '/App/Templates/Employees/employees.html',
+                    requiresLogin: true,
                     controller: 'employeesListController'
                 })
                 .when('/Admin/ExaminationType', {
@@ -79,6 +90,10 @@
                     templateUrl: '/App/Templates/ManageCourses/ManageCourses.html',
                     controller: 'managecourcesController'
                 })
+                .when('/ManageSubject', {
+                    templateUrl: '/App/Templates/ManageSubject/manageSubject.html',
+                    controller: 'manageSubjectController'
+                })
                 .when('/ManageTask', {
                     templateUrl: '/App/Templates/ManageTask/manageTask.html',
                     controller: 'manageTaskController'
@@ -87,7 +102,7 @@
                     templateUrl: '/App/Templates/ScheduleExamination/scheduleExamination.html',
                     controller: 'scheduleExaminationController'
                 })
-                .when('/StudentAdmissionForm', {
+                .when('/StudentAdmissionForm/:admissionNumber?', {
                     templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
                     controller: 'studentAdmissionFormController'
                 })

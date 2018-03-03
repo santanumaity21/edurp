@@ -21,15 +21,16 @@
             return execute('getCourseSubject', 'get', cid);
         };
 
-        var getNotLinkedCourseList = function () {
-            return execute('getNotLinkedCourseList', 'get', null);
+        var getNotLinkedCourseList = function (data) {
+            return execute('getNotLinkedCourseList', 'get', data);
         };
 
         var removeSubjectFromList = function(selectedSubject){
             return execute('removeSubjectfromList', 'delete', selectedSubject);
         };
 
-        var addSubjectInCorseList = function(addSubjectList){
+        var addSubjectInCorseList = function (addSubjectList) {
+            debugger;
             return execute('addSubjectInList', 'post', addSubjectList);
         };
         var _getCourseSubjectList = function (cid) {

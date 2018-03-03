@@ -13,7 +13,7 @@
         $scope.stdPortalData = [];
         $scope.filteredData = [];
         $scope.currentPage = 1
-            , $scope.numPerPage = 5
+            , $scope.numPerPage = 10
             , $scope.maxSize = 5;
         $scope.orderByField = 'FormNo';
         $scope.reverseSort = false;
@@ -29,7 +29,7 @@
             $scope.adjustStdPortalData();
         });
 
-        $scope.showPerPageDataOptions = [5, 10, 25, 50, 100];
+        $scope.showPerPageDataOptions = [10, 25, 50, 100];
 
         $scope.modSubjectObj = {};
         $scope.modalType = '';

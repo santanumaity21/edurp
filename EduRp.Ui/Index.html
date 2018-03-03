@@ -244,7 +244,9 @@
                             </li>
 
                             <li class="dropdown navbar-c-items">
-                                <a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><img src="../../Assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
+                                <a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true">
+                                <img src="../../Assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> 
+                                </a>
                             </li>
 
                         </ul>
@@ -284,11 +286,11 @@
                                         <!--ng-hide="vm.userid === 4"-->
                                         <ul class="submenu">
                                             <li ng-if="vm.roleId ==='1'"><a ng-click="vm.goToPage('/Admin/AcademicBatch')">Batch</a></li>
-                                            <li ng-if="vm.roleId ==='1'"><a href="#">Program Study</a></li>
+                                            <li ng-if="vm.roleId ==='1'"><a ng-click="vm.goToPage('/Admin/ProgramStudy/')" >Program Study</a></li>
                                             <li ng-if="vm.roleId ==='1'"><a ng-click="vm.goToPage('/Admin/CourseList/')">Show Course</a></li>
                                             <li ng-if="vm.roleId ==='1'"><a ng-click="vm.goToPage('/Admin/Subject')">Subjects</a></li>
                                             <li ng-if="vm.roleId ==='1'"><a ng-click="vm.goToPage('/Admin/Chapters')">Chapters</a></li>
-                                            <li ng-if="vm.roleId ==='1'"><a ng-click="vm.goToPage('/Admin/Employees')">Chapters</a></li>
+                                            <li ng-if="vm.roleId ==='1'"><a ng-click="vm.goToPage('/Admin/Employees')">Employees</a></li>
                                             <li ng-if="vm.roleId ==='1'"><a ng-click="vm.goToPage('/Admin/ExaminationType')">Examination Type</a></li>
                                             <li ng-if="(vm.roleId ==='1')||(vm.roleId ==='3')"><a ng-click="vm.goToPage('/ScheduleExamination')">Calendar</a></li>
                                             <li ng-if="vm.roleId ==='1'"><a ng-click="vm.goToPage('/Admin/Task')">Task</a></li>
@@ -319,7 +321,7 @@
                                     <li class="has-submenu">
                                         <a href="#">Students</a>
                                         <ul class="submenu">
-                                            <li ng-if="(vm.roleId ==='1')||(vm.roleId ==='3')"><a href="#">Student Profile</a></li>
+                                            <li ng-if="(vm.roleId ==='1')||(vm.roleId ==='3')"><a ng-click="vm.goToPage('/StudentDashboard')">Student Profile</a></li>
                                         </ul>
                                     </li>
                                     <li class="has-submenu" ng-if="vm.roleId ==='1'">
