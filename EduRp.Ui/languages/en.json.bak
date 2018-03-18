@@ -42,7 +42,6 @@
   "CourseGradeAddBtn": "Add New Course / Grade",
   "subjectAddBtn": "Add New Subject",
 
-  "UploadDocumentHeader": "Upload Document",
   "CourseGradeAddHeader": "Add New Course / Grade",
   "CourseGradeUpdateHeader": "Update New Course / Grade",
   "goBtn": "Go",
@@ -87,9 +86,7 @@
   "removeFeesBtn": "Remove Fees",
   "feesCodeColumn": "Fees Code",
   "feesColumn": "Fees",
-  "reportsColumn": "Reports",
-  "previewColumn": "Preview",
-  "downloadColumn": "Download",
+
   "studentIdColumn": "Student ID",
   "studentNameColumn": "Student Name",
   "studentfeesColumn": "Fees",
@@ -104,21 +101,6 @@
 
   "RegistrationNoColumn": "RegistrationNo",
   "NameColumn": "Name",
-  "ClassColumn": "Class",
-  "RegNoOrNISNColumn": "Reg No/NSIN",
-  "SectionColumn": "Section",
-  "SubjectColumn": "Subject",
-  "MarkColumn": "Mark",
-  "BandColumn": "Band",
-  "ProjectColumn": "Project",
-  "GradeColumn": "Grade",
-  "LearningSkillsColumn": "Learning Skills,Personal and Work Habits",
-  "LearningSkillsCColumn": "C",
-  "LearningSkillsFColumn": "F",
-  "LearningSkillsSColumn": "S",
-  "LearningSkillsRColumn": "R",
-  "CurricularColumn": "Curricular",
-
   "ProgramStudyColumn": "ProgramStudy",
   "CourseColumn": "Course",
   "StatusColumn": "Status",
@@ -140,7 +122,6 @@
 
   "breadcrumb3OfFees": "Fees",
   "breadcrumb3OfExaminationType": "Examination Type",
-  "breadcrumb3OfExaminationReport": "Examination Report",
 
   "manageBatch": "Manage Batch",
 
@@ -196,8 +177,6 @@
   "ProgramStudyMasterCodeColumn": "Program Study code",
   "ProgramStudyMasterNameColumn": "Program Study Name",
   "ProgramStudyMasterAcademicTermColumn": "Academic Term",
-  "ProgramStudyMasterSKSColumn": "SKS",
-  "examReportUpdateHeading": "Update Examination Report",
-  "examReportPreviewHeading": "Preview Examination Report"
+  "ProgramStudyMasterSKSColumn": "SKS"
 
 }

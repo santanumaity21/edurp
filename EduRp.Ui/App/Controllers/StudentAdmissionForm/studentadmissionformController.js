@@ -1,4 +1,4 @@
-﻿(function () {
+﻿﻿(function () {
     'use strict';
 
     angular
@@ -27,7 +27,7 @@
         $scope.admissionNumber = $routeParams.admissionNumber;
         $scope.mandatoryData = userProfile.getProfile();
         $scope.showThis = 'pageLoad';
-        
+
         $scope.modAdmissionObj = {};
 
         $scope.$watch('admissionFormData', function (admfd) {
@@ -84,23 +84,23 @@
                 }
 
             });
-            
-        }, true);
-     
 
-      
+        }, true);
+
+
+
         $scope.$on('topic', function (event, arg) {
             $scope.receiver = 'got your ' + arg;
         });
 
         $scope.closeAdmissionFormDetails = function (form) {
-          //  $scope.modAdmissionObj = null;
+            //  $scope.modAdmissionObj = null;
         };
 
         $scope.saveAdmissionFormDetails = function () {
             $scope.fldRequired = false;
             var postData = [];
-            
+
             $scope.showThis = 'pageLoad';
             angular.forEach($scope.orginalStudentAdmissionFormData, function (v, k) {
                 if (v.FieldName === 'fldRegisterationId') {
@@ -119,53 +119,53 @@
                     }
 
                 });
-               
+
             });
             $q.when([studentAdmissionFormService.saveStudentAdmissionForm(postData)]).then(function (data) {
                 $scope.showThis = 'mainContent';
-                }, function (error) {
-                    $scope.showThis = 'mainContent';
-                });
+            }, function (error) {
+                $scope.showThis = 'mainContent';
+            });
 
         };
         $scope.submitAdmissionFormDetails = function (form) {
             $scope.fldRequired = true;
             $scope.showThis = 'pageLoad';
             $timeout(function () {
-            if (form.$valid) {
-                var postData =[];
+                if (form.$valid) {
+                    var postData = [];
 
-                angular.forEach($scope.orginalStudentAdmissionFormData, function (v, k) {
-                    
-                    if (v.FieldName === 'fldRegisterationId') {
-                        if ($scope.admissionNumber) {
-                            v.Value = $scope.admissionNumber;
-                        }
-                        postData.push(v);
-                    }
-                    angular.forEach($scope.modAdmissionObj, function (sv, sk) {
-                        if (sk === v.FieldName) {
-                            v.Value = $scope.modAdmissionObj[sk];
-                            v.TokenId = $scope.mandatoryData.accessToken;
-                            v.UniversityId = $scope.mandatoryData.UniversityId;
-                            v.UserId = $scope.mandatoryData.userid;
+                    angular.forEach($scope.orginalStudentAdmissionFormData, function (v, k) {
+
+                        if (v.FieldName === 'fldRegisterationId') {
+                            if ($scope.admissionNumber) {
+                                v.Value = $scope.admissionNumber;
+                            }
                             postData.push(v);
-                        } 
+                        }
+                        angular.forEach($scope.modAdmissionObj, function (sv, sk) {
+                            if (sk === v.FieldName) {
+                                v.Value = $scope.modAdmissionObj[sk];
+                                v.TokenId = $scope.mandatoryData.accessToken;
+                                v.UniversityId = $scope.mandatoryData.UniversityId;
+                                v.UserId = $scope.mandatoryData.userid;
+                                postData.push(v);
+                            }
+
+                        });
 
                     });
+                    $q.when([studentAdmissionFormService.addStudentAdmissionForm(postData)]).then(function (data) {
+                        $scope.showThis = 'mainContent';
+                    }, function (error) {
+                        $scope.showThis = 'mainContent';
+                    });
+                } else {
 
-                });
-                $q.when([studentAdmissionFormService.addStudentAdmissionForm(postData)]).then(function (data) {
                     $scope.showThis = 'mainContent';
-                }, function (error) {
-                    $scope.showThis = 'mainContent';
-                });
-            } else {
-                
-                $scope.showThis = 'mainContent';
-                alert("Please fill up the all fields data");
-            }
-            
+                    alert("Please fill up the all fields data");
+                }
+
             }, 1000);
         };
 
@@ -196,11 +196,11 @@
                         angular.forEach($scope.admissionFormData, function (admv, admk) {
                             if (admv.AppFormGroupId === std.AppFormGroupId) {
                                 found = 1;
-                                $scope.admissionFormData[admk]['fields'].push({ AppFormFieldId: std.AppFormFieldId, FieldName: std.FieldName, Value: std.Value});
+                                $scope.admissionFormData[admk]['fields'].push({ AppFormFieldId: std.AppFormFieldId, FieldName: std.FieldName, Value: std.Value });
                             };
                         });
                         if (found === 0) {
-                            $scope.admissionFormData.push({ AppFormGroupId: std.AppFormGroupId, AppFormGroupLabel: std.AppFormGroupLabel, "fields": [{ AppFormFieldId: std.AppFormFieldId, FieldName: std.FieldName, Value: std.Value }]})
+                            $scope.admissionFormData.push({ AppFormGroupId: std.AppFormGroupId, AppFormGroupLabel: std.AppFormGroupLabel, "fields": [{ AppFormFieldId: std.AppFormFieldId, FieldName: std.FieldName, Value: std.Value }] })
                         }
 
                     });
@@ -214,7 +214,7 @@
 
         })();
 
-//accordion 3 functionality
+        //accordion 3 functionality
 
         $scope.fetchRelatedDataOfPS = function (psData) {
             var selPS = angular.copy(psData);
@@ -222,10 +222,10 @@
                 $q.all([
                     programStudyService.getLinkedCoursesOfProgramStudy(selPS)
                 ]).then(function (data) {
-                   // $scope.mainContentSubPart = true;
-                    if (data != null) { 
+                    // $scope.mainContentSubPart = true;
+                    if (data != null) {
                         $scope.courseData = data[0].results;
-                      
+
                     }
                 }, function (reason) {
                     errorHandler.logServiceError('programStudyController', reason);

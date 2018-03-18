@@ -1,0 +1,291 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="Modals.closeExaminationReportContainer()">x</button>
+
+    <h4 class="modal-title">
+        <span data-ng-if="modalType === 'update'">{{'examReportUpdateHeading' | translate}}</span>
+        <span data-ng-if="modalType === 'preview'">{{'examReportPreviewHeading' | translate}}</span>
+    </h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <form name="editExaminationReportForm" novalidate>
+
+            <div class="col-md-12">
+                <div class="p-20">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Name">{{'NameColumn' | translate}}<span class="text-danger">*</span></label>
+                                <input type="text" name="Name" parsley-trigger="change" required placeholder="Enter Name" class="form-control" data-ng-model="$parent.modExaminationReportObj.Name" data-ng-show="modalType === 'update'">
+                                <span data-ng-if="modalType === 'preview'">{{$parent.modExaminationReportObj.Name}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Class">{{ 'ClassColumn' | translate }}<span class="text-danger">*</span></label>
+                                <input type="text" name="Class" parsley-trigger="change" required placeholder="Enter Class" class="form-control" data-ng-model="$parent.modExaminationReportObj.Class" data-ng-show="modalType === 'update'">
+                                <span data-ng-if="modalType === 'preview'">{{$parent.modExaminationReportObj.Class}}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="RegNo">{{ 'RegNoOrNISNColumn' | translate }}<span class="text-danger">*</span></label>
+                                <input type="text" name="RegNo" parsley-trigger="change" required placeholder="Enter RegNo" class="form-control" data-ng-model="$parent.modExaminationReportObj.RegNoOrNSIN" data-ng-show="modalType === 'update'" />
+                                <span data-ng-if="modalType === 'preview'">{{$parent.modExaminationReportObj.RegNoOrNSIN}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="Section">{{ 'SectionColumn' | translate }}<span class="text-danger">*</span></label>
+                            <input type="text" name="Section" parsley-trigger="change" required placeholder="Enter Section" class="form-control" data-ng-model="$parent.modExaminationReportObj.Section" data-ng-show="modalType === 'update'" />
+                            <span data-ng-if="modalType === 'preview'">{{$parent.modExaminationReportObj.Section}}</span>
+                        </div>
+                    </div>
+                   
+                </div>
+                
+            </div>
+            <div class="col-md-12">
+                <div class="table-responsive">
+
+                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed table-colored table-inverse">
+                        <thead>
+                            <tr>
+                                
+                                <th ng-click="orderByField='FullName'; reverseSort = !reverseSort">
+                                    {{ 'SubjectColumn'  | translate}}
+                                    <span ng-show="orderByField == 'FullName'">
+                                        <span ng-show="!reverseSort">^</span>
+                                        <span ng-show="reverseSort">v</span>
+                                    </span>
+                                </th>
+                                <th>
+                                    {{ 'MarkColumn'  | translate}}
+                                </th>
+                                <th>
+                                    {{ 'BandColumn'  | translate}}
+                                </th>
+                               
+
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr data-ng-repeat="s in erSubjectsGIBA|orderBy:orderByField:reverseSort">
+                                <td>
+                                <input type="text" data-ng-model="$parent.modExaminationReportObj['SubjectId_'+s.SubjectId+'_Subject']" data-ng-show="modalType === 'update'"  />
+                                    <span data-ng-show="modalType === 'preview'">{{$parent.modExaminationReportObj['SubjectId_'+s.SubjectId+'_Subject']}}</span>
+                                </td>
+                                <td><input type="text" data-ng-model="$parent.modExaminationReportObj['SubjectId_'+s.SubjectId+'_Mark']" data-ng-show="modalType === 'update'" />
+                                    <span data-ng-show="modalType === 'preview'">{{$parent.modExaminationReportObj['SubjectId_'+s.SubjectId+'_Mark']}}</span>
+                                </td>
+                                <td><input type="text" data-ng-model="$parent.modExaminationReportObj['SubjectId_'+s.SubjectId+'_Band']" data-ng-show="modalType === 'update'" />
+                                    <span data-ng-show="modalType === 'preview'">{{$parent.modExaminationReportObj['SubjectId_'+s.SubjectId+'_Band']}}</span>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="table-responsive">
+
+                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed table-colored table-inverse">
+                        <thead>
+                            <tr>
+                                <th ng-click="orderByField='FullName'; reverseSort = !reverseSort">
+                                    {{ 'SubjectColumn'  | translate}}
+                                    <span ng-show="orderByField == 'FullName'">
+                                        <span ng-show="!reverseSort">^</span>
+                                        <span ng-show="reverseSort">v</span>
+                                    </span>
+                                </th>
+                                <th>
+                                    {{ 'ProjectColumn'  | translate}}
+                                </th>
+                                <th>
+                                    {{ 'GradeColumn'  | translate}}
+                                </th>
+
+
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr data-ng-repeat="s in erSubjects2GIBA|orderBy:orderByField:reverseSort">
+                                <td>
+                                <input type="text" data-ng-model="$parent.modExaminationReportObj['SubjectId2_'+s.SubjectId+'_Subject']" data-ng-if="modalType === 'update'" />
+                                    <span data-ng-if="modalType === 'preview'">{{$parent.modExaminationReportObj['SubjectId2_'+s.SubjectId+'_Subject']}}</span>
+                                </td>
+                                <td><input type="text" data-ng-model="$parent.modExaminationReportObj['SubjectId2_'+s.SubjectId+'_Project']" data-ng-if="modalType === 'update'" />
+                                    <span data-ng-if="modalType === 'preview'">{{$parent.modExaminationReportObj['SubjectId2_'+s.SubjectId+'_Project']}}</span>
+                                </td>
+                                <td><input type="text" data-ng-model="$parent.modExaminationReportObj['SubjectId2_'+s.SubjectId+'_Grade']" data-ng-if="modalType === 'update'" />
+                                    <span data-ng-if="modalType === 'preview'">{{$parent.modExaminationReportObj['SubjectId2_'+s.SubjectId+'_Grade']}}</span>
+
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="table-responsive">
+
+                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed table-colored table-inverse">
+                        <thead>
+                            <tr>
+                               
+                                <th ng-click="orderByField='FullName'; reverseSort = !reverseSort">
+                                    {{ 'CurricularColumn'  | translate}}  
+                                    <span ng-show="orderByField == 'FullName'">
+                                        <span ng-show="!reverseSort">^</span>
+                                        <span ng-show="reverseSort">v</span>
+                                    </span>
+                                </th>
+                                <th>
+                                    {{ 'GradeColumn'  | translate}}
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr data-ng-repeat="cr in erCurricularGIBA|orderBy:orderByField:reverseSort">
+                                <td>
+                                <input type="text" data-ng-model="$parent.modExaminationReportObj['CurricularId_'+cr.CurricularId+'_Name']" data-ng-if="modalType === 'update'" />
+                                    <span data-ng-if="modalType === 'preview'">{{$parent.modExaminationReportObj['CurricularId_'+cr.CurricularId+'_Name']}}</span>
+                                </td>
+                                <td><input type="text" data-ng-model="$parent.modExaminationReportObj['CurricularId_'+cr.CurricularId+'_Grade']" data-ng-if="modalType === 'update'" />
+                                    <span data-ng-if="modalType === 'preview'">{{$parent.modExaminationReportObj['CurricularId_'+cr.CurricularId+'_Grade']}}</span>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group m-b-0">
+                    <label class="control-label">{{'UploadDocumentHeader' | translate}}</label>
+                    <input type="file" class="filestyle" data-buttonname="btn-primary" id="filestyle-4" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);"><div class="bootstrap-filestyle input-group"><input type="text" class="form-control " placeholder="" disabled=""> <span class="group-span-filestyle input-group-btn" tabindex="0"><label for="filestyle-4" class="btn btn-primary "><span class="icon-span-filestyle glyphicon glyphicon-folder-open"></span> <span class="buttonText">Choose file</span></label></span></div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="table-responsive">
+
+                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed table-colored table-inverse">
+                        <thead>
+                            <tr>
+                                <th ng-click="orderByField='StudentId'; reverseSort = !reverseSort">
+                                    {{ 'LearningSkillsColumn'  | translate}}
+                                    <span ng-show="orderByField == 'StudentId'">
+                                        <span ng-show="!reverseSort">^</span>
+                                        <span ng-show="reverseSort">v</span>
+                                    </span>
+                                </th>
+                                <th ng-click="orderByField='FullName'; reverseSort = !reverseSort">
+                                    {{ 'LearningSkillsCColumn'  | translate}}
+                                    <span ng-show="orderByField == 'FullName'">
+                                        <span ng-show="!reverseSort">^</span>
+                                        <span ng-show="reverseSort">v</span>
+                                    </span>
+                                </th>
+                                <th>
+                                    {{ 'LearningSkillsFColumn'  | translate}}
+                                </th>
+                                <th>
+                                    {{ 'LearningSkillsSColumn'  | translate}}
+                                </th>
+                                <th>
+                                    {{ 'LearningSkillsRColumn'  | translate}}
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr data-ng-repeat="ls in erLearningSkillsGIBA | orderBy:orderByLerningField:reverseSort">
+                                <td>{{ ls.Skill}}</td>
+                                <td>
+                                <input type="checkbox" 
+                                       name="skillsRatings"
+                                       data-ng-model="$parent.modExaminationReportObj['Skills_'+$index+'_CSFR']" 
+                                       data-ng-checked="$parent.modExaminationReportObj['Skills_'+$index+'_CSFR'] === 'C'" 
+                                       data-ng-show="modalType === 'update'" 
+                                       data-ng-true-value="C"
+                                       data-ng-false-value=""
+                                       data-ng-click="setSkillCheckBox($index, 'C')"
+                                       />
+                                    <span data-ng-if="modalType === 'preview' && $parent.modExaminationReportObj['Skills_'+$index+'_CSFR'] === 'C'">Y</span>
+                                </td>
+                                <td><input type="checkbox"
+                                   name="skillsRatings"
+                                   data-ng-model="$parent.modExaminationReportObj['Skills_'+$index+'_CSFR']"
+                                   data-ng-checked="$parent.modExaminationReportObj['Skills_'+$index+'_CSFR'] === 'S'"
+                                   data-ng-show="modalType === 'update'"
+                                   data-ng-true-value="S"
+                                   data-ng-false-value=""
+                                   data-ng-click="setSkillCheckBox($index, 'S')"
+                                           />
+                                    <span data-ng-if="modalType === 'preview' && $parent.modExaminationReportObj['Skills_'+$index+'_CSFR'] === 'S'">Y</span>
+                                </td>
+                                <td><input type="checkbox"
+                                    name="skillsRatings"
+                                   data-ng-model="$parent.modExaminationReportObj['Skills_'+$index+'_CSFR']"
+                                   data-ng-checked="$parent.modExaminationReportObj['Skills_'+$index+'_CSFR'] === 'F'"
+                                   data-ng-show="modalType === 'update'"
+                                   data-ng-true-value="F"
+                                   data-ng-false-value=""
+                                           data-ng-click="setSkillCheckBox($index, 'F')"
+                                           
+                                           />
+                                    <span data-ng-if="modalType === 'preview' && $parent.modExaminationReportObj['Skills_'+$index+'_CSFR'] === 'F'">Y</span>
+                                </td>
+                                <td><input type="checkbox"
+                                    name="skillsRatings"
+                                   data-ng-model="$parent.modExaminationReportObj['Skills_'+$index+'_CSFR']"
+                                   data-ng-checked="$parent.modExaminationReportObj['Skills_'+$index+'_CSFR'] === 'R'"
+                                   data-ng-show="modalType === 'update'"
+                                   data-ng-true-value="R"
+                                   data-ng-false-value=""
+                                           data-ng-click="setSkillCheckBox($index, 'R')"
+                                           />
+                                    <span data-ng-if="modalType === 'preview' && $parent.modExaminationReportObj['Skills_'+$index+'_CSFR'] === 'R'">Y</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+                <div class="modal-footer">
+
+
+                </div>
+
+                <div class="form-group m-b-0 text-right">
+                    <button class="btn btn-teal btn-bordered waves-light waves-effect w-sm m-b-5" data-ng-click="updateExaminationReportDetails(editExaminationReportForm)" data-ng-if="modalType ==='update'">
+                        {{'saveDetailsBtn' | translate }}
+                    </button>
+                   
+                    <button type="button" class="btn btn-default btn-bordered waves-effect w-md m-b-5" data-ng-click="Modals.closeExaminationReportContainer()" data-ng-if="modalType ==='update'">
+                    {{'closeBtn' | translate }}
+                    </button>
+                </div>
+</form>
+            </div>
+
+        </div>
+
+   
+

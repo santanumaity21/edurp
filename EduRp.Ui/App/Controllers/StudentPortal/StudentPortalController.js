@@ -1,11 +1,11 @@
-﻿(function () {
+﻿﻿(function () {
     'use strict';
 
     angular
         .module('EduRpApp')
         .controller('StudentPortalController', StudentPortalController);
 
-    StudentPortalController.$inject = ['$scope', '$q', 'errorHandler', 'StudentPortalService', 'commonService', '$location','$rootScope']; 
+    StudentPortalController.$inject = ['$scope', '$q', 'errorHandler', 'StudentPortalService', 'commonService', '$location', '$rootScope'];
 
     function StudentPortalController($scope, $q, errorHandler, StudentPortalService, commonService, $location, $rootScope) {
         $scope.title = 'StudentPortalController';

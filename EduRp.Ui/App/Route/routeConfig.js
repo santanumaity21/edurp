@@ -67,14 +67,17 @@
                 })
                 .when('/Admin/ExaminationType', {
                     templateUrl: '/App/Templates/Examinationtype/examinationtype.html',
+                    requiresLogin: true,
                     controller: 'examinationTypeController'
                 })
                 .when('/Admin/Fees', {
                     templateUrl: '/App/Templates/Fees/fees.html',
+                    requiresLogin: true,
                     controller: 'feesListController'
                 })
                 .when('/Admin/NotificationType', {
                     templateUrl: '/App/Templates/NotificationType/notificationtype.html',
+                    requiresLogin: true,
                     controller: 'notificationTypeController'
                 })
                 .when('/Admin/Chapters', {
@@ -101,8 +104,11 @@
 				.when('/ScheduleExamination', {
                     templateUrl: '/App/Templates/ScheduleExamination/scheduleExamination.html',
                     controller: 'scheduleExaminationController'
+                }).when('/ExaminationReport', {
+                    templateUrl: '/App/Templates/ExaminationReport/examinationReport.html',
+                    controller: 'examinationReportController'
                 })
-                .when('/StudentAdmissionForm/:admissionNumber?', {
+                .when('/StudentAdmissionForm', {
                     templateUrl: '/App/Templates/StudentAdmissionForm/StudentAdmissionForm.html',
                     controller: 'studentAdmissionFormController'
                 })
@@ -110,7 +116,7 @@
                     templateUrl: '/App/Templates/ManageStudentCounsellingDetail/ManageStudentCounsellingDetail.html',
                     controller: 'manageStudentCounsellingDetailController'
                 })
-                .when('/StudentDashboard', {
+                .when('/StudentProfile', {
                     templateUrl: '/App/Templates/StudentPortal/StudentPortal.html',
                     controller: 'StudentPortalController'
                 })

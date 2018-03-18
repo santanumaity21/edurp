@@ -1,0 +1,206 @@
+﻿
+<div class="wrapper">
+    <div class="container">
+
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <div class="btn-group pull-left">
+                        <ol class="breadcrumb hide-phone p-0 m-0">
+                            <li>
+                                <a href="#">{{'breadcrumbOfEdurp' | translate}}</a>
+                            </li>
+                            <li>
+                                <a href="#">{{'breadcrumbOfDashboard' | translate}}</a>
+                            </li>
+                            <li class="active">
+                                {{'breadcrumb3OfExaminationReport' | translate}}
+
+                            </li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title end breadcrumb -->
+
+
+        <div class="row">
+            <!-- end col -->
+            <div class="col-lg-12">
+                <div class="card-box">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <h4 class="m-t-0 header-title"><b>{{'breadcrumb3OfExaminationReport' | translate}}</b></h4>
+                        </div>
+                        <div class="col-lg-4 pull-right">
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            &nbsp;
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="panel-group" role="tablist" aria-multiselectable="true">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab">
+                                        <h4 class="panel-title" data-ng-click="toggleFilterPanel()">
+                                            <a ng-class="!filterPanel ? 'collapsed': ''" aria-expanded="false" aria-controls="collapseThree">
+                                                {{'filters' | translate}}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div class="panel-collapse" role="tabpanel" aria-labelledby="headingThree" data-ng-show="filterPanel">
+                                        <div class="panel-body">
+                                            <form action="#" data-parsley-validate="">
+
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="userName">Exam Group</label>
+                                                            <textarea cols="25" rows="5" name="course_code_tobe_filtered" data-ng-model="course_code_tobe_filtered">
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="userName">Exam Name</label>
+                                                            <input type="text" name="course_name_tobe_filtered" data-ng-model="course_name_tobe_filtered" />
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <div class="form-group text-right m-b-0">
+                                                    <button class="btn btn-teal btn-bordered waves-light waves-effect w-xs  m-b-2" type="button" data-ng-click="getFilteredData()">
+                                                        {{ 'goBtn' | translate }}
+                                                    </button>
+                                                    <button type="reset" data-ng-click="toggleFilterPanel()" class="btn btn-default waves-effect m-l-5">
+                                                        {{ 'clearBtn' | translate }}
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- end col -->
+                        <div class="col-lg-12" style="margin-top:-30px">
+                            
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="table-responsive">
+
+                                            <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed table-colored table-inverse">
+                                                <thead>
+                                                    <tr>
+                                                        <th ng-click="orderByField='StudentId'; reverseSort = !reverseSort">
+                                                            {{ 'studentIdColumn' | translate }}
+                                                            <span ng-show="orderByField == 'StudentId'">
+                                                                <span ng-show="!reverseSort">^</span>
+                                                                <span ng-show="reverseSort">v</span>
+                                                            </span>
+                                                        </th>
+                                                        <th ng-click="orderByField='FullName'; reverseSort = !reverseSort">
+                                                            {{ 'studentNameColumn' | translate }}
+                                                            <span ng-show="orderByField == 'FullName'">
+                                                                <span ng-show="!reverseSort">^</span>
+                                                                <span ng-show="reverseSort">v</span>
+                                                            </span>
+                                                        </th>
+                                                        <th>
+                                                            {{ 'reportsColumn' | translate }}
+                                                        </th>
+                                                        <th>
+                                                            {{ 'previewColumn' | translate }}
+                                                        </th>
+                                                        <th>
+                                                           
+                                                        </th>
+
+
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr data-ng-repeat="er in filteredExaminationReportData|orderBy:orderByField:reverseSort">
+                                                        <td>{{ er.StudentId}}</td>
+                                                        <td>{{ er.FullName}}</td>
+                                                        <td>{{'downloadColumn' | translate }}</td>
+                                                        <td><span data-ng-click="previewExaminationReportContainer(er)">Preview</span></td>
+                                                        <td>
+                                                            <i class="fa fa-pencil-square-o m-r-5" data-ng-click="editExaminationReportContainer(er)" style="cursor: pointer;"></i>
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div> <!-- end card -->
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="dataTables_length" id="datatable_length">
+
+                                            <label>
+                                                {{'show' | translate }}
+                                                <select name="datatable_length"
+                                                        aria-controls="datatable"
+                                                        class="form-control input-sm"
+                                                        data-ng-model="numPerPage"
+                                                        data-ng-options="x for x in showPerPageDataOptions"></select>
+                                                {{'entries' | translate }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">
+                                            {{'showing' | translate }} {{currentPage*numPerPage - numPerPage  + 1}} {{'to' | translate }} {{examinationReportData.length > currentPage*numPerPage ? currentPage*numPerPage : examinationReportData.length}} {{'of' | translate }} {{examinationReportData.length}} {{'entries' | translate }}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                            <pagination ng-model="currentPage"
+                                                        total-items="examinationReportData.length"
+                                                        max-size="maxSize"
+                                                        boundary-links="true"
+                                                        items-per-page="numPerPage">
+                                            </pagination>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- end col -->
+
+
+
+                        </div>
+                        <!-- end row -->
+
+
+                    </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
