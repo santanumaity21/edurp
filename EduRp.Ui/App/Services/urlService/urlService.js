@@ -131,7 +131,8 @@ var urlService =
 
         getExaminationReport: localhost ? '/sampleData/ExaminationReport/examinationReport.json?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}' : '/sampleData/ExaminationReport/examinationReport.json?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
         erGridInfoBeforeUpdating: localhost ? '/sampleData/ExaminationReport/erGridInfoBeforeUpdating.json?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}' : '/sampleData/ExaminationReport/erGridInfoBeforeUpdating.json?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
-        addExaminationReport: localhost ? ' ' : apiPrefix + '/api/ExaminationReport/Save/',
+        getExamGroup: localhost ? ' ' :   '/sampleData/ExaminationReport/getExamGroup.json?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        getGrade: localhost ? ' ' :  '/sampleData/ExaminationReport/getGrade.json?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
         updateExaminationReport: localhost ? ' ' : apiPrefix + '/api/ExaminationReport/Save/',
         deleteExaminationReport: localhost ? ' ' : apiPrefix + '/api/ExaminationReport/Delete/'
     };

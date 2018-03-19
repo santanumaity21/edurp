@@ -1,0 +1,28 @@
+﻿{
+  "results": [
+    {
+      "ExamGroupId": 1,
+      "ExamGroupName": "Exam group 1"
+    },
+     {
+      "ExamGroupId": 2,
+      "ExamGroupName": "Exam group 2"
+    },
+     {
+      "ExamGroupId": 3,
+      "ExamGroupName": "Exam group 3"
+    },
+     {
+      "ExamGroupId": 4,
+      "ExamGroupName": "Exam group 4"
+    },
+     {
+      "ExamGroupId": 5,
+      "ExamGroupName": "Exam group 5"
+    },
+     {
+      "ExamGroupId": 6,
+      "ExamGroupName": "Exam group 6"
+    }
+  ]
+}

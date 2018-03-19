@@ -2,35 +2,36 @@
 <div class="wrapper">
     <div class="container">
 
-        <!-- Page-Title -->
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="page-title-box">
-                    <div class="btn-group pull-left">
-                        <ol class="breadcrumb hide-phone p-0 m-0">
-                            <li>
-                                <a href="#">{{'breadcrumbOfEdurp' | translate}}</a>
-                            </li>
-                            <li>
-                                <a href="#">{{'breadcrumbOfDashboard' | translate}}</a>
-                            </li>
-                            <li class="active">
-                                {{'breadcrumb3OfExaminationReport' | translate}}
-
-                            </li>
-                        </ol>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- end page title end breadcrumb -->
-
+      
 
         <div class="row">
             <!-- end col -->
             <div class="col-lg-12">
                 <div class="card-box">
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-title-box">
+                                <div class="btn-group pull-left">
+                                    <ol class="breadcrumb hide-phone p-0 m-0">
+                                        <li>
+                                            <a href="#">{{'breadcrumbOfEdurp' | translate}}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{'breadcrumbOfDashboard' | translate}}</a>
+                                        </li>
+                                        <li class="active">
+                                            {{'breadcrumb3OfExaminationReport' | translate}}
+
+                                        </li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title end breadcrumb -->
+
                     <div class="row">
                         <div class="col-lg-8">
                             <h4 class="m-t-0 header-title"><b>{{'breadcrumb3OfExaminationReport' | translate}}</b></h4>
@@ -47,8 +48,76 @@
 
                     <div class="row">
                         <div class="col-lg-12">
+                            <div>
 
-                            <div class="panel-group" role="tablist" aria-multiselectable="true">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="userName">Batch</label>
+                                                        <select id="heard" class="form-control" data-ng-model="selected_batch">
+                                                            <option value="">--Select Batch--</option>
+                                                            <option data-ng-repeat="b in getBatchData" value="{{b.BatchName}}">{{b.BatchName}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="userName">Exam Group</label>
+                                                        <select id="heard" class="form-control" data-ng-model="selected_exam_group">
+                                                            <option value="">Select Exam Group</option>
+                                                            <option data-ng-repeat="eg in getExamGroupData" value="{{eg.ExamGroupName}}">{{eg.ExamGroupName}}</option>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label for="userName">Grade</label>
+                                                        <select id="heard" class="form-control" data-ng-model="selected_grade">
+                                                            <option value="">--Select Grade--</option>
+                                                            <option data-ng-repeat="g in getGradeData" value="{{g.GradeName}}">{{g.GradeName}}</option>
+                                                        </select>
+                                                    </div>
+
+
+
+                                                </div>
+
+                                                <div>  </div>
+
+                                                <div class="col-md-4">
+                                                    <br><div>  </div>
+
+                                                    <div class="form-group">
+                                                        <button class="btn btn-teal btn-bordered waves-light waves-effect w-md m-b-5" data-ng-click="fetchStudentReport()">{{ 'goBtn' | translate }}</button>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2 pull-right">
+                                                    <br>
+                                                    <div class="form-group">
+
+                                                        
+
+
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            
+                                    </div> <!-- end col -->
+
+                                </div>  <!-- end row -->
+
+                            </div>
+                            <div class="panel-group" role="tablist" aria-multiselectable="true" data-ng-show="moveTo === 'showStudentGrid'">
 
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab">
@@ -99,7 +168,7 @@
 
 
                         <!-- end col -->
-                        <div class="col-lg-12" style="margin-top:-30px">
+                        <div class="col-lg-12" style="margin-top:-30px" data-ng-show="moveTo === 'showStudentGrid'">
                             
 
                                 <div class="row">
@@ -142,7 +211,7 @@
                                                         <td>{{ er.StudentId}}</td>
                                                         <td>{{ er.FullName}}</td>
                                                         <td>{{'downloadColumn' | translate }}</td>
-                                                        <td><span data-ng-click="previewExaminationReportContainer(er)">Preview</span></td>
+                                                        <td><span data-ng-click="previewExaminationReportContainer(er)">{{'previewColumn' | translate }}</span></td>
                                                         <td>
                                                             <i class="fa fa-pencil-square-o m-r-5" data-ng-click="editExaminationReportContainer(er)" style="cursor: pointer;"></i>
                                                             

@@ -1,0 +1,202 @@
+﻿{
+  "results": [
+    { "Name": "santanu maity" },
+    { "Class": "Junior High School" },
+    { "RegNoOrNSIN": "07" },
+    { "Section": "2nd semester" },
+    {
+      "Subjects": [
+        {
+          "SubjectId": "001",
+          "SubjectName": "Religion",
+          "Mark": "40",
+          "Band": "B+"
+        },
+        {
+          "SubjectId": "002",
+          "SubjectName": "Civics",
+          "Mark": "60",
+          "Band": "B"
+        },
+        {
+          "SubjectId": "003",
+          "SubjectName": "Bahasa",
+          "Mark": "50",
+          "Band": "B+"
+        },
+        {
+          "SubjectId": "004",
+          "SubjectName": "Indonesia",
+          "Mark": "50",
+          "Band": "B+"
+        },
+        {
+          "SubjectId": "005",
+          "SubjectName": "English",
+          "Mark": "50",
+          "Band": "B+"
+        },
+        {
+          "SubjectId": "006",
+          "SubjectName": "Mathematics",
+          "Mark": "50",
+          "Band": "B+"
+        },
+        {
+          "SubjectId": "007",
+          "SubjectName": "Science",
+          "Mark": "50",
+          "Band": "B+"
+        },
+        {
+          "SubjectId": "008",
+          "SubjectName": "PhysicalEducation",
+          "Mark": "50",
+          "Band": "B+"
+        },
+        {
+          "SubjectId": "009",
+          "SubjectName": "Mandarin",
+          "Mark": "50",
+          "Band": "B+"
+        }
+      ]
+    },
+    {
+      "Subjects2": [
+        {
+          "SubjectId": "001",
+          "SubjectName": "Religion",
+          "Project": "project 1",
+          "Grade": "Garde 1"
+        },
+        {
+          "SubjectId": "002",
+          "SubjectName": "Civics",
+          "Project": "project 2",
+          "Grade": "Garde 2"
+        },
+        {
+          "SubjectId": "003",
+          "SubjectName": "Bahasa",
+          "Project": "project 3",
+          "Grade": "Garde 3"
+        },
+        {
+          "SubjectId": "004",
+          "SubjectName": "Indonesia",
+          "Project": "project 4",
+          "Grade": "Garde 4"
+        },
+        {
+          "SubjectId": "005",
+          "SubjectName": "English",
+          "Project": "project 5",
+          "Grade": "Garde 5"
+        },
+        {
+          "SubjectId": "006",
+          "SubjectName": "Mathematics",
+          "Project": "project 6",
+          "Grade": "Garde 6"
+        },
+        {
+          "SubjectId": "007",
+          "SubjectName": "Science",
+          "Project": "project 7",
+          "Grade": "Garde 7"
+        },
+        {
+          "SubjectId": "008",
+          "SubjectName": "PhysicalEducation",
+          "Project": "project 8",
+          "Grade": "Garde 8"
+        },
+        {
+          "SubjectId": "009",
+          "SubjectName": "Mandarin",
+          "Project": "project 9",
+          "Grade": "Garde 9"
+        }
+      ]
+    },
+    {
+      "Curricular": [
+        {
+          "CurricularId": "001",
+          "CurricularName": "CBSE",
+          "CurricularGrade": "Garde 1"
+        },
+        {
+          "CurricularId": "002",
+          "CurricularName": "ICSE",
+          "CurricularGrade": "Garde 2"
+        },
+        {
+          "CurricularId": "003",
+          "CurricularName": "ISE",
+          "CurricularGrade": "Garde 3"
+        }
+
+      ]
+    },
+    {
+      "LearningSkills": [
+        {
+          "Skill": "Shows empathy,compassion and respect",
+          "Value": "C"
+        },
+        {
+          "Skill": "Demonstrates Confidence",
+          "Value": "S"
+        },
+        {
+          "Skill": "Demonstrates positive and responsible attitude",
+          "Value": "F"
+        },
+        {
+          "Skill": "Shows leadership qualities",
+          "Value": "R"
+        },
+        {
+          "Skill": "Meets deadlines",
+          "Value": "S"
+        },
+        {
+          "Skill": "Follow rules and routine consistently",
+          "Value": "C"
+        },
+        {
+          "Skill": "Demonstrates hard work and produces quality results",
+          "Value": "R"
+        },
+        {
+          "Skill": "Works very well with others in a group",
+          "Value": "F"
+        },
+        {
+          "Skill": "Handles disagreements with peers appropriately and diplomatically",
+          "Value": "C"
+        },
+        {
+          "Skill": "Demonstrates the capacity for innovation and a willingness to take risks",
+          "Value": "S"
+        },
+        {
+          "Skill": "ATTENDANCE",
+          "Value": "R"
+        }
+      ]
+    }
+  ]
+}
+		
+				
+		
+		
+			
+			
+				
+				
+				
+				

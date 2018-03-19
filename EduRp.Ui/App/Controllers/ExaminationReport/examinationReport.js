@@ -14,6 +14,7 @@
         $scope.orderByField = 'StudentId';
         $scope.orderByLerningField = 'Skill';
         $scope.reverseSort = false;
+        $scope.moveTo = null;
         $scope.adjustExaminationReportList = function () {
             var begin = (($scope.currentPage - 1) * $scope.numPerPage)
                 , end = begin + $scope.numPerPage;
@@ -34,22 +35,47 @@
             $scope.filterPanel = !$scope.filterPanel;
         };
 
+        $scope.fetchStudentReport = function () {
+            if (!$scope.selected_batch || !$scope.selected_exam_group || !$scope.selected_grade) {
+                alert("Please  select all the values and click on go again.");
+            } else {
+                
+                $q.all([
+                    examinationReport.getExaminationReport()
+                ]).then(function (data) {
+                    if (data !== null) {
+                        $scope.examinationReportData = data[0].results;
+                        $scope.adjustExaminationReportList();
+                        $scope.moveTo = 'showStudentGrid';
+                    }
+                }, function (reason) {
+                    errorHandler.logServiceError('examinationTypeController', reason);
+                }, function (update) {
+                    errorHandler.logServiceNotify('examinationTypeController', update);
+                });
+            }
+            
+        };
+
         
         //Get PageLoad
         (function startup() {
-
             $q.all([
-                examinationReport.getExaminationReport()
+                examinationReport.getBatch(),
+                examinationReport.getExamGroup(),
+                examinationReport.getGrade()
             ]).then(function (data) {
                 if (data !== null) {
-                    $scope.examinationReportData = data[0].results;
-                    $scope.adjustExaminationReportList();
+                    $scope.getBatchData = data[0].results;
+                    $scope.getExamGroupData = data[1].results;
+                    $scope.getGradeData = data[2].results;
                 }
             }, function (reason) {
                 errorHandler.logServiceError('examinationTypeController', reason);
             }, function (update) {
                 errorHandler.logServiceNotify('examinationTypeController', update);
             });
+            
         })();
 
 

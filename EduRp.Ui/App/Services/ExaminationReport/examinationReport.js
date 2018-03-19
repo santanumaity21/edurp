@@ -34,10 +34,24 @@
             return execute('erGridInfoBeforeUpdating', 'get', null);
 
         };
+        var _getBatch = function () {
+            return execute('getBatch', 'get', null);
+
+        };
+        var _getExamGroup = function () {
+            return execute('getExamGroup', 'get', null);
+
+        };
+        var _getGrade = function () {
+            return execute('getGrade', 'get', null);
+
+        };
         
 
         return {
-
+            getBatch: _getBatch,
+            getExamGroup: _getExamGroup,
+            getGrade: _getGrade,
             getExaminationReport: _getExaminationReport,
             addExaminationReport: _addExaminationReport,
             updateExaminationReport: _updateExaminationReport,

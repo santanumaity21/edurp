@@ -129,5 +129,9 @@ var urlService =
         saveStudentAdmissionForm: localhost ? '' : apiPrefix + '/api/StudentAdmissionForms/UpdateApplicationForm',
         addStudentAdmissionForm: localhost ? '' : apiPrefix + '/api/StudentAdmissionForms/UpdateApplicationForm',
 
-
+        getExaminationReport: localhost ? '/sampleData/ExaminationReport/examinationReport.json?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}' : '/sampleData/ExaminationReport/examinationReport.json?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        erGridInfoBeforeUpdating: localhost ? '/sampleData/ExaminationReport/erGridInfoBeforeUpdating.json?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}' : '/sampleData/ExaminationReport/erGridInfoBeforeUpdating.json?id={{UniversityId}}&userid={{UserId}}&tokenid={{TokenId}}',
+        addExaminationReport: localhost ? ' ' : apiPrefix + '/api/ExaminationReport/Save/',
+        updateExaminationReport: localhost ? ' ' : apiPrefix + '/api/ExaminationReport/Save/',
+        deleteExaminationReport: localhost ? ' ' : apiPrefix + '/api/ExaminationReport/Delete/'
     };
